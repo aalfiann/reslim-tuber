@@ -1,13 +1,23 @@
 reSlim
 =======
-[![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/aalfiann/reSlim)
-[![Version](https://img.shields.io/badge/stable-1.4.0-brightgreen.svg)](https://github.com/aalfiann/reSlim)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim/blob/master/license.md)
+[![Build](https://img.shields.io/badge/build-failed-brightred.svg)](https://github.com/aalfiann/reSlim-tuber)
+[![Version](https://img.shields.io/badge/ongoing-1.0.0-brightyellow.svg)](https://github.com/aalfiann/reSlim-tuber)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-tuber/blob/master/license.md)
 
-reSlim is Lightweight, Fast, Secure and Powerful rest api.<br>
-reSlim is based on [Slim Framework version 3](http://www.slimframework.com/).<br>
+A simple web app for boost to make money on your videos on youtube, vimeo, etc<br>
+reSlim-tuber is based on [reSlim](https://github.com/aalfiann/reSlim) which is based on [Slim Framework version 3](http://www.slimframework.com/).<br>
 
-Features:
+Roadmap:
+---------------
+
+1. Post your video from Youtube, Vimeo, etc.
+2. Share video using sharethis
+3. Comment system using disqus
+4. Sitemap
+5. RSS
+6. Etc
+
+Feature:
 ---------------
 Reslim is already build with essentials of user management system in rest api way.
 
@@ -36,98 +46,7 @@ Getting Started
 1. Get or download the project
 2. Install it using Composer
 
-Folder System
----------------
-* database
-    * reSlim.sql (Structure database in reSlim to work with default example)
-* src/
-    * api/
-    * app/
-    * classes/
-        * middleware/
-            * ApiKey.php (For handling authentication api key)
-        * Auth.php (For handling authentication)
-        * BaseConverter.php (For encryption)
-        * Cors.php (For accessing web resources)
-        * CustomHandlers.php (For handle message)
-        * Mailer.php (For sending mail)
-        * Pagination.php (For pagination json response)
-        * Upload.php (For user upload and management file)
-        * User.php (For user management)
-        * Validation.php (For validation)
-    * logs/
-    * routers/
-	    * name.router.php (routes by functionalities)
-* test/
-    * example/ (This is a GUI for test)
-    * reSlim User.postman_collection.json (Is the file to run example test in PostMan)
-
-### api/
-    
-Here is the place to run your application
-
-### app/
-
-Here is the place for slim framework
-
-### classes/
-
-Add your core classes here.
-We are using PDO MySQL for the Database.
-
-### classes/middleware
-
-Add your middleware classes here.
-We are using PDO MySQL for the Database.
-
-
-### logs/
-
-Your custom log will be place in here as default.
-You can add your custom log in your any container or router.
-
-Example adding custom log in a router
-```php
-$app->post('/user/new', function (Request $request, Response $response) {
-    echo 'This is a POST route';
-    $this->logger->addInfo("Response post is succesfully complete!!!");
-});
-```
-
-### routers/
-
-All the files with the routes. Each file contents the routes of an specific functionality.
-It is very important that the names of the files inside this folder follow this pattern: name.router.php
-
-Example of router file:
-
-user.router.php
-
-```php
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-
-    // POST example api to show all data user
-    $app->post('/user', function (Request $request, Response $response) {
-        $users = new classes\User($this->db);
-        $datapost = $request->getParsedBody();
-        $users->Token = $datapost['Token'];
-        $body = $response->getBody();
-        $body->write($users->showAll());
-        return classes\Cors::modify($response,$body,200);
-    });
-
-    // GET example api to show profile user (doesn't need a authentication)
-    $app->get('/user/profile/{username}', function (Request $request, Response $response) {
-        $users = new classes\User($this->db);
-        $users->Username = $request->getAttribute('username');
-        $body = $response->getBody();
-        $body->write($users->showUser());
-        return classes\Cors::modify($response,$body,200);
-    });
-```
-
-### reSlim Configuration
+### reSlim-tuber Configuration
 
 Example Config.php
 ```php
@@ -191,26 +110,26 @@ Working with default example for testing
 -----------------
 I recommend you to use PostMan an add ons in Google Chrome to get Started with test.
 
-1. Import reSlim.sql in your database then config your database connection in config.php inside folder "reSlim/src/"
-2. Import file reSlim User.postman_collection.json in your PostMan.
+1. Import reSlim-tuber.sql in your database then config your database connection in config.php inside folder "reSlim-tuber/src/"
+2. Import file reSlim-tuber User.postman_collection.json in your PostMan.
 3. Edit the path in PostMan. Because the example test is using my path server which is my server is run in http://localhost:1337 
     The path to run reSlim is inside folder api.<br> 
-    Example for my case is: http://localhost:1337/reSlim/src/api/<br><br>
+    Example for my case is: http://localhost:1337/reSlim-tuber/src/api/<br><br>
     In short, It's depend on your server configuration.
 4. Then you can do the test by yourself
 
 Working with gui example for testing
 -----------------
 
-1. Import reSlim.sql in your database then config your database connection in config.php inside folder "reSlim/src/"
-2. Edit the config.php inside folder "reSlim/test/example"<br>
+1. Import reSlim-tuber.sql in your database then config your database connection in config.php inside folder "reSlim-tuber/src/"
+2. Edit the config.php inside folder "reSlim/test/example/backend"<br>
     $config['title'] = 'your title website';<br>
     $config['email'] = 'your default email address';<br>
     $config['basepath'] = 'url location of base path example';<br>
     $config['api'] = 'url location of base path of api';<br>
     $config['apikey'] = 'your api key, you can leave this blank and fill this later';
 3. Visit yourserver/reSlim/test/example<br>
-    For my case is http://localhost:1337/reSlim/test/example
+    For my case is http://localhost:1337/reSlim-tuber/test/example/backend
 4. You can login with default superuser account:<br>
     Username : reslim<br>
     Password : reslim
@@ -229,6 +148,6 @@ How to Contribute
 -----------------
 ### Pull Requests
 
-1. Fork the reSlim repository
+1. Fork the reSlim-tuber repository
 2. Create a new branch for each feature or improvement
 3. Send a pull request from each feature branch to the develop branch
