@@ -11,11 +11,12 @@ Roadmap:
 ---------------
 
 1. Post your video from Youtube, Vimeo, etc.
-2. Share video using sharethis
-3. Comment system using disqus
-4. Sitemap
-5. RSS
-6. Etc
+2. Ads management
+3. Share video using sharethis
+4. Comment system using disqus
+5. Very simple as no member system
+6. Sitemap and RSS
+7. Etc
 
 Feature:
 ---------------
