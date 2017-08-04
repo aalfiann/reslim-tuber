@@ -1,7 +1,7 @@
-reSlim
+reSlim-tuber
 =======
-[![Build](https://img.shields.io/badge/build-failed-brightred.svg)](https://github.com/aalfiann/reSlim-tuber)
-[![Version](https://img.shields.io/badge/ongoing-1.0.0-brightyellow.svg)](https://github.com/aalfiann/reSlim-tuber)
+[![Build](https://img.shields.io/badge/build-failed-red.svg)](https://github.com/aalfiann/reSlim-tuber)
+[![Version](https://img.shields.io/badge/ongoing-1.0.0-yellow.svg)](https://github.com/aalfiann/reSlim-tuber)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-tuber/blob/master/license.md)
 
 A simple web app for boost to make money on your videos on youtube, vimeo, etc<br>
@@ -75,7 +75,7 @@ $config['enableApiKeys'] = true;
 $config['db']['host']   = 'localhost';
 $config['db']['user']   = 'root';
 $config['db']['pass']   = 'root';
-$config['db']['dbname'] = 'reSlim';
+$config['db']['dbname'] = 'reSlim-tuber';
 
 /**
  * Configuration SMTP for Mailer
@@ -97,7 +97,7 @@ $config['smtp']['autotls'] = false;
 $config['smtp']['auth'] = true;
 $config['smtp']['secure'] = 'tls';
 $config['smtp']['port'] = 587;
-$config['smtp']['defaultnamefrom'] = 'reSlim admin';
+$config['smtp']['defaultnamefrom'] = 'reSlim-tuber admin';
 $config['smtp']['username'] = 'youremail@gmail.com';
 $config['smtp']['password'] = 'secret';
 $config['smtp']['debug'] = 1;
@@ -113,7 +113,7 @@ I recommend you to use PostMan an add ons in Google Chrome to get Started with t
 1. Import reSlim-tuber.sql in your database then config your database connection in config.php inside folder "reSlim-tuber/src/"
 2. Import file reSlim-tuber User.postman_collection.json in your PostMan.
 3. Edit the path in PostMan. Because the example test is using my path server which is my server is run in http://localhost:1337 
-    The path to run reSlim is inside folder api.<br> 
+    The path to run reSlim-tuber is inside folder api.<br> 
     Example for my case is: http://localhost:1337/reSlim-tuber/src/api/<br><br>
     In short, It's depend on your server configuration.
 4. Then you can do the test by yourself
@@ -135,7 +135,7 @@ Working with gui example for testing
     Password : reslim
 5. All is done
 
-The concept authentication in reSlim
+The concept authentication in reSlim-tuber
 -----------------
 
 1. Register account first
