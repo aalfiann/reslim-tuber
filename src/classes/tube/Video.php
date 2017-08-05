@@ -50,10 +50,8 @@ use PDO;
 			
     		    try {
     				$this->db->beginTransaction();
-	    			$sql = "INSERT INTO data_post (Image,Title,Description,Embed_video,Duration,Stars,Cast,Director,Tags,Country,
-                        Release,Rating,Like,Dislike,StatusID,Viewer,Created_at,Username) 
-		    			VALUES (:image,:title,:description,:embed,:duration,:stars,:cast,:director,:tags,:country,:release,
-                            :rating,'0','0','35','0',current_timestamp,:username);";
+	    			$sql = "INSERT INTO data_post (Image,Title,Description,Embed_video,Duration,Stars,Cast,Director,Tags,Country,`Release`,Rating,`Like`,Dislike,StatusID,Viewer,Created_at,Username) 
+		    			VALUES (:image,:title,:description,:embed,:duration,:stars,:cast,:director,:tags,:country,:release,:rating,'0','0','51','0',current_timestamp,:username);";
 					$stmt = $this->db->prepare($sql);
 					$stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
                     $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
