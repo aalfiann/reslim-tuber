@@ -1,8 +1,8 @@
 {
 	"variables": [],
 	"info": {
-		"name": "reSlim User",
-		"_postman_id": "659e30a2-74dd-3013-e608-2c93c776d823",
+		"name": "reSlim Tuber",
+		"_postman_id": "5e6e2caf-44b4-fcbf-31f1-0a1ade0bde66",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -10,7 +10,7 @@
 		{
 			"name": "User Login",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/login",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/login",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -19,14 +19,12 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Password",
 							"value": "{password}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -37,7 +35,7 @@
 		{
 			"name": "User Register",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/register",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/register",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -46,56 +44,47 @@
 						{
 							"key": "Username",
 							"value": "your username (no space)",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Password",
 							"value": "your password",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Fullname",
 							"value": "your name",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Address",
 							"value": "your address here...",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Phone",
 							"value": "your phone",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Email",
 							"value": "your email",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Aboutme",
 							"value": "about you",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Avatar",
 							"value": "your url avatar",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Role",
 							"value": "2",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -106,7 +95,7 @@
 		{
 			"name": "Logout User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/logout",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/logout",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -115,14 +104,12 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -133,7 +120,7 @@
 		{
 			"name": "Show All User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -144,7 +131,7 @@
 		{
 			"name": "Show All User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -153,8 +140,7 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -165,7 +151,35 @@
 		{
 			"name": "Search Data User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/user/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"user",
+						"data",
+						"search",
+						"{page}",
+						"{itemsperpage}",
+						"{yourtoken}",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{your query to search data}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -176,7 +190,7 @@
 		{
 			"name": "Show Role User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/role/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/role/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -187,7 +201,7 @@
 		{
 			"name": "Show Status User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/status/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/status/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -198,7 +212,7 @@
 		{
 			"name": "User Update",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/update",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/update",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -207,62 +221,52 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Fullname",
 							"value": "your name",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Address",
 							"value": "your address",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Phone",
 							"value": "your phone",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Email",
 							"value": "your email",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Aboutme",
 							"value": "about your",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Avatar",
 							"value": "",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Role",
 							"value": "2",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Status",
 							"value": "1",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -273,7 +277,7 @@
 		{
 			"name": "User Delete",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/delete",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/delete",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -282,14 +286,12 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -300,7 +302,7 @@
 		{
 			"name": "Change Password User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/changepassword",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/changepassword",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -309,26 +311,22 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Password",
 							"value": "{youroldpassword}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "NewPassword",
 							"value": "{yournewpassword}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -339,7 +337,7 @@
 		{
 			"name": "Reset Password User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/resetpassword",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/resetpassword",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -348,20 +346,17 @@
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "NewPassword",
 							"value": "{password}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -372,7 +367,32 @@
 		{
 			"name": "Show Profile User Public",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/profile/{username}/?apikey={yourapikeys}",
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/user/profile/{username}/?apikey={yourapikeys}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"user",
+						"profile",
+						"{username}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikeys}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -383,7 +403,7 @@
 		{
 			"name": "Show Profile User Internal",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/profile/{username}/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/profile/{username}/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -394,7 +414,7 @@
 		{
 			"name": "Show All User Pagination",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/data/{page}/{itemsperpage}/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/data/{page}/{itemsperpage}/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -405,7 +425,7 @@
 		{
 			"name": "Verify Token",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/verify/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/verify/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -416,7 +436,7 @@
 		{
 			"name": "Get User Role by Token",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/scope/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/scope/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -427,7 +447,7 @@
 		{
 			"name": "Process User Upload",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/upload",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/upload",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -436,38 +456,33 @@
 						{
 							"key": "Title",
 							"value": "",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Alternate",
 							"value": "",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "External",
 							"value": "",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Datafile",
 							"type": "file",
-							"enabled": true,
-							"src": "join-tkd-express.jpg"
+							"src": "join-tkd-express.jpg",
+							"value": ""
 						}
 					]
 				},
@@ -478,7 +493,37 @@
 		{
 			"name": "Search Data User Upload",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/{username}/upload/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/user/{username}/upload/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"user",
+						"{username}",
+						"upload",
+						"data",
+						"search",
+						"{page}",
+						"{itemsperpage}",
+						"{yourtoken}",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{your query to search data}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -489,7 +534,7 @@
 		{
 			"name": "Show All Data User Upload",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/{username}/upload/data/{page}/{itemsperpage}/{yourtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/{username}/upload/data/{page}/{itemsperpage}/{yourtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -500,7 +545,35 @@
 		{
 			"name": "Show User Upload Item",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/{username}/upload/data/item/{itemid}/?apikey={yourapikeys}",
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/user/{username}/upload/data/item/{itemid}/?apikey={yourapikeys}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"user",
+						"{username}",
+						"upload",
+						"data",
+						"item",
+						"{itemid}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikeys}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -511,7 +584,7 @@
 		{
 			"name": "Update User Upload",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/upload/update",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/upload/update",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -520,44 +593,37 @@
 						{
 							"key": "ItemID",
 							"value": "{itemid}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Title",
 							"value": "",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Alternate",
 							"value": "",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "External",
 							"value": "",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Status",
 							"value": "{49 or 50}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -568,7 +634,7 @@
 		{
 			"name": "Delete User Upload",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/upload/delete",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/upload/delete",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -577,20 +643,17 @@
 						{
 							"key": "ItemID",
 							"value": "{itemid}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Username",
 							"value": "{username}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -601,7 +664,7 @@
 		{
 			"name": "Show Data Status Upload",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/upload/status/{youtoken}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/upload/status/{youtoken}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -612,7 +675,7 @@
 		{
 			"name": "Force Download Link",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/upload/steam/{yourtoken}/{filename with extension}",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/upload/steam/{yourtoken}/{filename with extension}",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -623,7 +686,7 @@
 		{
 			"name": "Send Mail",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/mail/send",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/mail/send",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -632,56 +695,47 @@
 						{
 							"key": "To",
 							"value": "{destination email address}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Subject",
 							"value": "{subject email}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Message",
 							"value": "{message of email}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Html",
 							"value": "{true or false}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "From",
 							"value": "{your email address}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "FromName",
 							"value": "{your name or website name}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "CC",
 							"value": "{you can leave this blank}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "BCC",
 							"value": "{you can leave this blank}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Attachment",
 							"value": "{you can leave this blank}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -692,7 +746,7 @@
 		{
 			"name": "User Forgot Password",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/forgotpassword",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/forgotpassword",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -701,8 +755,7 @@
 						{
 							"key": "Email",
 							"value": "{youremail}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -713,7 +766,7 @@
 		{
 			"name": "Verify Pass Key",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/verifypasskey",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/verifypasskey",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -722,14 +775,12 @@
 						{
 							"key": "PassKey",
 							"value": "{yourpasskey}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "NewPassword",
 							"value": "{yournewpassword}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -740,7 +791,7 @@
 		{
 			"name": "Create API Key",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/keys/create",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/keys/create",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -749,20 +800,17 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Domain",
 							"value": "{yourdomain.com}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -773,7 +821,7 @@
 		{
 			"name": "Update API Key",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/keys/update",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/keys/update",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -782,26 +830,22 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "ApiKey",
 							"value": "{yourapikey}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Status",
 							"value": "{1 or 42}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -812,7 +856,7 @@
 		{
 			"name": "Delete API Key",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/keys/delete",
+				"url": "http://localhost:1337/reSlim-tuber/src/api/user/keys/delete",
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -821,20 +865,17 @@
 						{
 							"key": "Token",
 							"value": "{yourtoken}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "Username",
 							"value": "{yourusername}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "ApiKey",
 							"value": "{yourapikey}",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						}
 					]
 				},
@@ -845,7 +886,37 @@
 		{
 			"name": "Search Data API Keys User",
 			"request": {
-				"url": "http://localhost:1337/reSlim/src/api/user/{username}/keys/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/user/{username}/keys/data/search/{page}/{itemsperpage}/{yourtoken}/?query={your query to search data}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"user",
+						"{username}",
+						"keys",
+						"data",
+						"search",
+						"{page}",
+						"{itemsperpage}",
+						"{yourtoken}",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{your query to search data}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},
