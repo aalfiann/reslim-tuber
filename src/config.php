@@ -26,7 +26,7 @@ $config['language'] = 'en';
 $config['db']['host']   = 'localhost';
 $config['db']['user']   = 'root';
 $config['db']['pass']   = 'root';
-$config['db']['dbname'] = 'reSlim';
+$config['db']['dbname'] = 'reSlim-tuber';
 
 /**
  * Configuration SMTP for Mailer
