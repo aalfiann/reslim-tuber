@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2017 at 04:57 PM
+-- Generation Time: Aug 05, 2017 at 11:13 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -97,14 +97,14 @@ CREATE TABLE `data_ads` (
   `CompanyID` int(11) NOT NULL,
   `Title` varchar(255) NOT NULL,
   `Embed` text,
-  `StartDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `EndDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `StartDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `EndDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `Viewer` int(11) NOT NULL,
   `StatusID` int(11) NOT NULL,
-  `Created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  `UserID` int(11) NOT NULL,
-  `Updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `Updated_by` int(11) DEFAULT NULL
+  `Created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `Username` varchar(50) NOT NULL,
+  `Updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `Updated_by` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,10 +121,10 @@ CREATE TABLE `data_company` (
   `Email` varchar(50) NOT NULL,
   `Website` varchar(255) DEFAULT NULL,
   `StatusID` int(11) NOT NULL,
-  `Created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UserID` int(11) NOT NULL,
-  `Updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `Updated_by` int(11) DEFAULT NULL
+  `Created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Username` varchar(50) NOT NULL,
+  `Updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `Updated_by` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -134,7 +134,8 @@ CREATE TABLE `data_company` (
 --
 
 CREATE TABLE `data_post` (
-  `ID` int(11) NOT NULL,
+  `PostID` int(11) NOT NULL,
+  `Image` varchar(500) NOT NULL,
   `Title` varchar(200) NOT NULL,
   `Description` varchar(1000) DEFAULT NULL,
   `Embed_video` text NOT NULL,
@@ -150,10 +151,10 @@ CREATE TABLE `data_post` (
   `Dislike` int(11) NOT NULL,
   `StatusID` int(11) DEFAULT NULL,
   `Viewer` int(11) NOT NULL,
-  `Created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UserID` int(11) NOT NULL,
-  `Updated_by` int(11) DEFAULT NULL,
-  `Updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `Created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Username` varchar(50) NOT NULL,
+  `Updated_by` varchar(50) DEFAULT NULL,
+  `Updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -290,7 +291,7 @@ ALTER TABLE `data_ads`
   ADD KEY `Title` (`Title`),
   ADD KEY `StatusID` (`StatusID`),
   ADD KEY `Created_at` (`Created_at`),
-  ADD KEY `UserID` (`UserID`);
+  ADD KEY `Username` (`Username`) USING BTREE;
 
 --
 -- Indexes for table `data_company`
@@ -304,14 +305,13 @@ ALTER TABLE `data_company`
   ADD KEY `Website` (`Website`),
   ADD KEY `StatusID` (`StatusID`),
   ADD KEY `Created_at` (`Created_at`),
-  ADD KEY `UserID` (`UserID`);
+  ADD KEY `Username` (`Username`) USING BTREE;
 
 --
 -- Indexes for table `data_post`
 --
 ALTER TABLE `data_post`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `ID` (`ID`),
+  ADD PRIMARY KEY (`PostID`),
   ADD KEY `Title` (`Title`),
   ADD KEY `Duration` (`Duration`),
   ADD KEY `Stars` (`Stars`),
@@ -323,7 +323,8 @@ ALTER TABLE `data_post`
   ADD KEY `Rating` (`Rating`),
   ADD KEY `StatusID` (`StatusID`),
   ADD KEY `Created_at` (`Created_at`),
-  ADD KEY `UserID` (`UserID`);
+  ADD KEY `PostID` (`PostID`) USING BTREE,
+  ADD KEY `Username` (`Username`) USING BTREE;
 
 --
 -- Indexes for table `user_api`
@@ -405,7 +406,7 @@ ALTER TABLE `data_company`
 -- AUTO_INCREMENT for table `data_post`
 --
 ALTER TABLE `data_post`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user_data`
 --
@@ -431,21 +432,21 @@ ALTER TABLE `user_upload`
 ALTER TABLE `data_ads`
   ADD CONSTRAINT `data_ads_ibfk_1` FOREIGN KEY (`CompanyID`) REFERENCES `data_company` (`CompanyID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `data_ads_ibfk_2` FOREIGN KEY (`StatusID`) REFERENCES `core_status` (`StatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `data_ads_ibfk_3` FOREIGN KEY (`UserID`) REFERENCES `user_data` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `data_ads_ibfk_3` FOREIGN KEY (`Username`) REFERENCES `user_data` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `data_company`
 --
 ALTER TABLE `data_company`
   ADD CONSTRAINT `data_company_ibfk_1` FOREIGN KEY (`StatusID`) REFERENCES `core_status` (`StatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `data_company_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user_data` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `data_company_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `user_data` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `data_post`
 --
 ALTER TABLE `data_post`
   ADD CONSTRAINT `data_post_ibfk_1` FOREIGN KEY (`StatusID`) REFERENCES `core_status` (`StatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `data_post_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user_data` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `data_post_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `user_data` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_api`
