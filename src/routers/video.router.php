@@ -18,53 +18,88 @@ use \Psr\Http\Message\ResponseInterface as Response;
         $video->director = $datapost['Director'];
         $video->tags = $datapost['Tags'];
         $video->country = $datapost['Country'];
-        $video->release = $datapost['Release'];
+        $video->released = $datapost['Released'];
         $video->rating = $datapost['Rating'];
         $body = $response->getBody();
         $body->write($video->addPost());
         return classes\Cors::modify($response,$body,200);
     });
 
-    // POST api to update Author
-    $app->post('/book/author/update', function (Request $request, Response $response) {
-        $book = new classes\bookstore\Book($this->db);
+    // POST api to update post
+    $app->post('/video/post/update', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
         $datapost = $request->getParsedBody();    
-        $book->authorid = $datapost['AuthorID'];
-        $book->detail = $datapost['Name'];
-        $book->token = $datapost['Token'];
+        $video->username = $datapost['Username'];
+        $video->token = $datapost['Token'];
+        $video->image = $datapost['Image'];
+        $video->title = $datapost['Title'];
+        $video->description = $datapost['Description'];
+        $video->embed = $datapost['Embed'];
+        $video->duration = $datapost['Duration'];
+        $video->stars = $datapost['Stars'];
+        $video->cast = $datapost['Cast'];
+        $video->director = $datapost['Director'];
+        $video->tags = $datapost['Tags'];
+        $video->country = $datapost['Country'];
+        $video->released = $datapost['Released'];
+        $video->rating = $datapost['Rating'];
+        $video->postid = $datapost['PostID'];
+        $video->statusid = $datapost['StatusID'];
         $body = $response->getBody();
-        $body->write($book->updateAuthor());
+        $body->write($video->updatePost());
         return classes\Cors::modify($response,$body,200);
     });
 
-    // POST api to delete Author
-    $app->post('/book/author/delete', function (Request $request, Response $response) {
-        $book = new classes\bookstore\Book($this->db);
+    // POST api to delete post
+    $app->post('/video/post/delete', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
         $datapost = $request->getParsedBody();    
-        $book->authorid = $datapost['AuthorID'];
-        $book->token = $datapost['Token'];
+        $video->postid = $datapost['PostID'];
+        $video->username = $datapost['Username'];
+        $video->token = $datapost['Token'];
         $body = $response->getBody();
-        $body->write($book->deleteAuthor());
+        $body->write($video->deletePost());
         return classes\Cors::modify($response,$body,200);
     });
 
-    // GET api to show all data Author
-    $app->get('/book/author/data/{token}', function (Request $request, Response $response) {
-        $book = new classes\bookstore\Book($this->db);
-        $book->token = $request->getAttribute('token');
+    // GET api to show all data post pagination registered user
+    $app->get('/video/post/data/search/{username}/{token}/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $video->username = $request->getAttribute('username');
+        $video->token = $request->getAttribute('token');
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
         $body = $response->getBody();
-        $body->write($book->showAuthor());
+        $body->write($video->searchPostAsPagination());
         return classes\Cors::modify($response,$body,200);
     });
 
-    // GET api to show all data Author pagination
-    $app->get('/book/author/data/search/{token}/{page}/{itemsperpage}/', function (Request $request, Response $response) {
-        $book = new classes\bookstore\Book($this->db);
-        $book->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
-        $book->token = $request->getAttribute('token');
-        $book->page = $request->getAttribute('page');
-        $book->itemsPerPage = $request->getAttribute('itemsperpage');
+    // GET api to show all data post pagination public / guest
+    $app->get('/video/post/data/public/search/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
         $body = $response->getBody();
-        $body->write($book->searchAuthorAsPagination());
+        $body->write($video->searchPostAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data status release
+    $app->get('/video/data/status/{token}', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->token = $request->getAttribute('token');
+        $body = $response->getBody();
+        $body->write($video->showOptionRelease());
         return classes\Cors::modify($response,$body,200);
     });
+
+    // GET api to show single data post
+    $app->get('/video/post/data/read/{postid}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->postid = $request->getAttribute('postid');
+        $body = $response->getBody();
+        $body->write($video->showSinglePost());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
