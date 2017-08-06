@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2017 at 11:13 AM
+-- Generation Time: Aug 06, 2017 at 02:09 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -145,10 +145,10 @@ CREATE TABLE `data_post` (
   `Director` varchar(250) DEFAULT NULL,
   `Tags` varchar(500) DEFAULT NULL,
   `Country` varchar(100) DEFAULT NULL,
-  `Release` int(4) DEFAULT NULL,
+  `Released` int(4) DEFAULT NULL,
   `Rating` decimal(2,1) NOT NULL DEFAULT '0.0',
-  `Like` int(11) NOT NULL,
-  `Dislike` int(11) NOT NULL,
+  `Liked` int(11) NOT NULL,
+  `Disliked` int(11) NOT NULL,
   `StatusID` int(11) DEFAULT NULL,
   `Viewer` int(11) NOT NULL,
   `Created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -319,12 +319,12 @@ ALTER TABLE `data_post`
   ADD KEY `Director` (`Director`),
   ADD KEY `Tags` (`Tags`),
   ADD KEY `Country` (`Country`),
-  ADD KEY `Release` (`Release`),
   ADD KEY `Rating` (`Rating`),
   ADD KEY `StatusID` (`StatusID`),
   ADD KEY `Created_at` (`Created_at`),
   ADD KEY `PostID` (`PostID`) USING BTREE,
-  ADD KEY `Username` (`Username`) USING BTREE;
+  ADD KEY `Username` (`Username`) USING BTREE,
+  ADD KEY `Released` (`Released`) USING BTREE;
 
 --
 -- Indexes for table `user_api`
