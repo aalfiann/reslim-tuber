@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2017 at 02:39 PM
+-- Generation Time: Aug 07, 2017 at 02:47 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -97,8 +97,8 @@ CREATE TABLE `data_ads` (
   `CompanyID` int(11) NOT NULL,
   `Title` varchar(255) NOT NULL,
   `Embed` text,
-  `StartDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `EndDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `StartDate` date DEFAULT NULL,
+  `EndDate` date DEFAULT NULL,
   `Amount` double NOT NULL,
   `Viewer` int(11) NOT NULL,
   `StatusID` int(11) NOT NULL,
@@ -307,7 +307,8 @@ ALTER TABLE `data_ads`
   ADD KEY `Title` (`Title`),
   ADD KEY `StatusID` (`StatusID`),
   ADD KEY `Created_at` (`Created_at`),
-  ADD KEY `Username` (`Username`) USING BTREE;
+  ADD KEY `Username` (`Username`) USING BTREE,
+  ADD KEY `EndDate` (`EndDate`);
 
 --
 -- Indexes for table `data_company`
