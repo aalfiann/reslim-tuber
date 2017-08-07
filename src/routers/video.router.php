@@ -103,3 +103,21 @@ use \Psr\Http\Message\ResponseInterface as Response;
         $body->write($video->showSinglePost());
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // Get api to process liked
+    $app->get('/video/post/data/liked/{postid}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);  
+        $video->postid = $request->getAttribute('postid');  
+        $body = $response->getBody();
+        $body->write($video->addLike());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // Get api to process disliked
+    $app->get('/video/post/data/disliked/{postid}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);  
+        $video->postid = $request->getAttribute('postid');  
+        $body = $response->getBody();
+        $body->write($video->addDislike());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
