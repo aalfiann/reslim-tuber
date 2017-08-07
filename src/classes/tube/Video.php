@@ -292,7 +292,7 @@ use PDO;
 								// Query Data
 							$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
 									a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-									a.Updated_at,a.Updated_by,b.`Status`
+									a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
 								from data_post a
 								inner join core_status b on a.StatusID=b.StatusID
 								where a.Username=:username and a.PostID like :search
@@ -313,7 +313,7 @@ use PDO;
 								// Query Data
 							$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
 									a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-									a.Updated_at,a.Updated_by,b.`Status`
+									a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
 								from data_post a
 								inner join core_status b on a.StatusID=b.StatusID
 								where a.PostID like :search
@@ -418,7 +418,8 @@ use PDO;
 											"User":'.json_encode($redata['User']).',
 											"Updated_at":'.json_encode($redata['Updated_at']).',
 											"Updated_by":'.json_encode($redata['Updated_by']).',
-											"Updated_by":'.json_encode($redata['Status']).'},';
+											"StatusID":'.json_encode($redata['StatusID']).',
+											"Status":'.json_encode($redata['Status']).'},';
 									}
 									$datares = substr($datares, 0, -1);
 									$datares .= "]";
@@ -503,7 +504,7 @@ use PDO;
 						// Query Data
 						$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
 								a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-								a.Updated_at,a.Updated_by,b.`Status`
+								a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
 							from data_post a
 							inner join core_status b on a.StatusID=b.StatusID
 							where a.StatusID='51' and a.PostID like :search
@@ -599,7 +600,8 @@ use PDO;
 										"User":'.json_encode($redata['User']).',
 										"Updated_at":'.json_encode($redata['Updated_at']).',
 										"Updated_by":'.json_encode($redata['Updated_by']).',
-										"Updated_by":'.json_encode($redata['Status']).'},';
+										"StatusID":'.json_encode($redata['StatusID']).',
+										"Status":'.json_encode($redata['Status']).'},';
 								}
 								$datares = substr($datares, 0, -1);
 								$datares .= "]";
@@ -650,17 +652,23 @@ use PDO;
             $newpostid = Validation::integerOnly($this->postid);
 				
 				$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
-								a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-								a.Updated_at,a.Updated_by,b.`Status`
-							from data_post a
-							inner join core_status b on a.StatusID=b.StatusID
-							where a.StatusID='51' and a.PostID = :postid";
+						a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
+						a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
+					from data_post a
+					inner join core_status b on a.StatusID=b.StatusID
+					where a.StatusID='51' and a.PostID = :postid;";
 				
 				$stmt = $this->db->prepare($sql);		
 				$stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
 
 				if ($stmt->execute()) {	
     	    	    if ($stmt->rowCount() > 0){
+						
+						$updateviewer = "UPDATE data_post SET Viewer=Viewer+1 WHERE PostID=:postid;";
+						$stmt2 = $this->db->prepare($updateviewer);		
+						$stmt2->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+						$stmt2->execute();
+
         	   		   	$datares = "[";
 								while($redata = $stmt->fetch()) 
 								{
@@ -744,7 +752,8 @@ use PDO;
 											"User":'.json_encode($redata['User']).',
 											"Updated_at":'.json_encode($redata['Updated_at']).',
 											"Updated_by":'.json_encode($redata['Updated_by']).',
-											"Updated_by":'.json_encode($redata['Status']).'},';
+											"StatusID":'.json_encode($redata['StatusID']).',
+											"Status":'.json_encode($redata['Status']).'},';
 								}
 								$datares = substr($datares, 0, -1);
 								$datares .= "]";
@@ -791,7 +800,7 @@ use PDO;
     	    	    if ($stmt->rowCount() > 0){
         	   		   	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 						$data = [
-			   	            'result' => $results, 
+			   	            'results' => $results, 
     	    		        'status' => 'success', 
 			           	    'code' => 'RS501',
         		        	'message' => CustomHandlers::getreSlimMessage('RS501')
@@ -821,4 +830,168 @@ use PDO;
 			return json_encode($data, JSON_PRETTY_PRINT);
 	        $this->db= null;
 		}
+
+
+		//Rating System===============================
+
+		/** 
+		 * Get User IP
+		 * @return result process in json encoded data
+		 */
+		private function getUserIP(){
+			$client  = @$_SERVER['HTTP_CLIENT_IP'];
+    		$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+		    $remote  = $_SERVER['REMOTE_ADDR'];
+
+		    if(filter_var($client, FILTER_VALIDATE_IP)) {
+        		$ip = $client;
+		    } elseif(filter_var($forward, FILTER_VALIDATE_IP)) {
+		        $ip = $forward;
+			} else {
+        		$ip = $remote;
+		    }
+
+			return $ip;
+		}
+
+		/** 
+		 * Determine user by ip is already rated or not
+		 * @return result process in json encoded data
+		 */
+		private function isAlreadyRated(){
+			$result = false;
+			$newpostid = Validation::integerOnly($this->postid);
+			$userip = $this->getUserIP();
+			$sql = "SELECT a.IP
+				from data_liked a
+				where a.IP=:ip and a.PostID=:postid;";
+				$stmt = $this->db->prepare($sql);
+				$stmt->bindValue(':ip', $userip, PDO::PARAM_STR);
+				$stmt->bindValue(':postid', $newpostid, PDO::PARAM_STR);
+
+				if ($stmt->execute()) {	
+    	        	if ($stmt->rowCount() > 0){
+						$result = true;
+					} else {
+						$result = false;
+					}
+				} else {
+					$result = false;
+				}
+			return $result;
+		}
+
+		/** 
+		 * Add Like
+		 * @return result process in json encoded data
+		 */
+        public function addLike(){
+			$userip = $this->getUserIP();
+            $newpostid = Validation::integerOnly($this->postid);
+			if ($this->isAlreadyRated()==false) {
+				try {
+	        			$this->db->beginTransaction();
+                        $sql = "INSERT INTO data_liked (PostID,IP,Liked,Created_at) VALUES(:postid,:ip,'1',current_timestamp);";
+						$sqlupdate = "UPDATE data_post 
+                            SET Liked=Liked+1
+		        		    WHERE PostID=:postid;";
+				    	$stmt = $this->db->prepare($sql);
+						$stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+						$stmt->bindValue(':ip', $userip, PDO::PARAM_STR);
+
+						$stmt2 = $this->db->prepare($sqlupdate);
+						$stmt2->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+
+	    				if ($stmt->execute() && $stmt2->execute()) {
+		    				$data = [
+			    				'status' => 'success',
+				    			'code' => 'RS502',
+					    		'message' => CustomHandlers::getreSlimMessage('RS502')
+						    ];	
+    					} else {
+	    					$data = [
+		    					'status' => 'error',
+			    				'code' => 'RS203',
+				    			'message' => CustomHandlers::getreSlimMessage('RS203')
+					    	];
+    					}
+	    			    $this->db->commit();
+		    	    } catch (PDOException $e) {
+			    	    $data = [
+    			    		'status' => 'error',
+	    			    	'code' => $e->getCode(),
+		    			    'message' => $e->getMessage()
+    			    	];
+	    			    $this->db->rollBack();
+    	    		}
+			} else {
+				$data = [
+		    		'status' => 'error',
+					'code' => 'RS918',
+				    'message' => CustomHandlers::getreSlimMessage('RS918')
+		    	];
+			}
+        			 
+
+			return json_encode($data, JSON_PRETTY_PRINT);
+			$this->db = null;
+
+        }
+
+		/** 
+		 * Add Like
+		 * @return result process in json encoded data
+		 */
+        public function addDislike(){
+			$userip = $this->getUserIP();
+            $newpostid = Validation::integerOnly($this->postid);
+			if ($this->isAlreadyRated()==false) {
+				try {
+	        			$this->db->beginTransaction();
+                        $sql = "INSERT INTO data_liked (PostID,IP,Disliked,Created_at) VALUES(:postid,:ip,'1',current_timestamp);";
+						$sqlupdate = "UPDATE data_post 
+                            SET Disliked=Disliked+1
+		        		    WHERE PostID=:postid;";
+				    	$stmt = $this->db->prepare($sql);
+						$stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+						$stmt->bindValue(':ip', $userip, PDO::PARAM_STR);
+
+						$stmt2 = $this->db->prepare($sqlupdate);
+						$stmt2->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+
+	    				if ($stmt->execute() && $stmt2->execute()) {
+		    				$data = [
+			    				'status' => 'success',
+				    			'code' => 'RS502',
+					    		'message' => CustomHandlers::getreSlimMessage('RS502')
+						    ];	
+    					} else {
+	    					$data = [
+		    					'status' => 'error',
+			    				'code' => 'RS203',
+				    			'message' => CustomHandlers::getreSlimMessage('RS203')
+					    	];
+    					}
+	    			    $this->db->commit();
+		    	    } catch (PDOException $e) {
+			    	    $data = [
+    			    		'status' => 'error',
+	    			    	'code' => $e->getCode(),
+		    			    'message' => $e->getMessage()
+    			    	];
+	    			    $this->db->rollBack();
+    	    		}
+			} else {
+				$data = [
+		    		'status' => 'error',
+					'code' => 'RS918',
+				    'message' => CustomHandlers::getreSlimMessage('RS918')
+		    	];
+			}
+        			 
+
+			return json_encode($data, JSON_PRETTY_PRINT);
+			$this->db = null;
+
+        }
      }
