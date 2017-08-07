@@ -10,13 +10,15 @@ reSlim-tuber is based on [reSlim](https://github.com/aalfiann/reSlim) which is b
 Roadmap:
 ---------------
 
-1. Post your video from Youtube, Vimeo, etc.
-2. Ads management
-3. Share video using sharethis
-4. Comment system using disqus
-5. Very simple as no member system
-6. Sitemap and RSS
-7. Etc
+1. Post or Embed your video from Youtube, Vimeo, etc.
+2. Ads management system
+3. Like and Dislike rating system
+4. Share video using sharethis
+5. Comment system using disqus
+6. Very simple and small as there is no member system
+7. Automatic build Sitemap and RSS
+8. Modern and SEO Optimized design
+9. Etc
 
 Feature:
 ---------------
@@ -129,7 +131,7 @@ Working with gui example for testing
     $config['basepath'] = 'url location of base path example';<br>
     $config['api'] = 'url location of base path of api';<br>
     $config['apikey'] = 'your api key, you can leave this blank and fill this later';
-3. Visit yourserver/reSlim/test/example<br>
+3. Visit yourserver/reSlim-tuber/test/example/backend<br>
     For my case is http://localhost:1337/reSlim-tuber/test/example/backend
 4. You can login with default superuser account:<br>
     Username : reslim<br>
