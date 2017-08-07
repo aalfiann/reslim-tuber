@@ -26,7 +26,7 @@ use PDO;
         //master var
         var $username,$token,$companyid,$name,$adsid,$website,$statusid,$apikey,$adminname,
 		//data
-        $address,$phone,$email,$title,$embed,$startdate,$enddate,$search,$firstdate,$lastdate;
+        $address,$phone,$email,$title,$embed,$startdate,$enddate,$amount,$search,$firstdate,$lastdate;
 
 		// for pagination
 		var $page,$itemsPerPage;
@@ -49,21 +49,14 @@ use PDO;
 			
     		    try {
     				$this->db->beginTransaction();
-	    			$sql = "INSERT INTO data_post (Image,Title,Description,Embed_video,Duration,Stars,Cast,Director,Tags,Country,Released,Rating,Liked,Disliked,StatusID,Viewer,Created_at,Username) 
-		    			VALUES (:image,:title,:description,:embed,:duration,:stars,:cast,:director,:tags,:country,:release,:rating,'0','0','51','0',current_timestamp,:username);";
+	    			$sql = "INSERT INTO data_company (Name,Address,Phone,Email,Website,StatusID,Created_at,Username) 
+		    			VALUES (:name,:address,:phone,:email,:website,'1',current_timestamp,:username);";
 					$stmt = $this->db->prepare($sql);
-					$stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
-                    $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
-                    $stmt->bindParam(':description', $this->description, PDO::PARAM_STR);
-                    $stmt->bindParam(':embed', $this->embed, PDO::PARAM_STR);
-                    $stmt->bindParam(':duration', $this->duration, PDO::PARAM_STR);
-                    $stmt->bindParam(':stars', $this->stars, PDO::PARAM_STR);
-                    $stmt->bindParam(':cast', $this->cast, PDO::PARAM_STR);
-                    $stmt->bindParam(':director', $this->director, PDO::PARAM_STR);
-                    $stmt->bindParam(':tags', $this->tags, PDO::PARAM_STR);
-                    $stmt->bindParam(':country', $this->country, PDO::PARAM_STR);
-                    $stmt->bindParam(':release', $this->released, PDO::PARAM_STR);
-                    $stmt->bindParam(':rating', $this->rating, PDO::PARAM_STR);
+					$stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
+                    $stmt->bindParam(':address', $this->address, PDO::PARAM_STR);
+                    $stmt->bindParam(':phone', $this->phone, PDO::PARAM_STR);
+                    $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+                    $stmt->bindParam(':website', $this->website, PDO::PARAM_STR);
                     $stmt->bindParam(':username', $newusername, PDO::PARAM_STR);
 					if ($stmt->execute()) {
 						$data = [
@@ -106,42 +99,27 @@ use PDO;
 		 */
         public function updateCompany(){
             if (Auth::validToken($this->db,$this->token,$this->username)){
+				if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
                     $newusername = strtolower(filter_var($this->username,FILTER_SANITIZE_STRING));
-                    $newpostid = Validation::integerOnly($this->postid);
+                    $newcompanyid = Validation::integerOnly($this->companyid);
                     $newstatusid = Validation::integerOnly($this->statusid);
                     
         			try {
 	        			$this->db->beginTransaction();
-                        if (Auth::getRoleID($this->db,$this->token) == '3'){
-                            $sql = "UPDATE data_post 
-                                SET Image=:image,Title=:title,Description=:description,Embed_video=:embed,Duration=:duration,
-                                    Stars=:stars,Cast=:cast,Director=:director,Tags=:tags,Country=:country,Released=:released,
-                                    Rating=:rating,Updated_by=:username,StatusID=:status
-			        		    WHERE PostID=:postid and Username=:username;";
-                        } else{
-                            $sql = "UPDATE data_post
-                                SET Image=:image,Title=:title,Description=:description,Embed_video=:embed,Duration=:duration,
-                                    Stars=:stars,Cast=:cast,Director=:director,Tags=:tags,Country=:country,Released=:released,
-                                    Rating=:rating,Updated_by=:username,StatusID=:status
-			        		    WHERE PostID=:postid;";
-                        }
+                        $sql = "UPDATE data_company 
+                            SET Name=:name,Address=:address,Phone=:phone,Email=:email,Website=:website,
+                                StatusID=:status,Updated_by=:username
+		        		    WHERE CompanyID=:companyid;";
 
 				    $stmt = $this->db->prepare($sql);
-					$stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
-                    $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
-                    $stmt->bindParam(':description', $this->description, PDO::PARAM_STR);
-                    $stmt->bindParam(':embed', $this->embed, PDO::PARAM_STR);
-                    $stmt->bindParam(':duration', $this->duration, PDO::PARAM_STR);
-                    $stmt->bindParam(':stars', $this->stars, PDO::PARAM_STR);
-                    $stmt->bindParam(':cast', $this->cast, PDO::PARAM_STR);
-                    $stmt->bindParam(':director', $this->director, PDO::PARAM_STR);
-                    $stmt->bindParam(':tags', $this->tags, PDO::PARAM_STR);
-                    $stmt->bindParam(':country', $this->country, PDO::PARAM_STR);
-                    $stmt->bindParam(':released', $this->released, PDO::PARAM_STR);
-                    $stmt->bindParam(':rating', $this->rating, PDO::PARAM_STR);
-                    $stmt->bindParam(':username', $newusername, PDO::PARAM_STR);
+					$stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
+                    $stmt->bindParam(':address', $this->address, PDO::PARAM_STR);
+                    $stmt->bindParam(':phone', $this->phone, PDO::PARAM_STR);
+                    $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+                    $stmt->bindParam(':website', $this->website, PDO::PARAM_STR);
                     $stmt->bindParam(':status', $newstatusid, PDO::PARAM_STR);
-					$stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+					$stmt->bindParam(':companyid', $newcompanyid, PDO::PARAM_STR);
+					$stmt->bindParam(':username', $newusername, PDO::PARAM_STR);
 	    				if ($stmt->execute()) {
 		    				$data = [
 			    				'status' => 'success',
@@ -164,6 +142,13 @@ use PDO;
     			    	];
 	    			    $this->db->rollBack();
     	    		} 
+				} else {
+             	   $data = [
+	    				'status' => 'error',
+						'code' => 'RS404',
+	        	    	'message' => CustomHandlers::getreSlimMessage('RS404')
+					];
+            	}
             } else {
                 $data = [
 	    			'status' => 'error',
@@ -188,10 +173,10 @@ use PDO;
 			
     			    try {
     	    			$this->db->beginTransaction();
-	    	    		$sql = "DELETE FROM data_post 
-		    	    		WHERE PostID=:postid;";
+	    	    		$sql = "DELETE FROM data_company 
+		    	    		WHERE CompanyID=:companyid;";
 			    		$stmt = $this->db->prepare($sql);
-                        $stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+                        $stmt->bindParam(':companyid', $newpostid, PDO::PARAM_STR);
 					    if ($stmt->execute()) {
     						$data = [
 	    						'status' => 'success',
@@ -240,41 +225,19 @@ use PDO;
 		 */
 		public function searchCompanyAsPagination() {
 			if (Auth::validToken($this->db,$this->token,$this->username)){
-				$newusername = strtolower(filter_var($this->username,FILTER_SANITIZE_STRING));
-				$search = "%$this->search%";
-					if (Auth::getRoleID($this->db,$this->token) == '3'){
-						$sqlcountrow = "SELECT count(a.PostID) as TotalRow
-							from data_post a
+				if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
+					$search = "%$this->search%";
+					$sqlcountrow = "SELECT count(a.CompanyID) as TotalRow
+							from data_company a
 							inner join core_status b on a.StatusID=b.StatusID
-							where a.Username=:username and a.PostID like :search
-							or a.Username=:username and a.Title like :search
-							or a.Username=:username and a.Stars like :search
-							or a.Username=:username and a.Cast like :search
-							or a.Username=:username and a.Director like :search
-							or a.Username=:username and a.Tags like :search
-							or a.Username=:username and a.Country like :search
-							or a.Username=:username and a.Released like :search
-							order by a.Created_at desc;";
-						$stmt = $this->db->prepare($sqlcountrow);
-						$stmt->bindValue(':username', $newusername, PDO::PARAM_STR);
-						$stmt->bindValue(':search', $search, PDO::PARAM_STR);
-					} else if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
-						$sqlcountrow = "SELECT count(a.PostID) as TotalRow
-							from data_post a
-							inner join core_status b on a.StatusID=b.StatusID
-							where a.PostID like :search
-							or a.Title like :search
-							or a.Stars like :search
-							or a.Cast like :search
-							or a.Director like :search
-							or a.Tags like :search
-							or a.Country like :search
-							or a.Released like :search
+							where a.CompanyID like :search
+							or a.Name like :search
+							or a.Phone like :search
+							or a.Email like :search
+							or a.Website like :search
 							order by a.Created_at desc;";
 						$stmt = $this->db->prepare($sqlcountrow);
 						$stmt->bindValue(':search', $search, PDO::PARAM_STR);
-					}
-					
 
 					if ($stmt->execute()) {	
     	    	    	if ($stmt->rowCount() > 0){
@@ -287,145 +250,31 @@ use PDO;
 							$limits = (((($newpage-1)*$newitemsperpage) <= 0)?0:(($newpage-1)*$newitemsperpage));
 							$offsets = (($newitemsperpage <= 0)?0:$newitemsperpage);
 
-							if (Auth::getRoleID($this->db,$this->token) == '3'){
-								// Query Data
-							$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
-									a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-									a.Updated_at,a.Updated_by,b.`Status`
-								from data_post a
-								inner join core_status b on a.StatusID=b.StatusID
-								where a.Username=:username and a.PostID like :search
-								or a.Username=:username and a.Title like :search
-								or a.Username=:username and a.Stars like :search
-								or a.Username=:username and a.Cast like :search
-								or a.Username=:username and a.Director like :search
-								or a.Username=:username and a.Tags like :search
-								or a.Username=:username and a.Country like :search
-								or a.Username=:username and a.Released like :search
-								order by a.Created_at desc LIMIT :limpage , :offpage;";
-							$stmt2 = $this->db->prepare($sql);
-							$stmt2->bindValue(':username', $newusername, PDO::PARAM_STR);
-							$stmt2->bindValue(':search', $search, PDO::PARAM_STR);
-							$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
-							$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
-							} else if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
-								// Query Data
-							$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
-									a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-									a.Updated_at,a.Updated_by,b.`Status`
-								from data_post a
-								inner join core_status b on a.StatusID=b.StatusID
-								where a.PostID like :search
-								or a.Title like :search
-								or a.Stars like :search
-								or a.Cast like :search
-								or a.Director like :search
-								or a.Tags like :search
-								or a.Country like :search
-								or a.Released like :search
-								order by a.Created_at desc LIMIT :limpage , :offpage;";
-							$stmt2 = $this->db->prepare($sql);
-							$stmt2->bindValue(':search', $search, PDO::PARAM_STR);
-							$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
-							$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
-							}
-
 							
+								// Query Data
+							$sql = "SELECT a.CompanyID,a.Created_at,a.Name,a.Address,a.Phone,a.Email,a.Website,a.Username as 'User',
+									a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
+								from data_company a
+								inner join core_status b on a.StatusID=b.StatusID
+								where a.CompanyID like :search
+								or a.Name like :search
+								or a.Phone like :search
+								or a.Email like :search
+								or a.Website like :search
+								order by a.Created_at desc LIMIT :limpage , :offpage;";
+							$stmt2 = $this->db->prepare($sql);
+							$stmt2->bindValue(':search', $search, PDO::PARAM_STR);
+							$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
+							$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
 						
 							if ($stmt2->execute()){
 								if ($stmt2->rowCount() > 0){
-									$datares = "[";
-									while($redata = $stmt2->fetch()) 
-									{
-										//Start Tags
-										$return_arr = null;
-										$names = $redata['Tags'];	
-										$named = preg_split( "/[;,@#]/", $names );
-										foreach($named as $name){
-											if ($name != null){$return_arr[] = trim($name);}
-										}
-										//End Tags
-
-										//Start Stars
-										$stars_arr = null;
-										$starnames = $redata['Stars'];	
-										$starnamed = preg_split( "/[;,@#]/", $starnames );
-										foreach($starnamed as $name){
-											if ($name != null){$stars_arr[] = trim($name);}
-										}
-										//End Stars
-
-										//Start Cast
-										$cast_arr = null;
-										$castnames = $redata['Cast'];	
-										$castnamed = preg_split( "/[;,@#]/", $castnames );
-										foreach($castnamed as $name){
-											if ($name != null){$cast_arr[] = trim($name);}
-										}
-										//End Cast
-
-										//Start Director
-										$director_arr = null;
-										$directornames = $redata['Director'];	
-										$directornamed = preg_split( "/[;,@#]/", $directornames );
-										foreach($directornamed as $name){
-											if ($name != null){$director_arr[] = trim($name);}
-										}
-										//End Director
-
-										//Start Country
-										$country_arr = null;
-										$countrynames = $redata['Country'];	
-										$countrynamed = preg_split( "/[;,@#]/", $countrynames );
-										foreach($countrynamed as $name){
-											if ($name != null){$country_arr[] = trim($name);}
-										}
-										//End Country
-
-										//Start Embed
-										$embed_arr = null;
-										$embednames = $redata['Embed_video'];	
-										$embednamed = preg_split( "/[,@#]/", $embednames );
-										foreach($embednamed as $name){
-											if ($name != null){$embed_arr[] = trim($name);}
-										}
-										//End Embed
-
-										$datares .= '{"PostID":'.json_encode($redata['PostID']).',
-											"Title":'.json_encode($redata['Title']).',
-											"Description":'.json_encode($redata['Description']).',
-											"Image":'.json_encode($redata['Image']).',
-											"Embed_inline":'.json_encode($redata['Embed_video']).',
-											"Embed":'.json_encode($embed_arr).',
-											"Duration":'.json_encode($redata['Duration']).',
-											"Stars_inline":'.json_encode($redata['Stars']).',
-											"Stars":'.json_encode($stars_arr).',
-											"Cast_inline":'.json_encode($redata['Cast']).',
-											"Cast":'.json_encode($cast_arr).',
-											"Director_inline":'.json_encode($redata['Director']).',
-											"Director":'.json_encode($director_arr).',
-											"Tags_inline":'.json_encode($redata['Tags']).',
-											"Tags":'.json_encode($return_arr).',
-											"Country_inline":'.json_encode($redata['Country']).',
-											"Country":'.json_encode($country_arr).',
-											"Released":'.json_encode($redata['Released']).',
-											"Rating":'.json_encode($redata['Rating']).',
-											"Viewer":'.json_encode($redata['Viewer']).',
-											"Liked":'.json_encode($redata['Liked']).',
-											"Disliked":'.json_encode($redata['Disliked']).',
-											"Created_at":'.json_encode($redata['Created_at']).',
-											"User":'.json_encode($redata['User']).',
-											"Updated_at":'.json_encode($redata['Updated_at']).',
-											"Updated_by":'.json_encode($redata['Updated_by']).',
-											"Updated_by":'.json_encode($redata['Status']).'},';
-									}
-									$datares = substr($datares, 0, -1);
-									$datares .= "]";
+									$results = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 									$pagination = new \classes\Pagination();
 									$pagination->totalRow = $single['TotalRow'];
 									$pagination->page = $this->page;
 									$pagination->itemsPerPage = $this->itemsPerPage;
-									$pagination->fetchAllAssoc = json_decode($datares);
+									$pagination->fetchAllAssoc = $results;
 									$data = $pagination->toDataArray();
 								} else {
 									$data = [
@@ -455,6 +304,63 @@ use PDO;
 	        			    'message' => CustomHandlers::getreSlimMessage('RS202')
 						];
 					}
+				} else {
+					$data = [
+	    				'status' => 'error',
+						'code' => 'RS404',
+	        	    	'message' => CustomHandlers::getreSlimMessage('RS404')
+					];
+				}	
+			} else {
+				$data = [
+	    			'status' => 'error',
+					'code' => 'RS401',
+        	    	'message' => CustomHandlers::getreSlimMessage('RS401')
+				];
+			}		
+        
+			return json_encode($data, JSON_PRETTY_PRINT);
+	        $this->db= null;
+		}
+
+		/** 
+		 * Get all data list Company
+		 * @return result process in json encoded data
+		 */
+		public function showListCompany() {
+			if (Auth::validToken($this->db,$this->token)){
+				$sql = "SELECT a.CompanyID,a.Name,a.StatusID,b.Status
+					FROM data_company a
+					INNER JOIN core_status b on a.StatusID=b.StatusID
+					WHERE a.StatusID = '1' OR a.StatusID = '42'
+					ORDER BY a.StatusID,a.Name ASC";
+				
+				$stmt = $this->db->prepare($sql);		
+				$stmt->bindParam(':token', $this->token, PDO::PARAM_STR);
+
+				if ($stmt->execute()) {	
+    	    	    if ($stmt->rowCount() > 0){
+        	   		   	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+						$data = [
+			   	            'results' => $results, 
+    	    		        'status' => 'success', 
+			           	    'code' => 'RS501',
+        		        	'message' => CustomHandlers::getreSlimMessage('RS501')
+						];
+			        } else {
+        			    $data = [
+            		    	'status' => 'error',
+		        		    'code' => 'RS601',
+        		    	    'message' => CustomHandlers::getreSlimMessage('RS601')
+						];
+	    	        }          	   	
+				} else {
+					$data = [
+    	    			'status' => 'error',
+						'code' => 'RS202',
+	        		    'message' => CustomHandlers::getreSlimMessage('RS202')
+					];
+				}
 			} else {
 				$data = [
 	    			'status' => 'error',
@@ -481,21 +387,15 @@ use PDO;
 			
     		    try {
     				$this->db->beginTransaction();
-	    			$sql = "INSERT INTO data_post (Image,Title,Description,Embed_video,Duration,Stars,Cast,Director,Tags,Country,Released,Rating,Liked,Disliked,StatusID,Viewer,Created_at,Username) 
-		    			VALUES (:image,:title,:description,:embed,:duration,:stars,:cast,:director,:tags,:country,:release,:rating,'0','0','51','0',current_timestamp,:username);";
+	    			$sql = "INSERT INTO data_ads (CompanyID,Title,Embed,StartDate,EndDate,Amount,Viewer,StatusID,Created_at,Username) 
+		    			VALUES (:companyid,:title,:embed,:startdate,:enddate,:amount,'0','51',current_timestamp,:username);";
 					$stmt = $this->db->prepare($sql);
-					$stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
+					$stmt->bindParam(':companyid', $this->companyid, PDO::PARAM_STR);
                     $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
-                    $stmt->bindParam(':description', $this->description, PDO::PARAM_STR);
                     $stmt->bindParam(':embed', $this->embed, PDO::PARAM_STR);
-                    $stmt->bindParam(':duration', $this->duration, PDO::PARAM_STR);
-                    $stmt->bindParam(':stars', $this->stars, PDO::PARAM_STR);
-                    $stmt->bindParam(':cast', $this->cast, PDO::PARAM_STR);
-                    $stmt->bindParam(':director', $this->director, PDO::PARAM_STR);
-                    $stmt->bindParam(':tags', $this->tags, PDO::PARAM_STR);
-                    $stmt->bindParam(':country', $this->country, PDO::PARAM_STR);
-                    $stmt->bindParam(':release', $this->released, PDO::PARAM_STR);
-                    $stmt->bindParam(':rating', $this->rating, PDO::PARAM_STR);
+                    $stmt->bindParam(':startdate', $this->startdate, PDO::PARAM_STR);
+                    $stmt->bindParam(':enddate', $this->enddate, PDO::PARAM_STR);
+					$stmt->bindParam(':amount', $this->amount, PDO::PARAM_STR);
                     $stmt->bindParam(':username', $newusername, PDO::PARAM_STR);
 					if ($stmt->execute()) {
 						$data = [
@@ -538,42 +438,29 @@ use PDO;
 		 */
         public function updateAds(){
             if (Auth::validToken($this->db,$this->token,$this->username)){
+				if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
                     $newusername = strtolower(filter_var($this->username,FILTER_SANITIZE_STRING));
-                    $newpostid = Validation::integerOnly($this->postid);
+                    $newcompanyid = Validation::integerOnly($this->companyid);
                     $newstatusid = Validation::integerOnly($this->statusid);
+					$newadsid = Validation::integerOnly($this->adsid);
                     
         			try {
 	        			$this->db->beginTransaction();
-                        if (Auth::getRoleID($this->db,$this->token) == '3'){
-                            $sql = "UPDATE data_post 
-                                SET Image=:image,Title=:title,Description=:description,Embed_video=:embed,Duration=:duration,
-                                    Stars=:stars,Cast=:cast,Director=:director,Tags=:tags,Country=:country,Released=:released,
-                                    Rating=:rating,Updated_by=:username,StatusID=:status
-			        		    WHERE PostID=:postid and Username=:username;";
-                        } else{
-                            $sql = "UPDATE data_post
-                                SET Image=:image,Title=:title,Description=:description,Embed_video=:embed,Duration=:duration,
-                                    Stars=:stars,Cast=:cast,Director=:director,Tags=:tags,Country=:country,Released=:released,
-                                    Rating=:rating,Updated_by=:username,StatusID=:status
-			        		    WHERE PostID=:postid;";
-                        }
+                        $sql = "UPDATE data_ads 
+                            SET CompanyID=:companyid,Title=:title,Embed=:embed,StartDate=:startdate,EndDate=:enddate,
+                                Amount=:amount,StatusID=:status,Updated_by=:username
+		        		    WHERE AdsID=:adsid;";
 
-				    $stmt = $this->db->prepare($sql);
-					$stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
-                    $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
-                    $stmt->bindParam(':description', $this->description, PDO::PARAM_STR);
-                    $stmt->bindParam(':embed', $this->embed, PDO::PARAM_STR);
-                    $stmt->bindParam(':duration', $this->duration, PDO::PARAM_STR);
-                    $stmt->bindParam(':stars', $this->stars, PDO::PARAM_STR);
-                    $stmt->bindParam(':cast', $this->cast, PDO::PARAM_STR);
-                    $stmt->bindParam(':director', $this->director, PDO::PARAM_STR);
-                    $stmt->bindParam(':tags', $this->tags, PDO::PARAM_STR);
-                    $stmt->bindParam(':country', $this->country, PDO::PARAM_STR);
-                    $stmt->bindParam(':released', $this->released, PDO::PARAM_STR);
-                    $stmt->bindParam(':rating', $this->rating, PDO::PARAM_STR);
-                    $stmt->bindParam(':username', $newusername, PDO::PARAM_STR);
-                    $stmt->bindParam(':status', $newstatusid, PDO::PARAM_STR);
-					$stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+				    	$stmt = $this->db->prepare($sql);
+						$stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
+    	                $stmt->bindParam(':embed', $this->embed, PDO::PARAM_STR);
+        	            $stmt->bindParam(':startdate', $this->startdate, PDO::PARAM_STR);
+            	        $stmt->bindParam(':enddate', $this->enddate, PDO::PARAM_STR);
+						$stmt->bindParam(':amount', $this->amount, PDO::PARAM_STR);
+                	    $stmt->bindParam(':status', $newstatusid, PDO::PARAM_STR);
+						$stmt->bindParam(':companyid', $newcompanyid, PDO::PARAM_STR);
+						$stmt->bindParam(':username', $newusername, PDO::PARAM_STR);
+						$stmt->bindParam(':adsid', $newadsid, PDO::PARAM_STR);
 	    				if ($stmt->execute()) {
 		    				$data = [
 			    				'status' => 'success',
@@ -596,6 +483,13 @@ use PDO;
     			    	];
 	    			    $this->db->rollBack();
     	    		} 
+				} else {
+             	   $data = [
+	    				'status' => 'error',
+						'code' => 'RS404',
+	        	    	'message' => CustomHandlers::getreSlimMessage('RS404')
+					];
+            	}
             } else {
                 $data = [
 	    			'status' => 'error',
@@ -616,14 +510,14 @@ use PDO;
         public function deleteAds(){
             if (Auth::validToken($this->db,$this->token,$this->username)){
                 if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
-                    $newpostid = Validation::integerOnly($this->postid);
+                    $newadsid = Validation::integerOnly($this->adsid);
 			
     			    try {
     	    			$this->db->beginTransaction();
-	    	    		$sql = "DELETE FROM data_post 
-		    	    		WHERE PostID=:postid;";
+	    	    		$sql = "DELETE FROM data_ads 
+		    	    		WHERE AdsID=:adsid;";
 			    		$stmt = $this->db->prepare($sql);
-                        $stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+                        $stmt->bindParam(':adsid', $newadsid, PDO::PARAM_STR);
 					    if ($stmt->execute()) {
     						$data = [
 	    						'status' => 'success',
@@ -672,41 +566,18 @@ use PDO;
 		 */
 		public function searchAdsAsPagination() {
 			if (Auth::validToken($this->db,$this->token,$this->username)){
-				$newusername = strtolower(filter_var($this->username,FILTER_SANITIZE_STRING));
-				$search = "%$this->search%";
-					if (Auth::getRoleID($this->db,$this->token) == '3'){
-						$sqlcountrow = "SELECT count(a.PostID) as TotalRow
-							from data_post a
-							inner join core_status b on a.StatusID=b.StatusID
-							where a.Username=:username and a.PostID like :search
-							or a.Username=:username and a.Title like :search
-							or a.Username=:username and a.Stars like :search
-							or a.Username=:username and a.Cast like :search
-							or a.Username=:username and a.Director like :search
-							or a.Username=:username and a.Tags like :search
-							or a.Username=:username and a.Country like :search
-							or a.Username=:username and a.Released like :search
-							order by a.Created_at desc;";
-						$stmt = $this->db->prepare($sqlcountrow);
-						$stmt->bindValue(':username', $newusername, PDO::PARAM_STR);
-						$stmt->bindValue(':search', $search, PDO::PARAM_STR);
-					} else if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
-						$sqlcountrow = "SELECT count(a.PostID) as TotalRow
-							from data_post a
-							inner join core_status b on a.StatusID=b.StatusID
-							where a.PostID like :search
-							or a.Title like :search
-							or a.Stars like :search
-							or a.Cast like :search
-							or a.Director like :search
-							or a.Tags like :search
-							or a.Country like :search
-							or a.Released like :search
-							order by a.Created_at desc;";
+				if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
+					$search = "%$this->search%";
+					$sqlcountrow = "SELECT count(a.AdsID) as 'TotalRow'
+								from data_ads a
+								inner join data_company b on a.CompanyID=b.CompanyID
+								inner join core_status c on a.StatusID=c.StatusID
+								where a.AdsID like :search
+								or b.`Name` like :search
+								or a.Title like :search
+								order by a.EndDate asc,a.Title asc,a.StatusID desc;";
 						$stmt = $this->db->prepare($sqlcountrow);
 						$stmt->bindValue(':search', $search, PDO::PARAM_STR);
-					}
-					
 
 					if ($stmt->execute()) {	
     	    	    	if ($stmt->rowCount() > 0){
@@ -719,145 +590,29 @@ use PDO;
 							$limits = (((($newpage-1)*$newitemsperpage) <= 0)?0:(($newpage-1)*$newitemsperpage));
 							$offsets = (($newitemsperpage <= 0)?0:$newitemsperpage);
 
-							if (Auth::getRoleID($this->db,$this->token) == '3'){
-								// Query Data
-							$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
-									a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-									a.Updated_at,a.Updated_by,b.`Status`
-								from data_post a
-								inner join core_status b on a.StatusID=b.StatusID
-								where a.Username=:username and a.PostID like :search
-								or a.Username=:username and a.Title like :search
-								or a.Username=:username and a.Stars like :search
-								or a.Username=:username and a.Cast like :search
-								or a.Username=:username and a.Director like :search
-								or a.Username=:username and a.Tags like :search
-								or a.Username=:username and a.Country like :search
-								or a.Username=:username and a.Released like :search
-								order by a.Created_at desc LIMIT :limpage , :offpage;";
-							$stmt2 = $this->db->prepare($sql);
-							$stmt2->bindValue(':username', $newusername, PDO::PARAM_STR);
-							$stmt2->bindValue(':search', $search, PDO::PARAM_STR);
-							$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
-							$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
-							} else if (Auth::getRoleID($this->db,$this->token) == '1' || Auth::getRoleID($this->db,$this->token) == '2'){
-								// Query Data
-							$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
-									a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-									a.Updated_at,a.Updated_by,b.`Status`
-								from data_post a
-								inner join core_status b on a.StatusID=b.StatusID
-								where a.PostID like :search
-								or a.Title like :search
-								or a.Stars like :search
-								or a.Cast like :search
-								or a.Director like :search
-								or a.Tags like :search
-								or a.Country like :search
-								or a.Released like :search
-								order by a.Created_at desc LIMIT :limpage , :offpage;";
-							$stmt2 = $this->db->prepare($sql);
-							$stmt2->bindValue(':search', $search, PDO::PARAM_STR);
-							$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
-							$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
-							}
-
 							
+								// Query Data
+							$sql = "SELECT a.AdsID,a.Created_at,b.CompanyID,b.`Name`,a.Title,a.Embed,a.StartDate,a.EndDate,a.Amount,a.Viewer,a.Username as 'User',a.Updated_at,a.Updated_by,a.StatusID,c.`Status`
+								from data_ads a
+								inner join data_company b on a.CompanyID=b.CompanyID
+								inner join core_status c on a.StatusID=c.StatusID
+								where a.AdsID like :search
+								or b.`Name` like :search
+								or a.Title like :search
+								order by a.EndDate asc,a.Title asc,a.StatusID desc LIMIT :limpage , :offpage;";
+							$stmt2 = $this->db->prepare($sql);
+							$stmt2->bindValue(':search', $search, PDO::PARAM_STR);
+							$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
+							$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
 						
 							if ($stmt2->execute()){
 								if ($stmt2->rowCount() > 0){
-									$datares = "[";
-									while($redata = $stmt2->fetch()) 
-									{
-										//Start Tags
-										$return_arr = null;
-										$names = $redata['Tags'];	
-										$named = preg_split( "/[;,@#]/", $names );
-										foreach($named as $name){
-											if ($name != null){$return_arr[] = trim($name);}
-										}
-										//End Tags
-
-										//Start Stars
-										$stars_arr = null;
-										$starnames = $redata['Stars'];	
-										$starnamed = preg_split( "/[;,@#]/", $starnames );
-										foreach($starnamed as $name){
-											if ($name != null){$stars_arr[] = trim($name);}
-										}
-										//End Stars
-
-										//Start Cast
-										$cast_arr = null;
-										$castnames = $redata['Cast'];	
-										$castnamed = preg_split( "/[;,@#]/", $castnames );
-										foreach($castnamed as $name){
-											if ($name != null){$cast_arr[] = trim($name);}
-										}
-										//End Cast
-
-										//Start Director
-										$director_arr = null;
-										$directornames = $redata['Director'];	
-										$directornamed = preg_split( "/[;,@#]/", $directornames );
-										foreach($directornamed as $name){
-											if ($name != null){$director_arr[] = trim($name);}
-										}
-										//End Director
-
-										//Start Country
-										$country_arr = null;
-										$countrynames = $redata['Country'];	
-										$countrynamed = preg_split( "/[;,@#]/", $countrynames );
-										foreach($countrynamed as $name){
-											if ($name != null){$country_arr[] = trim($name);}
-										}
-										//End Country
-
-										//Start Embed
-										$embed_arr = null;
-										$embednames = $redata['Embed_video'];	
-										$embednamed = preg_split( "/[,@#]/", $embednames );
-										foreach($embednamed as $name){
-											if ($name != null){$embed_arr[] = trim($name);}
-										}
-										//End Embed
-
-										$datares .= '{"PostID":'.json_encode($redata['PostID']).',
-											"Title":'.json_encode($redata['Title']).',
-											"Description":'.json_encode($redata['Description']).',
-											"Image":'.json_encode($redata['Image']).',
-											"Embed_inline":'.json_encode($redata['Embed_video']).',
-											"Embed":'.json_encode($embed_arr).',
-											"Duration":'.json_encode($redata['Duration']).',
-											"Stars_inline":'.json_encode($redata['Stars']).',
-											"Stars":'.json_encode($stars_arr).',
-											"Cast_inline":'.json_encode($redata['Cast']).',
-											"Cast":'.json_encode($cast_arr).',
-											"Director_inline":'.json_encode($redata['Director']).',
-											"Director":'.json_encode($director_arr).',
-											"Tags_inline":'.json_encode($redata['Tags']).',
-											"Tags":'.json_encode($return_arr).',
-											"Country_inline":'.json_encode($redata['Country']).',
-											"Country":'.json_encode($country_arr).',
-											"Released":'.json_encode($redata['Released']).',
-											"Rating":'.json_encode($redata['Rating']).',
-											"Viewer":'.json_encode($redata['Viewer']).',
-											"Liked":'.json_encode($redata['Liked']).',
-											"Disliked":'.json_encode($redata['Disliked']).',
-											"Created_at":'.json_encode($redata['Created_at']).',
-											"User":'.json_encode($redata['User']).',
-											"Updated_at":'.json_encode($redata['Updated_at']).',
-											"Updated_by":'.json_encode($redata['Updated_by']).',
-											"Updated_by":'.json_encode($redata['Status']).'},';
-									}
-									$datares = substr($datares, 0, -1);
-									$datares .= "]";
+									$results = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 									$pagination = new \classes\Pagination();
 									$pagination->totalRow = $single['TotalRow'];
 									$pagination->page = $this->page;
 									$pagination->itemsPerPage = $this->itemsPerPage;
-									$pagination->fetchAllAssoc = json_decode($datares);
+									$pagination->fetchAllAssoc = $results;
 									$data = $pagination->toDataArray();
 								} else {
 									$data = [
@@ -887,6 +642,13 @@ use PDO;
 	        			    'message' => CustomHandlers::getreSlimMessage('RS202')
 						];
 					}
+				} else {
+					$data = [
+	    				'status' => 'error',
+						'code' => 'RS404',
+	        	    	'message' => CustomHandlers::getreSlimMessage('RS404')
+					];
+				}	
 			} else {
 				$data = [
 	    			'status' => 'error',
@@ -905,109 +667,31 @@ use PDO;
 		 * @return result process in json encoded data
 		 */
 		public function showAds($layout){
-            $newpostid = Validation::integerOnly($this->postid);
+            $newlayout = "%$layout%";
 				
-				$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
-								a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
-								a.Updated_at,a.Updated_by,b.`Status`
-							from data_post a
-							inner join core_status b on a.StatusID=b.StatusID
-							where a.StatusID='51' and a.PostID = :postid";
+				$sql = "SELECT a.AdsID,a.Created_at,b.CompanyID,b.`Name`,a.Title,a.Embed,a.StartDate,a.EndDate
+					from data_ads a
+					inner join data_company b on a.CompanyID=b.CompanyID
+					inner join core_status c on a.StatusID=c.StatusID
+					where a.EndDate > DATE(now())
+					and b.StatusID ='1'
+					and a.StatusID = '51'
+					and a.Title like :layout
+					order by rand() LIMIT 1;";
 				
 				$stmt = $this->db->prepare($sql);		
-				$stmt->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+				$stmt->bindParam(':layout', $newlayout, PDO::PARAM_STR);
 
 				if ($stmt->execute()) {	
     	    	    if ($stmt->rowCount() > 0){
-        	   		   	$datares = "[";
-								while($redata = $stmt->fetch()) 
-								{
-									//Start Tags
-									$return_arr = null;
-									$names = $redata['Tags'];	
-									$named = preg_split( "/[;,@#]/", $names );
-									foreach($named as $name){
-										if ($name != null){$return_arr[] = trim($name);}
-									}
-									//End Tags
-
-									//Start Stars
-									$stars_arr = null;
-									$starnames = $redata['Stars'];	
-									$starnamed = preg_split( "/[;,@#]/", $starnames );
-									foreach($starnamed as $name){
-										if ($name != null){$stars_arr[] = trim($name);}
-									}
-									//End Stars
-
-									//Start Cast
-									$cast_arr = null;
-									$castnames = $redata['Cast'];	
-									$castnamed = preg_split( "/[;,@#]/", $castnames );
-									foreach($castnamed as $name){
-										if ($name != null){$cast_arr[] = trim($name);}
-									}
-									//End Cast
-
-									//Start Director
-									$director_arr = null;
-									$directornames = $redata['Director'];	
-									$directornamed = preg_split( "/[;,@#]/", $directornames );
-									foreach($directornamed as $name){
-										if ($name != null){$director_arr[] = trim($name);}
-									}
-									//End Director
-
-									//Start Country
-									$country_arr = null;
-									$countrynames = $redata['Country'];	
-									$countrynamed = preg_split( "/[;,@#]/", $countrynames );
-									foreach($countrynamed as $name){
-										if ($name != null){$country_arr[] = trim($name);}
-									}
-									//End Country
-
-									//Start Embed
-									$embed_arr = null;
-									$embednames = $redata['Embed_video'];	
-									$embednamed = preg_split( "/[,@#]/", $embednames );
-									foreach($embednamed as $name){
-										if ($name != null){$embed_arr[] = trim($name);}
-									}
-									//End Embed
-
-									$datares .= '{"PostID":'.json_encode($redata['PostID']).',
-											"Title":'.json_encode($redata['Title']).',
-											"Description":'.json_encode($redata['Description']).',
-											"Image":'.json_encode($redata['Image']).',
-											"Embed_inline":'.json_encode($redata['Embed_video']).',
-											"Embed":'.json_encode($embed_arr).',
-											"Duration":'.json_encode($redata['Duration']).',
-											"Stars_inline":'.json_encode($redata['Stars']).',
-											"Stars":'.json_encode($stars_arr).',
-											"Cast_inline":'.json_encode($redata['Cast']).',
-											"Cast":'.json_encode($cast_arr).',
-											"Director_inline":'.json_encode($redata['Director']).',
-											"Director":'.json_encode($director_arr).',
-											"Tags_inline":'.json_encode($redata['Tags']).',
-											"Tags":'.json_encode($return_arr).',
-											"Country_inline":'.json_encode($redata['Country']).',
-											"Country":'.json_encode($country_arr).',
-											"Released":'.json_encode($redata['Released']).',
-											"Rating":'.json_encode($redata['Rating']).',
-											"Viewer":'.json_encode($redata['Viewer']).',
-											"Liked":'.json_encode($redata['Liked']).',
-											"Disliked":'.json_encode($redata['Disliked']).',
-											"Created_at":'.json_encode($redata['Created_at']).',
-											"User":'.json_encode($redata['User']).',
-											"Updated_at":'.json_encode($redata['Updated_at']).',
-											"Updated_by":'.json_encode($redata['Updated_by']).',
-											"Updated_by":'.json_encode($redata['Status']).'},';
-								}
-								$datares = substr($datares, 0, -1);
-								$datares .= "]";
+        	   		   	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+						$adsid = $results[0]['AdsID'];
+						$updateviewer = "UPDATE data_ads a SET a.Viewer=a.Viewer+1 where a.AdsID=:adsid;";
+						$stmt2 = $this->db->prepare($updateviewer);		
+						$stmt2->bindParam(':adsid', $adsid, PDO::PARAM_STR);
+						$stmt2->execute();
 						$data = [
-			   	            'result' => json_decode($datares), 
+			   	            'result' => $results, 
     	    		        'status' => 'success', 
 			           	    'code' => 'RS501',
         		        	'message' => CustomHandlers::getreSlimMessage('RS501')
@@ -1053,7 +737,7 @@ use PDO;
     	    	    if ($stmt->rowCount() > 0){
         	   		   	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 						$data = [
-			   	            'result' => $results, 
+			   	            'results' => $results, 
     	    		        'status' => 'success', 
 			           	    'code' => 'RS501',
         		        	'message' => CustomHandlers::getreSlimMessage('RS501')
@@ -1102,7 +786,7 @@ use PDO;
     	    	    if ($stmt->rowCount() > 0){
         	   		   	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 						$data = [
-			   	            'result' => $results, 
+			   	            'results' => $results, 
     	    		        'status' => 'success', 
 			           	    'code' => 'RS501',
         		        	'message' => CustomHandlers::getreSlimMessage('RS501')
