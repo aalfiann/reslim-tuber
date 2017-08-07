@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2017 at 02:09 PM
+-- Generation Time: Aug 07, 2017 at 02:39 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -99,6 +99,7 @@ CREATE TABLE `data_ads` (
   `Embed` text,
   `StartDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `EndDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `Amount` double NOT NULL,
   `Viewer` int(11) NOT NULL,
   `StatusID` int(11) NOT NULL,
   `Created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
@@ -125,6 +126,21 @@ CREATE TABLE `data_company` (
   `Username` varchar(50) NOT NULL,
   `Updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `Updated_by` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_liked`
+--
+
+CREATE TABLE `data_liked` (
+  `LikeID` int(11) NOT NULL,
+  `PostID` int(11) NOT NULL,
+  `IP` varchar(15) NOT NULL,
+  `Liked` int(11) NOT NULL,
+  `Disliked` int(11) NOT NULL,
+  `Created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -308,6 +324,15 @@ ALTER TABLE `data_company`
   ADD KEY `Username` (`Username`) USING BTREE;
 
 --
+-- Indexes for table `data_liked`
+--
+ALTER TABLE `data_liked`
+  ADD PRIMARY KEY (`LikeID`),
+  ADD KEY `LikeID` (`LikeID`),
+  ADD KEY `PostID` (`PostID`),
+  ADD KEY `IP` (`IP`);
+
+--
 -- Indexes for table `data_post`
 --
 ALTER TABLE `data_post`
@@ -403,6 +428,11 @@ ALTER TABLE `data_ads`
 ALTER TABLE `data_company`
   MODIFY `CompanyID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `data_liked`
+--
+ALTER TABLE `data_liked`
+  MODIFY `LikeID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `data_post`
 --
 ALTER TABLE `data_post`
@@ -440,6 +470,12 @@ ALTER TABLE `data_ads`
 ALTER TABLE `data_company`
   ADD CONSTRAINT `data_company_ibfk_1` FOREIGN KEY (`StatusID`) REFERENCES `core_status` (`StatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `data_company_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `user_data` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `data_liked`
+--
+ALTER TABLE `data_liked`
+  ADD CONSTRAINT `data_liked_ibfk_1` FOREIGN KEY (`PostID`) REFERENCES `data_post` (`PostID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `data_post`
