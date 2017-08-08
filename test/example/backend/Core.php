@@ -24,6 +24,12 @@
         // Set api keys
         var $apikey;
 
+        // Set disqus
+        var $disqus;
+
+        // Set sharethis keys
+        var $sharethis;
+
         var $version = '1.3.0';
 
         private static $instance;
@@ -35,6 +41,8 @@
             $this->basepath = $config['basepath'];
             $this->api = $config['api'];
             $this->apikey = $config['apikey'];
+            $this->disqus = $config['disqus'];
+            $this->sharethis = $config['sharethis'];
 		}
 
         public static function getInstance()
@@ -498,16 +506,16 @@
             if (!empty($data)){
                 if ($data->{'status'} == "success"){
                     echo '<div class="col-lg-12">';
-                    echo self::getMessage('success','Process Update Successfuly!','This page will automatically refresh at 2 seconds...');
+                    echo self::getMessage('success','Process Update Successfuly!');
                     echo '</div>';
                 } else {
                     echo '<div class="col-lg-12">';
-                    echo self::getMessage('danger','Process Update Failed!',$data->{'message'}.' This page will automatically refresh at 2 seconds...');
+                    echo self::getMessage('danger','Process Update Failed!',$data->{'message'});
                     echo '</div>';
                 }
             } else {
                 echo '<div class="col-lg-12">';
-                echo self::getMessage('danger','Process Update Failed!','Can not connected to the server! This page will automatically refresh at 2 seconds...');
+                echo self::getMessage('danger','Process Update Failed!','Can not connected to the server!');
                 echo '</div>';
             }
 	    }
@@ -524,16 +532,97 @@
             if (!empty($data)){
                 if ($data->{'status'} == "success"){
                     echo '<div class="col-lg-12">';
-                    echo self::getMessage('success','Process Delete Successfuly!','This page will automatically refresh at 2 seconds...');
+                    echo self::getMessage('success','Process Delete Successfuly!');
                     echo '</div>';
                 } else {
                     echo '<div class="col-lg-12">';
-                    echo self::getMessage('danger','Process Delete Failed!',$data->{'message'}.' This page will automatically refresh at 2 seconds...');
+                    echo self::getMessage('danger','Process Delete Failed!',$data->{'message'});
                     echo '</div>';
                 }
             } else {
                 echo '<div class="col-lg-12">';
-                echo self::getMessage('danger','Process Delete Failed!','Can not connected to the server! This page will automatically refresh at 2 seconds...');
+                echo self::getMessage('danger','Process Delete Failed!','Can not connected to the server!');
+                echo '</div>';
+            }
+	    }
+
+        /**
+		 * Process Create
+         *
+         * @param $url = The url api to post the request
+         * @param $post_array = Data array to post
+         * @param $title = Name of the process itself
+		 * @return result json encoded data
+		 */
+	    public static function processCreate($url,$post_array,$title){
+            $data = json_decode(self::execPostRequest($url,$post_array));
+            if (!empty($data)){
+                if ($data->{'status'} == "success"){
+                    echo '<div class="col-lg-12">';
+                    echo self::getMessage('success','Process Add '.$title.' Successfully!');
+                    echo '</div>';
+                } else {
+                    echo '<div class="col-lg-12">';
+                    echo self::getMessage('danger','Process Add '.$title.' Failed!',$data->{'message'});    
+                    echo '</div>';
+                }
+            } else {
+                echo '<div class="col-lg-12">';
+                echo self::getMessage('danger','Process Add '.$title.' Failed!','Can not connected to the server!');
+                echo '</div>';
+            }
+	    }
+
+        /**
+		 * Process Update
+         *
+         * @param $url = The url api to post the request
+         * @param $post_array = Data array to post
+         * @param $title = Name of the process itself
+		 * @return result json encoded data
+		 */
+	    public static function processUpdate($url,$post_array,$title){
+            $data = json_decode(self::execPostRequest($url,$post_array));
+            if (!empty($data)){
+                if ($data->{'status'} == "success"){
+                    echo '<div class="col-lg-12">';
+                    echo self::getMessage('success','Process Update '.$title.' Successfuly!');
+                    echo '</div>';
+                } else {
+                    echo '<div class="col-lg-12">';
+                    echo self::getMessage('danger','Process Update '.$title.' Failed!',$data->{'message'});
+                    echo '</div>';
+                }
+            } else {
+                echo '<div class="col-lg-12">';
+                echo self::getMessage('danger','Process Update '.$title.' Failed!','Can not connected to the server!');
+                echo '</div>';
+            }
+	    }
+
+        /**
+		 * Process Delete
+         *
+         * @param $url = The url api to post the request
+         * @param $post_array = Data array to post
+         * @param $title = Name of the process itself
+		 * @return result json encoded data
+		 */
+	    public static function processDelete($url,$post_array,$title){
+            $data = json_decode(self::execPostRequest($url,$post_array));
+            if (!empty($data)){
+                if ($data->{'status'} == "success"){
+                    echo '<div class="col-lg-12">';
+                    echo self::getMessage('success','Process Delete '.$title.' Successfuly!');
+                    echo '</div>';
+                } else {
+                    echo '<div class="col-lg-12">';
+                    echo self::getMessage('danger','Process Delete '.$title.' Failed!',$data->{'message'});
+                    echo '</div>';
+                }
+            } else {
+                echo '<div class="col-lg-12">';
+                echo self::getMessage('danger','Process Delete '.$title.' Failed!','Can not connected to the server!');
                 echo '</div>';
             }
 	    }
@@ -631,11 +720,13 @@
             $config[\'email\'] = \''.$post_array['Email'].'\'; //Your default email
             $config[\'basepath\'] = \''.$post_array['Basepath'].'\'; //Your folder website
             $config[\'api\'] = \''.$post_array['Api'].'\'; //Your folder rest api
-            $config[\'apikey\'] = \''.$post_array['ApiKey'].'\'; //Your api key, you can leave this blank and fill this later';
+            $config[\'apikey\'] = \''.$post_array['ApiKey'].'\'; //Your api key, you can leave this blank and fill this later
+            $config[\'disqus\'] = \''.$post_array['Disqus'].'\'; //Your disqus username, you can leave this blank and fill this later
+            $config[\'sharethis\'] = \''.$post_array['Sharethis'].'\'; //Your sharethis key, you can leave this blank and fill this later';
             $handle = fopen('config.php','w+'); 
 				fwrite($handle,$newcontent); 
 				fclose($handle); 
-            echo self::getMessage('success','Settings hasbeen changed!','This page will automatically refresh at 2 seconds...');
+            echo self::getMessage('success','Settings hasbeen changed!', 'This page will refresh at 2 seconds...');
             echo self::reloadPage();
         }
 
