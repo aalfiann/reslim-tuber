@@ -1,6 +1,6 @@
 <?php spl_autoload_register(function ($classname) {require ( $classname . ".php");});?>
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
     <title>Contact Us - <?php echo Core::getInstance()->title?></title>
 	<?php include 'global-meta.php';?>
