@@ -10,7 +10,9 @@
                                     'Email' => $_POST['email'],
                                     'Basepath' => $_POST['basepath'],
                                     'Api' => $_POST['api'],
-                                    'ApiKey' => $_POST['apikey']
+                                    'ApiKey' => $_POST['apikey'],
+                                    'Disqus' => $_POST['disqus'],
+                                    'Sharethis' => $_POST['sharethis']
                                 );
                                 Core::saveSettings($post_array);
                             } 
@@ -42,7 +44,17 @@
                                             <label>API Key</label>
                                             <input name="apikey" type="text" placeholder="Please input Your API Key here..." class="form-control border-input" value="<?php echo Core::getInstance()->apikey?>">
                                         </div>
+                                        <div class="form-group">
+                                            <label>Disqus Username</label>
+                                            <input name="disqus" type="text" placeholder="Please input Your Disqus username here..." class="form-control border-input" value="<?php echo Core::getInstance()->disqus?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Sharethis Key</label>
+                                            <input name="sharethis" type="text" placeholder="Please input Your Sharethis Key here..." class="form-control border-input" value="<?php echo Core::getInstance()->sharethis?>">
+                                        </div>
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any API Keys? You can create at least one API Key at <a href="modul-data-api.php?m=7&page=1&itemsperpage=10&search=">here</a>.</p>
+                                        <p class="category"><i class="ti-info-alt"></i> Doesn't have any Disqus? You can create at <a href="http://disqus.com">here</a>.</p>
+                                        <p class="category"><i class="ti-info-alt"></i> Doesn't have any Sharethis Keys? You can create at <a href="http://sharethis.com">here</a>.</p>
                                         <hr>
                                         <div class="form-group text-center">
                                             <button name="submitsettings" type="submit" class="btn btn-fill btn-wd ">Save Settings</button>
