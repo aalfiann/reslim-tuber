@@ -70,6 +70,24 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     });
 
+    // GET api to show all data status active
+    $app->get('/ads/status/active/{token}', function (Request $request, Response $response) {
+        $ads = new classes\modules\Ads($this->db);
+        $ads->token = $request->getAttribute('token');
+        $body = $response->getBody();
+        $body->write($ads->showOptionActive());
+        return classes\Cors::modify($response,$body,200);
+    });
+
+    // GET api to show all data status release
+    $app->get('/ads/status/release/{token}', function (Request $request, Response $response) {
+        $ads = new classes\modules\Ads($this->db);
+        $ads->token = $request->getAttribute('token');
+        $body = $response->getBody();
+        $body->write($ads->showOptionRelease());
+        return classes\Cors::modify($response,$body,200);
+    });
+
     // POST api to create new ads
     $app->post('/ads/data/new', function (Request $request, Response $response) {
         $ads = new classes\modules\Ads($this->db);
