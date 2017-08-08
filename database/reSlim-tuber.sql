@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2017 at 02:47 PM
+-- Generation Time: Aug 08, 2017 at 06:37 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -137,7 +137,7 @@ CREATE TABLE `data_company` (
 CREATE TABLE `data_liked` (
   `LikeID` int(11) NOT NULL,
   `PostID` int(11) NOT NULL,
-  `IP` varchar(15) NOT NULL,
+  `IP` varchar(50) NOT NULL,
   `Liked` int(11) NOT NULL,
   `Disliked` int(11) NOT NULL,
   `Created_at` datetime NOT NULL
