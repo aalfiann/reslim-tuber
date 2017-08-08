@@ -34,6 +34,24 @@
                             <p>API Keys</p>
                         </a>
                     </li>
+                    <li <?php if (!empty($_GET['m'])) if($_GET['m']==8) echo 'class="active"';?> >
+                        <a href="modul-data-company.php?m=8&page=1&itemsperpage=10&search=">
+                            <i class="ti-crown"></i>
+                            <p>Data Company</p>
+                        </a>
+                    </li>
+                    <li <?php if (!empty($_GET['m'])) if($_GET['m']==9) echo 'class="active"';?> >
+                        <a href="modul-data-ads.php?m=9&page=1&itemsperpage=10&search=">
+                            <i class="ti-announcement"></i>
+                            <p>Data Ads</p>
+                        </a>
+                    </li>
+                    <li <?php if (!empty($_GET['m'])) if($_GET['m']==10) echo 'class="active"';?> >
+                        <a href="modul-data-video.php?m=10&page=1&itemsperpage=10&search=">
+                            <i class="ti-control-play"></i>
+                            <p>Data Video</p>
+                        </a>
+                    </li>
                 <?php } else {  // Member Menu ?>
                     <li <?php if (!empty($_GET['m'])) if($_GET['m']==7) echo 'class="active"';?> >
                         <a href="modul-data-api.php?m=7&page=1&itemsperpage=10&search=">
