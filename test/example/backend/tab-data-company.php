@@ -113,7 +113,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
             'Email' => $_POST['email'],
             'Website' => $_POST['website'],
             'StatusID' => $_POST['status'],
-            'CompanyID' => $_POST['companyid'],
+            'CompanyID' => $_POST['companyid']
         );
         Core::processUpdate(Core::getInstance()->api.'/ads/company/update',$post_array,'Company');
     }

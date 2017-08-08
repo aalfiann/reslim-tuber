@@ -173,7 +173,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Add new API Keys</h4>
+                                <h4 class="modal-title" id="myModalLabel">Update API Keys</h4>
                               </div>
                               <form method="post" action="'.$_SERVER['PHP_SELF'].'?m=7&page='.$page.'&itemsperpage='.$itemsperpage.'&search='.$search.'">
                               <div class="modal-body">

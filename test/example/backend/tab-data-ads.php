@@ -234,7 +234,7 @@ $datacompany = json_decode(Core::execGetRequest($listcompany));
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Add new Ads</h4>
+                                <h4 class="modal-title" id="myModalLabel">Update Ads</h4>
                               </div>
                               <form method="post" action="'.$_SERVER['PHP_SELF'].'?m=9&page='.$page.'&itemsperpage='.$itemsperpage.'&search='.$search.'">
                               <div class="modal-body">
