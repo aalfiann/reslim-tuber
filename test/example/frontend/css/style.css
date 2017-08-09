@@ -967,6 +967,30 @@ ul.menu {
   border-radius: 2px;
   background-color: #373933;
 }
+.b-video .v-img .quality {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 6px 4px 0px 5px;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: 600;
+  border-radius: 2px;
+  background-color: #373933;
+}
+.b-video .v-img .rating {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 6px 4px 0px 5px;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: 600;
+  border-radius: 2px;
+  background-color: #373933;
+}
 .b-video .v-img .watched-mask {
   background-color: #ababab;
   opacity: 0.6;
@@ -1177,6 +1201,7 @@ ul.menu {
   }
   .videolist .videoitem img {
     width: 100%;
+    height: 220px;
   }
   .b-playlist {
     margin-bottom: 15px;
@@ -2784,6 +2809,7 @@ ul.menu {
   }
   .b-video .v-img img {
     width: 100%;
+    height: 400px;
   }
   .reply-comment .rc-ava {
     text-align: center;
@@ -4237,4 +4263,11 @@ i.cv:hover {
 }
 .c-social i.fa {
   color: white !important;
+}
+
+img.top-cropped {
+  object-fit: cover; /* Scale the image to become cover */
+  object-position: top; /* Top the image within the element */
+  height: 169px;
+  width: 270px;
 }
