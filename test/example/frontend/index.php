@@ -11,76 +11,24 @@
 
     <title>Circle Video | Home Page</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/font-circle-video.css" rel="stylesheet">
-
-    <!-- font-family: 'Hind', sans-serif; -->
-    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
+    <?php include 'global-meta.php';?>
 </head>
 
 <body class="dark">
-<!-- logo, menu, search, avatar -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="btn-color-toggle">
-            <img src="images/icon_bulb_dark.png" alt="">
-        </div>
-        <div class="navbar-container">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-1 col-sm-2 col-xs-2">
-                        <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>
-                    </div>
-                    <div class="col-lg-3 col-sm-10 col-xs-10">
-                        <ul class="list-inline menu">
-                            <li class="pages color-active"><a href="#">Home</a></li>
-                            <li><a href="genre.html">Genre</a></li>
-                            <li><a href="country.html">Country</a></li>
-                        </ul>
-                    </div>
-                    <div class="visible-xs visible-sm clearfix"></div>
-                    <div class="col-lg-6 col-sm-11 col-xs-12">
-                        <form action="search.html" method="post">
-                            <div class="topsearch">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
-                                    <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon2">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default">Go!&nbsp;&nbsp;&nbsp;</button>
-                                    </div><!-- /btn-group -->
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="visible-xs clearfix"></div>
-                    
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /logo -->
-
-
+<?php include 'global-header.php';?>
 
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
 
-                <!-- Featured Videos -->
+                <!-- Latest Movies -->
                 <div class="content-block head-div">
                     <div class="cb-header">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li><a href="#" class="color-active">Featured Movies</a></li>
+                                    <li><a href="#" class="color-active">Latest Movies</a></li>
                                 </ul>
                             </div>
                             
@@ -101,8 +49,6 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
                                     </div>
                                 </div>
                             </div>
@@ -120,8 +66,6 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
                                     </div>
                                 </div>
                             </div>
@@ -139,8 +83,6 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
                                     </div>
                                 </div>
                             </div>
@@ -158,8 +100,6 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
                                     </div>
                                 </div>
                             </div>
@@ -177,8 +117,6 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
                                     </div>
                                 </div>
                             </div>
@@ -196,8 +134,6 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
                                     </div>
                                 </div>
                             </div>
@@ -215,8 +151,6 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
                                     </div>
                                 </div>
                             </div>
@@ -234,185 +168,149 @@
                                     </div>
                                     <div class="v-views">
                                         27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6 videoitem">
+                                <div class="b-video">
+                                    <div class="v-img">
+                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
+                                        <div class="quality">HD</div>
+                                        <div class="rating">7.3</div>
+                                        <div class="time">03:50:00</div>
+                                    </div>
+                                    <div class="v-desc">
+                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
+                                    </div>
+                                    <div class="v-views">
+                                        27,548 views. 
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /Featured Videos -->
-
-                <!-- New Videos -->
-                <div class="content-block head-div">
-                    <div class="cb-header">
-                        <div class="row">
-                            <div class="col-lg-10 col-sm-10 col-xs-8">
-                                <ul class="list-inline">
-                                    <li><a href="#" class="color-active">New Movies</a></li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="cb-content videolist">
-                        <div class="row">
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 videoitem">
-                                <div class="b-video">
-                                    <div class="v-img">
-                                        <a href="single-video-tabs.html"><img src="http://movieon21.com/wp-content/uploads/2017/08/Gintama-Live-Action-Mitsuba-hen-Parrt.jpg" class="top-cropped" alt=""></a>
-                                        <div class="quality">HD</div>
-                                        <div class="rating">7.3</div>
-                                        <div class="time">03:50:00</div>
-                                    </div>
-                                    <div class="v-desc">
-                                        <a href="single-video-tabs.html">Man's Sky: 21 Minutes of New Gameplay - IGN First</a>
-                                    </div>
-                                    <div class="v-views">
-                                        27,548 views. 
-                                        <span class="v-percent"><i class="fa fa-thumbs-up"></i> 78</span>
-                                        <span class="v-percent"><i class="fa fa-thumbs-down"></i> 18</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /New Videos -->
+                <!-- /Latest Movies -->
 
                 <!-- pagination -->
                 <div class="v-pagination">
@@ -453,55 +351,8 @@
     </div>
 </div>
 
-<!-- footer -->
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="container padding-def">
-                <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>
-                </div>
-                <div class="col-lg-7  col-sm-7 col-xs-12">
-                    <div class="f-links">
-                        <ul class="list-inline">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Press</a></li>
-                            <li><a href="#">Copyright</a></li>
-                            <li><a href="#">Advertise</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <div class="delimiter"></div>
-                    <div class="f-copy">
-                        <ul class="list-inline">
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li>Copyrights 2016 <a href="azyrusthemes.com">azyrusthemes.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-offset-1 col-lg-3 col-sm-3 col-xs-12 hidden-xs">
-                    <div class="f-icon pull-left">
-                        <a href="#"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- /footer -->
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
+<?php include 'global-footer.php';?>
+<?php include 'global-js.php';?>
 
 </body>
 </html>
