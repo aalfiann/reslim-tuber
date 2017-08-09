@@ -30,7 +30,7 @@ $( document ).ready(function() {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Home page
     // Video block hover
-    var $plus = $( '<div class="plus"><i class="cvicon-cv-plus" aria-hidden="true"></i></div>' );
+    /*var $plus = $( '<div class="plus"><i class="cvicon-cv-plus" aria-hidden="true"></i></div>' );
     var $plusDetails = $( '<div class="plus-details">\
                                         <ul >\
                                             <li><a href="#"><i class="cvicon-cv-watch-later" aria-hidden="true"></i> Watch Later</a></li>\
@@ -52,7 +52,7 @@ $( document ).ready(function() {
             $(this).find(".plus").remove();
             $(this).find(".plus-details").remove();
         }
-    );
+    );*/
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
