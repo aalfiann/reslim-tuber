@@ -1201,7 +1201,7 @@ ul.menu {
   }
   .videolist .videoitem img {
     width: 100%;
-    height: 220px;
+    height: 320px;
   }
   .b-playlist {
     margin-bottom: 15px;
@@ -2529,6 +2529,18 @@ ul.menu {
   padding-top: 26px;
   margin: 0 auto;
 }
+.single-video .adblock3 {
+  padding: 30px 0;
+}
+.single-video .adblock3 .img {
+  background-color: #eceff0;
+  border-radius: 3px;
+  width: 468px;
+  height: 60px;
+  color: #a1a1a1;
+  text-align: center;
+  padding-top: 120px;
+}
 .single-video .similar-videos {
   padding-bottom: 30px;
   margin-bottom: 30px;
@@ -2747,6 +2759,9 @@ ul.menu {
   .sv-video img {
     width: 100%;
   }
+  .single-video .adblock3 .img {
+    width: 100%;
+  }
   .single-video .adblock2 .img {
     width: 100%;
   }
@@ -2834,6 +2849,9 @@ ul.menu {
     width: 100%;
   }
   .single-video .adblock2 .img {
+    width: 100%;
+  }
+  .single-video .adblock3 .img {
     width: 100%;
   }
 }
@@ -3392,6 +3410,20 @@ ul.menu {
   padding-top: 26px;
   margin: 0 auto;
 }
+.single-video .adblock3 {
+  padding: 30px 0;
+  text-align: center;
+}
+.single-video .adblock3 .img {
+  background-color: #eceff0;
+  border-radius: 3px;
+  width: 468px;
+  height: 60px;
+  color: #a1a1a1;
+  text-align: center;
+  padding-top: 26px;
+  margin: 0 auto;
+}
 .single-video .similar-videos {
   padding-bottom: 30px;
   margin-bottom: 30px;
@@ -3610,6 +3642,9 @@ ul.menu {
   .sv-video img {
     width: 100%;
   }
+  .single-video .adblock3 .img {
+    width: 100%;
+  }
   .single-video .adblock2 .img {
     width: 100%;
   }
@@ -3678,6 +3713,12 @@ ul.menu {
     float: none;
     margin-bottom: 10px;
   }
+  img.top-cropped.sm {
+    object-fit: cover; /* Scale the image to become cover */
+    object-position: top; /* Top the image within the element */
+    height: 400px;
+    width: 100%;
+  }
 }
 @media (min-width: 768px) and (max-width: 1365px) {
   .sv-video img {
@@ -3688,6 +3729,7 @@ ul.menu {
   }
   .similar-videos .videoitem img {
     width: 100%;
+    height: 313px;
   }
   .single-video .reply-comment .rc-comment {
     width: 600px;
@@ -3696,6 +3738,17 @@ ul.menu {
     width: 100%;
   }
   .single-video .adblock2 .img {
+    width: 100%;
+  }
+  .single-video .adblock3 .img {
+    width: 100%;
+  }
+  img.top-cropped.sm {
+    object-fit: cover; /* Scale the image to become cover */
+    object-position: top; /* Top the image within the element */
+    height: 100%;
+    max-height: 207px;
+    min-height: 117px;
     width: 100%;
   }
 }
@@ -4083,6 +4136,9 @@ body.dark .adblock .img,
 body.dark .adblock2 .img {
   background-color: #3c3d3e;
 }
+body.dark .adblock3 .img {
+  background-color: #3c3d3e;
+}
 body.dark .showless a {
   background-color: #424242;
   color: #7e7e7e;
@@ -4269,5 +4325,5 @@ img.top-cropped {
   object-fit: cover; /* Scale the image to become cover */
   object-position: top; /* Top the image within the element */
   height: 169px;
-  width: 270px;
+  width: 100%;
 }
