@@ -2260,6 +2260,19 @@ ul.menu {
   line-height: 14px;
   font-weight: 500;
 }
+.single-video .h-video .v-img .rating {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #373933;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 6px 9px 1px 9px;
+  line-height: 14px;
+  font-weight: 500;
+}
 .single-video .h-video .v-desc {
   color: #343434;
   font-weight: 500;
@@ -2327,7 +2340,7 @@ ul.menu {
   height: 280px;
   color: #a1a1a1;
   text-align: center;
-  padding-top: 120px;
+  padding-top: 0px;
 }
 .single-video .loadmore {
   padding: 30px 0;
@@ -2522,24 +2535,25 @@ ul.menu {
 .single-video .adblock2 .img {
   background-color: #eceff0;
   border-radius: 3px;
-  width: 728px;
+  width: 100%;
+  max-width: 728px;
   height: 90px;
   color: #a1a1a1;
   text-align: center;
-  padding-top: 26px;
+  padding-top: 0px;
   margin: 0 auto;
 }
 .single-video .adblock3 {
-  padding: 30px 0;
+  padding: 10px 0;
 }
-.single-video .adblock3 .img {
+.single-video .author .sv-name .adblock3 .img {
   background-color: #eceff0;
   border-radius: 3px;
   width: 468px;
   height: 60px;
   color: #a1a1a1;
   text-align: center;
-  padding-top: 120px;
+  padding-top: 10px;
 }
 .single-video .similar-videos {
   padding-bottom: 30px;
@@ -3038,11 +3052,12 @@ ul.menu {
 .single-video .adblock .img {
   background-color: #eceff0;
   border-radius: 3px;
-  width: 336px;
+  width: 100%;
+  max-width: 336px;
   height: 280px;
   color: #a1a1a1;
   text-align: center;
-  padding-top: 120px;
+  padding-top: 0px;
 }
 .single-video .loadmore {
   padding: 30px 0;
@@ -3403,25 +3418,27 @@ ul.menu {
 .single-video .adblock2 .img {
   background-color: #eceff0;
   border-radius: 3px;
-  width: 728px;
+  width: 100%;
+  max-width: 728px;
   height: 90px;
   color: #a1a1a1;
   text-align: center;
-  padding-top: 26px;
+  padding-top: 0px;
   margin: 0 auto;
 }
 .single-video .adblock3 {
-  padding: 30px 0;
+  padding: 10px 0;
   text-align: center;
 }
-.single-video .adblock3 .img {
+.single-video .author .sv-name .adblock3 .img {
   background-color: #eceff0;
   border-radius: 3px;
-  width: 468px;
+  width: 100%;
+  max-width: 468px;
   height: 60px;
   color: #a1a1a1;
   text-align: center;
-  padding-top: 26px;
+  padding-top: 10px;
   margin: 0 auto;
 }
 .single-video .similar-videos {
@@ -4136,7 +4153,7 @@ body.dark .adblock .img,
 body.dark .adblock2 .img {
   background-color: #3c3d3e;
 }
-body.dark .adblock3 .img {
+body.dark .author .sv-name .adblock3 .img {
   background-color: #3c3d3e;
 }
 body.dark .showless a {
