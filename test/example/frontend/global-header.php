@@ -19,13 +19,14 @@
                     </div>
                     <div class="visible-xs visible-sm clearfix"></div>
                     <div class="col-lg-6 col-sm-11 col-xs-12">
-                        <form action="search.html" method="post">
+                        <form method="get" action="index.php">
                             <div class="topsearch">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
-                                    <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon2">
+                                    <input type="text" name="search" class="form-control" placeholder="Search" aria-describedby="sizing-addon2">
+                                    
                                     <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default">Go!&nbsp;&nbsp;&nbsp;</button>
+                                        <button name="submitsearch" type="submit" class="btn btn-default">Go!&nbsp;&nbsp;&nbsp;</button>
                                     </div><!-- /btn-group -->
                                 </div>
                             </div>
