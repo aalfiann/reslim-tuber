@@ -18,6 +18,9 @@
         // Set base path example project
         var $basepath;
 
+        // Set home path example project
+        var $homepath;
+
         // Set base api reslim
         var $api;
 
@@ -39,6 +42,7 @@
             $this->title = $config['title'];
             $this->email = $config['email'];
             $this->basepath = $config['basepath'];
+            $this->homepath = $config['homepath'];
             $this->api = $config['api'];
             $this->apikey = $config['apikey'];
             $this->disqus = $config['disqus'];
@@ -718,7 +722,8 @@
             //Configurations
             $config[\'title\'] = \''.$post_array['Title'].'\'; //Your title website
             $config[\'email\'] = \''.$post_array['Email'].'\'; //Your default email
-            $config[\'basepath\'] = \''.$post_array['Basepath'].'\'; //Your folder website
+            $config[\'basepath\'] = \''.$post_array['Basepath'].'\'; //Your folder backend website
+            $config[\'homepath\'] = \''.$post_array['Homepath'].'\'; //Your folder frontend website
             $config[\'api\'] = \''.$post_array['Api'].'\'; //Your folder rest api
             $config[\'apikey\'] = \''.$post_array['ApiKey'].'\'; //Your api key, you can leave this blank and fill this later
             $config[\'disqus\'] = \''.$post_array['Disqus'].'\'; //Your disqus username, you can leave this blank and fill this later

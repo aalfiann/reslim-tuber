@@ -9,6 +9,7 @@
                                     'Title' => $_POST['title'],
                                     'Email' => $_POST['email'],
                                     'Basepath' => $_POST['basepath'],
+                                    'Homepath' => $_POST['homepath'],
                                     'Api' => $_POST['api'],
                                     'ApiKey' => $_POST['apikey'],
                                     'Disqus' => $_POST['disqus'],
@@ -31,6 +32,10 @@
                                         <div class="form-group">
                                             <label>Email</label>
                                             <input name="email" type="text" placeholder="Please input Your Email" class="form-control border-input" maxlength="50" value="<?php echo Core::getInstance()->email?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Home Path</label>
+                                            <input name="homepath" type="text" placeholder="Please input url home folder of Your website." class="form-control border-input" value="<?php echo Core::getInstance()->homepath?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Base Path</label>
