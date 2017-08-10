@@ -127,7 +127,7 @@
             'RS407' => 'Your api key is not valid.',
             // User data success 5xx
             'RS501' => 'Data records is found.',
-            'RS502' => 'Thanks for your vote.',
+            'RS502' => 'Thank You.',
             // User data error 6xx
             'RS601' => 'There is no any data records found.',
             'RS602' => 'Data records is exceed the limit.',
@@ -158,7 +158,7 @@
             'RS915' => 'Failed to verify pass key maybe it was expired.',
             'RS916' => 'Domain hasbeen registered.',
             'RS917' => 'Users can not make a review more than one.',
-            'RS918' => 'User already voted.'
+            'RS918' => 'You\'re already voted.'
         ];
 
         /**
@@ -194,7 +194,7 @@
             'RS407' => 'API Key Anda tidak valid.',
             // User data success 5xx
             'RS501' => 'Data ditemukan.',
-            'RS502' => 'Terima kasih telah memberikan vote.',
+            'RS502' => 'Terima kasih.',
             // User data error 6xx
             'RS601' => 'Tidak ada satupun data ditemukan.',
             'RS602' => 'Data telah melebihi batas penyimpanan.',
@@ -225,7 +225,7 @@
             'RS915' => 'Gagal verifikasi kata kunci, mungkin sudah kadaluarsa.',
             'RS916' => 'Domain telah terdaftar.',
             'RS917' => 'Pengguna tidak dapat membuat ulasan lebih dari satu.',
-            'RS918' => 'Pengguna telah memberikan vote.'
+            'RS918' => 'Anda telah memberikan vote.'
         ];
 
         /**
