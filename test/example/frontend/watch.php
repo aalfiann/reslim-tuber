@@ -288,7 +288,6 @@
                             $urlrandom = Core::getInstance()->api.'/video/post/data/public/search/random/1/10/?apikey='.Core::getInstance()->apikey.'&query=';
                             $datarandom = json_decode(Core::execGetRequest($urlrandom));
                             if (!empty($datarandom) && ($datarandom->{'status'} == "success")){
-                                $i=1;
                                 foreach ($datarandom->results as $name => $valuerandom) {
                                     echo '<div class="h-video row">
                                         <div class="col-lg-6 col-sm-6">
@@ -308,10 +307,6 @@
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>';
-					                if ($i%2==0){
-                    					echo '<div class="clearfix visible-md-block"></div>';
-					                }
-                    				$i++;
                                 }
                             }
 
