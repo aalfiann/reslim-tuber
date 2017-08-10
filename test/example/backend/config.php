@@ -5,6 +5,6 @@
             $config['basepath'] = 'http://localhost:1337/reSlim-tuber/test/example/backend'; //Your folder backend website
             $config['homepath'] = 'http://localhost:1337/reSlim-tuber/test/example/frontend'; //Your folder frontend website
             $config['api'] = 'http://localhost:1337/reSlim-tuber/src/api'; //Your folder rest api
-            $config['apikey'] = '1vvyhfz3RtubHk4qWstEzMjhZOfkOHMjSK1uOQeZR'; //Your api key, you can leave this blank and fill this later
+            $config['apikey'] = '1vvyhfz3RtubHk4qWstEzMjhZOfkRDhlJTWrVxEil'; //Your api key, you can leave this blank and fill this later
             $config['disqus'] = 'ommov'; //Your disqus username, you can leave this blank and fill this later
             $config['sharethis'] = ''; //Your sharethis key, you can leave this blank and fill this later
