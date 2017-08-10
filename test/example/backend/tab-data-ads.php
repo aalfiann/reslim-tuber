@@ -190,6 +190,7 @@ $datacompany = json_decode(Core::execGetRequest($listcompany));
                                         <th>Start Date</th>
                                         <th>End Date</th>
                                         <th>Amount</th>
+                                        <th>Viewer</th>
                                         <th>Status</th>
                                         <th>Created</th>
                                         <th>Updated at</th>
@@ -210,6 +211,7 @@ $datacompany = json_decode(Core::execGetRequest($listcompany));
                     echo '<td>' . $value->{'StartDate'} .'</td>';
                     echo '<td>' . $value->{'EndDate'} .'</td>';
                     echo '<td>' . $value->{'Amount'} .'</td>';
+                    echo '<td>' . $value->{'Viewer'} .'</td>';
                     echo '<td>' . $value->{'Status'} .'</td>';
                 	echo '<td>' . $value->{'Created_at'} .'</td>';
             	    echo '<td>' . $value->{'Updated_at'} .'</td>';
