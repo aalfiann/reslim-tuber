@@ -688,6 +688,18 @@
         }
 
         /**
+		 * Redirect Page Location Header for frontend
+         *
+         * @param $page = The page to redirect
+         * @param $timeout = The page will be redirected when time is out. Default is zero 
+         * @return redirect page
+		 */
+        public static function goToPageFrontend($page,$timeout=0)
+        {
+           return header("Refresh:".$timeout.";url= ".self::getInstance()->homepath."/".$page."");
+        }
+
+        /**
 		 * Redirect Page Location by meta header
          *
          * @param $url = The url to redirect
