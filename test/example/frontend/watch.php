@@ -26,14 +26,14 @@
             $description = '';
             $keyword = '';
             $author = '';
-            //Core::goToPageFrontend('index.php');
+            Core::goToPageFrontend('index.php');
         }
     } else {
         $title = '';
         $description = '';
         $keyword = '';
         $author = '';
-        //Core::goToPageFrontend('index.php');
+        Core::goToPageFrontend('index.php');
     }
 ?>
 
@@ -198,9 +198,10 @@
                         <div class="row">';
                             if (!empty($data) && ($data->{'status'} == "success")){
                                 //Data random movies by it's released year
-                                $urlrandomyear = Core::getInstance()->api.'/video/post/data/public/search/random/'.$data->result[0]->{'Released'}.'/1/10/?apikey='.Core::getInstance()->apikey.'&query=';
+                                $urlrandomyear = Core::getInstance()->api.'/video/post/data/public/search/random/'.$data->result[0]->{'Released'}.'/1/4/?apikey='.Core::getInstance()->apikey.'&query=';
                                 $datarandomyear = json_decode(Core::execGetRequest($urlrandomyear));
                                 if (!empty($datarandomyear) && ($datarandomyear->{'status'} == "success")){
+                                    $i=1;
                                     foreach ($datarandomyear->results as $name => $valuerandomyear) {
                                         echo '<div class="col-lg-3 col-xs-12 col-sm-6 videoitem">
                                                 <div class="b-video">
@@ -210,13 +211,20 @@
                                                     <div class="time">'.$valuerandomyear->{'Duration'}.'</div>
                                                 </div>
                                                 <div class="v-desc">
-                                                    <a href="watch.php?movie='.$valuerandomyear->{'PostID'}.'">'.$valuerandomyear->{'Title'}.'</a>
+                                                    <a href="watch.php?movie='.$valuerandomyear->{'PostID'}.'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
                                                 </div>
                                                 <div class="v-views">
                                                     '.number_format($valuerandomyear->{'Viewer'}).' views.
                                                 </div>
                                             </div>
                                         </div>';
+                                        if ($i%4==0){
+						                    echo '<div class="clearfix visible-lg-block"></div>';
+                    					}
+					                    if ($i%2==0){
+                    						echo '<div class="clearfix visible-md-block"></div>';
+					                    }
+                    					$i++;
                                     }
                                 }
                             }
@@ -280,6 +288,7 @@
                             $urlrandom = Core::getInstance()->api.'/video/post/data/public/search/random/1/10/?apikey='.Core::getInstance()->apikey.'&query=';
                             $datarandom = json_decode(Core::execGetRequest($urlrandom));
                             if (!empty($datarandom) && ($datarandom->{'status'} == "success")){
+                                $i=1;
                                 foreach ($datarandom->results as $name => $valuerandom) {
                                     echo '<div class="h-video row">
                                         <div class="col-lg-6 col-sm-6">
@@ -291,7 +300,7 @@
                                         </div>
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-desc">
-                                                <a href="watch.php?movie='.$valuerandom->{'PostID'}.'">'.$valuerandom->{'Title'}.'</a>
+                                                <a href="watch.php?movie='.$valuerandom->{'PostID'}.'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
                                             </div>
                                             <div class="v-views">
                                                 '.number_format($valuerandom->{'Viewer'}).' views
@@ -299,6 +308,10 @@
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>';
+					                if ($i%2==0){
+                    					echo '<div class="clearfix visible-md-block"></div>';
+					                }
+                    				$i++;
                                 }
                             }
 
@@ -319,44 +332,56 @@
 
 <?php include 'global-footer.php';?>
 <?php include 'global-js.php';?>
-<script  src="js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js"></script>
+
 <script type="text/javascript">
     $(function(){    
         $(".iliked").on("click",function(){
             $.ajax({
-                    type: "GET",
-					url: "<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
-					dataType: 'json',
-					success: function( data ) {
-						if(data.status=='success'){
-                            document.getElementById("totalliked").innerHTML='<i class="fa fa-thumbs-up iliked"></i> '+data.total;
-                            document.getElementById("voteresult").innerHTML=data.message;
-						} else {
-							document.getElementById("voteresult").innerHTML=data.message;
-						}
-					},
-					error: function( data ) {
-						console.log( "ERROR:  " + data );
+                type: "GET",
+				url: "<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
+				dataType: 'json',
+				success: function( data ) {
+                    document.getElementById("voteresult").innerHTML='';
+					if(data.status=='success'){
+                        document.getElementById("totalliked").innerHTML='<i class="fa fa-thumbs-up iliked"></i> '+data.total;
+                        document.getElementById("voteresult").innerHTML=data.message;
+					} else {
+						document.getElementById("voteresult").innerHTML=data.message;
 					}
-				});
+				},
+				error: function( xhr, textStatus, error ) {
+					console.log("XHR: " + xhr.statusText);
+                    console.log("STATUS: "+textStatus);
+                    console.log("ERROR: "+error);
+                    console.log("TRACE: "+xhr.responseText);
+				}
+			}).done(function(res){ 
+                
+			});
         }),
         $(".idisliked").on("click",function(){
             $.ajax({
-                    type: "GET",
-					url: "<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
-					dataType: 'json',
-					success: function( data ) {
-						if(data.status=='success'){
-                            document.getElementById("totaldisliked").innerHTML='<i class="fa fa-thumbs-down iliked"></i> '+data.total;
-                            document.getElementById("voteresult").innerHTML=data.message;
-						} else {
-							document.getElementById("voteresult").innerHTML=data.message;
-						}
-					},
-					error: function( data ) {
-						console.log( "ERROR:  " + data );
+                type: "GET",
+				url: "<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
+				dataType: 'json',
+				success: function( data ) {
+                    document.getElementById("voteresult").innerHTML='';
+					if(data.status=='success'){
+                        document.getElementById("totaldisliked").innerHTML='<i class="fa fa-thumbs-down idisliked"></i> '+data.total;
+                        document.getElementById("voteresult").innerHTML=data.message;
+					} else {
+						document.getElementById("voteresult").innerHTML=data.message;
 					}
-				});
+				},
+				error: function( xhr, textStatus, error ) {
+                    console.log("XHR: " + xhr.statusText);
+                    console.log("STATUS: "+textStatus);
+                    console.log("ERROR: "+error);
+                    console.log("TRACE: "+xhr.responseText);
+				}
+			}).done(function(res){ 
+                
+			});
         });
     });
 </script>
