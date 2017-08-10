@@ -1,4 +1,5 @@
 <?php 
+    spl_autoload_register(function ($classname) {require ( $classname . ".php");});
     /**
      * A class for core example reSlim project
      *
@@ -745,6 +746,18 @@
 				fclose($handle); 
             echo self::getMessage('success','Settings hasbeen changed!', 'This page will refresh at 2 seconds...');
             echo self::reloadPage();
+        }
+
+        /**
+         * Auto cut off long text
+         *
+         * @param $string = Data text
+         * @param $limitLength = Limit value to be auto cut. Default value is 50 chars
+         * @param $replaceValue = Value to replacing the cutted text. Default value is ...
+         * @return string cutted text
+         */
+        public static function cutLongText($string,$limitLength=50,$replaceValue='...'){
+            return (strlen($string) > $limitLength) ? substr($string, 0, $limitLength) . $replaceValue : $string;
         }
 
 }
