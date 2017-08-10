@@ -86,6 +86,29 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
 
+    // GET api to show all data post random pagination public / guest
+    $app->get('/video/post/data/public/search/random/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->searchPostRandomAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data post random by country pagination public / guest
+    $app->get('/video/post/data/public/search/random/{country}/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $video->country = $request->getAttribute('country');
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->searchPostRandomByCountryAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
     // GET api to show all data status release
     $app->get('/video/data/status/{token}', function (Request $request, Response $response) {
         $video = new classes\tube\Video($this->db);
