@@ -1,4 +1,7 @@
-<?php include '../backend/Core.php';?>
+<?php include '../backend/Core.php';
+    //Validation url param
+    $search = filter_var((empty($_GET['search'])?'':$_GET['search']),FILTER_SANITIZE_STRING);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +32,12 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li><a href="#" class="color-active">Latest Movies</a></li>
+                                    <?php if (empty($search)){
+                                        echo '<li class="color-active">Latest Movies</li>';
+                                    } else {
+                                        echo '<li class="color-active">Filter search results: '.$search.'</li>';
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                             
