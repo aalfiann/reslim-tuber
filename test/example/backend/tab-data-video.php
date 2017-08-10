@@ -187,7 +187,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
     $data = json_decode(Core::execGetRequest($url));
 
     // Data Status
-    $urlstatus = Core::getInstance()->api.'/ads/status/active/'.$datalogin['token'];
+    $urlstatus = Core::getInstance()->api.'/ads/status/release/'.$datalogin['token'];
     $datastatus = json_decode(Core::execGetRequest($urlstatus));
 
     if (!empty($data))
