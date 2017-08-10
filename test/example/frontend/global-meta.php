@@ -1,4 +1,6 @@
-<!-- Bootstrap core CSS -->
+    <link rel="canonical" href="<?php echo (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>" />
+
+    <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
