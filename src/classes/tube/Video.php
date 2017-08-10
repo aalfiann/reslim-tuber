@@ -820,25 +820,25 @@ use PDO;
 		}
 
 		/** 
-		 * Search all data post random by country paginated public
+		 * Search all data post random by released year paginated public
 		 * @return result process in json encoded data
 		 */
-		public function searchPostRandomByCountryAsPaginationPublic() {
+		public function searchPostRandomByYearAsPaginationPublic() {
 			$search = "%$this->search%";
 			$sqlcountrow = "SELECT count(a.PostID) as TotalRow
 				from data_post a
 				inner join core_status b on a.StatusID=b.StatusID
-				where a.StatusID='51' and a.Country=:country and a.PostID like :search
-				or a.StatusID='51' and a.Country=:country and a.Title like :search
-				or a.StatusID='51' and a.Country=:country and a.Stars like :search
-				or a.StatusID='51' and a.Country=:country and a.Cast like :search
-				or a.StatusID='51' and a.Country=:country and a.Director like :search
-				or a.StatusID='51' and a.Country=:country and a.Tags like :search
-				or a.StatusID='51' and a.Country=:country and a.Released like :search
+				where a.StatusID='51' and a.Released=:released and a.PostID like :search
+				or a.StatusID='51' and a.Released=:released and a.Title like :search
+				or a.StatusID='51' and a.Released=:released and a.Stars like :search
+				or a.StatusID='51' and a.Released=:released and a.Cast like :search
+				or a.StatusID='51' and a.Released=:released and a.Director like :search
+				or a.StatusID='51' and a.Released=:released and a.Tags like :search
+				or a.StatusID='51' and a.Released=:released and a.Country like :search
 				order by a.Created_at desc;";
 				$stmt = $this->db->prepare($sqlcountrow);
 				$stmt->bindValue(':search', $search, PDO::PARAM_STR);
-				$stmt->bindValue(':country', $this->country, PDO::PARAM_STR);
+				$stmt->bindValue(':released', $this->released, PDO::PARAM_STR);
 
 				if ($stmt->execute()) {	
     	        	if ($stmt->rowCount() > 0){
@@ -857,17 +857,17 @@ use PDO;
 								a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
 							from data_post a
 							inner join core_status b on a.StatusID=b.StatusID
-							where a.StatusID='51' and a.Country=:country and a.PostID like :search
-							or a.StatusID='51' and a.Country=:country and a.Title like :search
-							or a.StatusID='51' and a.Country=:country and a.Stars like :search
-							or a.StatusID='51' and a.Country=:country and a.Cast like :search
-							or a.StatusID='51' and a.Country=:country and a.Director like :search
-							or a.StatusID='51' and a.Country=:country and a.Tags like :search
-							or a.StatusID='51' and a.Country=:country and a.Released like :search
+							where a.StatusID='51' and a.Released=:released and a.PostID like :search
+							or a.StatusID='51' and a.Released=:released and a.Title like :search
+							or a.StatusID='51' and a.Released=:released and a.Stars like :search
+							or a.StatusID='51' and a.Released=:released and a.Cast like :search
+							or a.StatusID='51' and a.Released=:released and a.Director like :search
+							or a.StatusID='51' and a.Released=:released and a.Tags like :search
+							or a.StatusID='51' and a.Released=:released and a.Country like :search
 							order by rand() LIMIT :limpage , :offpage;";
 						$stmt2 = $this->db->prepare($sql);
 						$stmt2->bindValue(':search', $search, PDO::PARAM_STR);
-						$stmt2->bindValue(':country', $this->country, PDO::PARAM_STR);
+						$stmt2->bindValue(':released', $this->released, PDO::PARAM_STR);
 						$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
 						$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
 						
@@ -1253,11 +1253,35 @@ use PDO;
 						$stmt2->bindParam(':postid', $newpostid, PDO::PARAM_STR);
 
 	    				if ($stmt->execute() && $stmt2->execute()) {
-		    				$data = [
-			    				'status' => 'success',
-				    			'code' => 'RS502',
-					    		'message' => CustomHandlers::getreSlimMessage('RS502')
-						    ];	
+							$sqlgetvalue = "SELECT a.Liked FROM data_post a WHERE a.PostID = :postid;";
+				
+							$stmt3 = $this->db->prepare($sqlgetvalue);		
+							$stmt3->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+
+							if ($stmt3->execute()) {	
+    	    				    if ($stmt3->rowCount() > 0){
+	        	   			   		$single = $stmt3->fetch(PDO::FETCH_ASSOC);
+									$total = $single['Liked'];
+								} else {
+									$total = '';
+								}
+							} else {
+								$total = '';
+							}
+							if (!empty($total)){
+								$data = [
+			    					'status' => 'success',
+				    				'code' => 'RS502',
+									'total' => $total,
+						    		'message' => CustomHandlers::getreSlimMessage('RS502')
+						    	];
+							} else{
+								$data = [
+			    					'status' => 'success',
+				    				'code' => 'RS502',
+						    		'message' => CustomHandlers::getreSlimMessage('RS502')
+						    	];
+							}		    					
     					} else {
 	    					$data = [
 		    					'status' => 'error',
@@ -1310,11 +1334,35 @@ use PDO;
 						$stmt2->bindParam(':postid', $newpostid, PDO::PARAM_STR);
 
 	    				if ($stmt->execute() && $stmt2->execute()) {
-		    				$data = [
-			    				'status' => 'success',
-				    			'code' => 'RS502',
-					    		'message' => CustomHandlers::getreSlimMessage('RS502')
-						    ];	
+							$sqlgetvalue = "SELECT a.Disliked FROM data_post a WHERE a.PostID = :postid;";
+				
+							$stmt3 = $this->db->prepare($sqlgetvalue);		
+							$stmt3->bindParam(':postid', $newpostid, PDO::PARAM_STR);
+
+							if ($stmt3->execute()) {	
+    	    				    if ($stmt3->rowCount() > 0){
+	        	   			   		$single = $stmt3->fetch(PDO::FETCH_ASSOC);
+									$total = $single['Disliked'];
+								} else {
+									$total = '';
+								}
+							} else {
+								$total = '';
+							}
+							if (!empty($total)){
+								$data = [
+			    					'status' => 'success',
+				    				'code' => 'RS502',
+									'total' => $total,
+						    		'message' => CustomHandlers::getreSlimMessage('RS502')
+						    	];
+							} else{
+								$data = [
+			    					'status' => 'success',
+				    				'code' => 'RS502',
+						    		'message' => CustomHandlers::getreSlimMessage('RS502')
+						    	];
+							}	
     					} else {
 	    					$data = [
 		    					'status' => 'error',
