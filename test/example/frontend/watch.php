@@ -61,19 +61,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
-                <h1><a href="<?php echo (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"><?php echo $title;?></a></h1>
+                <!--<h1><a href="<?php echo (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"><?php echo $title;?></a></h1>-->
                 <?php
                     if (!empty($data)){
                         if ($data->{'status'} == "success"){
-                            $totalvideo=1;
+                            $totalvideo=0;
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 $totalvideo++;
                             }
-
+                            if ($totalvideo>1) echo '<h1><a href="'.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
                             $datavideo = '';
                             $n=1;
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
-                                if ($totalvideo>2){
+                                if ($totalvideo>1){
                                     $datavideo .= '<h4 class="color-active"># '.$n++.'</h4>
                                         <div class="sv-video">
                                             <div class="video-responsive">
@@ -92,6 +92,7 @@
                             echo $datavideo;
 
                             //author
+                            if ($totalvideo==1) echo '<h1><a href="'.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
                             echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
@@ -103,13 +104,16 @@
                                         <div class="sv-views-stats text-right">
                                             <span id="totalliked" class="green"><i class="fa fa-thumbs-up iliked"></i> '.number_format($data->result[0]->{'Liked'}).'</span>
                                             <span id="totaldisliked" class="percent"><i class="fa fa-thumbs-down idisliked"></i> '.number_format($data->result[0]->{'Disliked'}).'</span>
+                                            
+                                        </div>
+                                        <div class="sv-views-stats text-right">
                                             <span id="voteresult" class="green"></span>
                                         </div>
                                     </div>
                                     <div class="sv-name">
                                         <div class="adblock3">
                                             <div class="img">
-                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'Google AdSense 468 x 60').'
+                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'Your Ads here 468 x 60').'
                                             </div>
                                         </div>
                                     </div>
@@ -169,6 +173,7 @@
 
                             //Info Video
                             echo '<div class="info">
+                                    
                                     <h4>About :</h4>
                                     <p>'.$data->result[0]->{'Description'}.'</p>
 
@@ -180,17 +185,18 @@
                                     <p class="sv-tags"><span><a href="index.php?search='.$data->result[0]->{'Released'}.'">'.$data->result[0]->{'Released'}.'</a><span></p>
 
                                     '.$datagenre.'
-
+                                    <br>
+                                    <div class="sharethis-inline-share-buttons"></div>
                                     <div class="adblock2">
                                         <div class="img">
-                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:'Google AdSense<br>728 x 90').'
+                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:'Your Ads here<br>728 x 90').'
                                         </div>
                                     </div>
 
                     <!-- similar videos -->
                     <div class="caption">
                         <div class="left">
-                            <a href="#">Recomended Movies</a>
+                            <a href="#">Watch this too</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -243,8 +249,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
                             var disqus_config = function () {
-                                this.page.url = '.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].';  // Replace PAGE_URL with your page\'s canonical URL variable
-                                this.page.identifier = '.$postid.'; // Replace PAGE_IDENTIFIER with your page\'s unique identifier variable
+                                this.page.url = \''.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'\';  // Replace PAGE_URL with your page\'s canonical URL variable
+                                this.page.identifier = \''.$postid.'\'; // Replace PAGE_IDENTIFIER with your page\'s unique identifier variable
                             };
 
                             (function() { // DON\'T EDIT BELOW THIS LINE
@@ -270,14 +276,14 @@
 
                 <div class="adblock">
                     <div class="img">
-                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:'Google AdSense<br>336 x 280');?>
+                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:'Your Ads here<br>336 x 280');?>
                     </div>
                 </div>
 
                 <!-- Recomended Videos -->
                 <div class="caption">
                     <div class="left">
-                        <a href="#">Random Movies</a>
+                        <a href="#">Recomended Movies</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -327,7 +333,7 @@
 
 <?php include 'global-footer.php';?>
 <?php include 'global-js.php';?>
-
+<!-- Rating -->
 <script type="text/javascript">
     $(function(){    
         $(".iliked").on("click",function(){
