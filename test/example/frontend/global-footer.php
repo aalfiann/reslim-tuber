@@ -24,9 +24,9 @@
                 </div>
                 <div class="col-lg-offset-1 col-lg-3 col-sm-3 col-xs-12 hidden-xs">
                     <div class="f-icon pull-left">
-                        <a href="#"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="<?php echo (empty(Core::getInstance()->facebook)?'#':Core::getInstance()->facebook);?>"><i class="fa fa-facebook-square"></i></a>
+                        <a href="<?php echo (empty(Core::getInstance()->twitter)?'#':Core::getInstance()->twitter);?>"><i class="fa fa-twitter"></i></a>
+                        <a href="<?php echo (empty(Core::getInstance()->gplus)?'#':Core::getInstance()->gplus);?>"><i class="fa fa-google-plus"></i></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
