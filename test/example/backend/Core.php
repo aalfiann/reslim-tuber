@@ -474,6 +474,30 @@
 	    }
 
         /**
+		 * Process Send Email in Frontend
+         *
+         * @param $url = The url api to post the request
+         * @param $post_array = Data array to post
+		 * @return result json encoded data
+		 */
+	    public static function sendMailFrontend($url,$post_array){
+            try{
+                $data = json_decode(self::execPostRequest($url,$post_array));
+                echo '<div class="col-lg-12 forgottext">
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <strong>Your message is successfully sent</strong>
+                        </div>                                
+                    </div>';
+            } catch (Exception $e) {
+                echo '<div class="col-lg-12 forgottext">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <strong>Send message failed! Please try again later</strong>
+                        </div>                                
+                    </div>';
+            }
+	    }
+
+        /**
 		 * Process Create New API
          *
          * @param $url = The url api to post the request
