@@ -10,7 +10,7 @@
 
     if (empty($search)){
         $title = Core::getInstance()->title.' | Nonton atau streaming film gratis subtitle indonesia';
-        $description = '';
+        $description = Core::getInstance()->title.' | Nonton atau streaming film gratis subtitle indonesia';
         $keyword = 'Nonton, Streaming, film, movie, gratis, subtitle, indonesia';
         $author = Core::getInstance()->title.' Team';
     } else {
