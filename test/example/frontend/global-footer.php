@@ -4,24 +4,21 @@
         <div class="row">
             <div class="container padding-def">
                 <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>
+                    <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="<?php echo Core::getInstance()->title;?>" class="logo" /></a>
                 </div>
                 <div class="col-lg-7  col-sm-7 col-xs-12">
-                    <div class="f-links">
+                    <div class="f-copy">
                         <ul class="list-inline">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Press</a></li>
-                            <li><a href="#">Copyright</a></li>
-                            <li><a href="#">Advertise</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="index.php"><?php echo Core::getInstance()->title.'</a> | Nonton atau streaming online film gratis subtitle indonesia'?></li>
                         </ul>
                     </div>
                     <div class="delimiter"></div>
                     <div class="f-copy">
                         <ul class="list-inline">
+                            <li><a href="contact.php">Contact</a></li>
                             <li><a href="#">Terms</a></li>
                             <li><a href="#">Privacy</a></li>
-                            <li>Copyrights @ <?php echo Date('Y');?> <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo Core::getInstance()->title;?></a></li>
+                            <li>Copyrights @ <?php echo Date('Y');?>, <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo Core::getInstance()->title;?></a></li>
                         </ul>
                     </div>
                 </div>
