@@ -13,7 +13,10 @@
                                     'Api' => $_POST['api'],
                                     'ApiKey' => $_POST['apikey'],
                                     'Disqus' => $_POST['disqus'],
-                                    'Sharethis' => $_POST['sharethis']
+                                    'Sharethis' => $_POST['sharethis'],
+                                    'Facebook' => $_POST['facebook'],
+                                    'Twitter' => $_POST['twitter'],
+                                    'Gplus' => $_POST['gplus']
                                 );
                                 Core::saveSettings($post_array);
                             } 
@@ -56,6 +59,18 @@
                                         <div class="form-group">
                                             <label>Sharethis Key</label>
                                             <input name="sharethis" type="text" placeholder="Please input Your Sharethis Key here..." class="form-control border-input" value="<?php echo Core::getInstance()->sharethis?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Facebook</label>
+                                            <input name="facebook" type="text" placeholder="Please input Your Facebook page here..." class="form-control border-input" value="<?php echo Core::getInstance()->facebook?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Twitter</label>
+                                            <input name="twitter" type="text" placeholder="Please input Your Twitter page here..." class="form-control border-input" value="<?php echo Core::getInstance()->twitter?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Google Plus</label>
+                                            <input name="gplus" type="text" placeholder="Please input Your Google Plus page here..." class="form-control border-input" value="<?php echo Core::getInstance()->gplus?>">
                                         </div>
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any API Keys? You can create at least one API Key at <a href="modul-data-api.php?m=7&page=1&itemsperpage=10&search=">here</a>.</p>
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any Disqus? You can create at <a href="http://disqus.com">here</a>.</p>

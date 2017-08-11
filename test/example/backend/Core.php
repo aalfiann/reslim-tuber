@@ -31,6 +31,15 @@
         // Set disqus
         var $disqus;
 
+        // Set facebook
+        var $facebook;
+
+        // Set twitter
+        var $twitter;
+
+        // Set google plus
+        var $gplus;
+
         // Set sharethis keys
         var $sharethis;
 
@@ -48,6 +57,9 @@
             $this->apikey = $config['apikey'];
             $this->disqus = $config['disqus'];
             $this->sharethis = $config['sharethis'];
+            $this->facebook = $config['facebook'];
+            $this->twitter = $config['twitter'];
+            $this->gplus = $config['gplus'];
 		}
 
         public static function getInstance()
@@ -764,7 +776,10 @@
             $config[\'api\'] = \''.$post_array['Api'].'\'; //Your folder rest api
             $config[\'apikey\'] = \''.$post_array['ApiKey'].'\'; //Your api key, you can leave this blank and fill this later
             $config[\'disqus\'] = \''.$post_array['Disqus'].'\'; //Your disqus username, you can leave this blank and fill this later
-            $config[\'sharethis\'] = \''.$post_array['Sharethis'].'\'; //Your sharethis key, you can leave this blank and fill this later';
+            $config[\'sharethis\'] = \''.$post_array['Sharethis'].'\'; //Your sharethis key, you can leave this blank and fill this later
+            $config[\'facebook\'] = \''.$post_array['Facebook'].'\'; //Your facebook page, you can leave this blank and fill this later
+            $config[\'twitter\'] = \''.$post_array['Twitter'].'\'; //Your twitter page, you can leave this blank and fill this later
+            $config[\'gplus\'] = \''.$post_array['Gplus'].'\'; //Your google plus page, you can leave this blank and fill this later';
             $handle = fopen('config.php','w+'); 
 				fwrite($handle,$newcontent); 
 				fclose($handle); 
