@@ -16,8 +16,8 @@
                     <div class="f-copy">
                         <ul class="list-inline">
                             <li><a href="contact.php">Contact</a></li>
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">Privacy</a></li>
+                            <li><a href="terms.php">Terms</a></li>
+                            <li><a href="privacy.php">Privacy</a></li>
                             <li>Copyrights @ <?php echo Date('Y');?>, <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo Core::getInstance()->title;?></a></li>
                         </ul>
                     </div>
