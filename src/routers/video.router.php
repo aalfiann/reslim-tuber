@@ -86,6 +86,16 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
 
+    // GET api to show all data post best rating pagination public / guest
+    $app->get('/video/post/data/public/show/rating/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->showPostBestRatingAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
     // GET api to show all data post random pagination public / guest
     $app->get('/video/post/data/public/search/random/{page}/{itemsperpage}/', function (Request $request, Response $response) {
         $video = new classes\tube\Video($this->db);
@@ -142,5 +152,32 @@ use \Psr\Http\Message\ResponseInterface as Response;
         $video->postid = $request->getAttribute('postid');  
         $body = $response->getBody();
         $body->write($video->addDislike());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data tags public / guest
+    $app->get('/video/post/data/public/tags/all/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $body = $response->getBody();
+        $body->write($video->showAllTags());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data countries public / guest
+    $app->get('/video/post/data/public/countries/all/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $body = $response->getBody();
+        $body->write($video->showAllCountries());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data released year public / guest
+    $app->get('/video/post/data/public/release/all/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $body = $response->getBody();
+        $body->write($video->showAllReleasedYear());
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
