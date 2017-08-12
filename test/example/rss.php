@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php';
+<?php include 'backend/Core.php';
     header('Content-type: application/rss+xml');
     
     //Validasi param

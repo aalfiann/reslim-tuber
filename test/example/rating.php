@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php';
+<?php include 'backend/Core.php';
     $page = filter_var((empty($_GET['page'])?'1':$_GET['page']),FILTER_SANITIZE_STRING);
     $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'20':$_GET['itemsperpage']),FILTER_SANITIZE_STRING);
 

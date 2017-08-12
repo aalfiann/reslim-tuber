@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php';
+<?php include 'backend/Core.php';
     header('Content-type: application/xml');
     
     //Validasi param

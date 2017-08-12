@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php';?>
+<?php include 'backend/Core.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

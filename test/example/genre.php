@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php';
+<?php include 'backend/Core.php';
     //Data tags
     $urlgenre = Core::getInstance()->api.'/video/post/data/public/tags/all/?apikey='.Core::getInstance()->apikey;
     $datagenre = json_decode(Core::execGetRequest($urlgenre));

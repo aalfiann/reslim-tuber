@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php';
+<?php include 'backend/Core.php';
     //Validation url param
     $search = filter_var((empty($_GET['search'])?'':$_GET['search']),FILTER_SANITIZE_STRING);
     $page = filter_var((empty($_GET['page'])?'1':$_GET['page']),FILTER_SANITIZE_STRING);

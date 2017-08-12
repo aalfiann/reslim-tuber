@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php'; 
+<?php include 'backend/Core.php'; 
     //Validation url param
     $postid = filter_var((empty($_GET['movie'])?'':$_GET['movie']),FILTER_SANITIZE_STRING);
     //Data video
@@ -47,6 +47,42 @@
     <meta name="description" content="<?php echo $description;?>">
     <meta name="keyword" content="<?php echo $keyword;?>">
     <meta name="author" content="<?php echo $author;?>">
+    <?php
+        if (!empty($data)){
+            if ($data->{'status'} == "success"){
+                echo '<!-- Open Graphs -->
+                    <meta itemprop="name" content="'.$data->result[0]->{'Title'}.'">
+                    <meta itemprop="description" content="'.$data->result[0]->{'Description'}.'">
+                    <meta itemprop="image" content="'.$data->result[0]->{'Image'}.'">
+                	<meta name="twitter:card" content="summary_large_image" />
+                	<meta name="twitter:title" content="'.$data->result[0]->{'Title'}.'" />
+                	<meta name="twitter:description" content="'.$data->result[0]->{'Description'}.'" />
+                	<meta name="twitter:image" content="'.$data->result[0]->{'Image'}.'" />
+                    <meta property="og:title" content="'.$data->result[0]->{'Title'}.'" />
+                    <meta property="og:description" content="'.$data->result[0]->{'Description'}.'" />
+                    <meta property="og:url" content="'.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" />
+                    <meta property="og:image" content="'.$data->result[0]->{'Image'}.'" />
+                	<meta property="og:site_name" content="'.Core::getInstance()->title.'" />
+                    <meta property="og:type" content="video.movie" />
+                	<meta property="og:video:release_date" content="'.date_format(date_create($data->result[0]->{'Created_at'}), 'Y-m-d').'" />';
+                echo "\n";
+                echo '<meta property="og:video:duration" content="'.Core::convertTimeToSeconds($data->result[0]->{'Duration'}).'" />';
+                echo "\n";
+                foreach ($data->result[0]->{'Director'} as $name => $valuedirector) {
+                    echo '<meta property="og:video:director" content="'.$valuedirector.'" />';
+                    echo "\n";
+                }
+                foreach ($data->result[0]->{'Stars'} as $name => $valuestars) {
+                    echo '<meta property="og:video:actor" content="'.$valuestars.'" />';
+                    echo "\n";
+                }
+                foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
+                    echo '<meta property="og:video:tag " content="'.$valuegenre.'" />';
+                    echo "\n";
+                }
+            }
+        }
+    ?>
     <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title;?> | Watch <?php echo $title;?></title>
