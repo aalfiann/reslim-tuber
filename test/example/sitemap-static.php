@@ -1,4 +1,4 @@
-<?php include '../backend/Core.php';
+<?php include 'backend/Core.php';
     header('Content-type: application/xml');
 
     echo '<?xml version="1.0" encoding="UTF-8"?>
@@ -10,42 +10,56 @@
 ?>        
         <url>
             <loc>
-                <?php Core::getInstance()->homepath?>/index.php
+                <?php echo Core::getInstance()->homepath?>/index.php
             </loc>
             <changefreq>daily</changefreq>
         </url>
 
         <url>
             <loc>
-                <?php Core::getInstance()->homepath?>/genre.php
+                <?php echo Core::getInstance()->homepath?>/genre.php
             </loc>
             <changefreq>monthly</changefreq>
         </url>
 
         <url>
             <loc>
-                <?php Core::getInstance()->homepath?>/rating.php
+                <?php echo Core::getInstance()->homepath?>/rating.php
             </loc>
             <changefreq>weekly</changefreq>
         </url>
-
+        
         <url>
             <loc>
-                <?php Core::getInstance()->homepath?>/contact.php
+                <?php echo Core::getInstance()->homepath?>/contact.php
             </loc>
             <changefreq>monthly</changefreq>
         </url>
 
         <url>
             <loc>
-                <?php Core::getInstance()->homepath?>/terms.php
+                <?php echo Core::getInstance()->homepath?>/about.php
             </loc>
             <changefreq>monthly</changefreq>
         </url>
 
         <url>
             <loc>
-                <?php Core::getInstance()->homepath?>/privacy.php
+                <?php echo Core::getInstance()->homepath?>/dmca.php
+            </loc>
+            <changefreq>monthly</changefreq>
+        </url>
+
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/terms.php
+            </loc>
+            <changefreq>monthly</changefreq>
+        </url>
+
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/privacy.php
             </loc>
             <changefreq>monthly</changefreq>
         </url>
