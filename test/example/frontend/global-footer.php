@@ -9,7 +9,7 @@
                 <div class="col-lg-7  col-sm-7 col-xs-12">
                     <div class="f-copy">
                         <ul class="list-inline">
-                            <li><a href="index.php"><?php echo Core::getInstance()->title.'</a> | Nonton atau streaming online film gratis subtitle indonesia'?></li>
+                            <li><a href="index.php"><?php echo Core::getInstance()->title.'</a> | Nonton atau streaming online film gratis subtitle indonesia dan English'?></li>
                         </ul>
                     </div>
                     <div class="delimiter"></div>
@@ -18,6 +18,8 @@
                             <li><a href="contact.php">Contact</a></li>
                             <li><a href="terms.php">Terms</a></li>
                             <li><a href="privacy.php">Privacy</a></li>
+                            <li><a href="sitemap.php">Sitemap</a></li>
+                            <li><a href="rss.php">Rss</a></li>
                             <li>Copyrights @ <?php echo Date('Y');?>, <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo Core::getInstance()->title;?></a></li>
                         </ul>
                     </div>
