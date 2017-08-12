@@ -799,4 +799,17 @@
             return (strlen($string) > $limitLength) ? substr($string, 0, $limitLength) . $replaceValue : $string;
         }
 
+        /**
+         * Time to seconds converter
+         *
+         * @param $str_time = String value must time only. Example: 00:23:45
+         * @return integer seconds
+         */
+        public static function convertTimeToSeconds($str_time){
+            $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
+            sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+            $time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
+            return $time_seconds;
+        }
+
 }
