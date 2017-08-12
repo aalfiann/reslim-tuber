@@ -70,6 +70,11 @@
                                             This website contains links to other sites. Please be aware that we are not responsible for the content or privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of any other site that collects personally identifiable information.
                                         </p>
 
+                                        <h5 class="desc">4. Cookies</h5>
+                                        <p class="desc">
+                                            We are not use any cookies so there is no any personal information stored but our third party may do use cookies. 
+                                        </p>
+
                                         <h4 class="color-active">Information Collection, Use, and Sharing</h4>
                                         <p class="desc">We are the sole owners of the information collected on this site. We only have access to/collect information that you voluntarily give us via email or other direct contact from you. We will not sell or rent this information to anyone.</p>
                                         <p class="desc">We will use your information to respond to you, regarding the reason you contacted us. We will not share your information with any third party outside of our organization, other than as necessary to fulfill your request, e.g. to ship an order.</p>
