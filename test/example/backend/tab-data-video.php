@@ -88,7 +88,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Duration</label>
-                                            <input name="duration" id="time" type="text" placeholder="Input the duration video here..." class="form-control border-input" required>
+                                            <input name="duration" type="text" placeholder="Format HH:mm:ss" class="form-control border-input" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -308,7 +308,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Duration</label>
-                                            <input name="duration" id="time" type="text" placeholder="Input the duration video here..." class="form-control border-input" value="'.$value->{'Duration'}.'" required>
+                                            <input name="duration" type="text" placeholder="Format HH:mm:ss" class="form-control border-input" value="'.$value->{'Duration'}.'" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

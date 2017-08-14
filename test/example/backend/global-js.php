@@ -5,9 +5,6 @@
     <script src="assets/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<!--Date Time Picker-->
-	<script src="assets/js/jquery.datetimepicker.full.min.js" type="text/javascript"></script>
-
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<script src="assets/js/bootstrap-checkbox-radio.min.js"></script>
 
@@ -29,10 +26,6 @@
 		$("#year").datepicker({
 			changeYear: true,
             dateFormat:"yy"
-        }),
-		$("#time").datetimepicker({
-			datepicker:false,
-  			format:'H:00:00'
         }),
 		$('#formUpload').submit(function() {
 			$.ajax({
