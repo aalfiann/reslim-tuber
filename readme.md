@@ -139,6 +139,10 @@ Working with gui example for testing
     $config['facebook'] = ''; //Your facebook page, you can leave this blank and fill this later<br>
     $config['twitter'] = ''; //Your twitter page, you can leave this blank and fill this later<br>
     $config['gplus'] = ''; Your google plus page, you can leave this blank and fill this later<br>
+    $config['googleanalytics'] = ''; //Your google analytics, you can leave this blank and fill this later<br>
+    $config['googlewebmaster'] = ''; //Your google webmaster, you can leave this blank and fill this later<br>
+    $config['bingwebmaster'] = ''; //Your bing webmaster, you can leave this blank and fill this later<br>
+    $config['yandexwebmaster'] = ''; //Your yandex webmaster, you can leave this blank and fill this later<br>
 3. Visit yourserver/reSlim-tuber/test/example/backend<br>
     For my case is http://localhost:1337/reSlim-tuber/test/example/backend
 4. You can login with default superuser account:<br>
