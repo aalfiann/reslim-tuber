@@ -6,9 +6,9 @@
     $url = Core::getInstance()->api.'/video/post/data/public/show/rating/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
-    $title = Core::getInstance()->title.' | Nonton atau streaming online film gratis subtitle indonesia';
-    $description = Core::getInstance()->title.' | Nonton atau streaming online film gratis subtitle indonesia';
-    $keyword = 'Nonton, Streaming, online, film, movie, gratis, subtitle, indonesia';
+    $title = Core::getInstance()->title.' | '.Core::getInstance()->description;
+    $description = Core::getInstance()->title.' | '.Core::getInstance()->description;
+    $keyword = Core::getInstance()->keyword;
     $author = Core::getInstance()->title.' Team';
 ?>
 <!DOCTYPE html>

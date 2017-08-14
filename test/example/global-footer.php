@@ -9,7 +9,7 @@
                 <div class="col-lg-7  col-sm-7 col-xs-12">
                     <div class="f-copy">
                         <ul class="list-inline">
-                            <li><a href="index.php"><?php echo Core::getInstance()->title.'</a> | Nonton atau streaming online film gratis subtitle indonesia dan english'?></li>
+                            <li><a href="index.php"><?php echo Core::getInstance()->title.'</a> | '.Core::getInstance()->description.''?></li>
                         </ul>
                     </div>
                     <div class="delimiter"></div>

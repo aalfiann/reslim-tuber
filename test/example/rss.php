@@ -17,7 +17,7 @@
                         <atom:link href="'.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" rel="self" type="application/rss+xml" />
                         <title>'.Core::getInstance()->title.'</title>
                         <link>'.Core::getInstance()->homepath.'</link>
-                        <description>Nonton atau streaming online film gratis subtitle indonesia dan English</description>';
+                        <description>'.Core::getInstance()->description.'</description>';
                         echo "\n";
             foreach ($data->results as $name => $value) {
                 echo '<item>

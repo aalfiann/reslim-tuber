@@ -9,9 +9,9 @@
     $data = json_decode(Core::execGetRequest($url));
 
     if (empty($search)){
-        $title = Core::getInstance()->title.' | Nonton atau streaming film gratis subtitle indonesia';
-        $description = Core::getInstance()->title.' | Nonton atau streaming film gratis subtitle indonesia';
-        $keyword = 'Nonton, Streaming, film, movie, gratis, subtitle, indonesia';
+        $title = Core::getInstance()->title.' | '.Core::getInstance()->description;
+        $description = Core::getInstance()->title.' | '.Core::getInstance()->description;
+        $keyword = Core::getInstance()->keyword;
         $author = Core::getInstance()->title.' Team';
     } else {
         $title = Core::getInstance()->title.' | Filter search results: '.$search;
