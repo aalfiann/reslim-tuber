@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Browse All Genre to make easier for you to search movies.">
+    <meta name="keyword" content="Genre, Country, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
     <link rel="icon" href="favicon.png">
 

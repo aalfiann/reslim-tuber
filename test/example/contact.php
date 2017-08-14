@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Just contact us, we will hear everything from you.">
+    <meta name="keyword" content="Contact, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title?> Team">
     <link rel="icon" href="favicon.png">
 
