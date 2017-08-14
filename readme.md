@@ -126,19 +126,19 @@ Working with gui example for testing
 
 1. Import reSlim-tuber.sql in your database then config your database connection in config.php inside folder "reSlim-tuber/src/"
 2. Edit the config.php inside folder "reSlim/test/example/backend"<br>
-    $config['title'] = 'reSlim Tuber'; //Your title website
-    $config['keyword'] = 'Nonton, Streaming, online, film, movie, gratis, subtitle, indonesia'; //Your keyword website
-    $config['description'] = 'Nonton atau streaming online film gratis subtitle indonesia dan english'; //Your description website
-    $config['email'] = 'youremail@gmail.com'; //Your default email
-    $config['basepath'] = 'http://localhost:1337/reSlim-tuber/test/example/backend'; //Your folder backend website
-    $config['homepath'] = 'http://localhost:1337/reSlim-tuber/test/example'; //Your folder frontend website
-    $config['api'] = 'http://localhost:1337/reSlim-tuber/src/api'; //Your folder rest api
-    $config['apikey'] = ''; //Your api key, you can leave this blank and fill this later
-    $config['disqus'] = ''; //Your disqus username, you can leave this blank and fill this later
-    $config['sharethis'] = '598da1b6ea00a30012ce67a0'; //Your sharethis key, you can leave this blank and fill this later
-    $config['facebook'] = ''; //Your facebook page, you can leave this blank and fill this later
-    $config['twitter'] = ''; //Your twitter page, you can leave this blank and fill this later
-    $config['gplus'] = ''; Your google plus page, you can leave this blank and fill this later
+    $config['title'] = 'reSlim Tuber'; //Your title website<br>
+    $config['keyword'] = 'Nonton, Streaming, online, film, movie, gratis, subtitle, indonesia'; //Your keyword website<br>
+    $config['description'] = 'Nonton atau streaming online film gratis subtitle indonesia dan english'; //Your description website<br>
+    $config['email'] = 'youremail@gmail.com'; //Your default email<br>
+    $config['basepath'] = 'http://localhost:1337/reSlim-tuber/test/example/backend'; //Your folder backend website<br>
+    $config['homepath'] = 'http://localhost:1337/reSlim-tuber/test/example'; //Your folder frontend website<br>
+    $config['api'] = 'http://localhost:1337/reSlim-tuber/src/api'; //Your folder rest api<br>
+    $config['apikey'] = ''; //Your api key, you can leave this blank and fill this later<br>
+    $config['disqus'] = ''; //Your disqus username, you can leave this blank and fill this later<br>
+    $config['sharethis'] = '598da1b6ea00a30012ce67a0'; //Your sharethis key, you can leave this blank and fill this later<br>
+    $config['facebook'] = ''; //Your facebook page, you can leave this blank and fill this later<br>
+    $config['twitter'] = ''; //Your twitter page, you can leave this blank and fill this later<br>
+    $config['gplus'] = ''; Your google plus page, you can leave this blank and fill this later<br>
 3. Visit yourserver/reSlim-tuber/test/example/backend<br>
     For my case is http://localhost:1337/reSlim-tuber/test/example/backend
 4. You can login with default superuser account:<br>
