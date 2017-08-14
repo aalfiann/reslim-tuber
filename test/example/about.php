@@ -52,7 +52,7 @@
                                 <!-- Content -->
                                 <div class="row">
                                     <div class="b-category">
-                                    <h4 class="color-active">Tentang Kami:</h4>
+                                    <h4 class="color-active">About <?php echo Core::getInstance()->title?>:</h4>
                                     <p class="desc"><?php echo Core::getInstance()->title?> adalah sebuah website hiburan yang menyajikan streaming film dengan subtitle Indonesia dan English.</p>
                                     <p class="desc">Perlu diketahui, film-film yang terdapat pada web ini didapatkan dari web pencarian di internet. Kami tidak menyimpan file film tersebut di server sendiri dan kami hanya menempelkan link-link tersebut di website kami.</p>
                                     </div>
