@@ -1,7 +1,7 @@
 reSlim-tuber
 =======
-[![Build](https://img.shields.io/badge/build-failed-red.svg)](https://github.com/aalfiann/reSlim-tuber)
-[![Version](https://img.shields.io/badge/ongoing-1.0.0-yellow.svg)](https://github.com/aalfiann/reSlim-tuber)
+[![Build](https://img.shields.io/badge/coverage-100%25-green.svg)](https://github.com/aalfiann/reSlim-tuber)
+[![Version](https://img.shields.io/badge/stable-1.0.0-green.svg)](https://github.com/aalfiann/reSlim-tuber)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-tuber/blob/master/license.md)
 
 A simple web app for boost to make money on your videos on youtube, vimeo, etc<br>
@@ -9,14 +9,16 @@ reSlim-tuber is based on [reSlim](https://github.com/aalfiann/reSlim) which is b
 
 Roadmap:
 ---------------
-
-1. Post your video from Youtube, Vimeo, etc.
-2. Ads management
-3. Share video using sharethis
-4. Comment system using disqus
-5. Very simple as no member system
-6. Sitemap and RSS
-7. Etc
+1. Post or Embed your video from Youtube, Vimeo, etc.
+2. Ads management system
+3. Like and Dislike rating system
+4. Share video using sharethis
+5. Comment system using disqus
+6. Very simple and small as there is no member system
+7. Automatic build Sitemap and RSS
+8. Dynamic robots.txt
+9. Modern and SEO Optimized design
+10. Etc
 
 Feature:
 ---------------
@@ -124,12 +126,20 @@ Working with gui example for testing
 
 1. Import reSlim-tuber.sql in your database then config your database connection in config.php inside folder "reSlim-tuber/src/"
 2. Edit the config.php inside folder "reSlim/test/example/backend"<br>
-    $config['title'] = 'your title website';<br>
-    $config['email'] = 'your default email address';<br>
-    $config['basepath'] = 'url location of base path example';<br>
-    $config['api'] = 'url location of base path of api';<br>
-    $config['apikey'] = 'your api key, you can leave this blank and fill this later';
-3. Visit yourserver/reSlim/test/example<br>
+    $config['title'] = 'reSlim Tuber'; //Your title website
+    $config['keyword'] = 'Nonton, Streaming, online, film, movie, gratis, subtitle, indonesia'; //Your keyword website
+    $config['description'] = 'Nonton atau streaming online film gratis subtitle indonesia dan english'; //Your description website
+    $config['email'] = 'youremail@gmail.com'; //Your default email
+    $config['basepath'] = 'http://localhost:1337/reSlim-tuber/test/example/backend'; //Your folder backend website
+    $config['homepath'] = 'http://localhost:1337/reSlim-tuber/test/example'; //Your folder frontend website
+    $config['api'] = 'http://localhost:1337/reSlim-tuber/src/api'; //Your folder rest api
+    $config['apikey'] = ''; //Your api key, you can leave this blank and fill this later
+    $config['disqus'] = ''; //Your disqus username, you can leave this blank and fill this later
+    $config['sharethis'] = '598da1b6ea00a30012ce67a0'; //Your sharethis key, you can leave this blank and fill this later
+    $config['facebook'] = ''; //Your facebook page, you can leave this blank and fill this later
+    $config['twitter'] = ''; //Your twitter page, you can leave this blank and fill this later
+    $config['gplus'] = ''; Your google plus page, you can leave this blank and fill this later
+3. Visit yourserver/reSlim-tuber/test/example/backend<br>
     For my case is http://localhost:1337/reSlim-tuber/test/example/backend
 4. You can login with default superuser account:<br>
     Username : reslim<br>

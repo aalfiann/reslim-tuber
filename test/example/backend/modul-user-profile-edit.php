@@ -2,7 +2,7 @@
 spl_autoload_register(function ($classname) {require ( $classname . ".php");});
 $datalogin = Core::checkSessions();?>
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
     <title>Edit User Profile - <?php echo Core::getInstance()->title?></title>
 	<?php include 'global-meta.php';?>

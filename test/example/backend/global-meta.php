@@ -10,3 +10,6 @@
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/main.min.css" rel="stylesheet" />
     <link href="assets/css/main.css" rel="stylesheet" />
+
+    <!-- Date Time Picker -->
+    <link href="assets/css/jquery.datetimepicker.min.css" rel="stylesheet" />

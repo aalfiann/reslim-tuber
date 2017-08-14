@@ -103,6 +103,28 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'12':$_GET['itemsperpag
                         <!-- End Modal -->
                 <div class="row">
 <?php 
+    if (isset($_POST['submitupdate'.(empty($_POST['ItemID'])?'':$_POST['ItemID'])])){
+        $post_array = array(
+            'Username' => $datalogin['username'],
+            'Token' => $datalogin['token'],
+            'ItemID' => $_POST['itemid'],
+            'Title' => filter_var($_POST['title'],FILTER_SANITIZE_STRING),
+            'Alternate' => filter_var($_POST['alternate'],FILTER_SANITIZE_STRING),
+            'External' => filter_var($_POST['externallink'],FILTER_SANITIZE_URL),
+            'Status' => $_POST['status']
+        );
+        Core::updateFile(Core::getInstance()->api.'/user/upload/update',$post_array);
+    }
+
+    if (isset($_POST['submitdelete'.(empty($_POST['ItemID'])?'':$_POST['ItemID'])])){
+        $post_array = array(
+            'Username' => $datalogin['username'],
+            'Token' => $datalogin['token'],
+            'ItemID' => $_POST['itemid']
+        );
+        Core::deleteFile(Core::getInstance()->api.'/user/upload/delete',$post_array);
+    }
+
     $url = Core::getInstance()->api.'/user/'.$datalogin['username'].'/upload/data/search/'.$page.'/'.$itemsperpage.'/'.$datalogin['token'].'/?query='.rawurlencode($search);
     $data = json_decode(Core::execGetRequest($url));
 
@@ -114,35 +136,6 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'12':$_GET['itemsperpag
         {
             if ($data->{'status'} == "success")
             {
-                foreach ($data->results as $row => $value) {
-                    if (isset($_POST['submitupdate'.$value->{'ItemID'}]))
-                    {
-                        $post_array = array(
-                            'Username' => $datalogin['username'],
-                            'Token' => $datalogin['token'],
-                            'ItemID' => $_POST['itemid'],
-                            'Title' => filter_var($_POST['title'],FILTER_SANITIZE_STRING),
-                            'Alternate' => filter_var($_POST['alternate'],FILTER_SANITIZE_STRING),
-                            'External' => filter_var($_POST['externallink'],FILTER_SANITIZE_URL),
-                            'Status' => $_POST['status']
-                        );
-                        Core::updateFile(Core::getInstance()->api.'/user/upload/update',$post_array);
-                        echo Core::reloadPage();
-                    }
-                }
-
-                foreach ($data->results as $row => $value) {
-                    if (isset($_POST['submitdelete'.$value->{'ItemID'}]))
-                    {
-                        $post_array = array(
-                            'Username' => $datalogin['username'],
-                            'Token' => $datalogin['token'],
-                            'ItemID' => $_POST['itemid']
-                        );
-                        Core::deleteFile(Core::getInstance()->api.'/user/upload/delete',$post_array);
-                        echo Core::reloadPage();
-                    }
-                }
 
                 $i=1;
                 foreach ($data->results as $name => $value) 
@@ -257,6 +250,9 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'12':$_GET['itemsperpag
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group hidden">
+                                    <input name="ItemID" type="text" class="form-control border-input" value="'.$value->{'ItemID'}.'" hidden>
+                                </div>
                               </div>
                               <div class="modal-footer">';
                                 if ($value->{'Upload_by'} == $datalogin['username']){
@@ -322,4 +318,4 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'12':$_GET['itemsperpag
                     </div>
                 </div>
             </div>
-        </div>
+        

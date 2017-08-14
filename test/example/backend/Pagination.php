@@ -77,4 +77,77 @@
                 }	
 	    		echo '</ul> '; // End Pagination
         }
+
+        /**
+		 * Make Pagination for frontend
+         *
+         * @param $data = Input the data decoded json which is included metadata for pagination
+         * @param $links = Input the current base url of page
+		 * @return string html pagination
+		 */
+        public function makePaginationFrontend($data,$links){
+            echo '<!-- pagination -->
+                    <div class="v-pagination">
+                        <ul class="list-inline">'; // Start Pagination
+                $itemsperpage = $data->metadata->{'items_per_page'};
+                $pagenow = $data->metadata->{'page_now'};
+                $pagetotal = $data->metadata->{'page_total'};
+
+			    if ($pagenow <= $pagetotal)
+                {
+                    //Middle Pagination = If this page + 2 < total page
+                    if (($pagenow + 2) < $pagetotal && $pagenow >= 3)
+                    {
+                        echo '<li><a href="'.$links.'&page='.($pagenow-1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-previous"></i></div></a></li>';
+                        for ($p=($pagenow-2);$p<=($pagenow+2);$p++)
+                        {
+                            echo '<li><a href="'.$links.'&page='.$p.'&itemsperpage='.$itemsperpage.'"><div '.(($p == $pagenow)?'class="pages active"':'').'>'.$p.'</div></a></li>';
+                        }
+                        echo '<li><a href="'.$links.'&page='.($pagenow+1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-next"></i></div></a></li>';
+                    }
+                    //Last Pagination = total page >= 5 and if this page + 2 >= total page
+                    elseif (($pagenow + 2) >= $pagetotal && $pagetotal >= 5)
+                    {
+                        echo ((($pagenow-1)>0)?'<li><a href="'.$links.'&page='.($pagenow-1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-previous"></i></div></a></li>':'');
+                        for ($p=($pagetotal-4);$p<=$pagetotal;$p++)
+                        {
+                            echo '<li><a href="'.$links.'&page='.$p.'&itemsperpage='.$itemsperpage.'"><div '.(($p == $pagenow)?'class="pages active"':'').'>'.$p.'</div></a></li>';
+                        }
+                        echo (($pagenow<$pagetotal)?'<li><a href="'.$links.'&page='.($pagenow+1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-next"></i></div></a></li>':'');
+                    }
+                    //Last Pagination = total page < 5 and if this page + 2 >= total page
+                    elseif (($pagenow + 2) >= $pagetotal && $pagetotal < 5)
+                    {
+                        echo ((($pagenow-1)>0)?'<li><a href="'.$links.'&page='.($pagenow-1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-previous"></i></div></a></li>':'');
+                        for ($p=($pagetotal-($pagetotal-1));$p<=$pagetotal;$p++)
+                        {
+                            echo '<li><a href="'.$links.'&page='.$p.'&itemsperpage='.$itemsperpage.'"><div '.(($p == $pagenow)?'class="pages active"':'').'>'.$p.'</div></a></li>';
+                        }
+                        echo (($pagenow<$pagetotal)?'<li><a href="'.$links.'&page='.($pagenow+1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-next"></i></div></a></li>':'');
+                    }
+                    //First pagination and if total page <= 5
+                    elseif ($pagetotal <= 5) 
+                    {
+                        echo ((($pagenow-1)>0)?'<li><a href="'.$links.'&page='.($pagenow-1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-previous"></i></div></a></li>':'');
+                        for ($p=1;$p<=$pagetotal;$p++)
+                        {
+                            echo '<li><a href="'.$links.'&page='.$p.'&itemsperpage='.$itemsperpage.'"><div '.(($p == $pagenow)?'class="pages active"':'').'>'.$p.'</div></a></li>';
+                        }
+                        echo '<li><a href="'.$links.'&page='.($pagenow+1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-next"></i></div></a></li>';
+                    }
+                    //First pagination and if total page > 5
+                    elseif ($pagetotal > 5 && $pagenow <=2) 
+                    {
+                        echo ((($pagenow-1)>0)?'<li><a href="'.$links.'&page='.($pagenow-1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-previous"></i></div></a></li>':'');
+                        for ($p=1;$p<=5;$p++)
+                        {
+                            echo '<li><a href="'.$links.'&page='.$p.'&itemsperpage='.$itemsperpage.'"><div '.(($p == $pagenow)?'class="pages active"':'').'>'.$p.'</div></a></li>';
+                        }
+                        echo '<li><a href="'.$links.'&page='.($pagenow+1).'&itemsperpage='.$itemsperpage.'"><div class="pages"><i class="cv cvicon-cv-next"></i></div></a></li>';
+                    }
+                }	
+	    		echo '</ul>
+                    </div>
+                    <!-- /pagination -->'; // End Pagination
+        }
     }

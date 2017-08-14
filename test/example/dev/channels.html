@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.png">
+
+    <title>Circle Video | Browse Categories Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-circle-video.css" rel="stylesheet">
+
+    <!-- font-family: 'Hind', sans-serif; -->
+    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="dark">
+
+<!-- logo, menu, search, avatar -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="btn-color-toggle">
+            <img src="images/icon_bulb_dark.png" alt="">
+        </div>
+        <div class="navbar-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-1 col-sm-2 col-xs-2">
+                        <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>
+                    </div>
+                    <div class="col-lg-3 col-sm-10 col-xs-10">
+                        <ul class="list-inline menu">
+                            <li class="pages">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="index.html">Home Page</a></li>
+                                    <li><a href="single-video.html">Single Video Page</a></li>
+                                    <li><a href="single-video-youtube.html">Single Video Youtube Embedded Page</a></li>
+                                    <li><a href="single-video-vimeo.html">Single Video Vimeo Embedded Page</a></li>
+                                    <li><a href="upload.html">Upload Video Page</a></li>
+                                    <li><a href="upload-edit.html">Upload Video Edit Page</a></li>
+                                    <li><a href="search.html">Searched Videos Page</a></li>
+                                    <li><a href="channel.html">Single Channel Page</a></li>
+                                    <li><a href="channels.html">Channels Page</a></li>
+                                    <li><a href="single-video-tabs.html">Single Videos Page With Tabs</a></li>
+                                    <li><a href="single-video-playlist.html">Single Videos Page With Playlist</a></li>
+                                    <li><a href="history.html">History Page</a></li>
+                                    <li><a href="categories.html">Browse Categories Page</a></li>
+                                    <li><a href="categories_side_menu.html">Browse Categories Side Menu Page</a></li>
+                                    <li><a href="subscription.html">Subscription Page</a></li>
+                                    <li><a href="login.html">Login Page</a></li>
+                                    <li><a href="signup.html">Signup Page</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="categories.html">Categories</a></li>
+                            <li><a href="channel.html">Channels</a></li>
+                        </ul>
+                    </div>
+                    <div class="visible-xs visible-sm clearfix"></div>
+                    <div class="col-lg-6 col-sm-8 col-xs-12">
+                        <form action="search.html" method="post">
+                            <div class="topsearch">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
+                                    <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon2">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="cv cvicon-cv-video-file"></i>&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>/
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="cv cvicon-cv-relevant"></i> Relevant</a></li>
+                                            <li><a href="#"><i class="cv cvicon-cv-calender"></i> Recent</a></li>
+                                            <li><a href="#"><i class="cv cvicon-cv-view-stats"></i> Viewed</a></li>
+                                            <li><a href="#"><i class="cv cvicon-cv-star"></i> Top Rated</a></li>
+                                            <li><a href="#"><i class="cv cvicon-cv-watch-later"></i> Longest</a></li>
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="visible-xs clearfix"></div>
+                    <div class="col-lg-2 col-sm-4  col-xs-8">
+                        <div class="avatar pull-left">
+                            <img src="images/avatar.png" alt="avatar" />
+                            <span class="status"></span>
+                        </div>
+                        <div class="selectuser pull-left">
+                            <div class="btn-group pull-right dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Bailey
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="signup.html">Sign up</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div>
+                    <a href="upload.html">
+                        <div class="upload-button">
+                            <i class="cv cvicon-cv-upload-video"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /logo -->
+
+<!-- goto -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="navbar-container2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-1 col-sm-2 col-xs-12">
+                        <div class="goto">
+                            Go to:
+                        </div>
+                    </div>
+                    <div class="col-lg-3  col-sm-10 col-xs-12">
+                        <div class="h-icons">
+                            <a href="#"><i class="cv cvicon-cv-liked" data-toggle="tooltip" data-placement="top" title="Liked Videos"></i></a>
+                            <a href="#"><i class="cv cvicon-cv-watch-later" data-toggle="tooltip" data-placement="top" title="Watch Later"></i></a>
+                            <a href="#"><i class="cv cvicon-cv-play-circle" data-toggle="tooltip" data-placement="top" title="Saved Playlist"></i></a>
+                            <a href="#"><i class="cv cvicon-cv-purchased" data-toggle="tooltip" data-placement="top" title="Purchased Videos"></i></a>
+                            <a href="#"><i class="cv cvicon-cv-history" data-toggle="tooltip" data-placement="top" title="History"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-sm-10 col-xs-12">
+                        <div class="h-resume">
+                            <div class="play-icon">
+                                <a href="#"><i class="cv cvicon-cv-play"></i></a>
+                            </div>
+                            Resume:  <span class="color-default">Daredevil Season 2 : Episode 6 </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-sm-2 hidden-xs">
+                        <div class="h-grid">
+                            <a href="#"><i class="cv cvicon-cv-grid-view"></i></a>
+                            <a href="#"><i class="cv cvicon-cv-list-view"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /goto -->
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 channels">
+
+                <!-- Popular Channels -->
+                <div class="content-block">
+                    <div class="cb-header">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <ul class="list-inline">
+                                    <li><a href="#" class="color-active">Browse All Channels</a></li>
+                                    <li><a href="#">Most Popular</a></li>
+                                    <li><a href="#">Trending</a></li>
+                                    <li><a href="#">Most Recent</a></li>
+                                    <li><a href="#">A - Z</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="cb-search">
+                                    <form action="#">
+                                        <label>
+                                            <input type="search" placeholder="Search Channels ..." />
+                                            <i class="fa fa-search"></i>
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channels-content">
+                        <h4>Most Popular</h4>
+                        <a href="#" class="btn-view-more">View more</a>
+                        <div class="clearfix"></div>
+                        <div class="theme-section">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-8.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava5.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Grainz<I class="arrow"></I></h5>
+                                            <span>27,548 Subscribers</span>
+                                            <span>615 Videos</span>
+                                            <span>10 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            78%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-7.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava2.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Adaptable</h5>
+                                            <span>52,217 Subscribers</span>
+                                            <span>275 Videos</span>
+                                            <span>21 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            98%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-5.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava3.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Immense</h5>
+                                            <span>66,007 Subscribers</span>
+                                            <span>34 Videos</span>
+                                            <span>20 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            73%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-2.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava4.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Kittens<I class="arrow"></I></h5>
+                                            <span>136,601 Subscribers</span>
+                                            <span>880 Videos</span>
+                                            <span>64 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            94%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video1-8.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava6.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Shoe</h5>
+                                            <span>72,870 Subscribers</span>
+                                            <span>147 Videos</span>
+                                            <span>9 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            92%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video1-7.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava7.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Pink</h5>
+                                            <span>49,462 Subscribers</span>
+                                            <span>260 Videos</span>
+                                            <span>25 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            79%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video1-6.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava8.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>teeny-tiny<I class="arrow"></I></h5>
+                                            <span>98,599 Subscribers</span>
+                                            <span>45 Videos</span>
+                                            <span>6 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            87%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video1-2.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava9.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Intelligent</h5>
+                                            <span>74,548 Subscribers</span>
+                                            <span>49 Videos</span>
+                                            <span>3 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            68%</span>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <h4>Trending</h4>
+                        <a href="#" class="btn-view-more">View more</a>
+                        <div class="clearfix"></div>
+                        <div class="theme-section">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-7.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava10.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Woozy</h5>
+                                            <span>109,127 Subscribers</span>
+                                            <span>117 Videos</span>
+                                            <span>43 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            86%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/playlist-3.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava11.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Laugh</h5>
+                                            <span>53,517 Subscribers</span>
+                                            <span>2,133 Videos</span>
+                                            <span>76 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            94%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/chanel-6.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava12.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Breakable</h5>
+                                            <span>65,937 Subscribers</span>
+                                            <span>40 Videos</span>
+                                            <span>13 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            88%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/sv-11.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava1.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Morning</h5>
+                                            <span>54,099 Subscribers</span>
+                                            <span>49 Videos</span>
+                                            <span>26 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            87%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-8.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava2.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Fire<I class="arrow"></I></h5>
+                                            <span>52,810 Subscribers</span>
+                                            <span>266 Videos</span>
+                                            <span>10 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            72%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/sv-4.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava3.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Swanky<I class="arrow"></I></h5>
+                                            <span>55,602 Subscribers</span>
+                                            <span>36 Videos</span>
+                                            <span>16 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            78%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-1.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava4.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Miscreant</h5>
+                                            <span>80,495 Subscribers</span>
+                                            <span>71 Videos</span>
+                                            <span>32 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            81%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video2-2.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava7.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Woebegone</h5>
+                                            <span>47,397 Subscribers</span>
+                                            <span>380 Videos</span>
+                                            <span>182 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            99%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>New Channels</h4>
+                        <a href="#" class="btn-view-more">View more</a>
+                        <div class="clearfix"></div>
+                        <div class="theme-section">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video1-1.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava11.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Develop<I class="arrow"></I></h5>
+                                            <span>66,007 Subscribers</span>
+                                            <span>34 Videos</span>
+                                            <span>22 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            85%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video1-6.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava12.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Picture</h5>
+                                            <span>80,495 Subscribers</span>
+                                            <span>71 Videos</span>
+                                            <span>36 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            74%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/sv-16.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava6.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Weather</h5>
+                                            <span>47,367 Subscribers</span>
+                                            <span>381 Videos</span>
+                                            <span>42 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            89%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-6">
+                                    <div class="cns-block">
+                                        <a href="#" class="cns-image">
+                                            <img src="images/video1-4.png" alt="image">
+                                        </a>
+                                        <div class="cns-img-small">
+                                            <div class="cns-small-wrapp">
+                                                <img src="images/ava8.png" alt="small">
+                                            </div>
+                                        </div>
+                                        <div class="cns-info">
+                                            <h5>Word</h5>
+                                            <span>100,212 Subscribers</span>
+                                            <span>496 Videos</span>
+                                            <span>71 Million Views</span>
+                                            <span class="cv-percent">
+                                                <span class="cv-circle"></span> 
+                                            93%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Popular Channels -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container padding-def">
+                <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>
+                </div>
+                <div class="col-lg-7  col-sm-7 col-xs-12">
+                    <div class="f-links">
+                        <ul class="list-inline">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Copyright</a></li>
+                            <li><a href="#">Advertise</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="delimiter"></div>
+                    <div class="f-copy">
+                        <ul class="list-inline">
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li>Copyrights 2016 <a href="azyrusthemes.com">azyrusthemes.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-offset-1 col-lg-3 col-sm-3 col-xs-12">
+                    <div class="f-icon pull-left">
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                    </div>
+                    <div class="f-lang pull-right">
+                        <!-- Small button group -->
+                        <div class="btn-group dropup pull-right">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Language <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="cv cvicon-cv-relevant"></i> Relevant</a></li>
+                                <li><a href="#"><i class="cv cvicon-cv-calender"></i> Recent</a></li>
+                                <li><a href="#"><i class="cv cvicon-cv-view-stats"></i> Viewed</a></li>
+                                <li><a href="#"><i class="cv cvicon-cv-star"></i> Top Rated</a></li>
+                                <li><a href="#"><i class="cv cvicon-cv-watch-later"></i> Longest</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- /footer -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

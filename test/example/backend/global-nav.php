@@ -2,7 +2,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <?php if (Core::getRole($datalogin['token']) == 1) { // SuperUser Only
                             echo '<li>
-                                <a href="modul-settings.php?m=8">
+                                <a href="modul-settings.php">
                                     <i class="ti-settings"></i>
             						<p>Settings</p>
                                 </a>
