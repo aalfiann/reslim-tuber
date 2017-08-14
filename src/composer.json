@@ -1,10 +1,10 @@
 {
-    "name":"aalfiann/reSlim",
+    "name":"aalfiann/reSlim-tuber",
     "type":"framework",
-    "description":"Made application reSlim with use of powerful rest api",
-    "keywords":["microframework", "rest", "router", "PSR7", "PSR11"],
-    "homepage":"https://github.com/aalfiann/reSlim",
-    "license":"https://github.com/aalfiann/reSlim/blob/master/license.md MIT",
+    "description":"a simple web app for boost to make money on your videos on youtube, vimeo, etc",
+    "keywords":["embed", "movie", "video", "tube", "rest", "router", "PSR7", "PSR11", "youtube", "vimeo"],
+    "homepage":"https://github.com/aalfiann/reSlim-tuber",
+    "license":"https://github.com/aalfiann/reSlim-tuber/blob/master/license.md MIT",
     "authors":[
         {
             "name":"M ABD AZIZ ALFIAN (aalfiann@gmail.com)"
