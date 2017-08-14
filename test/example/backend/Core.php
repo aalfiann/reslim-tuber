@@ -49,6 +49,18 @@
         // Set sharethis keys
         var $sharethis;
 
+        // Set google analytics
+        var $googleanalytics;
+
+        // Set google webmaster tools
+        var $googlewebmaster;
+
+        // Set bing webmaster tools
+        var $bingwebmaster;
+        
+        // Set yandex webmaster tools
+        var $yandexwebmaster;
+
         var $version = '1.0.0';
 
         private static $instance;
@@ -68,6 +80,10 @@
             $this->facebook = $config['facebook'];
             $this->twitter = $config['twitter'];
             $this->gplus = $config['gplus'];
+            $this->googleanalytics = $config['googleanalytics'];
+            $this->googlewebmaster = $config['googlewebmaster'];
+            $this->bingwebmaster = $config['bingwebmaster'];
+            $this->yandexwebmaster = $config['yandexwebmaster'];
 		}
 
         public static function getInstance()
@@ -789,7 +805,11 @@
             $config[\'sharethis\'] = \''.$post_array['Sharethis'].'\'; //Your sharethis key, you can leave this blank and fill this later
             $config[\'facebook\'] = \''.$post_array['Facebook'].'\'; //Your facebook page, you can leave this blank and fill this later
             $config[\'twitter\'] = \''.$post_array['Twitter'].'\'; //Your twitter page, you can leave this blank and fill this later
-            $config[\'gplus\'] = \''.$post_array['Gplus'].'\'; //Your google plus page, you can leave this blank and fill this later';
+            $config[\'gplus\'] = \''.$post_array['Gplus'].'\'; //Your google plus page, you can leave this blank and fill this later
+            $config[\'googleanalytics\'] = \''.$post_array['Googleanalytics'].'\'; //Your google analytics, you can leave this blank and fill this later
+            $config[\'googlewebmaster\'] = \''.$post_array['Googlewebmaster'].'\'; //Your google webmaster, you can leave this blank and fill this later
+            $config[\'bingwebmaster\'] = \''.$post_array['Bingwebmaster'].'\'; //Your bing webmaster, you can leave this blank and fill this later
+            $config[\'yandexwebmaster\'] = \''.$post_array['Yandexwebmaster'].'\'; //Your yandex webmaster, you can leave this blank and fill this later';
             $handle = fopen('config.php','w+'); 
 				fwrite($handle,$newcontent); 
 				fclose($handle); 

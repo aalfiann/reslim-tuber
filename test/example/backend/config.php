@@ -13,3 +13,7 @@
             $config['facebook'] = ''; //Your facebook page, you can leave this blank and fill this later
             $config['twitter'] = ''; //Your twitter page, you can leave this blank and fill this later
             $config['gplus'] = ''; //Your google plus page, you can leave this blank and fill this later
+            $config['googleanalytics'] = ''; //Your google analytics, you can leave this blank and fill this later
+            $config['googlewebmaster'] = ''; //Your google webmaster, you can leave this blank and fill this later
+            $config['bingwebmaster'] = ''; //Your bing webmaster, you can leave this blank and fill this later
+            $config['yandexwebmaster'] = ''; //Your yandex webmaster, you can leave this blank and fill this later

@@ -18,7 +18,11 @@
                                     'Sharethis' => $_POST['sharethis'],
                                     'Facebook' => $_POST['facebook'],
                                     'Twitter' => $_POST['twitter'],
-                                    'Gplus' => $_POST['gplus']
+                                    'Gplus' => $_POST['gplus'],
+                                    'Googleanalytics' => $_POST['googleanalytics'],
+                                    'Googlewebmaster' => $_POST['googlewebmaster'],
+                                    'Bingwebmaster' => $_POST['bingwebmaster'],
+                                    'Yandexwebmaster' => $_POST['yandexwebmaster']
                                 );
                                 Core::saveSettings($post_array);
                             } 
@@ -81,6 +85,22 @@
                                         <div class="form-group">
                                             <label>Google Plus</label>
                                             <input name="gplus" type="text" placeholder="Please input Your Google Plus page here..." class="form-control border-input" value="<?php echo Core::getInstance()->gplus?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Google Analytics</label>
+                                            <input name="googleanalytics" type="text" placeholder="Please input Your ID Google Analytics here..." class="form-control border-input" value="<?php echo Core::getInstance()->googleanalytics?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Google Webmaster</label>
+                                            <input name="googlewebmaster" type="text" placeholder="Please input Your ID Google Webmaster here..." class="form-control border-input" value="<?php echo Core::getInstance()->googlewebmaster?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Bing Webmaster</label>
+                                            <input name="bingwebmaster" type="text" placeholder="Please input Your ID Bing Webmaster here..." class="form-control border-input" value="<?php echo Core::getInstance()->bingwebmaster?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Yandex Webmaster</label>
+                                            <input name="yandexwebmaster" type="text" placeholder="Please input Your ID Yandex Webmaster here..." class="form-control border-input" value="<?php echo Core::getInstance()->yandexwebmaster?>">
                                         </div>
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any API Keys? You can create at least one API Key at <a href="modul-data-api.php?m=7&page=1&itemsperpage=10&search=">here</a>.</p>
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any Disqus? You can create at <a href="http://disqus.com">here</a>.</p>
