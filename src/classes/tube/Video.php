@@ -1003,7 +1003,7 @@ use PDO;
 				from data_post a
 				inner join core_status b on a.StatusID=b.StatusID
 				where a.StatusID='51'
-				order by a.Rating,a.Released desc;";
+				order by a.Rating desc,a.Released desc;";
 				$stmt = $this->db->prepare($sqlcountrow);
 
 				if ($stmt->execute()) {	
@@ -1024,7 +1024,7 @@ use PDO;
 							from data_post a
 							inner join core_status b on a.StatusID=b.StatusID
 							where a.StatusID='51' 
-							order by a.Rating,a.Released desc LIMIT :limpage , :offpage;";
+							order by a.Rating desc,a.Released desc LIMIT :limpage , :offpage;";
 						$stmt2 = $this->db->prepare($sql);
 						$stmt2->bindValue(':limpage', (INT) $limits, PDO::PARAM_INT);
 						$stmt2->bindValue(':offpage', (INT) $offsets, PDO::PARAM_INT);
