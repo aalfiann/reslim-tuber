@@ -9,7 +9,6 @@ reSlim-tuber is based on [reSlim](https://github.com/aalfiann/reSlim) which is b
 
 Roadmap:
 ---------------
-
 1. Post or Embed your video from Youtube, Vimeo, etc.
 2. Ads management system
 3. Like and Dislike rating system
