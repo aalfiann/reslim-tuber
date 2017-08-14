@@ -77,7 +77,7 @@
                     echo "\n";
                 }
                 foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
-                    echo '<meta property="og:video:tag " content="'.$valuegenre.'" />';
+                    echo '<meta property="og:video:tag" content="'.$valuegenre.'" />';
                     echo "\n";
                 }
             }
