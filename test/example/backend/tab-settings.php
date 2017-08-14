@@ -7,6 +7,8 @@
                             {
                                 $post_array = array(
                                     'Title' => $_POST['title'],
+                                    'Keyword' => $_POST['keyword'],
+                                    'Description' => $_POST['description'],
                                     'Email' => $_POST['email'],
                                     'Basepath' => $_POST['basepath'],
                                     'Homepath' => $_POST['homepath'],
@@ -33,16 +35,24 @@
                                             <input name="title" type="text" placeholder="Please input the title of website" class="form-control border-input" maxlength="20" value="<?php echo Core::getInstance()->title?>" required>
                                         </div>
                                         <div class="form-group">
+                                            <label>Keyword</label>
+                                            <input name="keyword" type="text" placeholder="Please input the keyword of website separated with commas" class="form-control border-input" maxlength="250" value="<?php echo Core::getInstance()->keyword?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea name="description" type="text" placeholder="Please input the description of website" class="form-control border-input" maxlength="200" required><?php echo Core::getInstance()->description?></textarea>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Email</label>
                                             <input name="email" type="text" placeholder="Please input Your Email" class="form-control border-input" maxlength="50" value="<?php echo Core::getInstance()->email?>" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>Home Path</label>
-                                            <input name="homepath" type="text" placeholder="Please input url home folder of Your website." class="form-control border-input" value="<?php echo Core::getInstance()->homepath?>" required>
+                                            <label>Frontend Path</label>
+                                            <input name="homepath" type="text" placeholder="Please input url frontend folder of Your website." class="form-control border-input" value="<?php echo Core::getInstance()->homepath?>" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>Base Path</label>
-                                            <input name="basepath" type="text" placeholder="Please input url folder of Your website." class="form-control border-input" value="<?php echo Core::getInstance()->basepath?>" required>
+                                            <label>Backend Path</label>
+                                            <input name="basepath" type="text" placeholder="Please input url backend folder of Your website." class="form-control border-input" value="<?php echo Core::getInstance()->basepath?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Url API</label>

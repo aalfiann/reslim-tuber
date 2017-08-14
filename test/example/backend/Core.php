@@ -13,6 +13,12 @@
         // Set title website
         var $title;
 
+        // Set keyword website
+        var $keyword;
+
+        // Set description website
+        var $description;
+
         // Set email address website
         var $email;
         
@@ -50,6 +56,8 @@
         function __construct() {
             require 'config.php';
             $this->title = $config['title'];
+            $this->keyword = $config['keyword'];
+            $this->description = $config['description'];
             $this->email = $config['email'];
             $this->basepath = $config['basepath'];
             $this->homepath = $config['homepath'];
@@ -770,6 +778,8 @@
             $newcontent = '<?php 
             //Configurations
             $config[\'title\'] = \''.$post_array['Title'].'\'; //Your title website
+            $config[\'keyword\'] = \''.$post_array['Keyword'].'\'; //Your keyword website
+            $config[\'description\'] = \''.$post_array['Description'].'\'; //Your description website
             $config[\'email\'] = \''.$post_array['Email'].'\'; //Your default email
             $config[\'basepath\'] = \''.$post_array['Basepath'].'\'; //Your folder backend website
             $config[\'homepath\'] = \''.$post_array['Homepath'].'\'; //Your folder frontend website
