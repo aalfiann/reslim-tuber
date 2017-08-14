@@ -1,5 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /backend/
-
-#Sitemap: https://omovv.ga/sitemap.php
