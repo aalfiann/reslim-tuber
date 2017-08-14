@@ -71,54 +71,51 @@
                             <div class="col-md-10 col-sm-10 col-xs-8">
                                 <!-- All Genre -->
                                 <div class="row">
-                                    <h4 class="color-active">All Genre:</h4>
-                                    <h4>
-                                        <?php
-                                            if (!empty($datagenre)){
-                                                if ($datagenre->{'status'} == "success"){
-                                                    $n=0;
-                                                    foreach ($datagenre->result->{'Tags'} as $name => $valuegenre) {
-                                                        $n++;
-                                                        echo '<a href="index.php?search='.$valuegenre.'"><span class="label label-default" style="display: inline-block;">'.$valuegenre.'</span></a>&nbsp;&nbsp;';
-                                                    }
+                                    <?php
+                                        if (!empty($datagenre)){
+                                            if ($datagenre->{'status'} == "success"){
+                                                $n=0;
+                                                echo '<h4 class="color-active">All Genre:</h4></h4>';
+                                                foreach ($datagenre->result->{'Tags'} as $name => $valuegenre) {
+                                                    $n++;
+                                                    echo '<a href="index.php?search='.$valuegenre.'"><span class="label label-default" style="display: inline-block;">'.$valuegenre.'</span></a>&nbsp;&nbsp;';
                                                 }
+                                                echo '</h4>';
                                             }
-                                        ?>
-                                    </h4>
+                                        }
+                                    ?>
                                 </div>
                                 <!-- All Countries -->
                                 <div class="row">
-                                    <h4 class="color-active">All Country:</h4>
-                                    <h4 >
-                                        <?php
-                                            if (!empty($datacountry)){
-                                                if ($datacountry->{'status'} == "success"){
-                                                    $n=0;
-                                                    foreach ($datacountry->result->{'Country'} as $name => $valuecountry) {
-                                                        $n++;
-                                                        echo '<a href="index.php?search='.$valuecountry.'"><span class="label label-default" style="display: inline-block;">'.$valuecountry.'</span></a>&nbsp;&nbsp;';
-                                                    }
+                                    <?php
+                                        if (!empty($datacountry)){
+                                            if ($datacountry->{'status'} == "success"){
+                                                $n=0;
+                                                echo '<h4 class="color-active">All Country:</h4><h4>';
+                                                foreach ($datacountry->result->{'Country'} as $name => $valuecountry) {
+                                                    $n++;
+                                                    echo '<a href="index.php?search='.$valuecountry.'"><span class="label label-default" style="display: inline-block;">'.$valuecountry.'</span></a>&nbsp;&nbsp;';
                                                 }
+                                                echo '</h4>';
                                             }
-                                        ?>
-                                    </h4>
+                                        }
+                                    ?>
                                 </div>
                                 <!-- All Released Year -->
                                 <div class="row">
-                                    <h4 class="color-active">All Year:</h4>
-                                    <h4 >
-                                        <?php
-                                            if (!empty($datarelease)){
-                                                if ($datarelease->{'status'} == "success"){
-                                                    $n=0;
-                                                    foreach ($datarelease->result->{'Released'} as $name => $valuerelease) {
-                                                        $n++;
-                                                        echo '<a href="index.php?search='.$valuerelease.'"><span class="label label-default" style="display: inline-block;">'.$valuerelease.'</span></a>&nbsp;&nbsp;';
-                                                    }
+                                    <?php
+                                        if (!empty($datarelease)){
+                                            if ($datarelease->{'status'} == "success"){
+                                                $n=0;
+                                                echo '<h4 class="color-active">All Year:</h4></h4>';
+                                                foreach ($datarelease->result->{'Released'} as $name => $valuerelease) {
+                                                    $n++;
+                                                    echo '<a href="index.php?search='.$valuerelease.'"><span class="label label-default" style="display: inline-block;">'.$valuerelease.'</span></a>&nbsp;&nbsp;';
                                                 }
+                                                echo '</h4>';
                                             }
-                                        ?>  
-                                    </h4>
+                                        }
+                                    ?>  
                                 </div>
                             </div>
                         </div>
