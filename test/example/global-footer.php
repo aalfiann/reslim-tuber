@@ -17,7 +17,7 @@
                         <ul class="list-inline">
                             <li><a href="about.php">About</a></li>
                             <li><a href="contact.php">Contact</a></li>
-                            <li>Copyrights @ <?php echo Date('Y');?>, <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo Core::getInstance()->title;?></a></li>
+                            <li>Copyrights @ <?php echo Date('Y');?>, <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo $_SERVER['SERVER_NAME'];?></a></li>
                         </ul>
                     </div>
                 </div>

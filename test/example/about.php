@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="<?php echo Core::getInstance()->title?> adalah sebuah website hiburan yang menyajikan streaming film gratis dengan subtitle Indonesia dan English.">
+    <meta name="description" content="<?php echo Core::getInstance()->title?> is an entertainment website which is provide free watch or streaming movie with indonesian or english subtitle.">
     <meta name="keyword" content="About, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
     <link rel="icon" href="favicon.png">
@@ -53,8 +53,8 @@
                                 <div class="row">
                                     <div class="b-category">
                                     <h4 class="color-active">About <?php echo Core::getInstance()->title?>:</h4>
-                                    <p class="desc"><?php echo Core::getInstance()->title?> adalah sebuah website hiburan yang menyajikan streaming film dengan subtitle Indonesia dan English.</p>
-                                    <p class="desc">Perlu diketahui, film-film yang terdapat pada web ini didapatkan dari web pencarian di internet. Kami tidak menyimpan file film tersebut di server sendiri dan kami hanya menempelkan link-link tersebut di website kami.</p>
+                                    <p class="desc"><?php echo Core::getInstance()->title?> is an entertainment website which is provide free watch or streaming movie with indonesian or english subtitle.</p>
+                                    <p class="desc">Please note, the movies on this web obtained from web search on the internet. We do not store the movie files on our own servers and we just paste those links on our website.</p>
                                     </div>
                                 </div>
                             </div>
