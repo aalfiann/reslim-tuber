@@ -113,13 +113,19 @@
                                     $datavideo .= '<h4 class="color-active"># '.$n++.'</h4>
                                         <div class="sv-video">
                                             <div class="video-responsive">
-                                                '.$valuevideo.'
+                                                <div>
+                                                    '.$valuevideo.'
+                                                    <div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>
+                                                </div>
                                             </div>
                                         </div><br>';
                                 } else{
                                     $datavideo .= '<div class="sv-video">
                                             <div class="video-responsive">
-                                                '.$valuevideo.'
+                                                <div>
+                                                    '.$valuevideo.'
+                                                    <div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>
+                                                </div>
                                             </div>
                                         </div><br>';
                                 }
