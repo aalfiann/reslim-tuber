@@ -7,6 +7,9 @@ reSlim-tuber
 A simple web app for boost to make money on your videos on youtube, vimeo, etc<br>
 reSlim-tuber is based on [reSlim](https://github.com/aalfiann/reSlim) which is based on [Slim Framework version 3](http://www.slimframework.com/).<br>
 
+omovv.ga use this script [visit](https://omovv.ga)
+---------------
+
 Roadmap:
 ---------------
 1. Post or Embed your video from Youtube, Vimeo, etc.
