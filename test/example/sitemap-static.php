@@ -64,4 +64,18 @@
             <changefreq>monthly</changefreq>
         </url>
 
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/rss.php
+            </loc>
+            <changefreq>daily</changefreq>
+        </url>
+
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/sitemap.php
+            </loc>
+            <changefreq>yearly</changefreq>
+        </url>
+
     </urlset>
