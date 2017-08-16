@@ -71,12 +71,12 @@
                                             echo '<div class="col-lg-3 col-sm-6 videoitem">
                                                     <div class="b-video">
                                                         <div class="v-img">
-                                                            <a href="watch.php?movie='.$value->{'PostID'}.'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.$value->{'Title'}.'"></a>
+                                                            <a href="watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.$value->{'Title'}.'"></a>
                                                             <div class="rating">'.$value->{'Rating'}.'</div>
                                                             <div class="time">'.$value->{'Duration'}.'</div>
                                                         </div>
                                                         <div class="v-desc">
-                                                            <a href="watch.php?movie='.$value->{'PostID'}.'">'.Core::cutLongText($value->{'Title'},60).'</a>
+                                                            <a href="watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'">'.Core::cutLongText($value->{'Title'},60).'</a>
                                                         </div>
                                                         <div class="v-views">
                                                             '.number_format($value->{'Viewer'}).' views. 

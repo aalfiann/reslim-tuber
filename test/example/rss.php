@@ -23,8 +23,8 @@
                 echo '<item>
                     <title>'.htmlspecialchars($value->{'Title'}, ENT_QUOTES).'</title>
                     <description><![CDATA['.$value->{'Description'}.']]></description>
-                    <link>'.Core::getInstance()->homepath.'/index.php?movie='.$value->{'PostID'}.'</link>
-                    <guid>'.Core::getInstance()->homepath.'/index.php?movie='.$value->{'PostID'}.'</guid>
+                    <link>'.Core::getInstance()->homepath.'/watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'</link>
+                    <guid>'.Core::getInstance()->homepath.'/watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'</guid>
                     <pubDate>'.date_format(date_create($value->{'Created_at'}), 'D, d M Y H:i:s O').'</pubDate>
                 </item>';
                 echo "\n";

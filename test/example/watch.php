@@ -166,7 +166,7 @@
                                 $datastars .= '<h4>Stars:</h4>';
                                 $datastars .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Stars'} as $name => $valuestars) {
-                                    $datastars .= '<span><a href="index.php?search='.$valuestars.'">'.$valuestars.'</a></span>';
+                                    $datastars .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuestars.'">'.$valuestars.'</a></span>';
                                 }
                                 $datastars .= '</p>';
                             }
@@ -176,7 +176,7 @@
                                 $datacast .= '<h4>Cast:</h4>';
                                 $datacast .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Cast'} as $name => $valuecast) {
-                                    $datacast .= '<span><a href="index.php?search='.$valuecast.'">'.$valuecast.'</a></span>';
+                                    $datacast .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecast.'">'.$valuecast.'</a></span>';
                                 }
                                 $datacast .= '</p>';
                             }
@@ -186,7 +186,7 @@
                                 $datadirector .= '<h4>Director:</h4>';
                                 $datadirector .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Director'} as $name => $valuedirector) {
-                                    $datadirector .= '<span><a href="index.php?search='.$valuedirector.'">'.$valuedirector.'</a></span>';
+                                    $datadirector .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuedirector.'">'.$valuedirector.'</a></span>';
                                 }
                                 $datadirector .= '</p>';
                             }
@@ -196,7 +196,7 @@
                                 $datacountry .= '<h4>Country:</h4>';
                                 $datacountry .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Country'} as $name => $valuecountry) {
-                                    $datacountry .= '<span><a href="index.php?search='.$valuecountry.'">'.$valuecountry.'</a></span>';
+                                    $datacountry .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecountry.'">'.$valuecountry.'</a></span>';
                                 }
                                 $datacountry .= '</p>';
                             }
@@ -206,7 +206,7 @@
                                 $datagenre .= '<h4>Genre:</h4>';
                                 $datagenre .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
-                                    $datagenre .= '<span><a href="index.php?search='.$valuegenre.'">'.$valuegenre.'</a></span>';
+                                    $datagenre .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a></span>';
                                 }
                                 //$datagenre = substr($datagenre, 0, -2);
                                 $datagenre .= '</p>';
@@ -223,7 +223,7 @@
                                     '.$datadirector.'
 
                                     <h4>Release Year:</h4>
-                                    <p class="sv-tags"><span><a href="index.php?search='.$data->result[0]->{'Released'}.'">'.$data->result[0]->{'Released'}.'</a><span></p>
+                                    <p class="sv-tags"><span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$data->result[0]->{'Released'}.'">'.$data->result[0]->{'Released'}.'</a><span></p>
 
                                     '.$datagenre.'
                                     <br>
@@ -253,12 +253,12 @@
                                         echo '<div class="col-lg-3 col-xs-12 col-sm-6 videoitem">
                                                 <div class="b-video">
                                                 <div class="v-img">
-                                                    <a href="watch.php?movie='.$valuerandomyear->{'PostID'}.'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandomyear->{'Title'}.'"></a>
+                                                    <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandomyear->{'Title'}.'"></a>
                                                     <div class="rating">'.$valuerandomyear->{'Rating'}.'</div>
                                                     <div class="time">'.$valuerandomyear->{'Duration'}.'</div>
                                                 </div>
                                                 <div class="v-desc">
-                                                    <a href="watch.php?movie='.$valuerandomyear->{'PostID'}.'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
+                                                    <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
                                                 </div>
                                                 <div class="v-views">
                                                     '.number_format($valuerandomyear->{'Viewer'}).' views.
@@ -339,14 +339,14 @@
                                     echo '<div class="h-video row">
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-img">
-                                                <a href="watch.php?movie='.$valuerandom->{'PostID'}.'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandom->{'Title'}.'"></a>
+                                                <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandom->{'Title'}.'"></a>
                                                 <div class="rating">'.$valuerandom->{'Rating'}.'</div>
                                                 <div class="time">'.$valuerandom->{'Duration'}.'</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-desc">
-                                                <a href="watch.php?movie='.$valuerandom->{'PostID'}.'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
+                                                <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
                                             </div>
                                             <div class="v-views">
                                                 '.number_format($valuerandom->{'Viewer'}).' views
@@ -365,7 +365,7 @@
 
                 <!-- load more -->
                 <div class="loadmore">
-                    <a href="genre.php">Show all genre</a>
+                    <a href="<?php echo Core::getInstance()->homepath?>/genre.php">Show all genre</a>
                 </div>
             </div>
         </div>
