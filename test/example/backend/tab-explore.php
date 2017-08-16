@@ -15,7 +15,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'12':$_GET['itemsperpag
                             <div class="form-group hidden">
                                 <input name="m" type="text" class="form-control border-input" value="6" hidden>
                                 <input name="page" type="text" class="form-control border-input" value="1" hidden>
-                                <input name="itemsperpage" type="text" class="form-control border-input" value="10" hidden>
+                                <input name="itemsperpage" type="text" class="form-control border-input" value="12" hidden>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2">
