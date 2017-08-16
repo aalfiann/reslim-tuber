@@ -9,7 +9,6 @@
     <meta name="description" content="Our Terms Of Service.">
     <meta name="keyword" content="Terms, TOS, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title?> | Terms Of Service</title>
 

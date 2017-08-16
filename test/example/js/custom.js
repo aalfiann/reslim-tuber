@@ -116,10 +116,10 @@ $( document ).ready(function() {
             $('.btn-color-toggle').on('click', function() {
                 if($('body').hasClass('light')) {
                     $('body').removeClass('light').addClass('dark');
-                    $(this).find('img').attr('src', 'images/icon_bulb_dark.png');
+                    $(this).find('img').attr('src', window.location.hostname+'/images/icon_bulb_dark.png');
                 } else { if($('body').hasClass('dark'))
                     $('body').removeClass('dark').addClass('light');
-                    $(this).find('img').attr('src', 'images/icon_bulb_light.png');
+                    $(this).find('img').attr('src', window.location.hostname+'/images/icon_bulb_light.png');
                 }
             });
 

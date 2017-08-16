@@ -19,7 +19,6 @@
     <meta name="description" content="Browse All Genre to make easier for you to search movies.">
     <meta name="keyword" content="Genre, Country, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title?> | Browse All Genre</title>
 

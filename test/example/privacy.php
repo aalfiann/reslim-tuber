@@ -9,7 +9,6 @@
     <meta name="description" content="Our Privacy Policy.">
     <meta name="keyword" content="Privacy, policy, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title?> | Privacy Policy</title>
 

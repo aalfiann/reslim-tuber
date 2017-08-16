@@ -4,19 +4,19 @@
         <div class="row">
             <div class="container padding-def">
                 <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
-                    <a class="navbar-brand" href="index.php"><img src="images/logo.svg" alt="<?php echo Core::getInstance()->title;?>" class="logo" /></a>
+                    <a class="navbar-brand" href="<?php echo Core::getInstance()->homepath?>"><img src="<?php echo Core::getInstance()->homepath?>/images/logo.svg" alt="<?php echo Core::getInstance()->title;?>" class="logo" /></a>
                 </div>
                 <div class="col-lg-7  col-sm-7 col-xs-12">
                     <div class="f-copy">
                         <ul class="list-inline">
-                            <li><a href="index.php"><?php echo Core::getInstance()->title.'</a> | '.Core::getInstance()->description.''?></li>
+                            <li><a href="<?php echo Core::getInstance()->homepath?>"><?php echo Core::getInstance()->title.'</a> | '.Core::getInstance()->description.''?></li>
                         </ul>
                     </div>
                     <div class="delimiter"></div>
                     <div class="f-copy">
                         <ul class="list-inline">
-                            <li><a href="about.php">About</a></li>
-                            <li><a href="contact.php">Contact</a></li>
+                            <li><a href="<?php echo Core::getInstance()->homepath?>/about.php">About</a></li>
+                            <li><a href="<?php echo Core::getInstance()->homepath?>/contact.php">Contact</a></li>
                             <li>Copyrights @ <?php echo Date('Y');?>, <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo $_SERVER['SERVER_NAME'];?></a></li>
                         </ul>
                     </div>

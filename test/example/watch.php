@@ -83,7 +83,6 @@
             }
         }
     ?>
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title;?> | Watch <?php echo $title;?></title>
 

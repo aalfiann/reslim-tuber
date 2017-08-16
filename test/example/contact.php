@@ -9,7 +9,6 @@
     <meta name="description" content="Just contact us, we will hear everything from you.">
     <meta name="keyword" content="Contact, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title?> Team">
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title?> | Contact Us</title>
 

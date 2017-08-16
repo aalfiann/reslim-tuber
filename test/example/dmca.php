@@ -9,7 +9,6 @@
     <meta name="description" content="Digital Millennium Copyright Act (DMCA).">
     <meta name="keyword" content="DMCA, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title?> | Digital Millennium Copyright Act (DMCA)</title>
 

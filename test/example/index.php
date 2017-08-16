@@ -30,7 +30,6 @@
     <meta name="description" content="<?php echo $description?>">
     <meta name="keyword" content="<?php echo $keyword?>">
     <meta name="author" content="<?php echo $author?>">
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo $title?></title>
 

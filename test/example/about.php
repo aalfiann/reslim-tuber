@@ -9,7 +9,6 @@
     <meta name="description" content="<?php echo Core::getInstance()->title?> is an entertainment website which is provide free watch or streaming movie with indonesian or english subtitle.">
     <meta name="keyword" content="About, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
-    <link rel="icon" href="favicon.png">
 
     <title><?php echo Core::getInstance()->title?> | About Us</title>
 
