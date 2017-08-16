@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="btn-color-toggle">
-            <img src="<?php echo Core::getInstance()->homepath?>/images/icon_bulb_dark.png" alt="">
+            <img src="<?php echo Core::getInstance()->homepath?>/images/icon_bulb_dark.png" alt="lights">
         </div>
         <div class="navbar-container">
             <div class="container">
