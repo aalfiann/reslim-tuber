@@ -109,7 +109,7 @@
                             $n=1;
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 if ($totalvideo>1){
-                                    $datavideo .= '<button type="button" class="btn btn-dropdown" data-toggle="collapse" data-target="#eps'.$n.'">Episode '.$n.' <span class="caret"></span></button><br>
+                                    $datavideo .= '<button type="button" class="btn btn-dropdown btn-block" data-toggle="collapse" data-target="#eps'.$n.'">Episode '.$n.' <span class="caret"></span></button>
                                         <div id="eps'.$n.'" class="collapse'.(($n==1)?' in':'').'">
                                             <div class="sv-video">
                                                 <div class="video-responsive">
