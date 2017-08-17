@@ -10,7 +10,7 @@
 ?>        
         <url>
             <loc>
-                <?php echo Core::getInstance()->homepath?>/index.php
+                <?php echo Core::getInstance()->homepath?>/
             </loc>
             <changefreq>daily</changefreq>
         </url>
@@ -27,6 +27,13 @@
                 <?php echo Core::getInstance()->homepath?>/rating.php
             </loc>
             <changefreq>weekly</changefreq>
+        </url>
+
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/random.php
+            </loc>
+            <changefreq>always</changefreq>
         </url>
         
         <url>

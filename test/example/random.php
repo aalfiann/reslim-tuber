@@ -3,11 +3,11 @@
     $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'20':$_GET['itemsperpage']),FILTER_SANITIZE_STRING);
 
     //Get video
-    $url = Core::getInstance()->api.'/video/post/data/public/show/rating/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
+    $url = Core::getInstance()->api.'/video/post/data/public/search/random/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
     $title = Core::getInstance()->title.' | '.Core::getInstance()->description;
-    $description = Core::getInstance()->title.' | Sort movies from the best IMDB rated.';
+    $description = Core::getInstance()->title.' | List random movies today.';
     $keyword = Core::getInstance()->keyword;
     $author = Core::getInstance()->title.' Team';
 ?>
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li class="color-active">All Best Rated Movies</li>
+                                    <li class="color-active">List Random Movies Today</li>
                                 </ul>
                             </div>
                             
@@ -69,7 +69,7 @@
                                                         </div>
                                                     </div>
                                                 </div>';
-                                            if ($i%2==4){
+                                            if ($i%4==0){
                     				        	echo '<div class="clearfix visible-lg-block"></div>';
         					                }
                                             if ($i%2==0){

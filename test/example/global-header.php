@@ -13,8 +13,9 @@
                     <div class="col-lg-3 col-sm-10 col-xs-10">
                         <ul class="list-inline menu">
                             <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "index")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>">Home</a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "genre")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/genre">Genre</a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "rating")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/rating">Best Rating</a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "genre")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/genre.php">Genre</a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "rating")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/rating.php">Best Rating</a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "random")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/random.php">Random</a></li>
                         </ul>
                     </div>
                     <div class="visible-xs visible-sm clearfix"></div>
