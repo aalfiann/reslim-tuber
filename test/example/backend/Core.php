@@ -874,4 +874,14 @@
             return $text;
         }
 
+        /**
+         * Determine Server is use SSL or not. This support for full ssl and flexible ssl
+         *
+         * @return boolean
+         */
+        public static function isHttpsButtflare() {
+            return isset($_SERVER['HTTPS']) ||
+                ($visitor = json_decode($_SERVER['HTTP_CF_VISITOR'])) &&
+                $visitor->scheme == 'https';
+        }
 }
