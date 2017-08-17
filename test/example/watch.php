@@ -60,7 +60,7 @@
                 	<meta name="twitter:image" content="'.$data->result[0]->{'Image'}.'" />
                     <meta property="og:title" content="'.$data->result[0]->{'Title'}.'" />
                     <meta property="og:description" content="'.$data->result[0]->{'Description'}.'" />
-                    <meta property="og:url" content="'.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" />
+                    <meta property="og:url" content="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" />
                     <meta property="og:image" content="'.$data->result[0]->{'Image'}.'" />
                 	<meta property="og:site_name" content="'.Core::getInstance()->title.'" />
                     <meta property="og:type" content="video.movie" />
@@ -96,7 +96,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-xs-12 col-sm-12">
-                <!--<h1><a href="<?php echo (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"><?php echo $title;?></a></h1>-->
                 <?php
                     if (!empty($data)){
                         if ($data->{'status'} == "success"){
@@ -104,12 +103,12 @@
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 $totalvideo++;
                             }
-                            if ($totalvideo>1) echo '<h1><a href="'.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
+                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
                             $datavideo = '';
                             $n=1;
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 if ($totalvideo>1){
-                                    $datavideo .= '<button type="button" class="btn btn-dropdown btn-block" data-toggle="collapse" data-target="#eps'.$n.'">Episode '.$n.' <span class="caret"></span></button>
+                                    $datavideo .= '<button type="button" class="btn btn-danger btn-block" data-toggle="collapse" data-target="#eps'.$n.'">Episode '.$n.' <span class="caret"></span></button>
                                         <div id="eps'.$n.'" class="collapse'.(($n==1)?' in':'').'">
                                             <div class="sv-video">
                                                 <div class="video-responsive">
@@ -136,7 +135,7 @@
                             echo $datavideo;
 
                             //author
-                            if ($totalvideo==1) echo '<h1><a href="'.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
+                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
                             echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
@@ -293,7 +292,7 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
                             var disqus_config = function () {
-                                this.page.url = \''.(isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'\';  // Replace PAGE_URL with your page\'s canonical URL variable
+                                this.page.url = \''.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'\';  // Replace PAGE_URL with your page\'s canonical URL variable
                                 this.page.identifier = \''.$postid.'\'; // Replace PAGE_IDENTIFIER with your page\'s unique identifier variable
                             };
 
