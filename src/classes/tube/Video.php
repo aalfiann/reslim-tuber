@@ -341,7 +341,7 @@ use PDO;
 										//Start Tags
 										$return_arr = null;
 										$names = $redata['Tags'];	
-										$named = preg_split( "/[;,@#]/", $names );
+										$named = preg_split( "/[,]/", $names );
 										foreach($named as $name){
 											if ($name != null){$return_arr[] = trim($name);}
 										}
@@ -350,7 +350,7 @@ use PDO;
 										//Start Stars
 										$stars_arr = null;
 										$starnames = $redata['Stars'];	
-										$starnamed = preg_split( "/[;,@#]/", $starnames );
+										$starnamed = preg_split( "/[,]/", $starnames );
 										foreach($starnamed as $name){
 											if ($name != null){$stars_arr[] = trim($name);}
 										}
@@ -359,7 +359,7 @@ use PDO;
 										//Start Cast
 										$cast_arr = null;
 										$castnames = $redata['Cast'];	
-										$castnamed = preg_split( "/[;,@#]/", $castnames );
+										$castnamed = preg_split( "/[,]/", $castnames );
 										foreach($castnamed as $name){
 											if ($name != null){$cast_arr[] = trim($name);}
 										}
@@ -368,7 +368,7 @@ use PDO;
 										//Start Director
 										$director_arr = null;
 										$directornames = $redata['Director'];	
-										$directornamed = preg_split( "/[;,@#]/", $directornames );
+										$directornamed = preg_split( "/[,]/", $directornames );
 										foreach($directornamed as $name){
 											if ($name != null){$director_arr[] = trim($name);}
 										}
@@ -377,7 +377,7 @@ use PDO;
 										//Start Country
 										$country_arr = null;
 										$countrynames = $redata['Country'];	
-										$countrynamed = preg_split( "/[;,@#]/", $countrynames );
+										$countrynamed = preg_split( "/[,]/", $countrynames );
 										foreach($countrynamed as $name){
 											if ($name != null){$country_arr[] = trim($name);}
 										}
@@ -386,7 +386,7 @@ use PDO;
 										//Start Embed
 										$embed_arr = null;
 										$embednames = $redata['Embed_video'];	
-										$embednamed = preg_split( "/[,@#]/", $embednames );
+										$embednamed = preg_split( "/[,]/", $embednames );
 										foreach($embednamed as $name){
 											if ($name != null){$embed_arr[] = trim($name);}
 										}
@@ -529,7 +529,7 @@ use PDO;
 									//Start Tags
 									$return_arr = null;
 									$names = $redata['Tags'];	
-									$named = preg_split( "/[;,@#]/", $names );
+									$named = preg_split( "/[,]/", $names );
 									foreach($named as $name){
 										if ($name != null){$return_arr[] = trim($name);}
 									}
@@ -538,7 +538,7 @@ use PDO;
 									//Start Stars
 									$stars_arr = null;
 									$starnames = $redata['Stars'];	
-									$starnamed = preg_split( "/[;,@#]/", $starnames );
+									$starnamed = preg_split( "/[,]/", $starnames );
 									foreach($starnamed as $name){
 										if ($name != null){$stars_arr[] = trim($name);}
 									}
@@ -547,7 +547,7 @@ use PDO;
 									//Start Cast
 									$cast_arr = null;
 									$castnames = $redata['Cast'];	
-									$castnamed = preg_split( "/[;,@#]/", $castnames );
+									$castnamed = preg_split( "/[,]/", $castnames );
 									foreach($castnamed as $name){
 										if ($name != null){$cast_arr[] = trim($name);}
 									}
@@ -556,7 +556,7 @@ use PDO;
 									//Start Director
 									$director_arr = null;
 									$directornames = $redata['Director'];	
-									$directornamed = preg_split( "/[;,@#]/", $directornames );
+									$directornamed = preg_split( "/[,]/", $directornames );
 									foreach($directornamed as $name){
 										if ($name != null){$director_arr[] = trim($name);}
 									}
@@ -565,7 +565,7 @@ use PDO;
 									//Start Country
 									$country_arr = null;
 									$countrynames = $redata['Country'];	
-									$countrynamed = preg_split( "/[;,@#]/", $countrynames );
+									$countrynamed = preg_split( "/[,]/", $countrynames );
 									foreach($countrynamed as $name){
 										if ($name != null){$country_arr[] = trim($name);}
 									}
@@ -574,7 +574,7 @@ use PDO;
 									//Start Embed
 									$embed_arr = null;
 									$embednames = $redata['Embed_video'];	
-									$embednamed = preg_split( "/[,@#]/", $embednames );
+									$embednamed = preg_split( "/[,]/", $embednames );
 									foreach($embednamed as $name){
 										if ($name != null){$embed_arr[] = trim($name);}
 									}
@@ -704,7 +704,7 @@ use PDO;
 									//Start Tags
 									$return_arr = null;
 									$names = $redata['Tags'];	
-									$named = preg_split( "/[;,@#]/", $names );
+									$named = preg_split( "/[,]/", $names );
 									foreach($named as $name){
 										if ($name != null){$return_arr[] = trim($name);}
 									}
@@ -713,7 +713,7 @@ use PDO;
 									//Start Stars
 									$stars_arr = null;
 									$starnames = $redata['Stars'];	
-									$starnamed = preg_split( "/[;,@#]/", $starnames );
+									$starnamed = preg_split( "/[,]/", $starnames );
 									foreach($starnamed as $name){
 										if ($name != null){$stars_arr[] = trim($name);}
 									}
@@ -722,7 +722,7 @@ use PDO;
 									//Start Cast
 									$cast_arr = null;
 									$castnames = $redata['Cast'];	
-									$castnamed = preg_split( "/[;,@#]/", $castnames );
+									$castnamed = preg_split( "/[,]/", $castnames );
 									foreach($castnamed as $name){
 										if ($name != null){$cast_arr[] = trim($name);}
 									}
@@ -731,7 +731,7 @@ use PDO;
 									//Start Director
 									$director_arr = null;
 									$directornames = $redata['Director'];	
-									$directornamed = preg_split( "/[;,@#]/", $directornames );
+									$directornamed = preg_split( "/[,]/", $directornames );
 									foreach($directornamed as $name){
 										if ($name != null){$director_arr[] = trim($name);}
 									}
@@ -740,7 +740,7 @@ use PDO;
 									//Start Country
 									$country_arr = null;
 									$countrynames = $redata['Country'];	
-									$countrynamed = preg_split( "/[;,@#]/", $countrynames );
+									$countrynamed = preg_split( "/[,]/", $countrynames );
 									foreach($countrynamed as $name){
 										if ($name != null){$country_arr[] = trim($name);}
 									}
@@ -749,7 +749,7 @@ use PDO;
 									//Start Embed
 									$embed_arr = null;
 									$embednames = $redata['Embed_video'];	
-									$embednamed = preg_split( "/[,@#]/", $embednames );
+									$embednamed = preg_split( "/[,]/", $embednames );
 									foreach($embednamed as $name){
 										if ($name != null){$embed_arr[] = trim($name);}
 									}
@@ -879,7 +879,7 @@ use PDO;
 									//Start Tags
 									$return_arr = null;
 									$names = $redata['Tags'];	
-									$named = preg_split( "/[;,@#]/", $names );
+									$named = preg_split( "/[,]/", $names );
 									foreach($named as $name){
 										if ($name != null){$return_arr[] = trim($name);}
 									}
@@ -888,7 +888,7 @@ use PDO;
 									//Start Stars
 									$stars_arr = null;
 									$starnames = $redata['Stars'];	
-									$starnamed = preg_split( "/[;,@#]/", $starnames );
+									$starnamed = preg_split( "/[,]/", $starnames );
 									foreach($starnamed as $name){
 										if ($name != null){$stars_arr[] = trim($name);}
 									}
@@ -897,7 +897,7 @@ use PDO;
 									//Start Cast
 									$cast_arr = null;
 									$castnames = $redata['Cast'];	
-									$castnamed = preg_split( "/[;,@#]/", $castnames );
+									$castnamed = preg_split( "/[,]/", $castnames );
 									foreach($castnamed as $name){
 										if ($name != null){$cast_arr[] = trim($name);}
 									}
@@ -906,7 +906,7 @@ use PDO;
 									//Start Director
 									$director_arr = null;
 									$directornames = $redata['Director'];	
-									$directornamed = preg_split( "/[;,@#]/", $directornames );
+									$directornamed = preg_split( "/[,]/", $directornames );
 									foreach($directornamed as $name){
 										if ($name != null){$director_arr[] = trim($name);}
 									}
@@ -915,7 +915,7 @@ use PDO;
 									//Start Country
 									$country_arr = null;
 									$countrynames = $redata['Country'];	
-									$countrynamed = preg_split( "/[;,@#]/", $countrynames );
+									$countrynamed = preg_split( "/[,]/", $countrynames );
 									foreach($countrynamed as $name){
 										if ($name != null){$country_arr[] = trim($name);}
 									}
@@ -924,7 +924,7 @@ use PDO;
 									//Start Embed
 									$embed_arr = null;
 									$embednames = $redata['Embed_video'];	
-									$embednamed = preg_split( "/[,@#]/", $embednames );
+									$embednamed = preg_split( "/[,]/", $embednames );
 									foreach($embednamed as $name){
 										if ($name != null){$embed_arr[] = trim($name);}
 									}
@@ -1037,7 +1037,7 @@ use PDO;
 									//Start Tags
 									$return_arr = null;
 									$names = $redata['Tags'];	
-									$named = preg_split( "/[;,@#]/", $names );
+									$named = preg_split( "/[,]/", $names );
 									foreach($named as $name){
 										if ($name != null){$return_arr[] = trim($name);}
 									}
@@ -1046,7 +1046,7 @@ use PDO;
 									//Start Stars
 									$stars_arr = null;
 									$starnames = $redata['Stars'];	
-									$starnamed = preg_split( "/[;,@#]/", $starnames );
+									$starnamed = preg_split( "/[,]/", $starnames );
 									foreach($starnamed as $name){
 										if ($name != null){$stars_arr[] = trim($name);}
 									}
@@ -1055,7 +1055,7 @@ use PDO;
 									//Start Cast
 									$cast_arr = null;
 									$castnames = $redata['Cast'];	
-									$castnamed = preg_split( "/[;,@#]/", $castnames );
+									$castnamed = preg_split( "/[,]/", $castnames );
 									foreach($castnamed as $name){
 										if ($name != null){$cast_arr[] = trim($name);}
 									}
@@ -1064,7 +1064,7 @@ use PDO;
 									//Start Director
 									$director_arr = null;
 									$directornames = $redata['Director'];	
-									$directornamed = preg_split( "/[;,@#]/", $directornames );
+									$directornamed = preg_split( "/[,]/", $directornames );
 									foreach($directornamed as $name){
 										if ($name != null){$director_arr[] = trim($name);}
 									}
@@ -1073,7 +1073,7 @@ use PDO;
 									//Start Country
 									$country_arr = null;
 									$countrynames = $redata['Country'];	
-									$countrynamed = preg_split( "/[;,@#]/", $countrynames );
+									$countrynamed = preg_split( "/[,]/", $countrynames );
 									foreach($countrynamed as $name){
 										if ($name != null){$country_arr[] = trim($name);}
 									}
@@ -1082,7 +1082,7 @@ use PDO;
 									//Start Embed
 									$embed_arr = null;
 									$embednames = $redata['Embed_video'];	
-									$embednamed = preg_split( "/[,@#]/", $embednames );
+									$embednamed = preg_split( "/[,]/", $embednames );
 									foreach($embednamed as $name){
 										if ($name != null){$embed_arr[] = trim($name);}
 									}
@@ -1183,7 +1183,7 @@ use PDO;
 									//Start Tags
 									$return_arr = null;
 									$names = $redata['Tags'];	
-									$named = preg_split( "/[;,@#]/", $names );
+									$named = preg_split( "/[,]/", $names );
 									foreach($named as $name){
 										if ($name != null){$return_arr[] = trim($name);}
 									}
@@ -1192,7 +1192,7 @@ use PDO;
 									//Start Stars
 									$stars_arr = null;
 									$starnames = $redata['Stars'];	
-									$starnamed = preg_split( "/[;,@#]/", $starnames );
+									$starnamed = preg_split( "/[,]/", $starnames );
 									foreach($starnamed as $name){
 										if ($name != null){$stars_arr[] = trim($name);}
 									}
@@ -1201,7 +1201,7 @@ use PDO;
 									//Start Cast
 									$cast_arr = null;
 									$castnames = $redata['Cast'];	
-									$castnamed = preg_split( "/[;,@#]/", $castnames );
+									$castnamed = preg_split( "/[,]/", $castnames );
 									foreach($castnamed as $name){
 										if ($name != null){$cast_arr[] = trim($name);}
 									}
@@ -1210,7 +1210,7 @@ use PDO;
 									//Start Director
 									$director_arr = null;
 									$directornames = $redata['Director'];	
-									$directornamed = preg_split( "/[;,@#]/", $directornames );
+									$directornamed = preg_split( "/[,]/", $directornames );
 									foreach($directornamed as $name){
 										if ($name != null){$director_arr[] = trim($name);}
 									}
@@ -1219,7 +1219,7 @@ use PDO;
 									//Start Country
 									$country_arr = null;
 									$countrynames = $redata['Country'];	
-									$countrynamed = preg_split( "/[;,@#]/", $countrynames );
+									$countrynamed = preg_split( "/[,]/", $countrynames );
 									foreach($countrynamed as $name){
 										if ($name != null){$country_arr[] = trim($name);}
 									}
@@ -1228,7 +1228,7 @@ use PDO;
 									//Start Embed
 									$embed_arr = null;
 									$embednames = $redata['Embed_video'];	
-									$embednamed = preg_split( "/[,@#]/", $embednames );
+									$embednamed = preg_split( "/[,]/", $embednames );
 									foreach($embednamed as $name){
 										if ($name != null){$embed_arr[] = trim($name);}
 									}
@@ -1362,7 +1362,7 @@ use PDO;
 						while($redata = $stmt->fetch()) {
 							$return_arr = null;
 							$names = $redata['Tags'];	
-							$named = preg_split( "/[;,@#]/", $names );
+							$named = preg_split( "/[,]/", $names );
 							foreach($named as $name){
 								if ($name != null){$return_arr[] = trim($name);}
 							}
@@ -1414,7 +1414,7 @@ use PDO;
 						while($redata = $stmt->fetch()) {
 							$return_arr = null;
 							$names = $redata['Country'];	
-							$named = preg_split( "/[;,@#]/", $names );
+							$named = preg_split( "/[,]/", $names );
 							foreach($named as $name){
 								if ($name != null){$return_arr[] = trim($name);}
 							}
@@ -1466,7 +1466,7 @@ use PDO;
 						while($redata = $stmt->fetch()) {
 							$return_arr = null;
 							$names = $redata['Released'];	
-							$named = preg_split( "/[;,@#]/", $names );
+							$named = preg_split( "/[,]/", $names );
 							foreach($named as $name){
 								if ($name != null){$return_arr[] = trim($name);}
 							}
