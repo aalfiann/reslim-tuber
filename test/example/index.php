@@ -14,9 +14,9 @@
         $keyword = Core::getInstance()->keyword;
         $author = Core::getInstance()->title.' Team';
     } else {
-        $title = Core::getInstance()->title.' | Filter search results: '.$search;
-        $description = 'Filter search results: '.$search;
-        $keyword = 'Filter, Search, Results, '.$search;
+        $title = Core::getInstance()->title.' | Watch full movies free: '.$search;
+        $description = 'Watch full movies free: '.$search;
+        $keyword = 'Waatch, full, movies, free, '.$search;
         $author = Core::getInstance()->title.' Team';
     }
 ?>
@@ -53,7 +53,7 @@
                                     <?php if (empty($search)){
                                         echo '<li class="color-active">Latest Movies</li>';
                                     } else {
-                                        echo '<li class="color-active">Filter search results: '.$search.'</li>';
+                                        echo '<li class="color-active">Watch full movies free: '.$search.'</li>';
                                     }
                                     ?>
                                 </ul>

@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li class="color-active">All Best Rated Movies</li>
+                                    <li class="color-active">Sort movies from the best IMDB rated</li>
                                 </ul>
                             </div>
                             
