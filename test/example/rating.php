@@ -6,9 +6,9 @@
     $url = Core::getInstance()->api.'/video/post/data/public/show/rating/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
-    $title = Core::getInstance()->title.' | '.Core::getInstance()->description;
-    $description = Core::getInstance()->title.' | Sort movies from the best IMDB rated.';
-    $keyword = Core::getInstance()->keyword;
+    $title = Core::getInstance()->title.' | Sort movies from the best IMDB rated';
+    $description = 'Sort movies from the best IMDB rated.';
+    $keyword = "Sort, movies, IMDB rated";
     $author = Core::getInstance()->title.' Team';
 ?>
 <!DOCTYPE html>
