@@ -894,8 +894,17 @@
          * @return boolean
          */
         public static function isHttpsButtflare() {
-            return isset($_SERVER['HTTPS']) ||
+            $whitelist = array(
+                '127.0.0.1',
+                '::1'
+            );
+            
+            if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+                return isset($_SERVER['HTTPS']) ||
                 ($visitor = json_decode($_SERVER['HTTP_CF_VISITOR'])) &&
                 $visitor->scheme == 'https';
+            } else {
+                return 0;
+            } 
         }
 }
