@@ -15,8 +15,8 @@
                     <div class="delimiter"></div>
                     <div class="f-copy">
                         <ul class="list-inline">
-                            <li><a href="<?php echo Core::getInstance()->homepath?>/about.php">About</a></li>
-                            <li><a href="<?php echo Core::getInstance()->homepath?>/contact.php">Contact</a></li>
+                            <li><a href="<?php echo Core::getInstance()->homepath?>/about.php"><?php echo Core::lang('about')?></a></li>
+                            <li><a href="<?php echo Core::getInstance()->homepath?>/contact.php"><?php echo Core::lang('contact')?></a></li>
                             <li>Copyrights @ <?php echo Date('Y');?>, <a href="<?php echo Core::getInstance()->homepath;?>"><?php echo $_SERVER['SERVER_NAME'];?></a></li>
                         </ul>
                     </div>

@@ -24,6 +24,12 @@ AddDefaultCharset UTF-8
 	# Watch Full
 	RewriteRule ^watch/([^/]*)/([^/]*)$ watch.php?movie=$1&title=$2 [L]
 
+	# Flexible Watch Short
+	RewriteRule ^([^/]*)/([^/]*)$ watch.php?movie=$2 [L]
+
+	# Flexible Watch Full
+	RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ watch.php?movie=$2&title=$3 [L]
+
 	# Handle not found
 	ErrorDocument 404 "<script>window.location.href='/contact.php';</script>"
 </IfModule>

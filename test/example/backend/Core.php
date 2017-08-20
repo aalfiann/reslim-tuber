@@ -63,10 +63,19 @@
 
         var $version = '1.0.0';
 
+        // Set language
+        var $setlang = 'en';
+        var $datalang;
+
         private static $instance;
         
         function __construct() {
             require 'config.php';
+            if ($this->setlang == 'en') {
+                require 'language/en.php';
+            } else if ($this->setlang == 'id') {
+                require 'language/id.php';
+            }
             $this->title = $config['title'];
             $this->keyword = $config['keyword'];
             $this->description = $config['description'];
@@ -84,6 +93,7 @@
             $this->googlewebmaster = $config['googlewebmaster'];
             $this->bingwebmaster = $config['bingwebmaster'];
             $this->yandexwebmaster = $config['yandexwebmaster'];
+            $this->datalang = $lang;
 		}
 
         public static function getInstance()
@@ -93,6 +103,10 @@
                 self::$instance = new self();
             }
             return self::$instance;
+        }
+
+        public static function lang($key){
+            return self::getInstance()->datalang[$key];
         }
         
         // LIBRARY USER MANAGEMENT AND AUTHENTICATION======================================================================
@@ -521,13 +535,13 @@
                 $data = json_decode(self::execPostRequest($url,$post_array));
                 echo '<div class="col-lg-12 forgottext">
                         <div class="alert alert-success alert-dismissible" role="alert">
-                            <strong>Your message is successfully sent</strong>
+                            <strong>'.self::lang('mail_success').'</strong>
                         </div>                                
                     </div>';
             } catch (Exception $e) {
                 echo '<div class="col-lg-12 forgottext">
                         <div class="alert alert-danger alert-dismissible" role="alert">
-                            <strong>Send message failed! Please try again later</strong>
+                            <strong>'.self::lang('mail_failed').'</strong>
                         </div>                                
                     </div>';
             }

@@ -19,7 +19,7 @@
                     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
             foreach ($data->results as $name => $value) {
                 echo '<url>
-                    <loc>'.Core::getInstance()->homepath.'/watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'</loc>
+                    <loc>'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'</loc>
                     '.((empty($value->{'Updated_at'}))?'':'<lastmod>'.date_format(date_create($value->{'Updated_at'}), 'Y-m-d').'</lastmod>').'
                     <changefreq>daily</changefreq>
                 </url>';

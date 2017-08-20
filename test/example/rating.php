@@ -6,13 +6,13 @@
     $url = Core::getInstance()->api.'/video/post/data/public/show/rating/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
-    $title = Core::getInstance()->title.' | Sort movies from the best IMDB rated';
-    $description = 'Sort movies from the best IMDB rated.';
-    $keyword = "Sort, movies, IMDB rated";
+    $title = Core::lang('rating_list').' | '.Core::getInstance()->title;
+    $description = Core::lang('rating_list');
+    $keyword = Core::lang('rating_key_1');
     $author = Core::getInstance()->title.' Team';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo Core::getInstance()->setlang?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li class="color-active">Sort movies from the best IMDB rated</li>
+                                    <li class="color-active"><?php echo Core::lang('rating_list')?></li>
                                 </ul>
                             </div>
                             
@@ -57,19 +57,19 @@
                                             echo '<div class="col-lg-3 col-sm-6 videoitem">
                                                     <div class="b-video">
                                                         <div class="v-img">
-                                                            <a href="watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.$value->{'Title'}.'"></a>
+                                                            <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.$value->{'Title'}.'"></a>
                                                             <div class="rating">'.$value->{'Rating'}.'</div>
                                                             <div class="time">'.$value->{'Duration'}.'</div>
                                                         </div>
                                                         <div class="v-desc">
-                                                            <a href="watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'">'.Core::cutLongText($value->{'Title'},60).'</a>
+                                                            <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'">'.Core::cutLongText($value->{'Title'},60).'</a>
                                                         </div>
                                                         <div class="v-views">
-                                                            '.number_format($value->{'Viewer'}).' views. 
+                                                            '.number_format($value->{'Viewer'}).' '.Core::lang('views').'. 
                                                         </div>
                                                     </div>
                                                 </div>';
-                                            if ($i%2==4){
+                                            if ($i%4==0){
                     				        	echo '<div class="clearfix visible-lg-block"></div>';
         					                }
                                             if ($i%2==0){
@@ -80,7 +80,7 @@
                                     } else {
                                         echo '<div class="col-lg-6 col-sm-6 videoitem">
                                             <strong><h1 class="color-active">404</h1></strong>
-                                            <h2 class="color-active">Sorry, we can\'t found any movies that you\'re looking for...</h2>
+                                            <h2 class="color-active">'.Core::lang('search_not_found').'</h2>
                                             </div>';
                                     }
                                 }

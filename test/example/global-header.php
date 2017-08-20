@@ -12,10 +12,10 @@
                     </div>
                     <div class="col-lg-3 col-sm-10 col-xs-10">
                         <ul class="list-inline menu">
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "index" || pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>">Home</a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "genre")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/genre.php">Genre</a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "rating")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/rating.php">Best Rating</a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "random")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/random.php">Random</a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "index" || pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>"><?php echo Core::lang('home')?></a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "genre")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/genre.php"><?php echo Core::lang('genre')?></a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "rating")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/rating.php"><?php echo Core::lang('best_rating')?></a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "random")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/random.php"><?php echo Core::lang('random')?></a></li>
                         </ul>
                     </div>
                     <div class="visible-xs visible-sm clearfix"></div>
@@ -24,7 +24,7 @@
                             <div class="topsearch">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
-                                    <input type="text" name="search" class="form-control" placeholder="Search the title, genre or anything..." aria-describedby="sizing-addon2">
+                                    <input type="text" name="search" class="form-control" placeholder="<?php echo Core::lang('input_search')?>" aria-describedby="sizing-addon2">
                                     
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-default">Go!&nbsp;&nbsp;&nbsp;</button>

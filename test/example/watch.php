@@ -19,7 +19,7 @@
         if ($data->{'status'} == "success"){
             $title = $data->result[0]->{'Title'};
             $description = $data->result[0]->{'Description'};
-            $keyword = $data->result[0]->{'Tags_inline'};
+            $keyword = Core::lang('watch_keyword').', '.$data->result[0]->{'Title'}.', '.$data->result[0]->{'Tags_inline'};
             $author = $data->result[0]->{'User'};
         } else {
             $title = '';
@@ -38,7 +38,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo Core::getInstance()->setlang?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,7 +84,7 @@
         }
     ?>
 
-    <title><?php echo Core::getInstance()->title;?> | Watch <?php echo $title;?></title>
+    <title><?php echo Core::lang('watch_header')?> <?php echo $title;?> | <?php echo Core::getInstance()->title;?></title>
 
     <?php include 'global-meta.php';?>
 </head>
@@ -103,7 +103,7 @@
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 $totalvideo++;
                             }
-                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
+                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
                             $datavideo = '';
                             $n=1;
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
@@ -135,11 +135,11 @@
                             echo $datavideo;
 
                             //author
-                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$title.'</a></h1>';
+                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
                             echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
-                                            '.number_format($data->result[0]->{'Viewer'}).' views
+                                            '.number_format($data->result[0]->{'Viewer'}).' '.Core::lang('views').'
                                         </div>
                                         <div class="sv-views-progress">
                                             <div class="sv-views-progress-bar"></div>
@@ -156,7 +156,7 @@
                                     <div class="sv-name">
                                         <div class="adblock3">
                                             <div class="img">
-                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'Your Ads here 468 x 60').'
+                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:''.Core::lang('ads_here').' 468 x 60').'
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@
                             
                             $datastars = '';
                             if (!empty($data->result[0]->{'Stars'})) {
-                                $datastars .= '<h4>Stars:</h4>';
+                                $datastars .= '<h4>'.Core::lang('watch_stars').'</h4>';
                                 $datastars .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Stars'} as $name => $valuestars) {
                                     $datastars .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuestars.'">'.$valuestars.'</a></span>';
@@ -175,7 +175,7 @@
 
                             $datacast = '';
                             if (!empty($data->result[0]->{'Cast'})) {
-                                $datacast .= '<h4>Cast:</h4>';
+                                $datacast .= '<h4>'.Core::lang('watch_cast').'</h4>';
                                 $datacast .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Cast'} as $name => $valuecast) {
                                     $datacast .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecast.'">'.$valuecast.'</a></span>';
@@ -185,7 +185,7 @@
 
                             $datadirector = '';
                             if (!empty($data->result[0]->{'Director'})) {
-                                $datadirector .= '<h4>Director:</h4>';
+                                $datadirector .= '<h4>'.Core::lang('watch_director').'</h4>';
                                 $datadirector .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Director'} as $name => $valuedirector) {
                                     $datadirector .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuedirector.'">'.$valuedirector.'</a></span>';
@@ -195,7 +195,7 @@
 
                             $datacountry = '';
                             if (!empty($data->result[0]->{'Country'})) {
-                                $datacountry .= '<h4>Country:</h4>';
+                                $datacountry .= '<h4>'.Core::lang('watch_country').'</h4>';
                                 $datacountry .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Country'} as $name => $valuecountry) {
                                     $datacountry .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecountry.'">'.$valuecountry.'</a></span>';
@@ -205,7 +205,7 @@
 
                             $datagenre = '';
                             if (!empty($data->result[0]->{'Tags'})) {
-                                $datagenre .= '<h4>Genre:</h4>';
+                                $datagenre .= '<h4>'.Core::lang('watch_genre').'</h4>';
                                 $datagenre .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
                                     $datagenre .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a></span>';
@@ -217,14 +217,14 @@
                             //Info Video
                             echo '<div class="info">
                                     
-                                    <h4>About :</h4>
+                                    <h4>'.Core::lang('watch_about').'</h4>
                                     <p>'.$data->result[0]->{'Description'}.'</p>
 
                                     '.$datastars.'
                                     '.$datacast.'
                                     '.$datadirector.'
 
-                                    <h4>Release Year:</h4>
+                                    <h4>'.Core::lang('watch_release').'</h4>
                                     <p class="sv-tags"><span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$data->result[0]->{'Released'}.'">'.$data->result[0]->{'Released'}.'</a><span></p>
 
                                     '.$datagenre.'
@@ -232,14 +232,14 @@
                                     <div class="sharethis-inline-share-buttons"></div>
                                     <div class="adblock2">
                                         <div class="img">
-                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:'Your Ads here<br>728 x 90').'
+                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:''.Core::lang('ads_here').'<br>728 x 90').'
                                         </div>
                                     </div>
 
                     <!-- similar videos -->
                     <div class="caption">
                         <div class="left">
-                            <a href="#">Watch this too</a>
+                            <a href="#">'.Core::lang('watch_this_too').'</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -255,15 +255,15 @@
                                         echo '<div class="col-lg-3 col-xs-12 col-sm-6 videoitem">
                                                 <div class="b-video">
                                                 <div class="v-img">
-                                                    <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandomyear->{'Title'}.'"></a>
+                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandomyear->{'Title'}.'"></a>
                                                     <div class="rating">'.$valuerandomyear->{'Rating'}.'</div>
                                                     <div class="time">'.$valuerandomyear->{'Duration'}.'</div>
                                                 </div>
                                                 <div class="v-desc">
-                                                    <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
+                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
                                                 </div>
                                                 <div class="v-views">
-                                                    '.number_format($valuerandomyear->{'Viewer'}).' views.
+                                                    '.number_format($valuerandomyear->{'Viewer'}).' '.Core::lang('views').'.
                                                 </div>
                                             </div>
                                         </div>';
@@ -319,14 +319,14 @@
 
                 <div class="adblock">
                     <div class="img">
-                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:'Your Ads here<br>336 x 280');?>
+                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:''.Core::lang('ads_here').'<br>336 x 280');?>
                     </div>
                 </div>
 
                 <!-- Recomended Videos -->
                 <div class="caption">
                     <div class="left">
-                        <a href="#">Recomended Movies</a>
+                        <a href="#"><?php echo Core::lang('watch_recomended')?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -341,17 +341,17 @@
                                     echo '<div class="h-video row">
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-img">
-                                                <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandom->{'Title'}.'"></a>
+                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandom->{'Title'}.'"></a>
                                                 <div class="rating">'.$valuerandom->{'Rating'}.'</div>
                                                 <div class="time">'.$valuerandom->{'Duration'}.'</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-desc">
-                                                <a href="'.Core::getInstance()->homepath.'/watch/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
+                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
                                             </div>
                                             <div class="v-views">
-                                                '.number_format($valuerandom->{'Viewer'}).' views
+                                                '.number_format($valuerandom->{'Viewer'}).' '.Core::lang('views').'
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
@@ -367,7 +367,7 @@
 
                 <!-- load more -->
                 <div class="loadmore">
-                    <a href="<?php echo Core::getInstance()->homepath?>/genre.php">Show all genre</a>
+                    <a href="<?php echo Core::getInstance()->homepath?>/genre.php"><?php echo Core::lang('watch_all_genre')?></a>
                 </div>
             </div>
         </div>

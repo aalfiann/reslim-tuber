@@ -10,17 +10,17 @@
     $datarelease = json_decode(Core::execGetRequest($urlrelease));
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo Core::getInstance()->setlang?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Browse All Genre to make easier for you to search movies.">
-    <meta name="keyword" content="Genre, Country, <?php echo Core::getInstance()->keyword?>"?>
+    <meta name="description" content="<?php echo Core::lang('genre_desc_1')?>">
+    <meta name="keyword" content="Genre, <?php echo Core::lang('country')?>, <?php echo Core::lang('year')?>, <?php echo Core::getInstance()->keyword?>"?>
     <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
 
-    <title><?php echo Core::getInstance()->title?> | Browse All Genre</title>
+    <title><?php echo Core::lang('genre_browse')?> | <?php echo Core::getInstance()->title?></title>
 
     <?php include 'global-meta.php';?>
 </head>
@@ -55,7 +55,7 @@
                                         <li><a href="index.php?search=Horror">Horror</a></li>
                                         <li><a href="index.php?search=Sci-fi">Sci-fi</a></li>
                                         <li><a href="index.php?search=Romance">Romance</a></li>
-                                        <li><a href="index.php?search=Chinese">Chinese</a></li>
+                                        <li><a href="index.php?search=China">China</a></li>
                                         <li><a href="index.php?search=India">India</a></li>
                                         <li><a href="index.php?search=Japan">Japan</a></li>
                                         <li><a href="index.php?search=Korea">Korea</a></li>
@@ -74,7 +74,7 @@
                                         if (!empty($datagenre)){
                                             if ($datagenre->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">All Genre:</h4></h4>';
+                                                echo '<h4 class="color-active">'.Core::lang('all').' Genre:</h4></h4>';
                                                 foreach ($datagenre->result->{'Tags'} as $name => $valuegenre) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuegenre.'"><span class="label label-default" style="display: inline-block;">'.$valuegenre.'</span></a>&nbsp;&nbsp;';
@@ -90,7 +90,7 @@
                                         if (!empty($datacountry)){
                                             if ($datacountry->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">All Country:</h4><h4>';
+                                                echo '<h4 class="color-active">'.Core::lang('all').' '.Core::lang('country').':</h4><h4>';
                                                 foreach ($datacountry->result->{'Country'} as $name => $valuecountry) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuecountry.'"><span class="label label-default" style="display: inline-block;">'.$valuecountry.'</span></a>&nbsp;&nbsp;';
@@ -106,7 +106,7 @@
                                         if (!empty($datarelease)){
                                             if ($datarelease->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">All Year:</h4></h4>';
+                                                echo '<h4 class="color-active">'.Core::lang('all').' '.Core::lang('year').':</h4></h4>';
                                                 foreach ($datarelease->result->{'Released'} as $name => $valuerelease) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuerelease.'"><span class="label label-default" style="display: inline-block;">'.$valuerelease.'</span></a>&nbsp;&nbsp;';

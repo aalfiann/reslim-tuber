@@ -6,13 +6,13 @@
     $url = Core::getInstance()->api.'/video/post/data/public/search/random/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
-    $title = Core::getInstance()->title.' | '.Core::getInstance()->description;
-    $description = Core::getInstance()->title.' | List random movies today.';
+    $title = Core::lang('random_today').' | '.Core::getInstance()->title;
+    $description = Core::lang('random_today').' | '.Core::getInstance()->title;
     $keyword = Core::getInstance()->keyword;
     $author = Core::getInstance()->title.' Team';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo Core::getInstance()->setlang?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li class="color-active">List Random Movies Today</li>
+                                    <li class="color-active"><?php echo Core::lang('random_today')?></li>
                                 </ul>
                             </div>
                             
@@ -57,15 +57,15 @@
                                             echo '<div class="col-lg-3 col-sm-6 videoitem">
                                                     <div class="b-video">
                                                         <div class="v-img">
-                                                            <a href="watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.$value->{'Title'}.'"></a>
+                                                            <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.$value->{'Title'}.'"></a>
                                                             <div class="rating">'.$value->{'Rating'}.'</div>
                                                             <div class="time">'.$value->{'Duration'}.'</div>
                                                         </div>
                                                         <div class="v-desc">
-                                                            <a href="watch/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'">'.Core::cutLongText($value->{'Title'},60).'</a>
+                                                            <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'">'.Core::cutLongText($value->{'Title'},60).'</a>
                                                         </div>
                                                         <div class="v-views">
-                                                            '.number_format($value->{'Viewer'}).' views. 
+                                                            '.number_format($value->{'Viewer'}).' '.Core::lang('views').'. 
                                                         </div>
                                                     </div>
                                                 </div>';
@@ -80,7 +80,7 @@
                                     } else {
                                         echo '<div class="col-lg-6 col-sm-6 videoitem">
                                             <strong><h1 class="color-active">404</h1></strong>
-                                            <h2 class="color-active">Sorry, we can\'t found any movies that you\'re looking for...</h2>
+                                            <h2 class="color-active">'.Core::lang('search_not_found').'</h2>
                                             </div>';
                                     }
                                 }
@@ -89,14 +89,6 @@
                     </div>
                 </div>
                 <!-- /Latest Movies -->
-
-                <?php
-                    if (!empty($data) && ($data->{'status'} == "success")){
-                        $pagination = new Pagination;
-                        echo $pagination->makePaginationFrontend($data,$_SERVER['PHP_SELF'].'?show=rating');
-                    }
-                ?>
-
             </div>
         </div>
     </div>
