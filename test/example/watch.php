@@ -139,7 +139,7 @@
                             echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
-                                            '.number_format($data->result[0]->{'Viewer'}).' '.Core::lang('views').'
+                                            '.number_format($data->result[0]->{'Viewer'}).''.Core::lang('views').'
                                         </div>
                                         <div class="sv-views-progress">
                                             <div class="sv-views-progress-bar"></div>
@@ -263,7 +263,7 @@
                                                     <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
                                                 </div>
                                                 <div class="v-views">
-                                                    '.number_format($valuerandomyear->{'Viewer'}).' '.Core::lang('views').'.
+                                                    '.number_format($valuerandomyear->{'Viewer'}).''.Core::lang('views').'.
                                                 </div>
                                             </div>
                                         </div>';
@@ -351,7 +351,7 @@
                                                 <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
                                             </div>
                                             <div class="v-views">
-                                                '.number_format($valuerandom->{'Viewer'}).' '.Core::lang('views').'
+                                                '.number_format($valuerandom->{'Viewer'}).''.Core::lang('views').'
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>

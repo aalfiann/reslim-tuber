@@ -65,6 +65,6 @@ $lang = [
     "all" => "Semua",
     "country" => "Negara",
     "year" => "Tahun",
-    "views" => "dilihat",
+    "views" => "x ditonton",
     "ads_here" => "Iklan Anda disini"
 ];

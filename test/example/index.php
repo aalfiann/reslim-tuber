@@ -79,7 +79,7 @@
                                                             <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'">'.Core::cutLongText($value->{'Title'},60).'</a>
                                                         </div>
                                                         <div class="v-views">
-                                                            '.number_format($value->{'Viewer'}).' '.Core::lang('views').'. 
+                                                            '.number_format($value->{'Viewer'}).''.Core::lang('views').'. 
                                                         </div>
                                                     </div>
                                                 </div>';
