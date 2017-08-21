@@ -38,7 +38,7 @@ $lang = [
     "rating_list" => "Urutkan film berdasarkan rating IMDB",
     "rating_key_1" => "Urutkan, film, berdasarkan, rating IMDB",
     //watch
-    "watch" => "nonton-film", //If you change this then you have to edit htaccess
+    "watch" => "nonton-film",
     "watch_keyword" => "Nonton, Film",
     "watch_header" => "Nonton Film",
     "watch_about" => "Tentang:",

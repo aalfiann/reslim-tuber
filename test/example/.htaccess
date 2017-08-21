@@ -18,17 +18,15 @@ AddDefaultCharset UTF-8
 	# Robots.txt
 	RewriteRule ^robots.txt$ robots.php [L]
 
-	# Watch Short English
-	RewriteRule ^watch-movie/([^/]*)$ watch.php?movie=$1 [L]
+	# Watch Short
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^([^/]*)/([^/]*)$ watch.php?movie=$2 [L]
 
-	# Watch Full English
-	RewriteRule ^watch-movie/([^/]*)/([^/]*)$ watch.php?movie=$1&title=$2 [L]
-
-	# Watch Short Indonesian
-	#RewriteRule ^nonton-film/([^/]*)$ watch.php?movie=$1 [L]
-
-	# Watch Full Indonesian
-	#RewriteRule ^nonton-film/([^/]*)/([^/]*)$ watch.php?movie=$1&title=$2 [L]
+	# Watch Full
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ watch.php?movie=$2&title=$3 [L]
 
 	# Handle not found
 	ErrorDocument 404 "<script>window.location.href='/contact.php';</script>"

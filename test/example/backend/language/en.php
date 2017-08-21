@@ -38,7 +38,7 @@ $lang = [
     "rating_list" => "Sort movies from the best IMDB rated",
     "rating_key_1" => "Sort, movies, best, IMDB rated",
     //watch
-    "watch" => "watch-movie", //If you change this then you have to edit htaccess
+    "watch" => "watch-movie",
     "watch_keyword" => "Watch, Movie",
     "watch_header" => "Watch Movie",
     "watch_about" => "About:",
