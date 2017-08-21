@@ -1,5 +1,6 @@
     <link rel="icon" href="<?php echo Core::getInstance()->homepath?>/favicon.png">
     <link rel="canonical" href="<?php echo ((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>" />
+    <link rel="alternate" href="<?php echo ((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>" hreflang="<?php echo Core::getInstance()->setlang?>" />
     <link rel="alternate" type="application/rss+xml" title="RSS Feed <?php echo Core::getInstance()->title?>" href="<?php echo Core::getInstance()->homepath?>/rss.php" />
     <meta name="google-site-verification" content="<?php echo Core::getInstance()->googlewebmaster?>" />
     <meta name="msvalidate.01" content="<?php echo Core::getInstance()->bingwebmaster?>"/>

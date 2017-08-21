@@ -376,6 +376,53 @@
 
 <?php include 'global-footer.php';?>
 <?php include 'global-js.php';?>
+
+<?php
+    if (!empty($data) && ($data->{'status'} == "success")){
+        echo '<!-- Start Structured Data -->
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@id": "'.Core::convertToSlug($data->result[0]->{'Title'}).'-'.$data->result[0]->{'PostID'}.'",
+          "@type": "Movie",
+          "dateCreated": "'.$data->result[0]->{'Created_at'}.'",
+          "name": "'.$data->result[0]->{'Title'}.'",
+          "url": "'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'",
+          "description": "'.$data->result[0]->{'Description'}.'",
+          "releasedEvent": {
+            "@type": "PublicationEvent",
+            "startDate": "'.$data->result[0]->{'Released'}.'",
+            "location": {
+              "@type": "Country",
+              "name": '.json_encode($data->result[0]->{'Country'}).'
+            }
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "'.$data->result[0]->{'Image'}.'"
+          },';
+            if (!empty($data->result[0]->{'Stars'})) {
+                echo "\n";
+                echo '"actor": {
+                    "@type": "Person",
+                    "name": '.json_encode($data->result[0]->{'Stars'}).'
+                },';
+            }
+            if (!empty($data->result[0]->{'Director'})) {
+                echo "\n";
+                echo '"director": {
+                    "@type": "Person",
+                    "name": '.json_encode($data->result[0]->{'Director'}).'
+                  },';
+            }
+            echo "\n";
+            echo '"duration": "'.$data->result[0]->{'Duration'}.'"
+        }
+        </script>
+        <!-- End Structured Data -->';
+    }
+?>
+
 <!-- Rating -->
 <script type="text/javascript">
     $(function(){    
