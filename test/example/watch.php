@@ -262,6 +262,14 @@
                                                 <div class="v-desc">
                                                     <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
                                                 </div>
+                                                <div class="v-views">';
+                                                $datatag = "";
+                                                foreach ($valuerandomyear->{'Tags'} as $namegenre => $valuegenre) {
+                                                    $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a>, ';
+                                                }
+                                                $datatag = substr($datatag, 0, -2);
+                                                echo $datatag;
+                                                echo '</div>
                                                 <div class="v-views">
                                                     '.number_format($valuerandomyear->{'Viewer'}).''.Core::lang('views').'.
                                                 </div>
@@ -350,8 +358,16 @@
                                             <div class="v-desc">
                                                 <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
                                             </div>
+                                            <div class="v-views">';
+                                            $datatag = "";
+                                            foreach ($valuerandom->{'Tags'} as $namegenre => $valuegenre) {
+                                                $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a>, ';
+                                            }
+                                            $datatag = substr($datatag, 0, -2);
+                                            echo $datatag;
+                                            echo '</div>
                                             <div class="v-views">
-                                                '.number_format($valuerandom->{'Viewer'}).''.Core::lang('views').'
+                                                '.number_format($valuerandom->{'Viewer'}).''.Core::lang('views').'.
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>

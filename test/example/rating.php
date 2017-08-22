@@ -64,9 +64,14 @@
                                                         <div class="v-desc">
                                                             <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'">'.Core::cutLongText($value->{'Title'},60).'</a>
                                                         </div>
-                                                        <div class="v-views">
-                                                            '.number_format($value->{'Viewer'}).''.Core::lang('views').'. 
-                                                        </div>
+                                                        <div class="v-views">';
+                                                        $datatag = "";
+                                                        foreach ($value->{'Tags'} as $namegenre => $valuegenre) {
+                                                            $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="index.php?search='.$valuegenre.'">'.$valuegenre.'</a>, ';
+                                                        }
+                                                        $datatag = substr($datatag, 0, -2);
+                                                        echo $datatag;
+                                                        echo '</div>
                                                     </div>
                                                 </div>';
                                             if ($i%4==0){
