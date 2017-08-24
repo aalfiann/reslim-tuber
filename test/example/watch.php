@@ -114,7 +114,8 @@
                                                 <div class="video-responsive">
                                                     <div>
                                                         '.$valuevideo.'
-                                                        <div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>
+                                                        <!-- Remove Comment below to disable click popout google player -->
+                                                        <!--<div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,7 +126,8 @@
                                             <div class="video-responsive">
                                                 <div>
                                                     '.$valuevideo.'
-                                                    <div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>
+                                                    <!-- Remove Comment below to disable click popout google player -->
+                                                    <!--<div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>-->
                                                 </div>
                                             </div>
                                         </div><br>';
