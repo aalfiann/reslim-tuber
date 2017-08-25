@@ -212,7 +212,6 @@
                                 foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
                                     $datagenre .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a></span>';
                                 }
-                                //$datagenre = substr($datagenre, 0, -2);
                                 $datagenre .= '</p>';
                             }
 
@@ -225,6 +224,7 @@
                                     '.$datastars.'
                                     '.$datacast.'
                                     '.$datadirector.'
+                                    '.$datacountry.'
 
                                     <h4>'.Core::lang('watch_release').'</h4>
                                     <p class="sv-tags"><span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$data->result[0]->{'Released'}.'">'.$data->result[0]->{'Released'}.'</a><span></p>
