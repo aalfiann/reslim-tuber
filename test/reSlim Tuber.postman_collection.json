@@ -1439,6 +1439,51 @@
 			"response": []
 		},
 		{
+			"name": "Is Post Are Exist?",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/public/search/title/?apikey={your api key}&query={query to search data}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"video",
+						"post",
+						"data",
+						"public",
+						"search",
+						"title",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{your api key}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "query",
+							"value": "{query to search data}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Create New Company",
 			"request": {
 				"url": "http://localhost:1337/reSlim-tuber/src/api/ads/company/new",
