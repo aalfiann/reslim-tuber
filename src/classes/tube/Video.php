@@ -1288,6 +1288,56 @@ use PDO;
         
 			return json_encode($data, JSON_PRETTY_PRINT);
 	        $this->db= null;
+		}
+		
+		/** 
+		 * Check if the title post is already exist to prevent duplicate post 
+		 * @return result process in json encoded data
+		 */
+		 public function isTitlePostExist(){
+            $search = "$this->search%";
+			if (!empty($this->search)){
+				$sql = "SELECT a.PostID,a.Title
+					from data_post a
+					where a.Title like :search
+					order by a.Title asc LIMIT 1;";
+			
+				$stmt = $this->db->prepare($sql);		
+				$stmt->bindParam(':search', $search, PDO::PARAM_STR);
+
+				if ($stmt->execute()) {	
+					if ($stmt->rowCount() > 0){
+						  $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+						$data = [
+						   	'result' => $results, 
+							'status' => 'success', 
+							'code' => 'RS501',
+							'message' => CustomHandlers::getreSlimMessage('RS501')
+						];
+					} else {
+						$data = [
+							'status' => 'error',
+							'code' => 'RS601',
+							'message' => CustomHandlers::getreSlimMessage('RS601')
+						];
+					}          	   	
+				} else {
+					$data = [
+						'status' => 'error',
+						'code' => 'RS202',
+						'message' => CustomHandlers::getreSlimMessage('RS202')
+					];
+				}	
+			} else {
+				$data = [
+					'status' => 'error',
+					'code' => 'RS601',
+					'message' => CustomHandlers::getreSlimMessage('RS601')
+				];
+			}
+        
+			return json_encode($data, JSON_PRETTY_PRINT);
+	        $this->db= null;
         }
 
 		/** 

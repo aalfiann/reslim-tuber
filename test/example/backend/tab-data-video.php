@@ -70,7 +70,8 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input name="title" type="text" placeholder="Input the title video here..." maxlength="200" class="form-control border-input" required>
+                                            <input id="post-input" name="title" type="text" placeholder="Input the title video here..." maxlength="200" class="form-control border-input" required>
+                                            <div id="title-info"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

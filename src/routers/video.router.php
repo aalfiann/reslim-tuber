@@ -119,6 +119,15 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
 
+    // GET api to check all data post is already exist or not
+    $app->get('/video/post/data/public/search/title/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $body = $response->getBody();
+        $body->write($video->isTitlePostExist());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
     // GET api to show all data status release
     $app->get('/video/data/status/{token}', function (Request $request, Response $response) {
         $video = new classes\tube\Video($this->db);

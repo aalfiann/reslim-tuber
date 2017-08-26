@@ -64,6 +64,26 @@
 				//$(result_output).html(res); //output response from server
 				//submit_btn.val("Upload").prop( "disabled", false); //enable submit button once ajax is done
 			});
+		}),
+		$('#post-input').on('change', function() {
+			$.ajax({
+				url: "<?php echo Core::getInstance()->api?>/video/post/data/public/search/title/?apikey=<?php echo Core::getInstance()->apikey?>&query="+$('#post-input').val(),
+				data: {'title' : $('#post-input').val()},
+				dataType: 'json',
+				success: function(data) {
+					if(data.result) {
+						var div = document.getElementById('title-info');
+						div.innerHTML = '<p class="text-danger">Title already exist: '+data.result[0]["Title"]+'</p>';
+					}
+					else {
+						var div = document.getElementById('title-info');
+						div.innerHTML = '';
+					}
+				},
+				error: function(data){
+					//error
+				}
+			});
 		});
     });
 	</script>
