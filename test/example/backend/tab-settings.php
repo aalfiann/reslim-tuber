@@ -19,6 +19,7 @@
                                     'Facebook' => $_POST['facebook'],
                                     'Twitter' => $_POST['twitter'],
                                     'Gplus' => $_POST['gplus'],
+                                    'Gpub' => $_POST['gpub'],
                                     'Googleanalytics' => $_POST['googleanalytics'],
                                     'Googlewebmaster' => $_POST['googlewebmaster'],
                                     'Bingwebmaster' => $_POST['bingwebmaster'],
@@ -85,6 +86,10 @@
                                         <div class="form-group">
                                             <label>Google Plus</label>
                                             <input name="gplus" type="text" placeholder="Please input Your Google Plus page here..." class="form-control border-input" value="<?php echo Core::getInstance()->gplus?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Google Publisher</label>
+                                            <input name="gpub" type="text" placeholder="Please input Your Google Publisher page here..." class="form-control border-input" value="<?php echo Core::getInstance()->gpub?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Google Analytics</label>

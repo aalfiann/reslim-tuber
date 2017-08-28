@@ -14,6 +14,12 @@
     $urlcontent = Core::getInstance()->api.'/ads/data/show/content/?apikey='.Core::getInstance()->apikey;
     $datacontent = json_decode(Core::execGetRequest($urlcontent));
 
+    //Data twitter
+    if (!empty(Core::getInstance()->twitter)){
+        $twittersite = Core::getInstance()->twitter;
+        $twitterarray = explode('/',$twittersite);
+        $twitterusername = end($twitterarray);
+    }
 
     if (!empty($data)){
         if ($data->{'status'} == "success"){
@@ -51,13 +57,18 @@
         if (!empty($data)){
             if ($data->{'status'} == "success"){
                 echo '<!-- Open Graphs -->
+                    <link rel="author" href="'.((!empty(Core::getInstance()->gplus))?Core::getInstance()->gplus:'').'"/>
+                    <link rel="publisher" href="'.((!empty(Core::getInstance()->gpub))?Core::getInstance()->gpub:'').'"/>
                     <meta itemprop="name" content="'.$data->result[0]->{'Title'}.'">
                     <meta itemprop="description" content="'.$data->result[0]->{'Description'}.'">
                     <meta itemprop="image" content="'.$data->result[0]->{'Image'}.'">
                 	<meta name="twitter:card" content="summary_large_image" />
                 	<meta name="twitter:title" content="'.$data->result[0]->{'Title'}.'" />
                 	<meta name="twitter:description" content="'.$data->result[0]->{'Description'}.'" />
-                	<meta name="twitter:image" content="'.$data->result[0]->{'Image'}.'" />
+                    <meta name="twitter:image" content="'.$data->result[0]->{'Image'}.'" />
+                    <meta name="twitter:image:alt" content="'.$data->result[0]->{'Title'}.'" />
+                    <meta name="twitter:site" content="'.((!empty(Core::getInstance()->twitter))?'@'.$twitterusername:'').'">
+                    <meta name="twitter:creator" content="'.((!empty(Core::getInstance()->twitter))?'@'.$twitterusername:'').'">
                     <meta property="og:title" content="'.$data->result[0]->{'Title'}.'" />
                     <meta property="og:description" content="'.$data->result[0]->{'Description'}.'" />
                     <meta property="og:url" content="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" />

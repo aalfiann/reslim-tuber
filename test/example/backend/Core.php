@@ -46,6 +46,9 @@
         // Set google plus
         var $gplus;
 
+        // Set google publisher page
+        var $gpub;
+
         // Set sharethis keys
         var $sharethis;
 
@@ -89,6 +92,7 @@
             $this->facebook = $config['facebook'];
             $this->twitter = $config['twitter'];
             $this->gplus = $config['gplus'];
+            $this->gpub = $config['gpub'];
             $this->googleanalytics = $config['googleanalytics'];
             $this->googlewebmaster = $config['googlewebmaster'];
             $this->bingwebmaster = $config['bingwebmaster'];
@@ -820,6 +824,7 @@
             $config[\'facebook\'] = \''.$post_array['Facebook'].'\'; //Your facebook page, you can leave this blank and fill this later
             $config[\'twitter\'] = \''.$post_array['Twitter'].'\'; //Your twitter page, you can leave this blank and fill this later
             $config[\'gplus\'] = \''.$post_array['Gplus'].'\'; //Your google plus page, you can leave this blank and fill this later
+            $config[\'gpub\'] = \''.$post_array['Gpub'].'\'; //Your google publisher page, you can leave this blank and fill this later
             $config[\'googleanalytics\'] = \''.$post_array['Googleanalytics'].'\'; //Your google analytics, you can leave this blank and fill this later
             $config[\'googlewebmaster\'] = \''.$post_array['Googlewebmaster'].'\'; //Your google webmaster, you can leave this blank and fill this later
             $config[\'bingwebmaster\'] = \''.$post_array['Bingwebmaster'].'\'; //Your bing webmaster, you can leave this blank and fill this later
