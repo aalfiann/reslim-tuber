@@ -67,8 +67,8 @@
 		}),
 		$('#post-input').on('change', function() {
 			$.ajax({
-				url: "<?php echo Core::getInstance()->api?>/video/post/data/public/search/title/?apikey=<?php echo Core::getInstance()->apikey?>&query="+$('#post-input').val(),
-				data: {'title' : $('#post-input').val()},
+				url: "<?php echo Core::getInstance()->api?>/video/post/data/public/search/title/?apikey=<?php echo Core::getInstance()->apikey?>&query="+encodeURIComponent($('#post-input').val()),
+				data: {'title' : encodeURIComponent($('#post-input').val())},
 				dataType: 'json',
 				success: function(data) {
 					if(data.result) {
