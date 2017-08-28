@@ -51,6 +51,7 @@ $lang = [
     "watch_this_too" => "Watch this too",
     "watch_recomended" => "Recomended Movies",
     "watch_all_genre" => "Show All Genre",
+    "watch_share" => "Ask your friends to",
     //menu static page
     "about_us" => "About Us",
     "terms" => "Terms Of Service",

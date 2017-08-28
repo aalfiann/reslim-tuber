@@ -51,6 +51,7 @@ $lang = [
     "watch_this_too" => "Tonton film ini juga",
     "watch_recomended" => "Rekomendasi Film",
     "watch_all_genre" => "Lihat Semua Genre",
+    "watch_share" => "Ajak teman Anda untuk",
     //menu static page
     "about_us" => "Tentang Kami",
     "terms" => "Persyaratan Layanan",

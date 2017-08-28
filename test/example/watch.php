@@ -242,6 +242,7 @@
 
                                     '.$datagenre.'
                                     <br>
+                                    <p class="text-center">'.Core::lang('watch_share').' '.Core::lang('watch_header').' '.$title.'</p>
                                     <div class="sharethis-inline-share-buttons"></div>
                                     <div class="adblock2">
                                         <div class="img">
