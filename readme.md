@@ -142,6 +142,7 @@ Working with gui example for testing
     $config['facebook'] = ''; //Your facebook page, you can leave this blank and fill this later<br>
     $config['twitter'] = ''; //Your twitter page, you can leave this blank and fill this later<br>
     $config['gplus'] = ''; Your google plus page, you can leave this blank and fill this later<br>
+    $config['gpub'] = ''; //Your google publisher page, you can leave this blank and fill this later<br>
     $config['googleanalytics'] = ''; //Your google analytics, you can leave this blank and fill this later<br>
     $config['googlewebmaster'] = ''; //Your google webmaster, you can leave this blank and fill this later<br>
     $config['bingwebmaster'] = ''; //Your bing webmaster, you can leave this blank and fill this later<br>
