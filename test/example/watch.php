@@ -158,8 +158,8 @@
                                             <div class="sv-views-progress-bar"></div>
                                         </div>
                                         <div class="sv-views-stats text-right">
-                                            <span id="totalliked" class="green"><i class="fa fa-thumbs-up iliked"></i> '.number_format($data->result[0]->{'Liked'}).'</span>
-                                            <span id="totaldisliked" class="percent"><i class="fa fa-thumbs-down idisliked"></i> '.number_format($data->result[0]->{'Disliked'}).'</span>
+                                            <span id="totalliked" class="green"><a rel="nofollow"><i class="fa fa-thumbs-up iliked"></i></a> '.number_format($data->result[0]->{'Liked'}).'</span>
+                                            <span id="totaldisliked" class="percent"><a rel="nofollow"><i class="fa fa-thumbs-down idisliked"></i></a> '.number_format($data->result[0]->{'Disliked'}).'</span>
                                             
                                         </div>
                                         <div class="sv-views-stats text-right">
