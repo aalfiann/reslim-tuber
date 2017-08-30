@@ -53,6 +53,8 @@
     <meta name="description" content="<?php echo $description;?>">
     <meta name="keyword" content="<?php echo $keyword;?>">
     <meta name="author" content="<?php echo $author;?>">
+    <link rel="nofollow" href="<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>"/>
+    <link rel="nofollow" href="<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>"/>
     <?php
         if (!empty($data)){
             if ($data->{'status'} == "success"){
@@ -158,8 +160,8 @@
                                             <div class="sv-views-progress-bar"></div>
                                         </div>
                                         <div class="sv-views-stats text-right">
-                                            <span id="totalliked" class="green"><a rel="nofollow"><i class="fa fa-thumbs-up iliked"></i></a> '.number_format($data->result[0]->{'Liked'}).'</span>
-                                            <span id="totaldisliked" class="percent"><a rel="nofollow"><i class="fa fa-thumbs-down idisliked"></i></a> '.number_format($data->result[0]->{'Disliked'}).'</span>
+                                            <span id="totalliked" class="green"><a><i class="fa fa-thumbs-up iliked"></i></a> '.number_format($data->result[0]->{'Liked'}).'</span>
+                                            <span id="totaldisliked" class="percent"><a><i class="fa fa-thumbs-down idisliked"></i></a> '.number_format($data->result[0]->{'Disliked'}).'</span>
                                             
                                         </div>
                                         <div class="sv-views-stats text-right">
