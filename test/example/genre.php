@@ -74,7 +74,7 @@
                                         if (!empty($datagenre)){
                                             if ($datagenre->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">'.Core::lang('all').' Genre:</h4></h4>';
+                                                echo '<h4 class="color-active">'.Core::lang('all').' Genre:</h4><h4>';
                                                 foreach ($datagenre->result->{'Tags'} as $name => $valuegenre) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuegenre.'"><span class="label label-default" style="display: inline-block;">'.$valuegenre.'</span></a>&nbsp;&nbsp;';
@@ -106,7 +106,7 @@
                                         if (!empty($datarelease)){
                                             if ($datarelease->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">'.Core::lang('all').' '.Core::lang('year').':</h4></h4>';
+                                                echo '<h4 class="color-active">'.Core::lang('all').' '.Core::lang('year').':</h4><h4>';
                                                 foreach ($datarelease->result->{'Released'} as $name => $valuerelease) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuerelease.'"><span class="label label-default" style="display: inline-block;">'.$valuerelease.'</span></a>&nbsp;&nbsp;';
