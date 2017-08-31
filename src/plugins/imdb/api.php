@@ -12,6 +12,7 @@ if (!empty($_GET['title'])){
 			$imdb_api['imdbID'] = $imdb->getImdbID();
 			$imdb_api['imdbURL'] = $imdb->getUrl();
 			$imdb_api['poster'] = $imdb->getPoster();
+			$imdb_api['poster_thumbnails'] = $imdb->getPosterThumbnails();
 			$imdb_api['rating'] = $imdb->getRating();
 			$imdb_api['mpaa'] = $imdb->getMpaa();
 			$imdb_api['runtime'] = $imdb->getRuntime();

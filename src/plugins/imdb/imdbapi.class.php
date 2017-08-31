@@ -482,6 +482,17 @@ class IMDB {
         return 'N/A';
     }
 
+    public function getPosterThumbnails() {
+        if ($this->getPoster() != 'N/A'){
+            $thumbsdata = explode('.jpg', $this->getPoster());
+            $result = $thumbsdata[0].'UX182_CR0,0,182,268_AL_.jpg';
+        } else {
+            $result = 'N/A';
+        }
+
+        return $result;
+    }
+
     public function getRating() {
         return isset($this->data['rating']) ? number_format($this->data['rating'], 1) : 'N/A';
     }
@@ -519,7 +530,8 @@ class IMDB {
         $oData = array();
 		$oData['imdbID'] = $this->getImdbID();
 		$oData['imdbURL'] = $this->getUrl();
-		$oData['poster'] = $this->getPoster();
+        $oData['poster'] = $this->getPoster();
+        $oData['poster_thumbnails'] = $this->getPosterThumbnails();
 		$oData['rating'] = $this->getRating();
 		$oData['mpaa'] = $this->getMpaa();
 		$oData['runtime'] = $this->getRuntime();
