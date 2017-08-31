@@ -64,7 +64,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Image</label>
-                                            <input name="image" type="text" placeholder="Input the url image here..." class="form-control border-input" required>
+                                            <input id="image-imdb" name="image" type="text" placeholder="Input the url image here..." class="form-control border-input" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -74,10 +74,17 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                             <div id="title-info"></div>
                                         </div>
                                     </div>
+                                    <?php if (!empty(Core::getInstance()->imdbapi)) {
+                                        echo '<div class="col-lg-12">
+                                            <div class="form-group">
+                                                <button id="getimdb" type="button" class="btn btn-info btn-block">Get IMDB</button>
+                                            </div>
+                                        </div>';
+                                    }?>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="description" rows="3" type="text" placeholder="Input the description video here..." maxlength="1000" class="form-control border-input" required></textarea>
+                                            <textarea id="description-imdb" name="description" rows="3" type="text" placeholder="Input the description video here..." maxlength="1000" class="form-control border-input" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -89,13 +96,13 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Duration</label>
-                                            <input name="duration" type="text" placeholder="Format HH:mm:ss" class="form-control border-input" required>
+                                            <input id="duration-imdb" name="duration" type="text" placeholder="Format HH:mm:ss" class="form-control border-input" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Stars</label>
-                                            <input name="stars" type="text" placeholder="Input the stars name separated with comma here..." maxlength="500" class="form-control border-input">
+                                            <input id="stars-imdb" name="stars" type="text" placeholder="Input the stars name separated with comma here..." maxlength="500" class="form-control border-input">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -107,13 +114,13 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Director</label>
-                                            <input name="director" type="text" placeholder="Input the director name separated with comma here..." maxlength="250" class="form-control border-input">
+                                            <input id="director-imdb" name="director" type="text" placeholder="Input the director name separated with comma here..." maxlength="250" class="form-control border-input">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Tags</label>
-                                            <input name="tags" type="text" placeholder="Input the tags separated with comma here..." maxlength="500" class="form-control border-input" required>
+                                            <input id="tags-imdb" name="tags" type="text" placeholder="Input the tags separated with comma here..." maxlength="500" class="form-control border-input" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -125,13 +132,13 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Release</label>
-                                            <input name="released" id="year" type="text" placeholder="Input the year of released video here..." maxlength="100" class="form-control border-input" required>
+                                            <input id="released-imdb" name="released" id="year" type="text" placeholder="Input the year of released video here..." maxlength="100" class="form-control border-input" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Rating</label>
-                                            <input name="rating" type="text" placeholder="Input the rating video here..." maxlength="3" class="form-control border-input" required>
+                                            <input id="rating-imdb" name="rating" type="text" placeholder="Input the rating video here..." maxlength="3" class="form-control border-input" required>
                                         </div>
                                     </div>
                                 </div>

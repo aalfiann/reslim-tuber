@@ -64,6 +64,9 @@
         // Set yandex webmaster tools
         var $yandexwebmaster;
 
+        // Set IMDB API
+        var $imdbapi;
+
         var $version = '1.0.0';
 
         // Set language
@@ -97,6 +100,7 @@
             $this->googlewebmaster = $config['googlewebmaster'];
             $this->bingwebmaster = $config['bingwebmaster'];
             $this->yandexwebmaster = $config['yandexwebmaster'];
+            $this->imdbapi = $config['imdbapi'];
             $this->datalang = $lang;
 		}
 
@@ -828,7 +832,8 @@
             $config[\'googleanalytics\'] = \''.$post_array['Googleanalytics'].'\'; //Your google analytics, you can leave this blank and fill this later
             $config[\'googlewebmaster\'] = \''.$post_array['Googlewebmaster'].'\'; //Your google webmaster, you can leave this blank and fill this later
             $config[\'bingwebmaster\'] = \''.$post_array['Bingwebmaster'].'\'; //Your bing webmaster, you can leave this blank and fill this later
-            $config[\'yandexwebmaster\'] = \''.$post_array['Yandexwebmaster'].'\'; //Your yandex webmaster, you can leave this blank and fill this later';
+            $config[\'yandexwebmaster\'] = \''.$post_array['Yandexwebmaster'].'\'; //Your yandex webmaster, you can leave this blank and fill this later
+            $config[\'imdbapi\'] = \''.$post_array['Imdbapi'].'\'; //IMDB API, you can leave this blank and fill this later';
             $handle = fopen('config.php','w+'); 
 				fwrite($handle,$newcontent); 
 				fclose($handle); 

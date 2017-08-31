@@ -21,7 +21,8 @@ Roadmap:
 7. Automatic build Sitemap and RSS
 8. Dynamic robots.txt
 9. Modern and SEO Optimized design
-10. Etc
+10. IMDB API
+11. Etc
 
 Feature:
 ---------------
@@ -147,6 +148,7 @@ Working with gui example for testing
     $config['googlewebmaster'] = ''; //Your google webmaster, you can leave this blank and fill this later<br>
     $config['bingwebmaster'] = ''; //Your bing webmaster, you can leave this blank and fill this later<br>
     $config['yandexwebmaster'] = ''; //Your yandex webmaster, you can leave this blank and fill this later<br>
+    $config['imdbapi'] = ''; //IMDB API, you can leave this blank and fill this later<br>
 3. Visit yourserver/reSlim-tuber/test/example/backend<br>
     For my case is http://localhost:1337/reSlim-tuber/test/example/backend
 4. You can login with default superuser account:<br>

@@ -84,6 +84,50 @@
 					//error
 				}
 			});
-		});
+		}),
+		$("#getimdb").on("click",function(){
+            $.ajax({
+                type: "GET",
+				url: "<?php echo Core::getInstance()->imdbapi?>/api.php?title="+encodeURIComponent($('#post-input').val()),
+				dataType: 'json',
+				success: function( data ) {
+                    document.getElementById("image-imdb").value='';
+					document.getElementById("description-imdb").value='';
+					document.getElementById("duration-imdb").value='';
+					document.getElementById("stars-imdb").value='';
+					document.getElementById("director-imdb").value='';
+					document.getElementById("tags-imdb").value='';
+					document.getElementById("released-imdb").value='';
+					document.getElementById("rating-imdb").value='';
+					if(data.status=='success'){
+                        document.getElementById("image-imdb").value=data.result.poster;
+						document.getElementById("description-imdb").value=data.result.description;
+						document.getElementById("duration-imdb").value=data.result.runtime_formatted;
+						document.getElementById("stars-imdb").value=data.result.castNameStringCommas;
+						document.getElementById("director-imdb").value=data.result.castDirectorStringCommas;
+						document.getElementById("tags-imdb").value=data.result.genreStringCommas;
+						document.getElementById("released-imdb").value=data.result.year;
+						document.getElementById("rating-imdb").value=data.result.rating;
+					} else {
+						document.getElementById("image-imdb").value='';
+						document.getElementById("description-imdb").value='';
+						document.getElementById("duration-imdb").value='';
+						document.getElementById("stars-imdb").value='';
+						document.getElementById("director-imdb").value='';
+						document.getElementById("tags-imdb").value='';
+						document.getElementById("released-imdb").value='';
+						document.getElementById("rating-imdb").value='';
+					}
+				},
+				error: function( xhr, textStatus, error ) {
+                    console.log("XHR: " + xhr.statusText);
+                    console.log("STATUS: "+textStatus);
+                    console.log("ERROR: "+error);
+                    console.log("TRACE: "+xhr.responseText);
+				}
+			}).done(function(res){ 
+                
+			});
+        });
     });
 	</script>

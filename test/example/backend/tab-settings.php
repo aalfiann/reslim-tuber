@@ -23,7 +23,8 @@
                                     'Googleanalytics' => $_POST['googleanalytics'],
                                     'Googlewebmaster' => $_POST['googlewebmaster'],
                                     'Bingwebmaster' => $_POST['bingwebmaster'],
-                                    'Yandexwebmaster' => $_POST['yandexwebmaster']
+                                    'Yandexwebmaster' => $_POST['yandexwebmaster'],
+                                    'Imdbapi' => $_POST['imdbapi']
                                 );
                                 Core::saveSettings($post_array);
                             } 
@@ -62,6 +63,10 @@
                                         <div class="form-group">
                                             <label>Url API</label>
                                             <input name="api" type="text" placeholder="Please input url folder of Your Rest API." class="form-control border-input" value="<?php echo Core::getInstance()->api?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>IMDB API Url</label>
+                                            <input name="imdbapi" type="text" placeholder="Example: http:://yourapiserver.com/plugins/imdb" class="form-control border-input" value="<?php echo Core::getInstance()->imdbapi?>">
                                         </div>
                                         <div class="form-group">
                                             <label>API Key</label>
@@ -110,6 +115,7 @@
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any API Keys? You can create at least one API Key at <a href="modul-data-api.php?m=7&page=1&itemsperpage=10&search=">here</a>.</p>
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any Disqus? You can create at <a href="http://disqus.com">here</a>.</p>
                                         <p class="category"><i class="ti-info-alt"></i> Doesn't have any Sharethis Keys? You can create at <a href="http://sharethis.com">here</a>.</p>
+                                        <p class="category"><i class="ti-info-alt"></i> IMDB Rest API is included in your api, in folder <b>src/plugins/imdb</b>.</p>
                                         <hr>
                                         <div class="form-group text-center">
                                             <button name="submitsettings" type="submit" class="btn btn-fill btn-wd ">Save Settings</button>
