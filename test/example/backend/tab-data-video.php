@@ -144,6 +144,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                 </div>
                               </div>
                               <div class="modal-footer">
+                                <button id="clearmodalform" type="button" class="btn btn-danger pull-left">Clear Form</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 <button type="submit" name="submitnewvideo" class="btn btn-primary">Submit</button>
                               </div>

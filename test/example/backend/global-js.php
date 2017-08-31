@@ -85,6 +85,15 @@
 				}
 			});
 		}),
+		$('#clearmodalform').on('click', function (e) {
+  			$('#myModal')
+		    .find("input,textarea,select")
+	    	.val('')
+        	.end()
+		    .find("input[type=checkbox], input[type=radio]")
+	    	.prop("checked", "")
+    		.end();
+		}),
 		$("#getimdb").on("click",function(){
             $.ajax({
                 type: "GET",
