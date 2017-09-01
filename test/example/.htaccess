@@ -28,6 +28,11 @@ AddDefaultCharset UTF-8
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ watch.php?movie=$2&title=$3 [L]
 
+	# Handle broken image
+	<FilesMatch ".(jpg|png|gif)$">
+		ErrorDocument 404 "/images/video1-1.png"
+	</FilesMatch>
+
 	# Handle not found
 	ErrorDocument 404 "<script>window.location.href='/contact.php';</script>"
 </IfModule>

@@ -487,7 +487,7 @@ class IMDB {
             $thumbsdata = explode('.jpg', $this->getPoster());
             $result = $thumbsdata[0].'UX182_CR0,0,182,268_AL_.jpg';
         } else {
-            $result = 'N/A';
+            $result = $this->getBasePath().'images/notfound.png';
         }
 
         return $result;
