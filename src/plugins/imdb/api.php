@@ -17,12 +17,12 @@ if (!empty($_GET['title'])){
 			$imdb_api['mpaa'] = $imdb->getMpaa();
 			$imdb_api['runtime'] = $imdb->getRuntime();
 			$imdb_api['runtime_formatted'] = $imdb->getRuntimeSeconds();
+			$imdb_api['num_votes'] = $imdb->getNumVotes();
 			$imdb_api['title'] = $imdb->getTitle();
-			$imdb_api['AKA'] = $imdb->getAka();
+			$imdb_api['tagline'] = $imdb->getTagline();
 			$imdb_api['genreStringCommas'] = $imdb->getGenreStringCommas();
 			$imdb_api['castNameStringCommas'] = $imdb->getCastNameStringCommas();
 			$imdb_api['castDirectorStringCommas'] = $imdb->getDirectorNameStringCommas();
-			$imdb_api['languagesStringCommas'] = $imdb->getLanguagesStringCommas();
 			$imdb_api['trailer_id'] = $imdb->getTrailer();
 			$imdb_api['trailer_link'] = $imdb->getTrailerFull();
 			$imdb_api['isTV'] = $imdb->isTvShow();

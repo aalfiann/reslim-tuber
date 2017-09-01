@@ -29,7 +29,7 @@ class IMDB {
         }
     }
 
-    private function get_data($url) {
+    public function get_data($url) {
 
         if ($this->debug)
             echo $url . "\n";
@@ -52,7 +52,7 @@ class IMDB {
         return time();
     }
 
-    private function getAPIURL($func) {
+    public function getAPIURL($func) {
         $url = $this->apiURL . $func . "appid=" . $this->appID . "&device=" . $this->device . "&locale=" . $this->language . "&timestamp=" . $this->getTimeStamp() . "&sig=" . $this->sig;
         $sig_hash = hash_hmac('sha1', $url, $this->key);
         $url .= "-" . $sig_hash;
@@ -302,13 +302,24 @@ class IMDB {
         return $this->_strSource;
     }
 
-    //Get IMDB api return data
-    public function getImdbResponce() {
-        return $this->data;
+    /*
+    //Get IMDB api return data ERROR
+    public function getImdbResponse() {
+        return $this->data['data'];
     }
-
+    
+    //WEB SCRAPING now is deprecated will change to use simple html dom in the future
     public function getAka() {
         if ($strReturn = $this->matchRegex($this->getScrape(), '~Also Known As:</h4>(.*)<span~Ui', 1)) {
+            return trim($strReturn);
+        } else {
+            return "N/A";
+        }
+    }
+
+    public function getCountry() {
+        if ($strReturn = $this->matchRegex($this->getScrape(), '~Country:</h4>
+        <a href="/search/title?country_of_origin=(.*)&sort=moviemeter,asc&ref_=tt_dt_dt" itemprop=\'url\'>(.*)</a>~~Ui', 1)) {
             return trim($strReturn);
         } else {
             return "N/A";
@@ -325,18 +336,6 @@ class IMDB {
         } else {
             return array("N/A");
         }
-    }
-
-    public function getTrailer() {
-        $YoutTubeSearchQuery = urlencode($this->getTitle() . " " . $this->getYear() . " trailer");
-        $YoutTubeSearchQuery = preg_replace('/[^A-Za-z0-9]\+/', '', $YoutTubeSearchQuery);
-        $YouTubeURL = "https://www.youtube.com/results?search_query=" . $YoutTubeSearchQuery;
-        $YouTubeHTML = $this->doCurl($YouTubeURL);
-        return $this->matchRegex($YouTubeHTML, '~href="/watch\?v=(.*)"~Uis', 1);
-    }
-
-    public function getTrailerFull() {
-        return 'https://www.youtube.com/watch?v='.$this->getTrailer();
     }
 
     public function getLanguagesString() {
@@ -359,6 +358,19 @@ class IMDB {
             return $arr[0];
 
         return implode(" | ", $arr);
+    }
+    */
+
+    public function getTrailer() {
+        $YoutTubeSearchQuery = urlencode($this->getTitle() . " " . $this->getYear() . " trailer");
+        $YoutTubeSearchQuery = preg_replace('/[^A-Za-z0-9]\+/', '', $YoutTubeSearchQuery);
+        $YouTubeURL = "https://www.youtube.com/results?search_query=" . $YoutTubeSearchQuery;
+        $YouTubeHTML = $this->doCurl($YouTubeURL);
+        return $this->matchRegex($YouTubeHTML, '~href="/watch\?v=(.*)"~Uis', 1);
+    }
+
+    public function getTrailerFull() {
+        return 'https://www.youtube.com/watch?v='.$this->getTrailer();
     }
 
     public function getCastArray() {
@@ -501,6 +513,14 @@ class IMDB {
         return isset($this->data['runtime']) ? ( $this->data['runtime']['time'] / 60 ) : 'N/A';
     }
 
+    public function getNumVotes() {
+        return isset($this->data['num_votes']) ? ( number_format($this->data['num_votes']) ) : 'N/A';
+    }
+
+    public function getTagline() {
+        return isset($this->data['tagline']) ? ( $this->data['tagline'] ) : 'N/A';
+    }
+
     public function getRuntimeSeconds() {
         return isset($this->data['runtime']) ? ( gmdate('H:i:s',$this->data['runtime']['time']) ) : 'N/A';
     }
@@ -535,17 +555,19 @@ class IMDB {
 		$oData['rating'] = $this->getRating();
 		$oData['mpaa'] = $this->getMpaa();
 		$oData['runtime'] = $this->getRuntime();
-		$oData['runtime_formatted'] = $this->getRuntimeSeconds();
-		$oData['title'] = $this->getTitle();
-		$oData['AKA'] = $this->getAka();
+        $oData['runtime_formatted'] = $this->getRuntimeSeconds();
+        $oData['num_votes'] = $this->getNumVotes();
+        $oData['title'] = $this->getTitle();
+        $oData['tagline'] = $this->getTagline();
+		//$oData['AKA'] = $this->getAka(); >> deprecated
 		$oData['genreString'] = $this->getGenreString();
 		$oData['genreStringCommas'] = $this->getGenreStringCommas();
 		$oData['castNameString'] = $this->getCastNameString();
 		$oData['castNameStringCommas'] = $this->getCastNameStringCommas();
 		$oData['castDirectorString'] = $this->getDirectorNameString();
 		$oData['castDirectorStringCommas'] = $this->getDirectorNameStringCommas();
-		$oData['languagesString'] = $this->getLanguagesString();
-		$oData['languagesStringCommas'] = $this->getLanguagesStringCommas();
+		//$oData['languagesString'] = $this->getLanguagesString(); >> deprecated
+		//$oData['languagesStringCommas'] = $this->getLanguagesStringCommas(); >> deprecated
         $oData['trailer_id'] = $this->getTrailer();
         $oData['trailer_link'] = $this->getTrailerFull();
 		$oData['isTV'] = $this->isTvShow();
@@ -558,7 +580,7 @@ class IMDB {
 		$oData['castNameArray'] = $this->getCastNameArray();
 		$oData['directorArray'] = $this->getDirectorArray();
 		$oData['directorNameArray'] = $this->getDirectorNameArray();
-        $oData['languagesArray'] = $this->getLanguagesArray();
+        //$oData['languagesArray'] = $this->getLanguagesArray(); >> deprecated
         $oData['userComments'] = $this->getUserComments();
         $oData['parentalGuide'] = $this->getParentalGuide();
         return $oData;
