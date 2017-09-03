@@ -4,13 +4,13 @@
     //Data video
     $url = Core::getInstance()->api.'/video/post/data/read/'.$postid.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
-    //Data adblock1 (sidebar)
+    //Data adblock1 (sidebar 336x280)
     $urlsidebar = Core::getInstance()->api.'/ads/data/show/sidebar/?apikey='.Core::getInstance()->apikey;
     $datasidebar = json_decode(Core::execGetRequest($urlsidebar));
-    //Data adblock2 (footer)
+    //Data adblock2 (footer 728x90)
     $urlfooter = Core::getInstance()->api.'/ads/data/show/footer/?apikey='.Core::getInstance()->apikey;
     $datafooter = json_decode(Core::execGetRequest($urlfooter));
-    //Data adblock3 (content)
+    //Data adblock3 (content 468x60)
     $urlcontent = Core::getInstance()->api.'/ads/data/show/content/?apikey='.Core::getInstance()->apikey;
     $datacontent = json_decode(Core::execGetRequest($urlcontent));
 

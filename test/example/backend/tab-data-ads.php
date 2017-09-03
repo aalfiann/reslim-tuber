@@ -101,7 +101,8 @@ $datacompany = json_decode(Core::execGetRequest($listcompany));
                                         </div>
                                     </div>
                                 </div>
-                                <p class="category"><i class="ti-info-alt"></i> Put prefix [header], [footer] or [sidebar] on title for the position ads.</p>
+                                <p class="category"><i class="ti-info-alt"></i> Put prefix [content], [footer] or [sidebar] on title for the position ads.</p>
+                                <p class="category"><i class="ti-info-alt"></i> Size image ads content: 468x60, footer: 728x90 or sidebar: 336x280.</p>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
