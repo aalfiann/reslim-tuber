@@ -171,7 +171,7 @@
                                     <div class="sv-name">
                                         <div class="adblock3">
                                             <div class="img">
-                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:''.Core::lang('ads_here').' 468 x 60').'
+                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').' 468 x 60</a>').'
                                             </div>
                                         </div>
                                     </div>
@@ -248,7 +248,7 @@
                                     <div class="sharethis-inline-share-buttons"></div>
                                     <div class="adblock2">
                                         <div class="img">
-                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:''.Core::lang('ads_here').'<br>728 x 90').'
+                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').'<br>728 x 90</a>').'
                                         </div>
                                     </div>
 
@@ -343,7 +343,7 @@
 
                 <div class="adblock">
                     <div class="img">
-                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:''.Core::lang('ads_here').'<br>336 x 280');?>
+                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').'<br>336 x 280</a>');?>
                     </div>
                 </div>
 
