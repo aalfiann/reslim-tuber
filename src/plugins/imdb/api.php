@@ -2,8 +2,9 @@
 include_once 'imdbapi.class.php';
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
-if (!empty($_GET['title'])){
-	$imdb = new IMDB($_GET['title']);
+$gettitle = filter_var($_GET['title'], FILTER_SANITIZE_MAGIC_QUOTES);
+if (!empty($gettitle)){
+	$imdb = new IMDB($gettitle);
 	if($imdb->isReady){
 		$imdb_api = array();
 		if (!empty($_GET['show']) && $_GET['show'] == 'all'){
