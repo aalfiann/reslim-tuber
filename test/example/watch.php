@@ -24,7 +24,7 @@
     if (!empty($data)){
         if ($data->{'status'} == "success"){
             $title = $data->result[0]->{'Title'};
-            $description = $data->result[0]->{'Description'};
+            $description = Core::lang('watch_header').' '.$title.'. '.$data->result[0]->{'Description'};
             $keyword = Core::lang('watch_keyword').', '.$data->result[0]->{'Title'}.', '.$data->result[0]->{'Tags_inline'};
             $author = $data->result[0]->{'User'};
         } else {
