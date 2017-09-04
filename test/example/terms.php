@@ -48,6 +48,7 @@
                                 <!-- Content -->
                                 <div class="row">
                                     <div class="b-category">
+                                        <h1 class="color-active"><?php echo Core::lang('terms')?></h1>
                                         <h4 class="color-active">Terms Of Service:</h4>
                                         <h5 class="desc">1. Terms</h5>
                                         <p class="desc">By accessing the website at <?php echo Core::getInstance()->homepath?>, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>

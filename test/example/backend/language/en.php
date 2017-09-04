@@ -33,10 +33,10 @@ $lang = [
     "search_key_1" => "Watch, movies, streaming, free,",
     "search_not_found" => "Sorry, we can\'t found any movies that you\'re looking for...",
     //random
-    "random_today" => "List random movies today",
+    "random_today" => "List watch movies random today",
     //rating
-    "rating_list" => "Sort movies from the best IMDB rated",
-    "rating_key_1" => "Sort, movies, best, IMDB rated",
+    "rating_list" => "Sort movies to watch from the best IMDB rated",
+    "rating_key_1" => "Sort, watch, movies, best, IMDB rated",
     //watch
     "watch" => "watch-movie",
     "watch_keyword" => "Watch, Movie",
@@ -48,8 +48,8 @@ $lang = [
     "watch_genre" => "Genre:",
     "watch_country" => "Country:",
     "watch_release" => "Release Year:",
-    "watch_this_too" => "Watch this too",
-    "watch_recomended" => "Recomended Movies",
+    "watch_this_too" => "Watch this movies too",
+    "watch_recomended" => "Recomended Watch Movies",
     "watch_all_genre" => "Show All Genre",
     "watch_share" => "Ask your friends to",
     //menu static page
@@ -62,7 +62,7 @@ $lang = [
     "best_rating" => "Best Rating",
     "random" => "Random",
     //general
-    "latest_movie" => "Latest Movie",
+    "latest_movie" => "Watch Latest Movie",
     "all" => "All",
     "country" => "Country",
     "year" => "Year",

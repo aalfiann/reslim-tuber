@@ -61,29 +61,29 @@
                     } 
                 ?>
                 <div class="l-head">
-                    <?php echo Core::lang('contact_us')?>
+                    <h1 style="font-size: 20px !important;"><?php echo Core::lang('contact_us')?></h1>
                 </div>
                 <div class="l-form">
                     <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
                         <div class="form-group col-lg-6">
                             <label for="exampleInputEmail1"><?php echo Core::lang('mail_name')?></label>
-                            <input name="name" type="name" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_name')?>">
+                            <input name="name" type="name" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_name')?>" required>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="exampleInputEmail1"><?php echo Core::lang('mail_email')?></label>
-                            <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_email')?>">
+                            <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_email')?>" required>
                         </div>
                         <div class="form-group col-lg-12">
                             <label for="exampleInputEmail1"><?php echo Core::lang('mail_subject')?></label>
-                            <input name="subject" type="text" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_subject')?>">
+                            <input name="subject" type="text" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_subject')?>" required>
                         </div>
                         <div class="form-group col-lg-12">
                             <label for="exampleInputEmail1"><?php echo Core::lang('mail_message')?></label>
-                            <textarea name="message" type="text" class="form-control" id="exampleInputEmail1" rows="3" placeholder="<?php echo Core::lang('mail_input_message')?>"></textarea>
+                            <textarea name="message" type="text" class="form-control" id="exampleInputEmail1" rows="3" placeholder="<?php echo Core::lang('mail_input_message')?>" required></textarea>
                         </div>
                         <div class="form-group col-lg-12">
                             <label for="exampleInputEmail1">Security: <?php echo $aaa?> + <?php echo $bbb?> = ?</label>
-                            <input name="key" type="text" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_security')?>">
+                            <input name="key" type="text" class="form-control" id="exampleInputEmail1" placeholder="<?php echo Core::lang('mail_input_security')?>" required>
                         </div>
                         <div class="form-group hidden">
                             <input name="aaa" type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $aaa?>">

@@ -49,13 +49,13 @@
                     <div class="cb-header">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
-                                <ul class="list-inline">
+                                <ul class="list-inline"><h1 style="font-size: 20px !important;">
                                     <?php if (empty($search)){
                                         echo '<li class="color-active">'.Core::lang('latest_movie').'</li>';
                                     } else {
                                         echo '<li class="color-active">'.Core::lang('search_desc_1').' '.$search.'</li>';
                                     }
-                                    ?>
+                                    ?></h1>
                                 </ul>
                             </div>
                             

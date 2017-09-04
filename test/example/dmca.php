@@ -48,7 +48,7 @@
                                 <!-- Content -->
                                 <div class="row">
                                     <div class="b-category">
-                                    <h4 class="color-active">Digital Millennium Copyright Act (DMCA):</h4>
+                                    <h1 class="color-active">Digital Millennium Copyright Act (DMCA):</h1>
                                     <p class="desc"><?php echo Core::getInstance()->title?> is an online service provider website as defined in the Digital Millennium Copyright Act.</p>
                                     <p class="desc">We strongly support the copyright law and will greatly protect the copyright owner's law.</p>
 

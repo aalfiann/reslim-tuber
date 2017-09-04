@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-lg-10">
                                 <ul class="list-inline">
-                                    <li><a href="#" class="color-active">Trending Genre</a></li>
+                                    <li><a href="#" class="color-active"><h1 style="font-size: 20px !important;">Trending Genre</h1></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                         if (!empty($datagenre)){
                                             if ($datagenre->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">'.Core::lang('all').' Genre:</h4><h4>';
+                                                echo '<h3 class="color-active">'.Core::lang('all').' Genre:</h3><h4>';
                                                 foreach ($datagenre->result->{'Tags'} as $name => $valuegenre) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuegenre.'"><span class="label label-default" style="display: inline-block;">'.$valuegenre.'</span></a>&nbsp;&nbsp;';
@@ -90,7 +90,7 @@
                                         if (!empty($datacountry)){
                                             if ($datacountry->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">'.Core::lang('all').' '.Core::lang('country').':</h4><h4>';
+                                                echo '<h3 class="color-active">'.Core::lang('all').' '.Core::lang('country').':</h3><h4>';
                                                 foreach ($datacountry->result->{'Country'} as $name => $valuecountry) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuecountry.'"><span class="label label-default" style="display: inline-block;">'.$valuecountry.'</span></a>&nbsp;&nbsp;';
@@ -106,7 +106,7 @@
                                         if (!empty($datarelease)){
                                             if ($datarelease->{'status'} == "success"){
                                                 $n=0;
-                                                echo '<h4 class="color-active">'.Core::lang('all').' '.Core::lang('year').':</h4><h4>';
+                                                echo '<h3 class="color-active">'.Core::lang('all').' '.Core::lang('year').':</h3><h4>';
                                                 foreach ($datarelease->result->{'Released'} as $name => $valuerelease) {
                                                     $n++;
                                                     echo '<a href="index.php?search='.$valuerelease.'"><span class="label label-default" style="display: inline-block;">'.$valuerelease.'</span></a>&nbsp;&nbsp;';

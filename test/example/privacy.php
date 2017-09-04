@@ -48,6 +48,7 @@
                                 <!-- Content -->
                                 <div class="row">
                                     <div class="b-category">
+                                        <h1 class="color-active"><?php echo Core::lang('privacy')?></h1>
                                         <h4 class="color-active">Privacy Policy Notice:</h4>
                                         <h5 class="desc">1. No Registration</h5>
                                         <p class="desc">

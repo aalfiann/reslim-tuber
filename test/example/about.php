@@ -48,7 +48,7 @@
                                 <!-- Content -->
                                 <div class="row">
                                     <div class="b-category">
-                                    <h4 class="color-active"><?php echo Core::lang('about')?> <?php echo Core::getInstance()->title?>:</h4>
+                                    <h1 class="color-active"><?php echo Core::lang('about')?> <?php echo Core::getInstance()->title?>:</h1>
                                     <p class="desc"><?php echo Core::getInstance()->title?> <?php echo Core::lang('about_desc_1')?></p>
                                     <p class="desc"><?php echo Core::lang('about_desc_2')?></p>
                                     </div>

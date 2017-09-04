@@ -33,10 +33,10 @@ $lang = [
     "search_key_1" => "Nonton, film, streaming, gratis,",
     "search_not_found" => "Maaf, kami tidak berhasil menemukan film yang Anda cari...",
     //random
-    "random_today" => "Daftar film random hari ini",
+    "random_today" => "Daftar nonton film random hari ini",
     //rating
-    "rating_list" => "Urutkan film berdasarkan rating IMDB",
-    "rating_key_1" => "Urutkan, film, berdasarkan, rating IMDB",
+    "rating_list" => "Urutkan nonton film berdasarkan rating IMDB",
+    "rating_key_1" => "Urutkan, nonton, film, berdasarkan, rating IMDB",
     //watch
     "watch" => "nonton-film",
     "watch_keyword" => "Nonton, Film",
@@ -48,8 +48,8 @@ $lang = [
     "watch_genre" => "Genre:",
     "watch_country" => "Negara:",
     "watch_release" => "Tahun Rilis:",
-    "watch_this_too" => "Tonton film ini juga",
-    "watch_recomended" => "Rekomendasi Film",
+    "watch_this_too" => "Yuk nonton film ini juga",
+    "watch_recomended" => "Rekomendasi Nonton Film",
     "watch_all_genre" => "Lihat Semua Genre",
     "watch_share" => "Ajak teman Anda untuk",
     //menu static page
@@ -62,7 +62,7 @@ $lang = [
     "best_rating" => "Best Rating",
     "random" => "Random",
     //general
-    "latest_movie" => "Film baru ditambahkan",
+    "latest_movie" => "Nonton film yang baru ditambahkan",
     "all" => "Semua",
     "country" => "Negara",
     "year" => "Tahun",

@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li class="color-active"><?php echo Core::lang('rating_list')?></li>
+                                    <li class="color-active"><h1 style="font-size: 20px !important;"><?php echo Core::lang('rating_list')?></h1></li>
                                 </ul>
                             </div>
                             
