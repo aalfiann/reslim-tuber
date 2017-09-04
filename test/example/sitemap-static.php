@@ -80,7 +80,7 @@
 
         <url>
             <loc>
-                <?php echo Core::getInstance()->homepath?>/sitemap.php
+                <?php echo Core::getInstance()->homepath?>/sitemap.xml
             </loc>
             <changefreq>yearly</changefreq>
         </url>

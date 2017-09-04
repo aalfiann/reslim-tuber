@@ -5,5 +5,5 @@
 Allow: /
 Disallow: /backend/
 
-Sitemap: '.Core::getInstance()->homepath.'/sitemap.php';
+Sitemap: '.Core::getInstance()->homepath.'/sitemap.xml';
 ?>

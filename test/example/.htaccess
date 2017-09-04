@@ -18,6 +18,12 @@ AddDefaultCharset UTF-8
 	# Robots.txt
 	RewriteRule ^robots.txt$ robots.php [L]
 
+	# Sitemap.xml
+	RewriteRule ^sitemap.xml$ sitemap.php [L]
+	RewriteRule ^sitemap-genre.xml$ sitemap-genre.php [L]
+	RewriteRule ^sitemap-static.xml$ sitemap-static.php [L]
+	RewriteRule ^sitemap-video.xml$ sitemap-video.php [L]
+
 	# Watch Short
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d

@@ -20,18 +20,18 @@
         if($data->{'status'} == "success"){
             for ($x = 1; $x <= $data->metadata->{'page_total'}; $x++) {
                 echo '<sitemap>
-                    <loc>'.Core::getInstance()->homepath.'/sitemap-video.php?page='.$x.'</loc>
+                    <loc>'.Core::getInstance()->homepath.'/sitemap-video.xml?page='.$x.'</loc>
                 </sitemap>';
             }
         }
     }
 ?>
         <sitemap>
-            <loc><?php echo Core::getInstance()->homepath?>/sitemap-genre.php</loc>
+            <loc><?php echo Core::getInstance()->homepath?>/sitemap-genre.xml</loc>
         </sitemap>
 
         <sitemap>
-            <loc><?php echo Core::getInstance()->homepath?>/sitemap-static.php</loc>
+            <loc><?php echo Core::getInstance()->homepath?>/sitemap-static.xml</loc>
         </sitemap>
 
     </sitemapindex>
