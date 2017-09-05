@@ -125,11 +125,7 @@
                                         <div id="eps'.$n.'" class="collapse'.(($n==1)?' in':'').'">
                                             <div class="sv-video">
                                                 <div class="video-responsive">
-                                                    <div>
-                                                        '.$valuevideo.'
-                                                        <!-- Remove Comment below to disable click popout google player -->
-                                                        <!--<div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>-->
-                                                    </div>
+                                                    '.$valuevideo.'
                                                 </div>
                                             </div>
                                         </div><br>';
@@ -137,11 +133,7 @@
                                 } else{
                                     $datavideo .= '<div class="sv-video">
                                             <div class="video-responsive">
-                                                <div>
-                                                    '.$valuevideo.'
-                                                    <!-- Remove Comment below to disable click popout google player -->
-                                                    <!--<div style="width: 50px; height: 50px; position: absolute; opacity: 0; right: 10px; top: 10px;">&nbsp;</div>-->
-                                                </div>
+                                                '.$valuevideo.'                                                
                                             </div>
                                         </div><br>';
                                 }
