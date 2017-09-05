@@ -100,6 +100,8 @@
     <title><?php echo Core::lang('watch_header')?> <?php echo $title;?> | <?php echo Core::getInstance()->title;?></title>
 
     <?php include 'global-meta.php';?>
+    <!--Remove white flash on all IE and Edge browser-->
+    <script>!function(){var e=document.createElement("div"),n=document.getElementsByTagName("base")[0]||document.getElementsByTagName("script")[0];e.innerHTML="&shy;<style>iframe {visibility:hidden;}</style>",n.parentNode.insertBefore(e,n),window.onload=function(){e.parentNode.removeChild(e)}}();</script>
 </head>
 
 <body class="single-video dark">
