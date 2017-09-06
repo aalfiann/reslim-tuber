@@ -26,7 +26,7 @@
             foreach ($datagenre->result->{'Tags'} as $name => $valuegenre) {
                 echo '<url>
                     <loc>'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'</loc>
-                    <changefreq>yearly</changefreq>
+                    <changefreq>daily</changefreq>
                 </url>';
             }
         }
@@ -36,7 +36,7 @@
             foreach ($datacountry->result->{'Country'} as $name => $valuecountry) {
                 echo '<url>
                     <loc>'.Core::getInstance()->homepath.'/index.php?search='.$valuecountry.'</loc>
-                    <changefreq>yearly</changefreq>
+                    <changefreq>daily</changefreq>
                 </url>';
             }
         }
@@ -46,7 +46,7 @@
             foreach ($datarelease->result->{'Released'} as $name => $valuerelease) {
                 echo '<url>
                     <loc>'.Core::getInstance()->homepath.'/index.php?search='.$valuerelease.'</loc>
-                    <changefreq>yearly</changefreq>
+                    <changefreq>daily</changefreq>
                 </url>';
             }
         }

@@ -86,6 +86,17 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
 
+    // GET api to show all data post pagination ascending public / guest
+    $app->get('/video/post/data/public/search/asc/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->search = filter_var((empty($_GET['query'])?'':$_GET['query']),FILTER_SANITIZE_STRING);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->searchPostAsPaginationPublicAsc());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
     // GET api to show all data post best rating pagination public / guest
     $app->get('/video/post/data/public/show/rating/{page}/{itemsperpage}/', function (Request $request, Response $response) {
         $video = new classes\tube\Video($this->db);

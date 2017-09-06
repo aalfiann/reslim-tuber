@@ -82,7 +82,7 @@
             <loc>
                 <?php echo Core::getInstance()->homepath?>/sitemap.xml
             </loc>
-            <changefreq>yearly</changefreq>
+            <changefreq>weekly</changefreq>
         </url>
 
     </urlset>

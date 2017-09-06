@@ -6,7 +6,7 @@
     $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'1000':$_GET['itemsperpage']),FILTER_SANITIZE_STRING);
     
     //Get video
-    $url = Core::getInstance()->api.'/video/post/data/public/search/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey.'&query=';
+    $url = Core::getInstance()->api.'/video/post/data/public/search/asc/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey.'&query=';
     $data = json_decode(Core::execGetRequest($url));
 
     if (!empty($data)){
