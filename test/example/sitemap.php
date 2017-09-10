@@ -20,7 +20,7 @@
         if($data->{'status'} == "success"){
             for ($x = 1; $x <= $data->metadata->{'page_total'}; $x++) {
                 echo '<sitemap>
-                    <loc>'.Core::getInstance()->homepath.'/sitemap-video.xml?page='.$x.'</loc>
+                    <loc>'.Core::getInstance()->homepath.'/sitemap-video-'.$x.'.xml</loc>
                 </sitemap>';
             }
         }

@@ -23,6 +23,7 @@ AddDefaultCharset UTF-8
 	RewriteRule ^sitemap-genre.xml$ sitemap-genre.php [L]
 	RewriteRule ^sitemap-static.xml$ sitemap-static.php [L]
 	RewriteRule ^sitemap-video.xml$ sitemap-video.php [L]
+	RewriteRule ^sitemap-video-([^/]*).xml$ sitemap-video.php?page=$1 [L]
 
 	# Watch Short
 	RewriteCond %{REQUEST_FILENAME} !-f
