@@ -306,7 +306,8 @@ $datacompany = json_decode(Core::execGetRequest($listcompany));
                                 <div class="form-group hidden">
                                     <input name="adsid" type="text" class="form-control border-input" value="'.$value->{'AdsID'}.'" hidden>
                                 </div>
-                                <p class="category"><i class="ti-info-alt"></i> Put prefix [header], [footer] or [sidebar] on title for the position ads.</p>
+                                <p class="category"><i class="ti-info-alt"></i> Put prefix [content], [footer] or [sidebar] on title for the position ads.</p>
+                                <p class="category"><i class="ti-info-alt"></i> Size image ads content: 468x60, footer: 728x90 or sidebar: 336x280.</p>
                               </div>
                               <div class="modal-footer">
                                 <button type="submit" name="submitdeleteads'.$value->{'AdsID'}.'" class="btn btn-danger pull-left">Delete</button>
