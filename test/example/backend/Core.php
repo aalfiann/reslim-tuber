@@ -77,10 +77,9 @@
         
         function __construct() {
             require 'config.php';
-            if ($this->setlang == 'en') {
-                require 'language/en.php';
-            } else if ($this->setlang == 'id') {
-                require 'language/id.php';
+            $langs = glob('language/*.'.$this->setlang.'.php');
+            foreach ($langs as $langname) {
+                require $langname;
             }
             $this->title = $config['title'];
             $this->keyword = $config['keyword'];
