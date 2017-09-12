@@ -76,12 +76,8 @@
         private static $instance;
         
         function __construct() {
-            require 'config.php';
-            if ($this->setlang == 'id'){
-                require 'language/frontend.id.php';
-            } else {
-                require 'language/frontend.en.php';
-            }
+            require_once 'config.php';
+            require_once 'language/frontend.'.$this->setlang.'.php';
             $this->title = $config['title'];
             $this->keyword = $config['keyword'];
             $this->description = $config['description'];
