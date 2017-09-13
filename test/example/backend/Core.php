@@ -77,7 +77,10 @@
         
         function __construct() {
             require_once 'config.php';
-            require_once 'language/frontend.'.$this->setlang.'.php';
+            $langs = glob(dirname(__FILE__) .'/language/*.'.$this->setlang.'.php');
+            foreach ($langs as $langname) {
+                require $langname;
+            }
             $this->title = $config['title'];
             $this->keyword = $config['keyword'];
             $this->description = $config['description'];
