@@ -81,17 +81,23 @@
                 echo "\n";
                 echo '<meta property="og:video:duration" content="'.Core::convertTimeToSeconds($data->result[0]->{'Duration'}).'" />';
                 echo "\n";
-                foreach ($data->result[0]->{'Director'} as $name => $valuedirector) {
-                    echo '<meta property="og:video:director" content="'.$valuedirector.'" />';
-                    echo "\n";
+                if (!empty($data->result[0]->{'Director'})) {
+                    foreach ($data->result[0]->{'Director'} as $name => $valuedirector) {
+                        echo '<meta property="og:video:director" content="'.$valuedirector.'" />';
+                        echo "\n";
+                    }
                 }
-                foreach ($data->result[0]->{'Stars'} as $name => $valuestars) {
-                    echo '<meta property="og:video:actor" content="'.$valuestars.'" />';
-                    echo "\n";
+                if (!empty($data->result[0]->{'Stars'})) {
+                    foreach ($data->result[0]->{'Stars'} as $name => $valuestars) {
+                        echo '<meta property="og:video:actor" content="'.$valuestars.'" />';
+                        echo "\n";
+                    }    
                 }
-                foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
-                    echo '<meta property="og:video:tag" content="'.$valuegenre.'" />';
-                    echo "\n";
+                if (!empty($data->result[0]->{'Tags'})) {
+                    foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
+                        echo '<meta property="og:video:tag" content="'.$valuegenre.'" />';
+                        echo "\n";
+                    }
                 }
             }
         }
