@@ -460,7 +460,7 @@
     $(function(){    
         $(".iliked").on("click",function(){
             $.ajax({
-                type: "GET",
+                type: "POST",
 				url: "<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
 				dataType: 'json',
 				success: function( data ) {
@@ -484,7 +484,7 @@
         }),
         $(".idisliked").on("click",function(){
             $.ajax({
-                type: "GET",
+                type: "POST",
 				url: "<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
 				dataType: 'json',
 				success: function( data ) {
