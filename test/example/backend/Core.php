@@ -81,6 +81,7 @@
             foreach ($langs as $langname) {
                 require $langname;
             }
+            $this->datalang = $lang;                        // set language
             $this->title = $config['title'];
             $this->keyword = $config['keyword'];
             $this->description = $config['description'];
@@ -100,7 +101,6 @@
             $this->bingwebmaster = $config['bingwebmaster'];
             $this->yandexwebmaster = $config['yandexwebmaster'];
             $this->imdbapi = $config['imdbapi'];
-            $this->datalang = $lang;
 		}
 
         public static function getInstance()
