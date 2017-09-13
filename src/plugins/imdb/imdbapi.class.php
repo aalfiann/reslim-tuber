@@ -19,7 +19,9 @@ class IMDB {
         $this->timeOut = $timeOut;
         $this->input = $input;
         $this->data = $this->getMovieDetails();
-        $this->data = $this->data['data'];
+        if (!empty($this->data['data'])){
+            $this->data = $this->data['data'];
+        }
         if (isset($this->data['error'])) {
             $this->isReady = false;
             $this->status = $this->data['error']['message'];
@@ -217,8 +219,10 @@ class IMDB {
             $search_result = $this->get_data($url);
             if ($this->debug)
                 echo "Doing movie details call\n";
-            $this->ImdbId = $search_result['data']['results'][0]['list'][0]['tconst'];
-            $url = $this->getAPIURL("title/" . $search_result['data']['results'][0]['list'][0]['tconst'] . "/maindetails?");
+            if (!empty($search_result['data']['results'][0]['list'][0]['tconst'])){
+                $this->ImdbId = $search_result['data']['results'][0]['list'][0]['tconst'];
+                $url = $this->getAPIURL("title/" . $search_result['data']['results'][0]['list'][0]['tconst'] . "/maindetails?");
+            }
         }
 
         return $this->get_data($url);
@@ -407,17 +411,21 @@ class IMDB {
 
     public function getDirectorArray() {
         $dir_array = array();
-        foreach ($this->data['directors_summary'] as $director) {
-            $img = isset($director['name']['image']['url']) ? $director['name']['image']['url'] : 'n/a';
-            $dir_array[] = array('name' => $this->removeAccents($director['name']['name']), 'id' => $director['name']['nconst'], 'url' => 'http://www.imdb.com/name/' . $director['name']['nconst'] . '/', 'image' => $img);
+        if (!empty($this->data['directors_summary'])){
+            foreach ($this->data['directors_summary'] as $director) {
+                $img = isset($director['name']['image']['url']) ? $director['name']['image']['url'] : 'n/a';
+                $dir_array[] = array('name' => $this->removeAccents($director['name']['name']), 'id' => $director['name']['nconst'], 'url' => 'http://www.imdb.com/name/' . $director['name']['nconst'] . '/', 'image' => $img);
+            }
         }
         return $dir_array;
     }
 
     public function getDirectorNameArray() {
         $dir_array = array();
-        foreach ($this->data['directors_summary'] as $director) {
-            $dir_array[] = $this->removeAccents($director['name']['name']);
+        if (!empty($this->data['directors_summary'])){
+            foreach ($this->data['directors_summary'] as $director) {
+                $dir_array[] = $this->removeAccents($director['name']['name']);
+            }
         }
         return $dir_array;
     }
