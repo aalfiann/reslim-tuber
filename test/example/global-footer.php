@@ -27,6 +27,9 @@
                         <a href="<?php echo (empty(Core::getInstance()->twitter)?'#':Core::getInstance()->twitter);?>"><i class="fa fa-twitter"></i></a>
                         <a href="<?php echo (empty(Core::getInstance()->gplus)?'#':Core::getInstance()->gplus);?>"><i class="fa fa-google-plus"></i></a>
                     </div>
+                    <div class="f-lang pull-right">
+                       <h6 class="color-active"><div id="totalvideo"></div></h6>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
