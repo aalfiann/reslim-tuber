@@ -4,7 +4,7 @@
         <div class="row">
             <div class="container padding-def">
                 <div class="col-lg-1  col-sm-2 col-xs-12 footer-logo">
-                    <a class="navbar-brand" href="<?php echo Core::getInstance()->homepath?>"><img src="<?php echo Core::getInstance()->homepath?>/images/logo.svg" alt="<?php echo Core::getInstance()->title;?>" class="logo" /></a>
+                    <a class="navbar-brand" href="<?php echo Core::getInstance()->homepath?>"><img src="<?php echo Core::getInstance()->homepath?>/images/logo.svg" alt="<?php echo Core::lang('search_desc_1').' '.Core::getInstance()->title;?>" class="logo" /></a>
                 </div>
                 <div class="col-lg-7  col-sm-7 col-xs-12">
                     <div class="f-copy">

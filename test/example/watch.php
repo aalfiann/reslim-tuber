@@ -271,12 +271,12 @@
                                         echo '<div class="col-lg-3 col-xs-12 col-sm-6 videoitem">
                                                 <div class="b-video">
                                                 <div class="v-img">
-                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.Core::lang('watch_header').' '.$valuerandomyear->{'Title'}.'"></a>
+                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'" title="'.Core::lang('watch_header').' '.$valuerandomyear->{'Title'}.'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.Core::lang('watch_header').' '.$valuerandomyear->{'Title'}.'"></a>
                                                     <div class="rating">'.$valuerandomyear->{'Rating'}.'</div>
                                                     <div class="time">'.$valuerandomyear->{'Duration'}.'</div>
                                                 </div>
                                                 <div class="v-desc">
-                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
+                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'" title="'.Core::lang('watch_header').' '.$valuerandomyear->{'Title'}.'">'.Core::cutLongText($valuerandomyear->{'Title'},40).'</a>
                                                 </div>
                                                 <div class="v-views">';
                                                 $datatag = "";
@@ -365,14 +365,14 @@
                                     echo '<div class="h-video row">
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-img">
-                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.Core::lang('watch_header').' '.$valuerandom->{'Title'}.'"></a>
+                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'" title="'.Core::lang('watch_header').' '.$valuerandom->{'Title'}.'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.Core::lang('watch_header').' '.$valuerandom->{'Title'}.'"></a>
                                                 <div class="rating">'.$valuerandom->{'Rating'}.'</div>
                                                 <div class="time">'.$valuerandom->{'Duration'}.'</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-desc">
-                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
+                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'" title="'.Core::lang('watch_header').' '.$valuerandom->{'Title'}.'">'.Core::cutLongText($valuerandom->{'Title'},40).'</a>
                                             </div>
                                             <div class="v-views">';
                                             $datatag = "";
