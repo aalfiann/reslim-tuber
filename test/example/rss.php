@@ -15,7 +15,7 @@
 	                <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">  
             	    <channel>
                         <atom:link href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" rel="self" type="application/rss+xml" />
-                        <title>'.Core::getInstance()->title.'</title>
+                        <title>'.Core::lang('search_desc_1').' '.Core::getInstance()->title.'</title>
                         <link>'.Core::getInstance()->homepath.'</link>
                         <description>'.Core::getInstance()->description.'</description>';
                         echo "\n";
