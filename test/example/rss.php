@@ -21,7 +21,7 @@
                         echo "\n";
             foreach ($data->results as $name => $value) {
                 echo '<item>
-                    <title>'.htmlspecialchars($value->{'Title'}, ENT_QUOTES).'</title>
+                    <title>'.htmlspecialchars(Core::lang('watch_header').' '.$value->{'Title'}, ENT_QUOTES).'</title>
                     <description><![CDATA['.$value->{'Description'}.']]></description>
                     <link>'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'</link>
                     <guid>'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'</guid>
