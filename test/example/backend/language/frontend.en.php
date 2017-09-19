@@ -67,5 +67,6 @@ $lang = [
     "country" => "Country",
     "year" => "Year",
     "views" => " views",
-    "ads_here" => "Your Ads here"
+    "ads_here" => "Your Ads here",
+    "page" => "Page"
 ];

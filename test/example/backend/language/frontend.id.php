@@ -67,5 +67,6 @@ $lang = [
     "country" => "Negara",
     "year" => "Tahun",
     "views" => "x ditonton",
-    "ads_here" => "Iklan Anda disini"
+    "ads_here" => "Iklan Anda disini",
+    "page" => "Halaman"
 ];
