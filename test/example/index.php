@@ -9,13 +9,13 @@
     $data = json_decode(Core::execGetRequest($url));
 
     if (empty($search)){
-        $title = Core::getInstance()->description.' | '.Core::getInstance()->title;
-        $description = Core::getInstance()->description.' | '.Core::getInstance()->title;
+        $title = Core::getInstance()->description.(!empty($page)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
+        $description = Core::getInstance()->description.'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
         $keyword = Core::getInstance()->keyword;
         $author = Core::getInstance()->title.' Team';
     } else {
-        $title = Core::lang('search_desc_1').' '.$search.' | '.Core::getInstance()->title;
-        $description = ''.Core::lang('search_desc_1').' '.$search;
+        $title = Core::lang('search_desc_1').' '.$search.(!empty($page)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
+        $description = ''.Core::lang('search_desc_1').' '.$search.'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'');
         $keyword = ''.Core::lang('search_key_1').' '.$search;
         $author = Core::getInstance()->title.' Team';
     }

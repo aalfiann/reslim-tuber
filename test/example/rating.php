@@ -6,8 +6,8 @@
     $url = Core::getInstance()->api.'/video/post/data/public/show/rating/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
-    $title = Core::lang('rating_list').' | '.Core::getInstance()->title;
-    $description = Core::lang('rating_list');
+    $title = Core::lang('rating_list').(!empty($page)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
+    $description = Core::lang('rating_list').'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'');
     $keyword = Core::lang('rating_key_1');
     $author = Core::getInstance()->title.' Team';
 ?>
