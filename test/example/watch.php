@@ -61,17 +61,17 @@
                 echo '<!-- Open Graphs -->
                     <link rel="author" href="'.((!empty(Core::getInstance()->gplus))?Core::getInstance()->gplus:'').'"/>
                     <link rel="publisher" href="'.((!empty(Core::getInstance()->gpub))?Core::getInstance()->gpub:'').'"/>
-                    <meta itemprop="name" content="'.$data->result[0]->{'Title'}.'">
+                    <meta itemprop="name" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'">
                     <meta itemprop="description" content="'.$data->result[0]->{'Description'}.'">
                     <meta itemprop="image" content="'.$data->result[0]->{'Image'}.'">
                 	<meta name="twitter:card" content="summary_large_image" />
-                	<meta name="twitter:title" content="'.$data->result[0]->{'Title'}.'" />
+                	<meta name="twitter:title" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'" />
                 	<meta name="twitter:description" content="'.$data->result[0]->{'Description'}.'" />
                     <meta name="twitter:image" content="'.$data->result[0]->{'Image'}.'" />
-                    <meta name="twitter:image:alt" content="'.$data->result[0]->{'Title'}.'" />
+                    <meta name="twitter:image:alt" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'" />
                     <meta name="twitter:site" content="'.((!empty(Core::getInstance()->twitter))?'@'.$twitterusername:'').'">
                     <meta name="twitter:creator" content="'.((!empty(Core::getInstance()->twitter))?'@'.$twitterusername:'').'">
-                    <meta property="og:title" content="'.$data->result[0]->{'Title'}.'" />
+                    <meta property="og:title" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'" />
                     <meta property="og:description" content="'.$data->result[0]->{'Description'}.'" />
                     <meta property="og:url" content="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" />
                     <meta property="og:image" content="'.$data->result[0]->{'Image'}.'" />
@@ -271,7 +271,7 @@
                                         echo '<div class="col-lg-3 col-xs-12 col-sm-6 videoitem">
                                                 <div class="b-video">
                                                 <div class="v-img">
-                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandomyear->{'Title'}.'"></a>
+                                                    <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandomyear->{'PostID'}.'/'.Core::convertToSlug($valuerandomyear->{'Title'}).'"><img src="'.$valuerandomyear->{'Image'}.'" class="top-cropped sm" alt="'.Core::lang('watch_header').' '.$valuerandomyear->{'Title'}.'"></a>
                                                     <div class="rating">'.$valuerandomyear->{'Rating'}.'</div>
                                                     <div class="time">'.$valuerandomyear->{'Duration'}.'</div>
                                                 </div>
@@ -365,7 +365,7 @@
                                     echo '<div class="h-video row">
                                         <div class="col-lg-6 col-sm-6">
                                             <div class="v-img">
-                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.$valuerandom->{'Title'}.'"></a>
+                                                <a href="'.Core::getInstance()->homepath.'/'.Core::lang('watch').'/'.$valuerandom->{'PostID'}.'/'.Core::convertToSlug($valuerandom->{'Title'}).'"><img src="'.$valuerandom->{'Image'}.'" class="top-cropped sm" alt="'.Core::lang('watch_header').' '.$valuerandom->{'Title'}.'"></a>
                                                 <div class="rating">'.$valuerandom->{'Rating'}.'</div>
                                                 <div class="time">'.$valuerandom->{'Duration'}.'</div>
                                             </div>
@@ -418,7 +418,7 @@
           "@id": "'.Core::convertToSlug($data->result[0]->{'Title'}).'-'.$data->result[0]->{'PostID'}.'",
           "@type": "Movie",
           "dateCreated": "'.$data->result[0]->{'Created_at'}.'",
-          "name": "'.$data->result[0]->{'Title'}.'",
+          "name": "'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'",
           "url": "'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'",
           "description": "'.$data->result[0]->{'Description'}.'",
           "releasedEvent": {

@@ -2,13 +2,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="btn-color-toggle">
-            <img src="<?php echo Core::getInstance()->homepath?>/images/icon_bulb_dark.png" alt="lights">
+            <img src="<?php echo Core::getInstance()->homepath?>/images/icon_bulb_dark.png" alt="<?php echo Core::lang('watch_header')?>">
         </div>
         <div class="navbar-container">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-1 col-sm-2 col-xs-2">
-                        <a class="navbar-brand" href="<?php echo Core::getInstance()->homepath?>"><img src="<?php echo Core::getInstance()->homepath?>/images/logo.svg" alt="<?php echo Core::getInstance()->title;?>" class="logo" /></a>
+                        <a class="navbar-brand" href="<?php echo Core::getInstance()->homepath?>"><img src="<?php echo Core::getInstance()->homepath?>/images/logo.svg" alt="<?php echo Core::lang('search_desc_1').' '.Core::getInstance()->title;?>" class="logo" /></a>
                     </div>
                     <div class="col-lg-3 col-sm-10 col-xs-10">
                         <ul class="list-inline menu">

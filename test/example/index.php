@@ -9,7 +9,7 @@
     $data = json_decode(Core::execGetRequest($url));
 
     if (empty($search)){
-        $title = Core::getInstance()->description.(!empty($page)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
+        $title = Core::getInstance()->description.(!empty($page) && ($page != 1)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
         $description = Core::getInstance()->description.'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
         $keyword = Core::getInstance()->keyword;
         $author = Core::getInstance()->title.' Team';
@@ -71,7 +71,7 @@
                                             echo '<div class="col-lg-3 col-sm-6 videoitem">
                                                     <div class="b-video">
                                                         <div class="v-img">
-                                                            <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.$value->{'Title'}.'"></a>
+                                                            <a href="'.Core::lang('watch').'/'.$value->{'PostID'}.'/'.Core::convertToSlug($value->{'Title'}).'"><img src="'.$value->{'Image'}.'" class="top-cropped" alt="'.Core::lang('watch_header').' '.$value->{'Title'}.'"></a>
                                                             <div class="rating">'.$value->{'Rating'}.'</div>
                                                             <div class="time">'.$value->{'Duration'}.'</div>
                                                         </div>
