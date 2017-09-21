@@ -7,7 +7,7 @@
     $data = json_decode(Core::execGetRequest($url));
 
     $title = Core::lang('random_today').' | '.Core::getInstance()->title;
-    $description = Core::lang('random_today').' | '.Core::getInstance()->title;
+    $description = Core::lang('random_today').'. '.Core::lang('genre_desc_1').' | '.Core::getInstance()->title;
     $keyword = Core::getInstance()->keyword;
     $author = Core::getInstance()->title.' Team';
 ?>
