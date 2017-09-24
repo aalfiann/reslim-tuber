@@ -47,8 +47,8 @@ $lang = [
     "favorite_list" => "Urutkan nonton film berdasarkan paling favorit",
     "favorite_key_1" => "Urutkan, nonton, film, berdasarkan, paling, favorite",
     //released
-    "released_list" => "Urutkan nonton film berdasarkan tahun pembuatan",
-    "released_key_1" => "Urutkan, nonton, film, berdasarkan, tahun, pembuatan",
+    "released_list" => "Urutkan nonton film berdasarkan tahun rilis",
+    "released_key_1" => "Urutkan, nonton, film, berdasarkan, tahun, rilis",
     //watch
     "watch" => "nonton-film",
     "watch_keyword" => "Nonton, Film",
