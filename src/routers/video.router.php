@@ -107,6 +107,46 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
 
+    // GET api to show all data post alphabet pagination public / guest
+    $app->get('/video/post/data/public/show/alphabet/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->showPostAlphabetAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data post popular pagination public / guest
+    $app->get('/video/post/data/public/show/popular/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->showPostPopularAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data post favorite pagination public / guest
+    $app->get('/video/post/data/public/show/favorite/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->showPostFavoriteAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show all data post released pagination public / guest
+    $app->get('/video/post/data/public/show/released/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $body->write($video->showPostReleasedAsPaginationPublic());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
     // GET api to show all data post random pagination public / guest
     $app->get('/video/post/data/public/search/random/{page}/{itemsperpage}/', function (Request $request, Response $response) {
         $video = new classes\tube\Video($this->db);

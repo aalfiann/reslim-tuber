@@ -37,6 +37,18 @@ $lang = [
     //rating
     "rating_list" => "Sort movies to watch from the best IMDB rated",
     "rating_key_1" => "Sort, watch, movies, best, IMDB rated",
+    //alphabet
+    "alphabet_list" => "Sort movies to watch from the alphabet title",
+    "alphabet_key_1" => "Sort, watch, movies, alphabet, title",
+    //popular
+    "popular_list" => "Sort movies to watch from the most popular",
+    "popular_key_1" => "Sort, watch, movies, most, popular",
+    //favorite
+    "favorite_list" => "Sort movies to watch from the most favorite",
+    "favorite_key_1" => "Sort, watch, movies, most, favorite",
+    //released
+    "released_list" => "Sort movies to watch from the released year",
+    "released_key_1" => "Sort, watch, movies, released, year",
     //watch
     "watch" => "watch-movie",
     "watch_keyword" => "Watch, Movie",
@@ -61,6 +73,10 @@ $lang = [
     "genre" => "Genre",
     "best_rating" => "Best Rating",
     "random" => "Random",
+    "most_popular" => "Most Populer",
+    "most_favorite" => "Most Favorite",
+    "sort_alphabet" => "Alphabetically",
+    "sort_released" => "Release Year",
     //general
     "latest_movie" => "Watch Latest Movie",
     "all" => "All",

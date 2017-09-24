@@ -37,6 +37,18 @@ $lang = [
     //rating
     "rating_list" => "Urutkan nonton film berdasarkan rating IMDB",
     "rating_key_1" => "Urutkan, nonton, film, berdasarkan, rating IMDB",
+    //alphabet
+    "alphabet_list" => "Urutkan nonton film berdasarkan judul alphabet",
+    "alphabet_key_1" => "Urutkan, nonton, film, berdasarkan, judul, alphabet",
+    //popular
+    "popular_list" => "Urutkan nonton film berdasarkan paling populer",
+    "popular_key_1" => "Urutkan, nonton, film, berdasarkan, paling, populer",
+    //favorite
+    "favorite_list" => "Urutkan nonton film berdasarkan paling favorit",
+    "favorite_key_1" => "Urutkan, nonton, film, berdasarkan, paling, favorite",
+    //released
+    "released_list" => "Urutkan nonton film berdasarkan tahun pembuatan",
+    "released_key_1" => "Urutkan, nonton, film, berdasarkan, tahun, pembuatan",
     //watch
     "watch" => "nonton-film",
     "watch_keyword" => "Nonton, Film",
@@ -61,6 +73,10 @@ $lang = [
     "genre" => "Genre",
     "best_rating" => "Best Rating",
     "random" => "Random",
+    "most_popular" => "Paling Populer",
+    "most_favorite" => "Paling Favorite",
+    "sort_alphabet" => "Abjad Judul",
+    "sort_released" => "Tahun Rilis",
     //general
     "latest_movie" => "Nonton film yang baru ditambahkan",
     "all" => "Semua",

@@ -40,6 +40,12 @@
                             <div class="col-lg-10">
                                 <ul class="list-inline">
                                     <li><a href="#" class="color-active"><h1 style="font-size: 20px !important;">Trending Genre</h1></a></li>
+                                    <li><a href="rating.php"><?php echo Core::lang('best_rating')?></a></li>
+                                    <li><a href="popular.php"><?php echo Core::lang('most_popular')?></a></li>
+                                    <li><a href="favorite.php"><?php echo Core::lang('most_favorite')?></a></li>
+                                    <li><a href="alphabet.php"><?php echo Core::lang('sort_alphabet')?></a></li>
+                                    <li><a href="released.php"><?php echo Core::lang('sort_released')?></a></li>
+                                    <li><a href="random.php"><?php echo Core::lang('random')?></a></li>
                                 </ul>
                             </div>
                         </div>

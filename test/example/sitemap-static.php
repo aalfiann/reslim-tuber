@@ -31,6 +31,34 @@
 
         <url>
             <loc>
+                <?php echo Core::getInstance()->homepath?>/popular.php
+            </loc>
+            <changefreq>weekly</changefreq>
+        </url>
+
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/favorite.php
+            </loc>
+            <changefreq>weekly</changefreq>
+        </url>
+
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/alphabet.php
+            </loc>
+            <changefreq>weekly</changefreq>
+        </url>
+
+        <url>
+            <loc>
+                <?php echo Core::getInstance()->homepath?>/released.php
+            </loc>
+            <changefreq>weekly</changefreq>
+        </url>
+
+        <url>
+            <loc>
                 <?php echo Core::getInstance()->homepath?>/random.php
             </loc>
             <changefreq>always</changefreq>
