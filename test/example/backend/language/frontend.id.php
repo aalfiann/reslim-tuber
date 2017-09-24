@@ -74,7 +74,7 @@ $lang = [
     "best_rating" => "Best Rating",
     "random" => "Random",
     "most_popular" => "Paling Populer",
-    "most_favorite" => "Paling Favorite",
+    "most_favorite" => "Paling Favorit",
     "sort_alphabet" => "Abjad Judul",
     "sort_released" => "Tahun Rilis",
     //general
