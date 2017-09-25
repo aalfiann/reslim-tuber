@@ -15,7 +15,7 @@
                             <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "index" || pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>"><?php echo Core::lang('home')?></a></li>
                             <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "genre")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/genre.php"><?php echo Core::lang('genre')?></a></li>
                             <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "rating")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/rating.php"><?php echo Core::lang('best_rating')?></a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "random")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/random.php"><?php echo Core::lang('random')?></a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "filtered")?'color-active':'')?>"><a href="#" data-toggle="modal" data-target="#filter">Filter</a></li>
                         </ul>
                     </div>
                     <div class="visible-xs visible-sm clearfix"></div>

@@ -32,6 +32,9 @@ $lang = [
     "search_desc_1" => "Nonton film streaming gratis:",
     "search_key_1" => "Nonton, film, streaming, gratis,",
     "search_not_found" => "Maaf, kami tidak berhasil menemukan film yang Anda cari...",
+    "filter_search" => "Filter Pencarian",
+    "filter" => "Filter",
+    "search" => "Cari",
     //random
     "random_today" => "Daftar nonton film random hari ini",
     //rating
@@ -49,6 +52,9 @@ $lang = [
     //released
     "released_list" => "Urutkan nonton film berdasarkan tahun rilis",
     "released_key_1" => "Urutkan, nonton, film, berdasarkan, tahun, rilis",
+    //filter
+    "filter_list" => "Nonton film berdasarkan hasil pencarian filter",
+    "filter_key_1" => "Nonton, film, berdasarkan, hasil, pencarian, filter",
     //watch
     "watch" => "nonton-film",
     "watch_keyword" => "Nonton, Film",
@@ -84,5 +90,11 @@ $lang = [
     "year" => "Tahun",
     "views" => "x ditonton",
     "ads_here" => "Iklan Anda disini",
-    "page" => "Halaman"
+    "page" => "Halaman",
+    "close" => "Tutup",
+    "latest" => "Terbaru",
+    "sort" => "Urutkan",
+    "sort_asc" => "Urutkan Terkecil",
+    "sort_desc" => "Urutkan Terbesar",
+    "select" => "Pilih"
 ];
