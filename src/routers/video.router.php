@@ -147,6 +147,22 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
 
+    // GET api to show all data post filtered pagination public / guest
+    $app->get('/video/post/data/public/show/filter/{page}/{itemsperpage}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->page = $request->getAttribute('page');
+        $video->itemsPerPage = $request->getAttribute('itemsperpage');
+        $body = $response->getBody();
+        $filter = filter_var((empty($_GET['filter'])?'latest':$_GET['filter']),FILTER_SANITIZE_STRING);
+        $sort = filter_var((empty($_GET['sort'])?'desc':$_GET['sort']),FILTER_SANITIZE_STRING);
+        $genre1 = filter_var((empty($_GET['genre1'])?'':$_GET['genre1']),FILTER_SANITIZE_STRING);
+        $genre2 = filter_var((empty($_GET['genre2'])?'':$_GET['genre2']),FILTER_SANITIZE_STRING);
+        $country = filter_var((empty($_GET['country'])?'':$_GET['country']),FILTER_SANITIZE_STRING);
+        $year = filter_var((empty($_GET['year'])?'':$_GET['year']),FILTER_SANITIZE_STRING);
+        $body->write($video->showPostFilterAsPaginationPublic($filter,$sort,$genre1,$genre2,$country,$year));
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
     // GET api to show all data post random pagination public / guest
     $app->get('/video/post/data/public/search/random/{page}/{itemsperpage}/', function (Request $request, Response $response) {
         $video = new classes\tube\Video($this->db);

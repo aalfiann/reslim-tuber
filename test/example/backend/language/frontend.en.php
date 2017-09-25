@@ -32,6 +32,9 @@ $lang = [
     "search_desc_1" => "Watch movies streaming free:",
     "search_key_1" => "Watch, movies, streaming, free,",
     "search_not_found" => "Sorry, we can\'t found any movies that you\'re looking for...",
+    "filter_search" => "Filter Search",
+    "filter" => "Filter",
+    "search" => "Search",
     //random
     "random_today" => "List watch movies random today",
     //rating
@@ -49,6 +52,9 @@ $lang = [
     //released
     "released_list" => "Sort movies to watch from the released year",
     "released_key_1" => "Sort, watch, movies, released, year",
+    //filter
+    "filter_list" => "Watch movies from filtered result search",
+    "filter_key_1" => "watch, movies, filtered, result, search",
     //watch
     "watch" => "watch-movie",
     "watch_keyword" => "Watch, Movie",
@@ -84,5 +90,11 @@ $lang = [
     "year" => "Year",
     "views" => " views",
     "ads_here" => "Your Ads here",
-    "page" => "Page"
+    "page" => "Page",
+    "close" => "Close",
+    "latest" => "Latest",
+    "sort" => "Sort",
+    "sort_asc" => "Sort Ascending",
+    "sort_desc" => "Sort Descending",
+    "select" => "Select"
 ];
