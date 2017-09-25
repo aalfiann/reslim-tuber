@@ -48,7 +48,7 @@
 </script>
 <!-- Get total database video END -->
 
-<!-- Load Options STARTS-->
+<!-- Load Options START-->
 <script type="text/javascript">
 	$(function(){
 		var get_genre1,get_genre2,get_country,get_year;
