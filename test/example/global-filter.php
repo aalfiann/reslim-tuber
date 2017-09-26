@@ -6,7 +6,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><?php echo Core::lang('filter_search')?></h4>
       </div>
-      <form method="get" action="filtered.php">
+      <form method="get" action="<?php echo Core::getInstance()->homepath?>/filtered.php">
       <div class="modal-body">
         <div class="row">
             <div class="col-lg-12">
