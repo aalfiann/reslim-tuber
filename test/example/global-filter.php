@@ -25,7 +25,7 @@
                     <label><?php echo Core::lang('sort')?></label>
                     <select name="sort" type="text" style='max-height:200px; overflow-y:scroll; overflow-x:hidden; width:100%;background-color:white;'>
                         <option value="desc" <?php echo (!empty($_GET['sort']) && $_GET['sort']=='desc'?'selected':'')?>><?php echo Core::lang('sort_desc')?></option>
-                        <option value="asc" <?php echo (empty($_GET['sort']) && $_GET['sort']=='asc'?'selected':'')?>><?php echo Core::lang('sort_asc')?></option>
+                        <option value="asc" <?php echo (!empty($_GET['sort']) && $_GET['sort']=='asc'?'selected':'')?>><?php echo Core::lang('sort_asc')?></option>
                     </select>
                 </div>
                 <div class="form-group">
