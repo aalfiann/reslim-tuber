@@ -114,11 +114,10 @@
 <?php include 'global-header.php';?>
 
 <div class="content-wrapper">
-    <div class="jumbotron" style="background-color:black;padding-top:10px;padding-bottom:10px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-xs-12 col-sm-12">
-                <?php 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-xs-12 col-sm-12">
+                <?php
                     if (!empty($data)){
                         if ($data->{'status'} == "success"){
                             $totalvideo=0;
@@ -126,45 +125,33 @@
                                 $totalvideo++;
                             }
                             if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
-                                $datavideo = '';
-                                $n=1;
-                                foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
-                                    if ($totalvideo>1){
-                                        $datavideo .= '<button type="button" class="btn btn-danger btn-block" data-toggle="collapse" data-target="#eps'.$n.'">Episode '.$n.' <span class="caret"></span></button>
-                                            <div id="eps'.$n.'" class="collapse'.(($n==1)?' in':'').'">
-                                                <div class="sv-video">
-                                                    <div class="video-responsive">
-                                                        '.$valuevideo.'
-                                                    </div>
+                            $datavideo = '';
+                            $n=1;
+                            foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
+                                if ($totalvideo>1){
+                                    $datavideo .= '<button type="button" class="btn btn-danger btn-block" data-toggle="collapse" data-target="#eps'.$n.'">Episode '.$n.' <span class="caret"></span></button>
+                                        <div id="eps'.$n.'" class="collapse'.(($n==1)?' in':'').'">
+                                            <div class="sv-video">
+                                                <div class="video-responsive">
+                                                    '.$valuevideo.'
                                                 </div>
-                                            </div><br>';
-                                        $n++;
-                                    } else{
-                                        $datavideo .= '<div class="sv-video">
-                                            <div class="video-responsive">
-                                                '.$valuevideo.'
                                             </div>
                                         </div><br>';
-                                    }
+                                    $n++;
+                                } else{
+                                    $datavideo .= '<div class="sv-video">
+                                            <div class="video-responsive">
+                                                '.$valuevideo.'                                                
+                                            </div>
+                                        </div><br>';
                                 }
-                                $datavideo = substr($datavideo, 0, -4);
-                                echo $datavideo;
-                        }
-                    }
-                ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-xs-12 col-sm-12">
-                <?php
-                    if (!empty($data)){
-                        if ($data->{'status'} == "success"){
+                            }
+                            $datavideo = substr($datavideo, 0, -4);
+                            echo $datavideo;
+
                             //author
                             if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
-                                echo '<div class="author">
+                            echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
                                             '.number_format($data->result[0]->{'Viewer'}).''.Core::lang('views').'
