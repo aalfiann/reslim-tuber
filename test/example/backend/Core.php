@@ -81,6 +81,7 @@
             foreach ($langs as $langname) {
                 require $langname;
             }
+            $lang += $backend;                              // append backend language
             $this->datalang = $lang;                        // set language
             $this->title = $config['title'];
             $this->keyword = $config['keyword'];

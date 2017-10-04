@@ -110,7 +110,11 @@
 					document.getElementById("rating-imdb").value='';
 					if(data.status=='success'){
                         document.getElementById("image-imdb").value=data.result.poster_thumbnails;
-						document.getElementById("description-imdb").value=data.result.description;
+						if (data.result.description =='N/A'){
+							document.getElementById("description-imdb").value="<?php echo Core::lang('input_no_description')?>";
+						} else {
+							document.getElementById("description-imdb").value=data.result.description;
+						}
 						document.getElementById("duration-imdb").value=data.result.runtime_formatted;
 						document.getElementById("stars-imdb").value=data.result.castNameStringCommas;
 						document.getElementById("director-imdb").value=data.result.castDirectorStringCommas;
