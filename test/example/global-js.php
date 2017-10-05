@@ -106,3 +106,59 @@
 	});
 </script>
 <!-- Load Options END-->
+
+<!-- Send Report START-->
+<script type="text/javascript">
+	$(function(){
+		$('#sendreport').on("submit",sendingreport);
+	});
+	function sendingreport(e){
+		console.log('Process sending report...');
+		e.preventDefault();
+		var that = $(this);
+		that.off('submit'); // remove handler
+		var div = document.getElementById('report-send');
+		var aaa = parseInt($('#key-aaa').val());
+		var bbb = parseInt($('#key-bbb').val());
+		var key = parseInt($('#post-key').val());
+		if ((bbb + aaa) == key){
+			$.ajax({
+    	   		url: "<?php echo Core::getInstance()->api.'/issues/new/?apikey='.Core::getInstance()->apikey?>",
+		   		data : {
+					Fullname: $('#post-fullname').val(),
+					Email: $('#post-email').val(),
+					Issue: $('#post-issue').val(),
+					PostID: $('#post-id').val()
+				},
+				dataType: 'json',
+		    	type: 'POST',
+	    	    success: function(data) {
+					div.innerHTML = '';
+		           	if (data.status == 'success'){
+						div.innerHTML = '<div class="col-lg-12 forgottext"><div class="alert alert-success alert-dismissible" role="alert"><strong><?php echo Core::lang('issue_send_success_1')?></strong> <?php echo Core::lang('issue_send_success_2')?></div></div>';
+						//clear from
+						$('#report')
+		   				.find("input,textarea,select")
+				    	.val('')
+        				.end()
+				    	.find("input[type=checkbox], input[type=radio]")
+	    				.prop("checked", "")
+			    		.end()
+						.find("button[type=submit]")
+	    				.attr("disabled", "disabled")
+			    		.end();
+						console.log('Process sending report success! Thank you...');
+					} else {
+						div.innerHTML = '<div class="col-lg-12 forgottext"><div class="alert alert-danger alert-dismissible" role="alert"><strong><?php echo Core::lang('issue_send_failed_1')?></strong> <?php echo Core::lang('issue_send_failed_2')?></div></div>';
+					}
+		   		},
+	       	    error: function(x, e) {
+    			}
+		    });
+		} else {
+			div.innerHTML = '<div class="col-lg-12 forgottext"><div class="alert alert-danger alert-dismissible" role="alert"><strong><?php echo Core::lang('contact_wrong_security_key')?></strong> </div></div>';
+			that.on('submit', sendingreport); // add handler back after ajax
+		}
+	}
+</script>
+<!-- Send Report END-->

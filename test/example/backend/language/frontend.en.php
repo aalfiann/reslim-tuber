@@ -70,6 +70,15 @@ $lang = [
     "watch_recomended" => "Recomended Watch Movies",
     "watch_all_genre" => "Show All Genre",
     "watch_share" => "Ask your friends to",
+    "watch_report" => "Report this movie!",
+    //report
+    "issue_detail" => "Detail Issue",
+    "issue_input_detail" => "Input your detail issue...",
+    "issue_send" => "Send Issue",
+    "issue_send_success_1" => "Your issue has been sent!",
+    "issue_send_success_2" => "Thanks for Your support to us.",
+    "issue_send_failed_1" => "Your issue is failed to sent!",
+    "issue_send_failed_1" => "Please try again later.",
     //menu static page
     "about_us" => "About Us",
     "terms" => "Terms Of Service",

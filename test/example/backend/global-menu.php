@@ -52,6 +52,12 @@
                             <p>Data Video</p>
                         </a>
                     </li>
+                    <li <?php if (!empty($_GET['m'])) if($_GET['m']==11) echo 'class="active"';?> >
+                        <a href="modul-data-issues.php?m=11&page=1&itemsperpage=10&search=">
+                            <i class="ti-alert"></i>
+                            <p>Data Issues</p>
+                        </a>
+                    </li>
                 <?php } else {  // Member Menu ?>
                     <li <?php if (!empty($_GET['m'])) if($_GET['m']==7) echo 'class="active"';?> >
                         <a href="modul-data-api.php?m=7&page=1&itemsperpage=10&search=">

@@ -70,6 +70,15 @@ $lang = [
     "watch_recomended" => "Rekomendasi Nonton Film",
     "watch_all_genre" => "Lihat Semua Genre",
     "watch_share" => "Ajak teman Anda untuk",
+    "watch_report" => "Laporkan film ini!",
+    //report
+    "issue_detail" => "Detil Laporan Anda",
+    "issue_input_detail" => "Input detil laporan Anda...",
+    "issue_send" => "Kirim Laporan",
+    "issue_send_success_1" => "Laporan Anda berhasil terkirim!",
+    "issue_send_success_2" => "Terima kasih atas support Anda.",
+    "issue_send_failed_1" => "Laporan Anda gagal terkirim!",
+    "issue_send_failed_1" => "Silahkan coba kembali nanti.",
     //menu static page
     "about_us" => "Tentang Kami",
     "terms" => "Persyaratan Layanan",
