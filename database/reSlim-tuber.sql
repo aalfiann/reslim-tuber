@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2017 at 06:37 AM
+-- Generation Time: Oct 05, 2017 at 02:03 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -171,6 +171,25 @@ CREATE TABLE `data_post` (
   `Username` varchar(50) NOT NULL,
   `Updated_by` varchar(50) DEFAULT NULL,
   `Updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_report`
+--
+
+CREATE TABLE `data_report` (
+  `ReportID` int(11) NOT NULL,
+  `PostID` int(11) NOT NULL,
+  `Fullname` varchar(255) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Issue` varchar(500) NOT NULL,
+  `StatusID` int(11) NOT NULL,
+  `Created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `IP` varchar(50) NOT NULL,
+  `Updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `Updated_by` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -353,6 +372,19 @@ ALTER TABLE `data_post`
   ADD KEY `Released` (`Released`) USING BTREE;
 
 --
+-- Indexes for table `data_report`
+--
+ALTER TABLE `data_report`
+  ADD PRIMARY KEY (`ReportID`),
+  ADD KEY `ReportID` (`ReportID`),
+  ADD KEY `PostID` (`PostID`),
+  ADD KEY `Email` (`Email`),
+  ADD KEY `StatusID` (`StatusID`),
+  ADD KEY `Created_at` (`Created_at`),
+  ADD KEY `IP` (`IP`),
+  ADD KEY `Fullname` (`Fullname`) USING BTREE;
+
+--
 -- Indexes for table `user_api`
 --
 ALTER TABLE `user_api`
@@ -439,6 +471,11 @@ ALTER TABLE `data_liked`
 ALTER TABLE `data_post`
   MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `data_report`
+--
+ALTER TABLE `data_report`
+  MODIFY `ReportID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `user_data`
 --
 ALTER TABLE `user_data`
@@ -484,6 +521,13 @@ ALTER TABLE `data_liked`
 ALTER TABLE `data_post`
   ADD CONSTRAINT `data_post_ibfk_1` FOREIGN KEY (`StatusID`) REFERENCES `core_status` (`StatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `data_post_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `user_data` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `data_report`
+--
+ALTER TABLE `data_report`
+  ADD CONSTRAINT `data_report_ibfk_1` FOREIGN KEY (`PostID`) REFERENCES `data_post` (`PostID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `data_report_ibfk_2` FOREIGN KEY (`StatusID`) REFERENCES `core_status` (`StatusID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_api`
