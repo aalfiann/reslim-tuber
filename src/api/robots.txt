@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /video/post/data/liked/
+Disallow: /video/post/data/disliked/

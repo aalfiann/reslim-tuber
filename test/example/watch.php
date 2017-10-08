@@ -55,8 +55,6 @@
     <meta name="description" content="<?php echo $description;?>">
     <meta name="keyword" content="<?php echo $keyword;?>">
     <meta name="author" content="<?php echo $author;?>">
-    <link rel="nofollow" href="<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>"/>
-    <link rel="nofollow" href="<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>"/>
     <?php
         if (!empty($data)){
             if ($data->{'status'} == "success"){
