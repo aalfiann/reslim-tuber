@@ -5,6 +5,19 @@
 <script src="<?php echo Core::getInstance()->homepath?>/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo Core::getInstance()->homepath?>/js/custom.js"></script>
 
+<!-- START LazySizes -->
+<script src="<?php echo Core::getInstance()->homepath?>/backend/assets/js/lazysizes.min.js" async=""></script>
+<script type="text/javascript">
+    $(function() {   
+        $("head").append("<style>.lazyload {opacity: 0;} .lazyloading {opacity: 1;transition: opacity 300ms;background: #f7f7f7 url(<?php echo Core::getInstance()->homepath?>/images/spinner-black.gif) no-repeat center;}</style>");
+        $('iframe').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src');
+        $("iframe").addClass("lazyload");
+		$('img').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src');
+        $("img").addClass("lazyload");
+    });
+</script>
+<!-- END LazySizes -->
+
 <!-- Sharethis -->
 <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=<?php echo Core::getInstance()->sharethis?>&product=inline-share-buttons"></script>
 
