@@ -172,6 +172,7 @@
                                                 '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').' 468 x 60</a>').'
                                             </div>
                                         </div>
+                                        <p><a href="#" data-toggle="modal" data-target="#report"><i class="fa fa-flag"></i> '.Core::lang('watch_report').'</a></p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>';
@@ -417,6 +418,53 @@
 </div>
 
 <?php include 'global-footer.php';?>
+<!-- Modal -->
+<div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Core::lang('watch_report')?></h4>
+      </div>
+      <form method="post" id="sendreport" action="#">
+      <div class="modal-body">
+        <div class="row">
+            <div id="report-send"></div>
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label><?php echo Core::lang('mail_name')?></label>
+                    <input id="post-fullname" name="Fullname" type="text" placeholder="<?php echo Core::lang('mail_input_name')?>" class="form-control border-input" style="background-color:white;" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <label><?php echo Core::lang('mail_email')?></label>
+                    <input id="post-email" name="Email" type="text" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="<?php echo Core::lang('mail_input_email')?>" class="form-control border-input" style="background-color:white;" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <label><?php echo Core::lang('issue_detail')?></label>
+                    <textarea id="post-issue" name="Issue" rows="3" type="text" placeholder="<?php echo Core::lang('issue_input_detail')?>" class="form-control border-input" style="background-color:white;" required></textarea>
+                </div>
+                <div class="form-group hidden">
+                    <input id="key-aaa" name="aaa" type="text" class="form-control border-input" value="<?php echo $aaa?>">
+                    <input id="key-bbb" name="bbb" type="text" class="form-control border-input" value="<?php echo $bbb?>">
+                    <input id="post-id" name="PostID" type="text" class="form-control border-input" maxlength="50" value="<?php echo $postid?>" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Security: <?php echo $aaa?> + <?php echo $bbb?> = ?</label>
+                    <input id="post-key" name="key" type="text" placeholder="<?php echo Core::lang('mail_input_security')?>" class="form-control border-input" style="background-color:white;" maxlength="50" required>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-times"></i> <?php echo Core::lang('close')?></button>
+        <button type="submit" class="btn btn-success"><?php echo Core::lang('issue_send')?> <i class="fa fa-paper-plane"></i></button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 <?php include 'global-js.php';?>
 
 <?php

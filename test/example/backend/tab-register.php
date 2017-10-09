@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input name="email" type="email" placeholder="Please input Your Email" class="form-control border-input" maxlength="50" required>
+                                            <input name="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Please input Your Email" class="form-control border-input" maxlength="50" required>
                                         </div>
                                         <div class="form-group">
                                             <label>About Me</label>

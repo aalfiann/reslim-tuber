@@ -452,7 +452,7 @@
                 </div>
                 <div class="form-group">
                     <label><?php echo Core::lang('mail_email')?></label>
-                    <input id="post-email" name="Email" type="text" placeholder="<?php echo Core::lang('mail_input_email')?>" class="form-control border-input" style="background-color:white;" maxlength="50" required>
+                    <input id="post-email" name="Email" type="text" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="<?php echo Core::lang('mail_input_email')?>" class="form-control border-input" style="background-color:white;" maxlength="50" required>
                 </div>
                 <div class="form-group">
                     <label><?php echo Core::lang('issue_detail')?></label>
