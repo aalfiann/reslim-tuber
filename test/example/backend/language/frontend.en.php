@@ -71,6 +71,7 @@ $lang = [
     "watch_all_genre" => "Show All Genre",
     "watch_share" => "Ask your friends to",
     "watch_report" => "Report this movie!",
+    "watch_show_comments" => "Show Comments",
     //report
     "issue_detail" => "Detail Issue",
     "issue_input_detail" => "Input your detail issue...",

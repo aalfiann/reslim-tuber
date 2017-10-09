@@ -323,7 +323,7 @@
                         echo '<!-- START comments -->
                         <div class="comments">
                             <div class="comments-block">
-                                <button id="show-comments" class="btn btn-danger btn-block" onclick="disqus();return false;">Load Comments</button>
+                                <button id="show-comments" class="btn btn-danger btn-block" onclick="disqus();return false;">'.Core::lang('watch_show_comments').'</button>
                             </div>
                             <div id="disqus_thread"></div>
                             <script>
@@ -342,6 +342,7 @@
                                         s.src = \'https://'.Core::getInstance()->disqus.'.disqus.com/embed.js\';
                                         s.setAttribute(\'data-timestamp\', +new Date());
                                         (d.head || d.body).appendChild(s);
+                                        $("#show-comments").fadeOut();
                                     }
                                 }
                                 //Opens comments when linked to directly
