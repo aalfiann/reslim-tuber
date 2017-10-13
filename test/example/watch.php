@@ -325,7 +325,7 @@
                             <div class="comments-block">
                                 <button id="show-comments" class="btn btn-danger btn-block" onclick="disqus();return false;">'.Core::lang('watch_show_comments').'</button>
                             </div>
-                            <div id="disqus_thread"></div>
+                            <div id="disqus_thread" class="color-active"></div>
                             <script>
                                 var disqus_loaded = false;
                                 function disqus() {
