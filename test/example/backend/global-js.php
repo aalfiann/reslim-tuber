@@ -74,10 +74,18 @@
 					if(data.result) {
 						var div = document.getElementById('title-info');
 						div.innerHTML = '<p class="text-danger">Title already exist: '+data.result[0]["Title"]+'</p>';
+						$('#myModal')
+						.find("button[type=submit]")
+	    				.attr("disabled", "disabled")
+			    		.end();
 					}
 					else {
 						var div = document.getElementById('title-info');
 						div.innerHTML = '';
+						$('#myModal')
+						.find("button[type=submit]")
+	    				.removeAttr("disabled")
+			    		.end();
 					}
 				},
 				error: function(data){
