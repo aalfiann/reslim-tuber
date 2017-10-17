@@ -86,6 +86,9 @@ AddDefaultCharset UTF-8
 
 	# Set XSS Protection header
 	Header set X-XSS-Protection "1; mode=block"
+
+	# Turn off iframe options security
+	Header always unset X-Frame-Options
 	
 	# 480 weeks
 	<FilesMatch "\.(ico|flv|jpg|jpeg|png|gif|js|css|swf)$">
