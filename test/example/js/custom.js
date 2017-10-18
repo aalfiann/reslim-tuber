@@ -4,7 +4,11 @@
 "use strict";
 $( document ).ready(function() {
 
-
+    //Go to top animated
+    $('#gotop').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Home page
