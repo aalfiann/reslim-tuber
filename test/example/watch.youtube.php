@@ -1,4 +1,4 @@
-<?php include 'backend/Core.php'; 
+<?php header('X-Frame-Options: GOFORIT'); include 'backend/Core.php'; 
     //Validation url param
     $postid = filter_var((empty($_GET['movie'])?'':$_GET['movie']),FILTER_SANITIZE_STRING);
     //Data video
