@@ -13,6 +13,7 @@ AddDefaultCharset UTF-8
 
 	# Force to use SSL Flexible if using cloudflare
 	RewriteCond %{HTTP:CF-Visitor} '"scheme":"http"'
+	#RewriteCond %{REQUEST_URI} !^/tv-online\.php$ 				#Example for exclude spesific page
 	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L]
 	
 	# Robots.txt

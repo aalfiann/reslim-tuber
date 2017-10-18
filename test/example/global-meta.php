@@ -12,7 +12,7 @@
 
     <!-- Theme CSS -->
     <link href="<?php echo Core::getInstance()->homepath?>/css/style.css" rel="stylesheet">
-    <link href="<?php echo ((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST']?>/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo Core::getInstance()->homepath?>/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo Core::getInstance()->homepath?>/css/font-circle-video.css" rel="stylesheet">
 
     <!-- font-family: 'Hind', sans-serif; -->
