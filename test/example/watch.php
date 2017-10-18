@@ -1,4 +1,4 @@
-<?php header('X-Frame-Options: GOFORIT'); include 'backend/Core.php'; 
+<?php include 'backend/Core.php'; 
     //Random Key
     $aaa=rand(0,5);$bbb=rand(3,9);
     //Validation url param
