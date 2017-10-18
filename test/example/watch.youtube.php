@@ -172,7 +172,7 @@
                                                 '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').' 468 x 60</a>').'
                                             </div>
                                         </div>
-                                        <p><a href="#" data-toggle="modal" data-target="#report"><i class="fa fa-flag"></i> '.Core::lang('watch_report').'</a></p>
+                                        <p><a href="#" data-toggle="modal" data-target="#report"><i class="fa fa-flag"></i> '.Core::lang('watch_report_info').'</a></p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>';
@@ -424,7 +424,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><?php echo Core::lang('watch_report')?></h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Core::lang('watch_report').(!empty($data) && ($data->{'status'} == "success")?' '.$data->result[0]->{'Title'}:'!')?></h4>
       </div>
       <form method="post" id="sendreport" action="#">
       <div class="modal-body">

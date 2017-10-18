@@ -70,7 +70,8 @@ $lang = [
     "watch_recomended" => "Recomended Watch Movies",
     "watch_all_genre" => "Show All Genre",
     "watch_share" => "Ask your friends to",
-    "watch_report" => "Report this movie!",
+    "watch_report" => "Report movie",
+    "watch_report_info" => "Movie got problem? Report now!",
     "watch_show_comments" => "Show Comments",
     //report
     "issue_detail" => "Detail Issue",

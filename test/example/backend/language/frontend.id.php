@@ -70,7 +70,8 @@ $lang = [
     "watch_recomended" => "Rekomendasi Nonton Film",
     "watch_all_genre" => "Lihat Semua Genre",
     "watch_share" => "Ajak teman Anda untuk",
-    "watch_report" => "Laporkan film ini!",
+    "watch_report" => "Laporkan film",
+    "watch_report_info" => "Film bermasalah? Laporkan segera!",
     "watch_show_comments" => "Tampilkan Komentar",
     //report
     "issue_detail" => "Detil Laporan Anda",
