@@ -5,6 +5,7 @@
         $twitterarray = explode('/',$twittersite);
         $twitterusername = end($twitterarray);
     }
+    $created = date('Y-m-d',filemtime(basename(__FILE__)));
 ?>
 <!-- Open Graphs -->
 <link rel="author" href="<?php echo ((!empty(Core::getInstance()->gplus))?Core::getInstance()->gplus:'')?>"/>
@@ -28,9 +29,14 @@
 {
   "@context": "http://schema.org",
   "@type": "WebSite",
+  "dateCreated": "<?php echo $created?>",
   "url": "<?php echo ((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>",
   "name": "<?php echo $title?>",
-  "alternateName": "<?php echo $description?>",
+  "description": "<?php echo $description?>",
+  "image": {
+    "@type": "ImageObject",
+    "url": "<?php echo $image?>"
+  },
   "potentialAction": {
     "@type": "SearchAction",
     "target": "<?php echo Core::getInstance()->homepath?>/index.php?search={search_term_string}",
