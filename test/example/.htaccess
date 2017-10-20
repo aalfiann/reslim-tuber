@@ -21,10 +21,16 @@ AddDefaultCharset UTF-8
 
 	# Sitemap.xml
 	RewriteRule ^sitemap.xml$ sitemap.php [L]
+	RewriteRule ^sitemap-dynamic.xml$ sitemap-dynamic.php [L]
 	RewriteRule ^sitemap-genre.xml$ sitemap-genre.php [L]
 	RewriteRule ^sitemap-static.xml$ sitemap-static.php [L]
 	RewriteRule ^sitemap-video.xml$ sitemap-video.php [L]
 	RewriteRule ^sitemap-video-([^/]*).xml$ sitemap-video.php?page=$1 [L]
+
+	# Dynamic SEO Page
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^([^/]*)$ dynamic.php?title=$1 [L]
 
 	# Watch Short
 	RewriteCond %{REQUEST_FILENAME} !-f

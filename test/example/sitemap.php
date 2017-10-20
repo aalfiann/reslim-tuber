@@ -25,6 +25,12 @@
             }
         }
     }
+    //Data Dynamic Link
+    if (!empty(Core::getInstance()->seopage)){
+        echo '<sitemap>
+        <loc>'.Core::getInstance()->homepath.'/sitemap-dynamic.xml</loc>
+    </sitemap>';
+    }
 ?>
         <sitemap>
             <loc><?php echo Core::getInstance()->homepath?>/sitemap-genre.xml</loc>

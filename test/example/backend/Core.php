@@ -67,6 +67,9 @@
         // Set IMDB API
         var $imdbapi;
 
+        // Set Keyword Dynamic Page
+        var $seopage;
+
         var $version = '1.0.0';
 
         // Set language
@@ -102,6 +105,7 @@
             $this->bingwebmaster = $config['bingwebmaster'];
             $this->yandexwebmaster = $config['yandexwebmaster'];
             $this->imdbapi = $config['imdbapi'];
+            $this->seopage = $config['seopage'];
 		}
 
         public static function getInstance()
@@ -833,7 +837,8 @@
             $config[\'googlewebmaster\'] = \''.$post_array['Googlewebmaster'].'\'; //Your google webmaster, you can leave this blank and fill this later
             $config[\'bingwebmaster\'] = \''.$post_array['Bingwebmaster'].'\'; //Your bing webmaster, you can leave this blank and fill this later
             $config[\'yandexwebmaster\'] = \''.$post_array['Yandexwebmaster'].'\'; //Your yandex webmaster, you can leave this blank and fill this later
-            $config[\'imdbapi\'] = \''.$post_array['Imdbapi'].'\'; //IMDB API, you can leave this blank and fill this later';
+            $config[\'imdbapi\'] = \''.$post_array['Imdbapi'].'\'; //IMDB API, you can leave this blank and fill this later
+            $config[\'seopage\'] = \''.$post_array['Seopage'].'\'; //Keyword for dynamic page, you can leave this blank and fill this later';
             $handle = fopen('config.php','w+'); 
 				fwrite($handle,$newcontent); 
 				fclose($handle); 
