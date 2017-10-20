@@ -18,6 +18,7 @@
     $description = Core::lang('filter_list').'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'');
     $keyword = Core::lang('filter_key_1');
     $author = Core::getInstance()->title.' Team';
+    $image = Core::getInstance()->homepath.'/images/contact.jpg';
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo Core::getInstance()->setlang?>">
@@ -29,6 +30,8 @@
     <meta name="description" content="<?php echo $description?>">
     <meta name="keyword" content="<?php echo $keyword?>">
     <meta name="author" content="<?php echo $author?>">
+
+    <?php include 'global-opengraph.php';?>
 
     <title><?php echo $title?></title>
 
@@ -75,7 +78,7 @@
                                                         <div class="v-views">';
                                                         $datatag = "";
                                                         foreach ($value->{'Tags'} as $namegenre => $valuegenre) {
-                                                            $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="index.php?search='.$valuegenre.'">'.$valuegenre.'</a>, ';
+                                                            $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="index.php?search='.$valuegenre.'" title="'.Core::lang('watch_header').' '.$valuegenre.'">'.$valuegenre.'</a>, ';
                                                         }
                                                         $datatag = substr($datatag, 0, -2);
                                                         echo $datatag;

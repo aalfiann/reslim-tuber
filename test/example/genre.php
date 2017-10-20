@@ -8,6 +8,12 @@
     //Data release
     $urlrelease = Core::getInstance()->api.'/video/post/data/public/release/all/?apikey='.Core::getInstance()->apikey;
     $datarelease = json_decode(Core::execGetRequest($urlrelease));
+
+    $title = Core::lang('genre_browse')." | ".Core::getInstance()->title;
+    $description = Core::lang('genre_desc_1');
+    $keyword = "Genre, ".Core::lang('country').", ".Core::lang('year').", ".Core::getInstance()->keyword;
+    $author = Core::getInstance()->title.' Team';
+    $image = Core::getInstance()->homepath.'/images/contact.jpg';
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo Core::getInstance()->setlang?>">
@@ -16,11 +22,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="<?php echo Core::lang('genre_desc_1')?>">
-    <meta name="keyword" content="Genre, <?php echo Core::lang('country')?>, <?php echo Core::lang('year')?>, <?php echo Core::getInstance()->keyword?>"?>
-    <meta name="author" content="<?php echo Core::getInstance()->title.' Team'?>">
+    <meta name="description" content="<?php echo $description?>">
+    <meta name="keyword" content="<?php echo $keyword?>">
+    <meta name="author" content="<?php echo $author?>">
 
-    <title><?php echo Core::lang('genre_browse')?> | <?php echo Core::getInstance()->title?></title>
+    <?php include 'global-opengraph.php';?>
+
+    <title><?php echo $title?></title>
 
     <?php include 'global-meta.php';?>
 </head>
@@ -39,13 +47,14 @@
                         <div class="row">
                             <div class="col-lg-10">
                                 <ul class="list-inline">
-                                    <li><a href="#" class="color-active"><h1 style="font-size: 20px !important;">Trending Genre</h1></a></li>
-                                    <li><a href="rating.php"><?php echo Core::lang('best_rating')?></a></li>
-                                    <li><a href="popular.php"><?php echo Core::lang('most_popular')?></a></li>
-                                    <li><a href="favorite.php"><?php echo Core::lang('most_favorite')?></a></li>
-                                    <li><a href="alphabet.php"><?php echo Core::lang('sort_alphabet')?></a></li>
-                                    <li><a href="released.php"><?php echo Core::lang('sort_released')?></a></li>
-                                    <li><a href="random.php"><?php echo Core::lang('random')?></a></li>
+                                    <li><a href="#" class="color-active" title="Trending Genre"><h1 style="font-size: 20px !important;">Trending Genre</h1></a></li>
+                                    <li><a href="rating.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('best_rating')?>"><?php echo Core::lang('best_rating')?></a></li>
+                                    <li><a href="popular.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('most_popular')?>"><?php echo Core::lang('most_popular')?></a></li>
+                                    <li><a href="favorite.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('most_favorite')?>"><?php echo Core::lang('most_favorite')?></a></li>
+                                    <li><a href="alphabet.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('sort_alphabet')?>"><?php echo Core::lang('sort_alphabet')?></a></li>
+                                    <li><a href="released.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('sort_released')?>"><?php echo Core::lang('sort_released')?></a></li>
+                                    <li><a href="random.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('random')?>"><?php echo Core::lang('random')?></a></li>
+                                    <li><a href="tv-online.php" title="<?php echo Core::lang('watch_header')?> TV Online">TV Online</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -55,25 +64,28 @@
                             <div class="col-md-2 col-sm-2 col-xs-4">
                                 <aside class="sidebar-menu">
                                     <ul>
-                                        <li><a href="index.php?search=Action">Action</a></li>
-                                        <li><a href="index.php?search=Anime">Anime</a></li>
-                                        <li><a href="index.php?search=Comedy">Comedy</a></li>
-                                        <li><a href="index.php?search=Horror">Horror</a></li>
-                                        <li><a href="index.php?search=Sci-fi">Sci-fi</a></li>
-                                        <li><a href="index.php?search=Romance">Romance</a></li>
-                                        <li><a href="index.php?search=China">China</a></li>
-                                        <li><a href="index.php?search=India">India</a></li>
-                                        <li><a href="index.php?search=Japan">Japan</a></li>
-                                        <li><a href="index.php?search=Korea">Korea</a></li>
-                                        <li><a href="index.php?search=Thailand">Thailand</a></li>
-                                        <li><a href="index.php?search=<?php echo Date('Y')?>"><?php echo Date('Y')?></a></li>
-                                        <li><a href="index.php?search=<?php echo (Date('Y')-1)?>"><?php echo (Date('Y')-1)?></a></li>
-                                        <li><a href="index.php?search=<?php echo (Date('Y')-2)?>"><?php echo (Date('Y')-2)?></a></li>
+                                        <li><a href="index.php?search=Action" title="<?php echo Core::lang('watch_header')?> Action">Action</a></li>
+                                        <li><a href="index.php?search=Anime" title="<?php echo Core::lang('watch_header')?> Anime"></a></li>
+                                        <li><a href="index.php?search=Comedy" title="<?php echo Core::lang('watch_header')?> Comedy">Comedy</a></li>
+                                        <li><a href="index.php?search=Horror" title="<?php echo Core::lang('watch_header')?> Horror">Horror</a></li>
+                                        <li><a href="index.php?search=Sci-fi" title="<?php echo Core::lang('watch_header')?> Sci-fi">Sci-fi</a></li>
+                                        <li><a href="index.php?search=Romance" title="<?php echo Core::lang('watch_header')?> Romance">Romance</a></li>
+                                        <li><a href="index.php?search=China" title="<?php echo Core::lang('watch_header')?> China">China</a></li>
+                                        <li><a href="index.php?search=India" title="<?php echo Core::lang('watch_header')?> India">India</a></li>
+                                        <li><a href="index.php?search=Japan" title="<?php echo Core::lang('watch_header')?> Japan">Japan</a></li>
+                                        <li><a href="index.php?search=Korea" title="<?php echo Core::lang('watch_header')?> Korea">Korea</a></li>
+                                        <li><a href="index.php?search=Thailand" title="<?php echo Core::lang('watch_header')?> Thailand">Thailand</a></li>
+                                        <li><a href="index.php?search=<?php echo Date('Y')?>" title="<?php echo Core::lang('watch_header').' '.Date('Y')?>"><?php echo Date('Y')?></a></li>
+                                        <li><a href="index.php?search=<?php echo (Date('Y')-1)?>" title="<?php echo Core::lang('watch_header').' '.(Date('Y')-1)?>"><?php echo (Date('Y')-1)?></a></li>
+                                        <li><a href="index.php?search=<?php echo (Date('Y')-2)?>" title="<?php echo Core::lang('watch_header').' '.(Date('Y')-2)?>"><?php echo (Date('Y')-2)?></a></li>
                                     </ul>
                                     <div class="bg-add"></div>
                                 </aside>
                             </div>
                             <div class="col-md-10 col-sm-10 col-xs-8">
+                                <div class="row">
+                                    <h3 class="color-active"><div id="totalvideo"></div></h3>
+                                </div>
                                 <!-- All Genre -->
                                 <div class="row">
                                     <?php
