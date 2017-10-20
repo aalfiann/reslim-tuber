@@ -8,14 +8,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-1 col-sm-2 col-xs-2">
-                        <a class="navbar-brand" href="<?php echo Core::getInstance()->homepath?>"><img src="<?php echo Core::getInstance()->homepath?>/images/logo.svg" alt="<?php echo Core::lang('search_desc_1').' '.Core::getInstance()->title;?>" class="logo" /></a>
+                        <a class="navbar-brand" href="<?php echo Core::getInstance()->homepath?>" title="<?php echo Core::getInstance()->title?>"><img src="<?php echo Core::getInstance()->homepath?>/images/logo.svg" alt="<?php echo Core::lang('search_desc_1').' '.Core::getInstance()->title;?>" class="logo" /></a>
                     </div>
                     <div class="col-lg-3 col-sm-10 col-xs-10">
                         <ul class="list-inline menu">
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "index" || pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>"><?php echo Core::lang('home')?></a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "genre")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/genre.php"><?php echo Core::lang('genre')?></a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "rating")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/rating.php"><?php echo Core::lang('best_rating')?></a></li>
-                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "filtered")?'color-active':'')?>"><a href="#" data-toggle="modal" data-target="#filter">Filter</a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "index" || pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>" title="<?php echo Core::lang('home')?>"><?php echo Core::lang('home')?></a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "genre")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/genre.php" title="<?php echo Core::lang('genre')?>"><?php echo Core::lang('genre')?></a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "rating")?'color-active':'')?>"><a href="<?php echo Core::getInstance()->homepath?>/rating.php" title="<?php echo Core::lang('best_rating')?>"><?php echo Core::lang('best_rating')?></a></li>
+                            <li class="pages <?php echo ((pathinfo(basename($_SERVER['REQUEST_URI']), PATHINFO_FILENAME) == "filtered")?'color-active':'')?>"><a href="#" data-toggle="modal" data-target="#filter" title="Filter">Filter</a></li>
                         </ul>
                     </div>
                     <div class="visible-xs visible-sm clearfix"></div>
