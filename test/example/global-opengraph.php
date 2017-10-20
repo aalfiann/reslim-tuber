@@ -25,6 +25,7 @@
     <meta property="og:url" content="<?php echo ((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>" />
     <meta property="og:image" content="<?php echo $image?>" />
     <meta property="og:site_name" content="<?php echo Core::getInstance()->title?>" />
+    <meta property="og:type" content="website" />
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
