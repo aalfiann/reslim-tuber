@@ -1,4 +1,20 @@
 <?php include 'backend/Core.php';
+    //Data Dynamic Link
+    if (!empty(Core::getInstance()->seopage)){
+        if (strpos(strtolower(Core::getInstance()->seopage), strtolower(str_replace("-"," ",$_GET['title']))) !== false) {
+            $datalinks = null;
+            $names = Core::getInstance()->seopage;	
+            $named = preg_split( "/[,]/", $names );
+            foreach($named as $name){
+                if ($name != null){$datalinks .= '<li><a href="'.Core::getInstance()->homepath.'/'.Core::convertToSlug(trim($name)).'" title="'.ucwords(str_replace("-"," ",trim($name))).'"><h3 style="font-size: 15px !important;">'.ucwords(str_replace("-"," ",trim($name))).'</h3></a></li>';}
+            }
+        } else {
+            header("Location: ".Core::getInstance()->homepath."/index.php");
+        }
+    } else {
+        header("Location: ".Core::getInstance()->homepath."/index.php");
+    }
+
     $page = filter_var((empty($_GET['page'])?'1':$_GET['page']),FILTER_SANITIZE_STRING);
     $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'20':$_GET['itemsperpage']),FILTER_SANITIZE_STRING);
 
@@ -17,16 +33,6 @@
         $twittersite = Core::getInstance()->twitter;
         $twitterarray = explode('/',$twittersite);
         $twitterusername = end($twitterarray);
-    }
-
-    //Data Dynamic Link
-    if (!empty(Core::getInstance()->seopage)){
-        $datalinks = null;
-        $names = Core::getInstance()->seopage;	
-        $named = preg_split( "/[,]/", $names );
-        foreach($named as $name){
-            if ($name != null){$datalinks .= '<li><a href="'.Core::getInstance()->homepath.'/'.Core::convertToSlug(trim($name)).'" title="'.ucwords(str_replace("-"," ",trim($name))).'"><h3 style="font-size: 15px !important;">'.ucwords(str_replace("-"," ",trim($name))).'</h3></a></li>';}
-        }
     }
 ?>
 <!DOCTYPE html>
@@ -78,14 +84,14 @@
                             <div class="col-lg-12">
                                 <ul class="list-inline">
                                     <li><a href="<?php echo Core::getInstance()->homepath.'/'.$_GET['title']?>" class="color-active" title="<?php echo ucwords(str_replace("-"," ",$_GET['title'])) ?>"><h2 style="font-size: 20px !important;"><?php echo ucwords(str_replace("-"," ",$_GET['title'])) ?></h2></a></li>
-                                    <li><a href="genre.php" title="<?php echo Core::lang('all')?> Genre"><?php echo Core::lang('all')?> Genre</a></li>
-                                    <li><a href="rating.php" title="<?php echo Core::lang('best_rating')?>"><?php echo Core::lang('best_rating')?></a></li>
-                                    <li><a href="popular.php" title="<?php echo Core::lang('most_popular')?>"><?php echo Core::lang('most_popular')?></a></li>
-                                    <li><a href="favorite.php" title="<?php echo Core::lang('most_favorite')?>"><?php echo Core::lang('most_favorite')?></a></li>
-                                    <li><a href="alphabet.php" title="<?php echo Core::lang('sort_alphabet')?>"><?php echo Core::lang('sort_alphabet')?></a></li>
-                                    <li><a href="released.php" title="<?php echo Core::lang('sort_released')?>"><?php echo Core::lang('sort_released')?></a></li>
-                                    <li><a href="random.php" title="<?php echo Core::lang('random')?>"><?php echo Core::lang('random')?></a></li>
-                                    <li><a href="tv-online.php" title="TV Online">TV Online</a></li>
+                                    <li><a href="genre.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('all')?> Genre"><?php echo Core::lang('all')?> Genre</a></li>
+                                    <li><a href="rating.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('best_rating')?>"><?php echo Core::lang('best_rating')?></a></li>
+                                    <li><a href="popular.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('most_popular')?>"><?php echo Core::lang('most_popular')?></a></li>
+                                    <li><a href="favorite.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('most_favorite')?>"><?php echo Core::lang('most_favorite')?></a></li>
+                                    <li><a href="alphabet.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('sort_alphabet')?>"><?php echo Core::lang('sort_alphabet')?></a></li>
+                                    <li><a href="released.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('sort_released')?>"><?php echo Core::lang('sort_released')?></a></li>
+                                    <li><a href="random.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('random')?>"><?php echo Core::lang('random')?></a></li>
+                                    <li><a href="tv-online.php" title="<?php echo Core::lang('watch_header')?> TV Online">TV Online</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -125,7 +131,7 @@
                                                         <div class="v-views">';
                                                         $datatag = "";
                                                         foreach ($value->{'Tags'} as $namegenre => $valuegenre) {
-                                                            $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="index.php?search='.$valuegenre.'" title="'.$valuegenre.'">'.$valuegenre.'</a>, ';
+                                                            $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="index.php?search='.$valuegenre.'" title="'.Core::lang('watch_header').' '.$valuegenre.'">'.$valuegenre.'</a>, ';
                                                         }
                                                         $datatag = substr($datatag, 0, -2);
                                                         echo $datatag;
@@ -180,8 +186,8 @@
   "@context": "http://schema.org",
   "@type": "WebSite",
   "url": "<?php echo ((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>",
-  "name": "<?php echo Core::getInstance()->title?>",
-  "alternateName": "<?php echo Core::getInstance()->description?>",
+  "name": "<?php echo $title?>",
+  "alternateName": "<?php echo $description?>",
   "potentialAction": {
     "@type": "SearchAction",
     "target": "<?php echo Core::getInstance()->homepath?>/index.php?search={search_term_string}",

@@ -34,14 +34,14 @@
             $description = '';
             $keyword = '';
             $author = '';
-            Core::goToPageFrontend('index.php');
+            header("Location: ".Core::getInstance()->homepath."/index.php");
         }
     } else {
         $title = '';
         $description = '';
         $keyword = '';
         $author = '';
-        Core::goToPageFrontend('index.php');
+        header("Location: ".Core::getInstance()->homepath."/index.php");
     }
 ?>
 
@@ -113,7 +113,7 @@
 <body class="single-video dark">
 <?php include 'global-header.php';?>
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding-top:0px">
     <div class="jumbotron" style="background-color:black;padding-top:10px;padding-bottom:10px;">
         <div class="container">
             <div class="row">
@@ -125,7 +125,7 @@
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 $totalvideo++;
                             }
-                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
+                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" title="'.Core::lang('watch_header').' '.$title.'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
                                 $datavideo = '';
                                 $n=1;
                                 foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
@@ -163,7 +163,7 @@
                     if (!empty($data)){
                         if ($data->{'status'} == "success"){
                             //author
-                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
+                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" title="'.Core::lang('watch_header').' '.$title.'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
                                 echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
@@ -173,8 +173,8 @@
                                             <div class="sv-views-progress-bar"></div>
                                         </div>
                                         <div class="sv-views-stats text-right">
-                                            <span id="totalliked" class="green"><a><i class="fa fa-thumbs-up iliked"></i></a> '.number_format($data->result[0]->{'Liked'}).'</span>
-                                            <span id="totaldisliked" class="percent"><a><i class="fa fa-thumbs-down idisliked"></i></a> '.number_format($data->result[0]->{'Disliked'}).'</span>
+                                            <span id="totalliked" class="green"><a title="Like"><i class="fa fa-thumbs-up iliked"></i></a> '.number_format($data->result[0]->{'Liked'}).'</span>
+                                            <span id="totaldisliked" class="percent"><a title="Dislike"><i class="fa fa-thumbs-down idisliked"></i></a> '.number_format($data->result[0]->{'Disliked'}).'</span>
                                             
                                         </div>
                                         <div class="sv-views-stats text-right">
@@ -184,10 +184,10 @@
                                     <div class="sv-name">
                                         <div class="adblock3">
                                             <div class="img">
-                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').' 468 x 60</a>').'
+                                                '.((!empty($datacontent) && ($datacontent->{'status'} == "success"))?$datacontent->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php" title="'.Core::lang('ads_here').'">'.Core::lang('ads_here').' 468 x 60</a>').'
                                             </div>
                                         </div>
-                                        <p><a href="#" data-toggle="modal" data-target="#report"><i class="fa fa-flag"></i> '.Core::lang('watch_report_info').'</a></p>
+                                        <p><a href="#" data-toggle="modal" data-target="#report" title="'.Core::lang('watch_report_info').'"><i class="fa fa-flag"></i> '.Core::lang('watch_report_info').'</a></p>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>';
@@ -197,7 +197,7 @@
                                 $datastars .= '<h4>'.Core::lang('watch_stars').'</h4>';
                                 $datastars .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Stars'} as $name => $valuestars) {
-                                    $datastars .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuestars.'">'.$valuestars.'</a></span>';
+                                    $datastars .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuestars.'" title="'.Core::lang('watch_header').' '.$valuestars.'">'.$valuestars.'</a></span>';
                                 }
                                 $datastars .= '</p>';
                             }
@@ -207,7 +207,7 @@
                                 $datacast .= '<h4>'.Core::lang('watch_cast').'</h4>';
                                 $datacast .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Cast'} as $name => $valuecast) {
-                                    $datacast .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecast.'">'.$valuecast.'</a></span>';
+                                    $datacast .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecast.'" title="'.Core::lang('watch_header').' '.$valuecast.'">'.$valuecast.'</a></span>';
                                 }
                                 $datacast .= '</p>';
                             }
@@ -217,7 +217,7 @@
                                 $datadirector .= '<h4>'.Core::lang('watch_director').'</h4>';
                                 $datadirector .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Director'} as $name => $valuedirector) {
-                                    $datadirector .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuedirector.'">'.$valuedirector.'</a></span>';
+                                    $datadirector .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuedirector.'" title="'.Core::lang('watch_header').' '.$valuedirector.'">'.$valuedirector.'</a></span>';
                                 }
                                 $datadirector .= '</p>';
                             }
@@ -227,7 +227,7 @@
                                 $datacountry .= '<h4>'.Core::lang('watch_country').'</h4>';
                                 $datacountry .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Country'} as $name => $valuecountry) {
-                                    $datacountry .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecountry.'">'.$valuecountry.'</a></span>';
+                                    $datacountry .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuecountry.'" title="'.Core::lang('watch_header').' '.$valuecountry.'">'.$valuecountry.'</a></span>';
                                 }
                                 $datacountry .= '</p>';
                             }
@@ -237,7 +237,7 @@
                                 $datagenre .= '<h4>'.Core::lang('watch_genre').'</h4>';
                                 $datagenre .= '<p class="sv-tags">';
                                 foreach ($data->result[0]->{'Tags'} as $name => $valuegenre) {
-                                    $datagenre .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a></span>';
+                                    $datagenre .= '<span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'" title="'.Core::lang('watch_header').' '.$valuegenre.'">'.$valuegenre.'</a></span>';
                                 }
                                 $datagenre .= '</p>';
                             }
@@ -254,7 +254,7 @@
                                     '.$datacountry.'
 
                                     <h4>'.Core::lang('watch_release').'</h4>
-                                    <p class="sv-tags"><span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$data->result[0]->{'Released'}.'">'.$data->result[0]->{'Released'}.'</a><span></p>
+                                    <p class="sv-tags"><span><a href="'.Core::getInstance()->homepath.'/index.php?search='.$data->result[0]->{'Released'}.'" title="'.Core::lang('watch_header').' '.$data->result[0]->{'Released'}.'">'.$data->result[0]->{'Released'}.'</a><span></p>
 
                                     '.$datagenre.'
                                     <br>
@@ -262,14 +262,14 @@
                                     <div class="sharethis-inline-share-buttons"></div>
                                     <div class="adblock2">
                                         <div class="img">
-                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').'<br>728 x 90</a>').'
+                                            '.((!empty($datafooter) && ($datafooter->{'status'} == "success"))?$datafooter->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php" title="'.Core::lang('ads_here').'">'.Core::lang('ads_here').'<br>728 x 90</a>').'
                                         </div>
                                     </div>
 
                     <!-- similar videos -->
                     <div class="caption">
                         <div class="left">
-                            <a href="#">'.Core::lang('watch_this_too').'</a>
+                            <a href="#" title="'.Core::lang('watch_this_too').'">'.Core::lang('watch_this_too').'</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -295,7 +295,7 @@
                                                 <div class="v-views">';
                                                 $datatag = "";
                                                 foreach ($valuerandomyear->{'Tags'} as $namegenre => $valuegenre) {
-                                                    $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a>, ';
+                                                    $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'" title="'.Core::lang('watch_header').' '.$valuegenre.'">'.$valuegenre.'</a>, ';
                                                 }
                                                 $datatag = substr($datatag, 0, -2);
                                                 echo $datatag;
@@ -319,45 +319,46 @@
                         echo '</div>
                     </div>
                     <!-- END similar videos -->';
+
                     if (!empty(Core::getInstance()->disqus)){
                         echo '<!-- START comments -->
-                        <div class="comments">
-                            <div class="comments-block">
-                                <button id="show-comments" class="btn btn-danger btn-block" onclick="disqus();return false;">'.Core::lang('watch_show_comments').'</button>
+                            <div class="comments">
+                                <div class="comments-block">
+                                    <button id="show-comments" class="btn btn-danger btn-block" onclick="disqus();return false;">'.Core::lang('watch_show_comments').'</button>
+                                </div>
+                                <div id="disqus_thread" class="color-active"></div>
+                                <script>
+                                    var disqus_loaded = false;
+                                    function disqus() {
+                                        if (!disqus_loaded)  {
+                                            disqus_loaded = true;
+                                            /**
+                                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                            var disqus_config = function () {
+                                                this.page.url = \''.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'\';  // Replace PAGE_URL with your page\'s canonical URL variable
+                                                this.page.identifier = \''.$postid.'\'; // Replace PAGE_IDENTIFIER with your page\'s unique identifier variable
+                                            };
+                                            var d = document, s = d.createElement(\'script\');
+                                            s.src = \'https://'.Core::getInstance()->disqus.'.disqus.com/embed.js\';
+                                            s.setAttribute(\'data-timestamp\', +new Date());
+                                            (d.head || d.body).appendChild(s);
+                                            $("#show-comments").fadeOut();
+                                        }
+                                    }
+                                    //Opens comments when linked to directly
+                                    var hash = window.location.hash.substr(1);
+                                    if (hash.length > 8) {
+                                        if (hash.substring(0, 8) == "comment-") {
+                                            disqus();
+                                        }
+                                    }
+                                </script>
+                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" title="Please enable JavaScript to view the comments">comments.</a></noscript>
                             </div>
-                            <div id="disqus_thread" class="color-active"></div>
-                            <script>
-                                var disqus_loaded = false;
-                                function disqus() {
-                                    if (!disqus_loaded)  {
-                                        disqus_loaded = true;
-                                        /**
-                                        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                                        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-                                        var disqus_config = function () {
-                                            this.page.url = \''.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'\';  // Replace PAGE_URL with your page\'s canonical URL variable
-                                            this.page.identifier = \''.$postid.'\'; // Replace PAGE_IDENTIFIER with your page\'s unique identifier variable
-                                        };
-                                        var d = document, s = d.createElement(\'script\');
-                                        s.src = \'https://'.Core::getInstance()->disqus.'.disqus.com/embed.js\';
-                                        s.setAttribute(\'data-timestamp\', +new Date());
-                                        (d.head || d.body).appendChild(s);
-                                        $("#show-comments").fadeOut();
-                                    }
-                                }
-                                //Opens comments when linked to directly
-                                var hash = window.location.hash.substr(1);
-                                if (hash.length > 8) {
-                                    if (hash.substring(0, 8) == "comment-") {
-                                        disqus();
-                                    }
-                                }
-                            </script>
-                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments.</a></noscript>
-                        </div>
-                    <!-- END comments -->';
+                        <!-- END comments -->';
                     }
-                    echo '</div>';
+                echo '</div>';
                         }
                     }
                 ?>
@@ -369,14 +370,14 @@
 
                 <div class="adblock">
                     <div class="img">
-                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php">'.Core::lang('ads_here').'<br>336 x 280</a>');?>
+                        <?php echo ((!empty($datasidebar) && ($datasidebar->{'status'} == "success"))?$datasidebar->result[0]->{'Embed'}:'<a class="color-active" href="'.Core::getInstance()->homepath.'/contact.php" title="'.Core::lang('ads_here').'">'.Core::lang('ads_here').'<br>336 x 280</a>');?>
                     </div>
                 </div>
 
                 <!-- Recomended Videos -->
                 <div class="caption">
                     <div class="left">
-                        <a href="#"><?php echo Core::lang('watch_recomended')?></a>
+                        <a href="#" title="<?php echo Core::lang('watch_recomended')?>"><?php echo Core::lang('watch_recomended')?></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -403,7 +404,7 @@
                                             <div class="v-views">';
                                             $datatag = "";
                                             foreach ($valuerandom->{'Tags'} as $namegenre => $valuegenre) {
-                                                $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'">'.$valuegenre.'</a>, ';
+                                                $datatag .= '<a style="color:#6F6D6D" onMouseOut="this.style.color=\'#6F6D6D\'" onMouseOver="this.style.color=\'#ea2c5a\'" href="'.Core::getInstance()->homepath.'/index.php?search='.$valuegenre.'" title="'.Core::lang('watch_header').' '.$valuegenre.'">'.$valuegenre.'</a>, ';
                                             }
                                             $datatag = substr($datatag, 0, -2);
                                             echo $datatag;
@@ -425,7 +426,7 @@
 
                 <!-- load more -->
                 <div class="loadmore">
-                    <a href="<?php echo Core::getInstance()->homepath?>/genre.php"><?php echo Core::lang('watch_all_genre')?></a>
+                    <a href="<?php echo Core::getInstance()->homepath?>/genre.php" title="<?php echo Core::lang('watch_all_genre')?>"><?php echo Core::lang('watch_all_genre')?></a>
                 </div>
             </div>
         </div>
@@ -447,7 +448,7 @@
             <div id="report-send"></div>
             <div class="col-lg-12">
                 <div class="form-group">
-                    <label><?php echo Core::lang('mail_name')?></label>
+                <label><?php echo Core::lang('mail_name')?></label>
                     <input id="post-fullname" name="Fullname" type="text" placeholder="<?php echo Core::lang('mail_input_name')?>" class="form-control border-input" style="background-color:white;" maxlength="50" required>
                 </div>
                 <div class="form-group">

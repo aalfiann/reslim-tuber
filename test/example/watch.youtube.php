@@ -32,14 +32,14 @@
             $description = '';
             $keyword = '';
             $author = '';
-            Core::goToPageFrontend('index.php');
+            header("Location: ".Core::getInstance()->homepath."/index.php");
         }
     } else {
         $title = '';
         $description = '';
         $keyword = '';
         $author = '';
-        Core::goToPageFrontend('index.php');
+        header("Location: ".Core::getInstance()->homepath."/index.php");
     }
 ?>
 
