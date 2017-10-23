@@ -8,13 +8,9 @@
 <!-- START LazySizes -->
 <script src="<?php echo Core::getInstance()->homepath?>/backend/assets/js/lazysizes.min.js" async=""></script>
 <script type="text/javascript">
-    $(function() {   
-        $("head").append("<style>.lazyload {opacity: 0;} .lazyloading {opacity: 1;transition: opacity 300ms;background: #f7f7f7 url(<?php echo Core::getInstance()->homepath?>/images/spinner-black.gif) no-repeat center;}</style>");
-        $('iframe').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src');
-        $("iframe").addClass("lazyload");
-		$('img').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src');
-        $("img").addClass("lazyload");
-    });
+    $("head").append("<style>.lazyload {opacity: 0;} .lazyloading {opacity: 1;transition: opacity 300ms;background: #f7f7f7 url(<?php echo Core::getInstance()->homepath?>/images/spinner-black.gif) no-repeat center;}</style>");
+    $('iframe').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
+	$('img').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
 </script>
 <!-- END LazySizes -->
 
