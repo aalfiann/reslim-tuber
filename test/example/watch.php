@@ -130,13 +130,20 @@
                                 $n=1;
                                 foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                     if ($totalvideo>1){
-                                        $datavideo .= '<button type="button" class="btn btn-danger btn-block" data-toggle="collapse" data-target="#eps'.$n.'">Episode '.$n.' <span class="caret"></span></button>
+                                        $datavideo .= '<button type="button" class="btn btn-danger btn-block" data-toggle="collapse" data-target="#eps'.$n.'" '.(($n>1)?'onclick="loadeps'.$n.'();return false"':'').'>Episode '.$n.' <span class="caret"></span></button>
                                             <div id="eps'.$n.'" class="collapse'.(($n==1)?' in':'').'">
-                                                <div class="sv-video">
-                                                    <div class="video-responsive">
-                                                        '.$valuevideo.'
-                                                    </div>
-                                                </div>
+                                                '.(($n==1)?'<div class="sv-video"><div class="video-responsive">'.$valuevideo.'</div></div>':'
+                                                <script>
+                                                    var eps'.$n.'_loaded = false;
+                                                    function loadeps'.$n.'() {
+                                                        if (!eps'.$n.'_loaded)  {
+                                                            eps'.$n.'_loaded = true;
+                                                            var div = document.getElementById("eps'.$n.'");
+                                                            div.innerHTML = \'<div class="sv-video"><div class="video-responsive">'.$valuevideo.'</div></div>\';
+                                                            $("#eps'.$n.' iframe").attr("data-src", function() { return $(this).attr("src"); }).removeAttr("src").addClass("lazyload");
+                                                        }
+                                                    }
+                                                </script>').'
                                             </div><br>';
                                         $n++;
                                     } else{
