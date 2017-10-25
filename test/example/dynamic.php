@@ -142,7 +142,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <ul class="list-inline">
-                                        '.$datalinks.'
+                                        '.(!empty($datalinks)?$datalinks:'').'
                                     </ul>
                                 </div>
                             </div>
