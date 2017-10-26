@@ -126,7 +126,7 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Country</label>
-                                            <input name="country" type="text" placeholder="Input the country name separated with comma here..." maxlength="100" class="form-control border-input" required>
+                                            <input name="country-imdb" type="text" placeholder="Input the country name separated with comma here..." maxlength="100" class="form-control border-input" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

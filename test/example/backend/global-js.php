@@ -116,6 +116,7 @@
 					document.getElementById("tags-imdb").value='';
 					document.getElementById("released-imdb").value='';
 					document.getElementById("rating-imdb").value='';
+					document.getElementById("country-imdb").value='';
 					if(data.status=='success'){
                         document.getElementById("image-imdb").value=data.result.poster_thumbnails;
 						if (data.result.description =='N/A'){
@@ -129,6 +130,7 @@
 						document.getElementById("tags-imdb").value=data.result.genreStringCommas;
 						document.getElementById("released-imdb").value=data.result.year;
 						document.getElementById("rating-imdb").value=data.result.rating;
+						document.getElementById("country-imdb").value=data.result.countryStringCommas;
 					} else {
 						document.getElementById("image-imdb").value='';
 						document.getElementById("description-imdb").value='';
@@ -138,6 +140,7 @@
 						document.getElementById("tags-imdb").value='';
 						document.getElementById("released-imdb").value='';
 						document.getElementById("rating-imdb").value='';
+						document.getElementById("country-imdb").value='';
 					}
 				},
 				error: function( xhr, textStatus, error ) {
