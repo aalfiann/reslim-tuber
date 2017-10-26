@@ -321,15 +321,6 @@ class IMDB {
         }
     }
 
-    public function getCountry() {
-        if ($strReturn = $this->matchRegex($this->getScrape(), '~Country:</h4>
-        <a href="/search/title?country_of_origin=(.*)&sort=moviemeter,asc&ref_=tt_dt_dt" itemprop=\'url\'>(.*)</a>~~Ui', 1)) {
-            return trim($strReturn);
-        } else {
-            return "N/A";
-        }
-    }
-
     public function getLanguagesArray() {
         $arrReturned = $this->matchRegex($this->getScrape(), '~href="/language/(?:.*)itemprop=\'url\'>(.*)</a>~Uis');
         if (count($arrReturned[1])) {
@@ -364,6 +355,70 @@ class IMDB {
         return implode(" | ", $arr);
     }
     */
+
+    public function getCountryString() {
+        $html = $this->doCurl($this->getUrl());
+        if (!empty($html)){
+            $tmp = explode('<h4 class="inline">Country:</h4>',$html);
+            if (!empty($tmp[1])){
+                $tmp2 = explode('</div>',$tmp[1]);
+                if(strpos($tmp2[0],'<span class="ghost">|</span>') !== false){
+                    $tmp3 = explode('<span class="ghost">|</span>',$tmp2[0]);
+                    foreach ($tmp3 as $key){
+                        $data = explode("itemprop='url'>", $key);
+                        $data2 = explode("</a>",$data[1]);
+                        $country .= $data2[0].' | ';
+                    }
+                    $result = substr($country, 0, -3);
+                    return $result;
+                } else {
+                    $data = explode("itemprop='url'>", $tmp2[0]);
+                    $data2 = explode("</a>",$data[1]);
+                    return $data2[0];
+                }
+            } else {
+                return "N/A";
+            }
+        } else {
+            return "N/A";
+        }
+    }
+
+    public function getCountryStringCommas() {
+        $html = $this->doCurl($this->getUrl());
+        if (!empty($html)){
+            $tmp = explode('<h4 class="inline">Country:</h4>',$html);
+            if (!empty($tmp[1])){
+                $tmp2 = explode('</div>',$tmp[1]);
+                if(strpos($tmp2[0],'<span class="ghost">|</span>') !== false){
+                    $tmp3 = explode('<span class="ghost">|</span>',$tmp2[0]);
+                    foreach ($tmp3 as $key){
+                        $data = explode("itemprop='url'>", $key);
+                        $data2 = explode("</a>",$data[1]);
+                        $country .= $data2[0].', ';
+                    }
+                    $result = substr($country, 0, -2);
+                    return $result;
+                } else {
+                    $data = explode("itemprop='url'>", $tmp2[0]);
+                    $data2 = explode("</a>",$data[1]);
+                    return $data2[0];
+                }
+            } else {
+                return "N/A";
+            }
+        } else {
+            return "N/A";
+        }
+    }
+
+    public function getCountryArray(){
+        if ($this->getCountryStringCommas() != 'N/A'){
+            return explode(", ",trim($this->getCountryStringCommas()));
+        } else {
+            return array();
+        }
+    }
 
     public function getTrailer() {
         $YoutTubeSearchQuery = urlencode($this->getTitle() . " " . $this->getYear() . " trailer");
@@ -568,7 +623,9 @@ class IMDB {
         $oData['title'] = $this->getTitle();
         $oData['tagline'] = $this->getTagline();
 		//$oData['AKA'] = $this->getAka(); >> deprecated
-		$oData['genreString'] = $this->getGenreString();
+        $oData['countryString'] = $this->getCountryString();
+		$oData['countryStringCommas'] = $this->getCountryStringCommas();
+        $oData['genreString'] = $this->getGenreString();
 		$oData['genreStringCommas'] = $this->getGenreStringCommas();
 		$oData['castNameString'] = $this->getCastNameString();
 		$oData['castNameStringCommas'] = $this->getCastNameStringCommas();
@@ -582,7 +639,8 @@ class IMDB {
 		$oData['type'] = $this->getType();
 		$oData['year'] = $this->getYear();
 		$oData['description'] = $this->getDescription();
-		$oData['plot'] = $this->getPlot();
+        $oData['plot'] = $this->getPlot();
+        $oData['countryArray'] = $this->getCountryArray();
 		$oData['genreArray'] = $this->getGenreArray();
 		$oData['castArray'] = $this->getCastArray();
 		$oData['castNameArray'] = $this->getCastNameArray();

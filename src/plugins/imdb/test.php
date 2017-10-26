@@ -1,9 +1,8 @@
 <?php
 include_once 'imdbapi.class.php';
 header('Access-Control-Allow-Origin: *');
-
-$imdb = new IMDB('tt2294473');
-echo '<PRE>';
-print_r($imdb->get_data($imdb->getAPIURL("title/tt2294473/maindetails?")));
-echo '</PRE>';
+//tt0089469 >> 2
+//tt2294473 >> 1
+$imdb = new IMDB('tt0089469');
+echo $imdb->getCountry();
 ?>

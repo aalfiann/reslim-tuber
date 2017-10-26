@@ -21,6 +21,7 @@ if (!empty($gettitle)){
 			$imdb_api['num_votes'] = $imdb->getNumVotes();
 			$imdb_api['title'] = $imdb->getTitle();
 			$imdb_api['tagline'] = $imdb->getTagline();
+			$imdb_api['countryStringCommas'] = $imdb->getCountryStringCommas();
 			$imdb_api['genreStringCommas'] = $imdb->getGenreStringCommas();
 			$imdb_api['castNameStringCommas'] = $imdb->getCastNameStringCommas();
 			$imdb_api['castDirectorStringCommas'] = $imdb->getDirectorNameStringCommas();
