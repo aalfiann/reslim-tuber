@@ -40,7 +40,7 @@ AddDefaultCharset UTF-8
 	# Watch Full
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ watch.php?movie=$2&title=$3 [L]
+	RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ watch.php?dir=$1&movie=$2&title=$3 [L]
 
 	# Handle broken image
 	<FilesMatch ".(jpg|png|gif)$">

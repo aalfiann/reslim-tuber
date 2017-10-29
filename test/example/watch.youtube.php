@@ -23,10 +23,27 @@
 
     if (!empty($data)){
         if ($data->{'status'} == "success"){
+            //make sure directory not empty
+            if (empty($_GET['dir'])){
+                $dirheader = Core::lang('watch_header'); 
+            } else {
+                $dirheader = ucwords(str_replace("-"," ",$_GET['dir']));
+            }
             $title = $data->result[0]->{'Title'};
-            $description = Core::lang('watch_header').' '.$title.'. '.$data->result[0]->{'Description'};
-            $keyword = Core::lang('watch_keyword').', '.$data->result[0]->{'Title'}.', '.$data->result[0]->{'Tags_inline'};
+            $description = $dirheader.' '.$title.'. '.$data->result[0]->{'Description'};
+            $fullkeyword = $data->result[0]->{'Tags_inline'}.
+                (!empty($data->result[0]->{'Stars_inline'})?', '.$data->result[0]->{'Stars_inline'}:'').
+                (!empty($data->result[0]->{'Cast_inline'})?', '.$data->result[0]->{'Cast_inline'}:'').
+                (!empty($data->result[0]->{'Director_inline'})?', '.$data->result[0]->{'Director_inline'}:'').
+                (!empty($data->result[0]->{'Country_inline'})?', '.$data->result[0]->{'Country_inline'}:'');
+            $keyword = Core::lang('watch_keyword').', '.$data->result[0]->{'Title'}.', '.$fullkeyword;
             $author = $data->result[0]->{'User'};
+            //Create auto mirror page
+            $datalinks = null;	
+            $named = preg_split( "/[,]/", $fullkeyword );
+            foreach($named as $name){
+                if ($name != null){$datalinks .= '<li><a href="'.Core::getInstance()->homepath.'/'.Core::convertToSlug(Core::lang('watch_header').' '.trim($name)).'/'.$postid.'/'.Core::convertToSlug($data->result[0]->{'Title'}).'" title="'.ucwords(str_replace("-"," ",Core::lang('watch_header').' '.trim($name).' '.$data->result[0]->{'Title'})).'">'.ucwords(str_replace("-"," ",Core::lang('watch_header').' '.trim($name).' '.$data->result[0]->{'Title'})).'</a></li>';}
+            }
         } else {
             $title = '';
             $description = '';
@@ -59,17 +76,17 @@
                 echo '<!-- Open Graphs -->
                     <link rel="author" href="'.((!empty(Core::getInstance()->gplus))?Core::getInstance()->gplus:'').'"/>
                     <link rel="publisher" href="'.((!empty(Core::getInstance()->gpub))?Core::getInstance()->gpub:'').'"/>
-                    <meta itemprop="name" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'">
+                    <meta itemprop="name" content="'.$dirheader.' '.$data->result[0]->{'Title'}.'">
                     <meta itemprop="description" content="'.$data->result[0]->{'Description'}.'">
                     <meta itemprop="image" content="'.$data->result[0]->{'Image'}.'">
                 	<meta name="twitter:card" content="summary_large_image" />
-                	<meta name="twitter:title" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'" />
+                	<meta name="twitter:title" content="'.$dirheader.' '.$data->result[0]->{'Title'}.'" />
                 	<meta name="twitter:description" content="'.$data->result[0]->{'Description'}.'" />
                     <meta name="twitter:image" content="'.$data->result[0]->{'Image'}.'" />
-                    <meta name="twitter:image:alt" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'" />
+                    <meta name="twitter:image:alt" content="'.$dirheader.' '.$data->result[0]->{'Title'}.'" />
                     <meta name="twitter:site" content="'.((!empty(Core::getInstance()->twitter))?'@'.$twitterusername:'').'">
                     <meta name="twitter:creator" content="'.((!empty(Core::getInstance()->twitter))?'@'.$twitterusername:'').'">
-                    <meta property="og:title" content="'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'" />
+                    <meta property="og:title" content="'.$dirheader.' '.$data->result[0]->{'Title'}.'" />
                     <meta property="og:description" content="'.$data->result[0]->{'Description'}.'" />
                     <meta property="og:url" content="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" />
                     <meta property="og:image" content="'.$data->result[0]->{'Image'}.'" />
@@ -101,7 +118,7 @@
         }
     ?>
 
-    <title><?php echo Core::lang('watch_header')?> <?php echo $title;?> | <?php echo Core::getInstance()->title;?></title>
+    <title><?php echo $dirheader?> <?php echo $title;?> | <?php echo Core::getInstance()->title;?></title>
 
     <?php include 'global-meta.php';?>
     <!--Remove white flash on all IE and Edge browser-->
@@ -122,7 +139,7 @@
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 $totalvideo++;
                             }
-                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
+                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$dirheader.' '.$title.'</a></h1>';
                             $datavideo = '';
                             $n=1;
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
@@ -155,7 +172,7 @@
                             echo $datavideo;
 
                             //author
-                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.Core::lang('watch_header').' '.$title.'</a></h1>';
+                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$dirheader.' '.$title.'</a></h1>';
                             echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
@@ -250,7 +267,7 @@
 
                                     '.$datagenre.'
                                     <br>
-                                    <p class="text-center">'.Core::lang('watch_share').' '.Core::lang('watch_header').' '.$title.'</p>
+                                    <p class="text-center">'.Core::lang('watch_share').' '.$dirheader.' '.$title.'</p>
                                     <div class="sharethis-inline-share-buttons"></div>
                                     <div class="adblock2">
                                         <div class="img">
@@ -420,6 +437,22 @@
                     <a href="<?php echo Core::getInstance()->homepath?>/genre.php"><?php echo Core::lang('watch_all_genre')?></a>
                 </div>
             </div>
+            <?php if (!empty($fullkeyword)){
+                    echo '<!-- Footer link menu-->
+                    <div class="content-block">
+                        <div class="cb-header">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
+                                        '.(!empty($datalinks)?$datalinks:'').'
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer link menu-->';
+                }
+            ?>
         </div>
     </div>
 </div>
@@ -480,10 +513,10 @@
         <script type="application/ld+json">
         {
           "@context": "http://schema.org",
-          "@id": "'.Core::convertToSlug($data->result[0]->{'Title'}).'-'.$data->result[0]->{'PostID'}.'",
+          "@id": "'.Core::convertToSlug($dirheader).'-'.Core::convertToSlug($data->result[0]->{'Title'}).'-'.$data->result[0]->{'PostID'}.'",
           "@type": "Movie",
           "dateCreated": "'.$data->result[0]->{'Created_at'}.'",
-          "name": "'.Core::lang('watch_header').' '.$data->result[0]->{'Title'}.'",
+          "name": "'.$dirheader.' '.$data->result[0]->{'Title'}.'",
           "url": "'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'",
           "description": "'.$data->result[0]->{'Description'}.'",
           "releasedEvent": {
