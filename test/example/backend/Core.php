@@ -70,6 +70,9 @@
         // Set Keyword Dynamic Page
         var $seopage;
 
+        // Set Keyword Competitor Site
+        var $seosite;
+
         var $version = '1.0.0';
 
         // Set language
@@ -106,6 +109,7 @@
             $this->yandexwebmaster = $config['yandexwebmaster'];
             $this->imdbapi = $config['imdbapi'];
             $this->seopage = $config['seopage'];
+            $this->seosite = $config['seosite'];
 		}
 
         public static function getInstance()
@@ -838,7 +842,8 @@
             $config[\'bingwebmaster\'] = \''.$post_array['Bingwebmaster'].'\'; //Your bing webmaster, you can leave this blank and fill this later
             $config[\'yandexwebmaster\'] = \''.$post_array['Yandexwebmaster'].'\'; //Your yandex webmaster, you can leave this blank and fill this later
             $config[\'imdbapi\'] = \''.$post_array['Imdbapi'].'\'; //IMDB API, you can leave this blank and fill this later
-            $config[\'seopage\'] = \''.$post_array['Seopage'].'\'; //Keyword for dynamic page, you can leave this blank and fill this later';
+            $config[\'seopage\'] = \''.$post_array['Seopage'].'\'; //Keyword for dynamic page, you can leave this blank and fill this later
+            $config[\'seosite\'] = \''.$post_array['Seosite'].'\'; //Keyword for competitor site, you can leave this blank and fill this later';
             $handle = fopen('config.php','w+'); 
 				fwrite($handle,$newcontent); 
 				fclose($handle); 

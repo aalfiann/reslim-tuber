@@ -151,6 +151,7 @@ Working with gui example for testing
     $config['yandexwebmaster'] = ''; //Your yandex webmaster, you can leave this blank and fill this later<br>
     $config['imdbapi'] = ''; //IMDB API, you can leave this blank and fill this later<br>
     $config['seopage'] = ''; //Keyword for dynamic page, you can leave this blank and fill this later<br>
+    $config['seosite'] = ''; //Keyword for competitor site, you can leave this blank and fill this later<br>
 3. Visit yourserver/reSlim-tuber/test/example/backend<br>
     For my case is http://localhost:1337/reSlim-tuber/test/example/backend
 4. You can login with default superuser account:<br>

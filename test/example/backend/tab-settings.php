@@ -25,7 +25,8 @@
                                     'Bingwebmaster' => $_POST['bingwebmaster'],
                                     'Yandexwebmaster' => $_POST['yandexwebmaster'],
                                     'Imdbapi' => $_POST['imdbapi'],
-                                    'Seopage' => $_POST['seopage']
+                                    'Seopage' => $_POST['seopage'],
+                                    'Seosite' => $_POST['seosite']
                                 );
                                 Core::saveSettings($post_array);
                             } 
@@ -52,6 +53,10 @@
                                         <div class="form-group">
                                             <label>Keyword Dynamic Page</label>
                                             <textarea name="seopage" type="text" rows="5" placeholder="Please input the keyword page separated with commas..." class="form-control border-input"><?php echo Core::getInstance()->seopage?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Keyword Competitor Site</label>
+                                            <textarea name="seosite" type="text" rows="5" placeholder="Please input the keyword competitor site separated with commas..." class="form-control border-input"><?php echo Core::getInstance()->seosite?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>

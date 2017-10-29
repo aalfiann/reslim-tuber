@@ -20,3 +20,4 @@
             $config['yandexwebmaster'] = ''; //Your yandex webmaster, you can leave this blank and fill this later
             $config['imdbapi'] = ''; //IMDB API, you can leave this blank and fill this later
             $config['seopage'] = ''; //Keyword for dynamic page, you can leave this blank and fill this later
+            $config['seosite'] = ''; //Keyword for competitor site, you can leave this blank and fill this later

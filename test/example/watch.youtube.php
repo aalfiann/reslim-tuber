@@ -35,7 +35,8 @@
                 (!empty($data->result[0]->{'Stars_inline'})?', '.$data->result[0]->{'Stars_inline'}:'').
                 (!empty($data->result[0]->{'Cast_inline'})?', '.$data->result[0]->{'Cast_inline'}:'').
                 (!empty($data->result[0]->{'Director_inline'})?', '.$data->result[0]->{'Director_inline'}:'').
-                (!empty($data->result[0]->{'Country_inline'})?', '.$data->result[0]->{'Country_inline'}:'');
+                (!empty($data->result[0]->{'Country_inline'})?', '.$data->result[0]->{'Country_inline'}:'').
+                (!empty(Core::getInstance()->seosite)?', '.Core::getInstance()->seosite:'');
             $keyword = Core::lang('watch_keyword').', '.$data->result[0]->{'Title'}.', '.$fullkeyword;
             $author = $data->result[0]->{'User'};
             //Create auto mirror page
