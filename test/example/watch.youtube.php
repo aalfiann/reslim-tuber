@@ -269,7 +269,7 @@
 
                                     '.$datagenre.'
                                     <br>
-                                    <p class="text-center">'.Core::lang('watch_share').' '.$dirheader.' '.$title.'</p>
+                                    <h2 style="font-size: 15px !important;"><p class="text-center">'.Core::lang('watch_share').' '.$dirheader.' '.$title.'</p></h2>
                                     <div class="sharethis-inline-share-buttons"></div>
                                     <div class="adblock2">
                                         <div class="img">
