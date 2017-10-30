@@ -105,7 +105,7 @@ $datacompany = json_decode(Core::execGetRequest($listcompany));
                     echo '<tr>';
                     echo '<td>' . $n++ .'</td>';
                     echo '<td>' . $value->{'Status'} .'</td>';
-                    echo '<td><a href="modul-data-video.php?search=' . $value->{'Title'} .'&m=10&page=1&itemsperpage=10">' . $value->{'Title'} .'</a></td>';
+                    echo '<td><a href="modul-data-video.php?search='.rawurlencode($value->{'Title'}).'&m=10&page=1&itemsperpage=10">' . $value->{'Title'} .'</a></td>';
                 	echo '<td>' . $value->{'Fullname'} .'</td>';
                     echo '<td>' . $value->{'Issue'} .'</td>';
                 	echo '<td>' . $value->{'Created_at'} .'</td>';

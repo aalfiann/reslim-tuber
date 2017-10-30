@@ -92,7 +92,8 @@
                     <meta property="og:title" content="'.$dirheader.' '.$data->result[0]->{'Title'}.'" />
                     <meta property="og:description" content="'.$data->result[0]->{'Description'}.'" />
                     <meta property="og:url" content="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'" />
-                    <meta property="og:image" content="'.$data->result[0]->{'Image'}.'" />
+                    <meta property="og:image" content="'.str_replace('UX182_CR0,0,182,268','UX200_CR0,0,200,286',$data->result[0]->{'Image'}).'" />
+                    <meta property="og:image:alt" content="'.$dirheader.' '.$data->result[0]->{'Title'}.'" />
                 	<meta property="og:site_name" content="'.Core::getInstance()->title.'" />
                     <meta property="og:type" content="video.movie" />
                 	<meta property="og:video:release_date" content="'.date_format(date_create($data->result[0]->{'Created_at'}), 'Y-m-d').'" />';
