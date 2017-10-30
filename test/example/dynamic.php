@@ -6,7 +6,7 @@
             $names = Core::getInstance()->seopage;	
             $named = preg_split( "/[,]/", $names );
             foreach($named as $name){
-                if ($name != null){$datalinks .= '<li><a href="'.Core::getInstance()->homepath.'/'.Core::convertToSlug(trim($name)).'" title="'.ucwords(str_replace("-"," ",trim($name))).'"><h3 style="font-size: 15px !important;">'.ucwords(str_replace("-"," ",trim($name))).'</h3></a></li>';}
+                if ($name != null){$datalinks .= '<li><a href="'.Core::getInstance()->homepath.'/'.Core::convertToSlug(trim($name)).'" title="'.ucwords(str_replace("-"," ",trim($name))).'">'.ucwords(str_replace("-"," ",trim($name))).'</a></li>';}
             }
         } else {
             header("Location: ".Core::getInstance()->homepath."/index.php");
@@ -141,7 +141,7 @@
                         <div class="cb-header">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <ul class="list-inline">
+                                    <ul class="list-inline" style="height: 60px; overflow-y: scroll;">
                                         '.(!empty($datalinks)?$datalinks:'').'
                                     </ul>
                                 </div>
