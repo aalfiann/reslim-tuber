@@ -81,7 +81,7 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li class="color-active"><h1 style="font-size: 20px !important;"><?php echo ucwords(str_replace("-"," ",$_GET['title'])).' - '.Core::lang('watch_recomended')?></h1></li>
+                                    <li class="color-active"><h1 style="font-size: 20px !important;"><strong><?php echo ucwords(str_replace("-"," ",$_GET['title'])).' - '.Core::lang('watch_recomended')?></strong></h1></li>
                                 </ul>
                             </div>
                             

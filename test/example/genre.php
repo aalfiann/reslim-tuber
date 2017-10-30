@@ -47,7 +47,7 @@
                         <div class="row">
                             <div class="col-lg-10">
                                 <ul class="list-inline">
-                                    <li><a href="#" class="color-active" title="Trending Genre"><h1 style="font-size: 20px !important;">Trending Genre</h1></a></li>
+                                    <li><a href="#" class="color-active" title="Trending Genre"><h1 style="font-size: 20px !important;"><strong>Trending Genre</strong></h1></a></li>
                                     <li><a href="rating.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('best_rating')?>"><?php echo Core::lang('best_rating')?></a></li>
                                     <li><a href="popular.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('most_popular')?>"><?php echo Core::lang('most_popular')?></a></li>
                                     <li><a href="favorite.php" title="<?php echo Core::lang('watch_header').' '.Core::lang('most_favorite')?>"><?php echo Core::lang('most_favorite')?></a></li>
