@@ -141,7 +141,7 @@
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
                                 $totalvideo++;
                             }
-                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$dirheader.' '.$title.'</a></h1>';
+                            if ($totalvideo>1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'"><strong>'.$dirheader.' '.$title.'</strong></a></h1>';
                             $datavideo = '';
                             $n=1;
                             foreach ($data->result[0]->{'Embed'} as $name => $valuevideo) {
@@ -174,7 +174,7 @@
                             echo $datavideo;
 
                             //author
-                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'">'.$dirheader.' '.$title.'</a></h1>';
+                            if ($totalvideo==1) echo '<h1><a href="'.((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'"><strong>'.$dirheader.' '.$title.'</strong></a></h1>';
                             echo '<div class="author">
                                     <div class="sv-views">
                                         <div class="sv-views-count">
