@@ -46,10 +46,6 @@ class IMDB {
         return json_decode($data, true);
     }
 
-    private function saveImage($imgURL) {
-        //Saved the image to 'attachments/_posters/' . $this->_strId . '.jpg';
-    }
-
     private function getTimeStamp() {
         return time();
     }
@@ -306,56 +302,6 @@ class IMDB {
         return $this->_strSource;
     }
 
-    /*
-    //Get IMDB api return data ERROR
-    public function getImdbResponse() {
-        return $this->data['data'];
-    }
-    
-    //WEB SCRAPING now is deprecated will change to use simple html dom in the future
-    public function getAka() {
-        if ($strReturn = $this->matchRegex($this->getScrape(), '~Also Known As:</h4>(.*)<span~Ui', 1)) {
-            return trim($strReturn);
-        } else {
-            return "N/A";
-        }
-    }
-
-    public function getLanguagesArray() {
-        $arrReturned = $this->matchRegex($this->getScrape(), '~href="/language/(?:.*)itemprop=\'url\'>(.*)</a>~Uis');
-        if (count($arrReturned[1])) {
-            foreach ($arrReturned[1] as $strName) {
-                $arrReturn[] = trim($strName);
-            }
-            return $arrReturn;
-        } else {
-            return array("N/A");
-        }
-    }
-
-    public function getLanguagesString() {
-        return implode(" | ", $this->getLanguagesArray());
-    }
-
-    public function getLanguagesStringCommas() {
-        return implode(", ", $this->getLanguagesArray());
-    }
-
-    public function getLanguages() {
-        $arr = array();
-        $arrr = $this->getLanguagesArray();
-        for ($i = 0; $i < 2; $i++) {
-            $arr[] = $arrr[$i];
-        }
-        if (count($arr) > 1)
-            return "N/A";
-        if (count($arr) == 1)
-            return $arr[0];
-
-        return implode(" | ", $arr);
-    }
-    */
-
     public function getCountryString() {
         $html = $this->doCurl($this->getUrl());
         if (!empty($html)){
@@ -364,6 +310,7 @@ class IMDB {
                 $tmp2 = explode('</div>',$tmp[1]);
                 if(strpos($tmp2[0],'<span class="ghost">|</span>') !== false){
                     $tmp3 = explode('<span class="ghost">|</span>',$tmp2[0]);
+                    $country = null;
                     foreach ($tmp3 as $key){
                         $data = explode("itemprop='url'>", $key);
                         $data2 = explode("</a>",$data[1]);
@@ -392,6 +339,7 @@ class IMDB {
                 $tmp2 = explode('</div>',$tmp[1]);
                 if(strpos($tmp2[0],'<span class="ghost">|</span>') !== false){
                     $tmp3 = explode('<span class="ghost">|</span>',$tmp2[0]);
+                    $country = null;
                     foreach ($tmp3 as $key){
                         $data = explode("itemprop='url'>", $key);
                         $data2 = explode("</a>",$data[1]);
@@ -497,13 +445,15 @@ class IMDB {
 
     //Can set the max amount of generes to return
     public function getGenreArray($max = 0) {
-        if (is_int($max) && $max > 0) {
-            $genre_array = array();
-            for ($i = 0; $i < $max; $i++) {
-                $genre_array[] = $this->data['genres'][$i];
+        $genre_array = array();
+        if (!empty($this->data['genres'])){
+            if (is_int($max) && $max > 0) {
+                for ($i = 0; $i < $max; $i++) {
+                    $genre_array[] = $this->data['genres'][$i];
+                }
+            } else {
+                $genre_array = $this->data['genres'];
             }
-        } else {
-            $genre_array = $this->data['genres'];
         }
         return $genre_array;
     }
@@ -535,7 +485,7 @@ class IMDB {
     public function getPlot() {
         if ($this->debug)
             echo "Doing movie plot call\n";
-        $json_res = $this->get_data($this->getAPIURL("title/plot?tconst=" . $this->ImdbId . "&"));
+        $json_res = $this->get_data($this->getAPIURL("title/plot?tconst=" . (!empty($this->ImdbId)?$this->ImdbId:'') . "&"));
         return isset($json_res['data']['plots'][0]['text']) ? $json_res['data']['plots'][0]['text'] : $this->getDescription();
     }
 
