@@ -3,7 +3,17 @@
 ================================================== -->
 <script src="<?php echo Core::getInstance()->homepath?>/js/jquery.min.js"></script>
 <script src="<?php echo Core::getInstance()->homepath?>/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php echo Core::getInstance()->homepath?>/js/custom.js"></script>
+<script src="<?php echo Core::getInstance()->homepath?>/js/custom.min.js"></script>
+
+<!-- Async google font css -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+<script>
+ WebFont.load({
+    google: {
+      families: ['Hind:400,300,500,600,700', 'Hind+Guntur:300,400,500,700']
+    }
+  });
+</script>
 
 <!-- START LazySizes -->
 <script src="<?php echo Core::getInstance()->homepath?>/backend/assets/js/lazysizes.min.js" async=""></script>

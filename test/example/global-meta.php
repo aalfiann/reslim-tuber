@@ -6,18 +6,12 @@
     <meta name="google-site-verification" content="<?php echo Core::getInstance()->googlewebmaster?>" />
     <meta name="msvalidate.01" content="<?php echo Core::getInstance()->bingwebmaster?>"/>
     <meta name="yandex-verification" content="<?php echo Core::getInstance()->yandexwebmaster?>"/>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="<?php echo Core::getInstance()->homepath?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="<?php echo Core::getInstance()->homepath?>/css/style.css" rel="stylesheet">
-    <link href="<?php echo Core::getInstance()->homepath?>/css/font-awesome.min.css" rel="stylesheet">
-    <link href="<?php echo Core::getInstance()->homepath?>/css/font-circle-video.css" rel="stylesheet">
-
-    <!-- font-family: 'Hind', sans-serif; -->
-    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
-
+    <?php
+        // Load bootstrap inline 
+        echo str_replace('../fonts',Core::getInstance()->homepath.'/bootstrap/fonts',file_get_contents(Core::getInstance()->homepath.'/bootstrap/css/bootstrap.php'));
+        // load css inline
+        echo str_replace('../fonts',Core::getInstance()->homepath.'/fonts',file_get_contents(Core::getInstance()->homepath.'/css/style.php'));
+    ?>
     <?php 
         if (!empty(Core::getInstance()->googleanalytics)){
 		    echo '<!-- Google Analytics -->
