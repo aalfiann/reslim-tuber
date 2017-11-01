@@ -1,4 +1,5 @@
 <?php include 'backend/Core.php'; 
+    $dirheader = null;
     //Validation url param
     $postid = filter_var((empty($_GET['movie'])?'':$_GET['movie']),FILTER_SANITIZE_STRING);
     //Data video

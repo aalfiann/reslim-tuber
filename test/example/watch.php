@@ -1,4 +1,5 @@
 <?php include 'backend/Core.php'; 
+    $dirheader = null;
     //Random Key
     $aaa=rand(0,5);$bbb=rand(3,9);
     //Validation url param
