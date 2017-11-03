@@ -228,6 +228,9 @@
 
 		// Disqus onclick start
 		var disqus_loaded = false;
+		$("#show-comments").on("click",function(){
+			disqus();
+		});
 		function disqus() {
 			if (!disqus_loaded)  {
 				disqus_loaded = true;
@@ -243,13 +246,6 @@
 				s.setAttribute("data-timestamp", +new Date());
 				(d.head || d.body).appendChild(s);
 				$("#show-comments").fadeOut();
-			}
-		}
-		//Opens comments when linked to directly
-		var hash = window.location.hash.substr(1);
-		if (hash.length > 8) {
-			if (hash.substring(0, 8) == "comment-") {
-				disqus();
 			}
 		}
 		// Disqus onclick end

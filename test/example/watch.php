@@ -351,7 +351,7 @@
                         echo '<!-- START comments -->
                             <div class="comments">
                                 <div class="comments-block">
-                                    <button id="show-comments" class="btn btn-danger btn-block" onclick="disqus();return false;">'.Core::lang('watch_show_comments').'</button>
+                                    <button id="show-comments" class="btn btn-danger btn-block">'.Core::lang('watch_show_comments').'</button>
                                 </div>
                                 <div id="disqus_thread" class="color-active"></div>
                                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" title="Please enable JavaScript to view the comments">comments.</a></noscript>
