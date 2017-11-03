@@ -7,21 +7,19 @@
     <meta name="msvalidate.01" content="<?php echo Core::getInstance()->bingwebmaster?>"/>
     <meta name="yandex-verification" content="<?php echo Core::getInstance()->yandexwebmaster?>"/>
     <?php
-        // Load bootstrap inline 
-        echo str_replace('../fonts',Core::getInstance()->homepath.'/bootstrap/fonts',file_get_contents(Core::getInstance()->homepath.'/bootstrap/css/bootstrap.php'));
-        // load css inline
-        echo str_replace('../fonts',Core::getInstance()->homepath.'/fonts',file_get_contents(Core::getInstance()->homepath.'/css/style.php'));
-    ?>
-    <?php 
-        if (!empty(Core::getInstance()->googleanalytics)){
-		    echo '<!-- Google Analytics -->
-			<script>
-				(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
-					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-				})(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');
-				ga(\'create\', \''.Core::getInstance()->googleanalytics.'\', \'auto\');
-				ga(\'send\', \'pageview\');
-			</script>';
-    	}
+        /** Set $internalcss to true, if You want to use css as internal inside html to boost the google pagespeed.
+         * Internal css is not recommended as cache system will not working and bootstrap file is too big to render
+         **/
+        $internalcss = false;
+        if($internalcss){
+            // Bootstrap core CSS
+            echo str_replace('../fonts',Core::getInstance()->homepath.'/bootstrap/fonts',file_get_contents(Core::getInstance()->homepath.'/bootstrap/css/bootstrap.php'));
+            // Core CSS
+            echo str_replace('../fonts',Core::getInstance()->homepath.'/fonts',file_get_contents(Core::getInstance()->homepath.'/css/style.php'));
+        } else {
+            echo '<!-- Bootstrap core CSS -->
+            <link href="'.Core::getInstance()->homepath.'/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <!-- Core CSS -->
+            <link href="'.Core::getInstance()->homepath.'/css/style.min.css" rel="stylesheet">';
+        }
     ?>
