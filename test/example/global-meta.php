@@ -8,7 +8,7 @@
     <meta name="yandex-verification" content="<?php echo Core::getInstance()->yandexwebmaster?>"/>
     <?php
         /** Set $internalcss to true, if You want to use css as internal inside html to boost the google pagespeed.
-         * Internal css is not recommended as cache system will not working and bootstrap file is too big to render
+         * Internal css is not recommended as cache system will not working and bootstrap file is too big to render.
          **/
         $internalcss = false;
         if($internalcss){
