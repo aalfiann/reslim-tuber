@@ -2,8 +2,38 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <script src="<?php echo Core::getInstance()->homepath?>/js/jquery.min.js"></script>
-<script src="<?php echo Core::getInstance()->homepath?>/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php echo Core::getInstance()->homepath?>/js/custom.min.js"></script>
+
+<!-- START LazySizes -->
+<script src="<?php echo Core::getInstance()->homepath?>/backend/assets/js/lazysizes.min.js" async=""></script>
+<script type="text/javascript">
+    $("head").append("<style>.lazyload {opacity: 0;} .lazyloading {opacity: 1;transition: opacity 300ms;background: #f7f7f7 url(<?php echo Core::getInstance()->homepath?>/images/spinner-black.gif) no-repeat center;}</style>");
+    $('iframe').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
+	$('img').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
+</script>
+<!-- END LazySizes -->
+
+<!-- Defer multiple src javascript -->
+<script>
+function downloadJSAtOnload() {
+	(function(scripts) {
+	 	var i = 0,
+	 		l = scripts.length;
+		for (; i<l; ++i ){
+			var element = document.createElement("script");
+			element.src = scripts[i];
+			document.body.appendChild(element);
+		}
+	})(['<?php echo Core::getInstance()->homepath?>/bootstrap/js/bootstrap.min.js',
+		'<?php echo Core::getInstance()->homepath?>/js/custom.min.js'
+	]);
+}
+ 
+if (window.addEventListener)
+        window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+	window.attachEvent("onload", downloadJSAtOnload);
+else window.onload = downloadJSAtOnload;
+</script>
 
 <!-- Async google font css -->
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
@@ -15,20 +45,12 @@
   });
 </script>
 
-<!-- START LazySizes -->
-<script src="<?php echo Core::getInstance()->homepath?>/backend/assets/js/lazysizes.min.js" async=""></script>
-<script type="text/javascript">
-    $("head").append("<style>.lazyload {opacity: 0;} .lazyloading {opacity: 1;transition: opacity 300ms;background: #f7f7f7 url(<?php echo Core::getInstance()->homepath?>/images/spinner-black.gif) no-repeat center;}</style>");
-    $('iframe').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
-	$('img').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
-</script>
-<!-- END LazySizes -->
-
 <!-- Sharethis -->
 <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=<?php echo Core::getInstance()->sharethis?>&product=inline-share-buttons" async></script>
 
 <!-- Get total database video START -->
 <script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function() {
     $(function(){    
         $.ajax({
 			type: "GET",
@@ -64,11 +86,13 @@
 	    }
     	return x1 + x2;
 	}
+});
 </script>
 <!-- Get total database video END -->
 
 <!-- Load Options START-->
 <script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function() {
 	$(function(){
 		var get_genre1,get_genre2,get_country,get_year;
 		get_genre1 = <?php echo (!empty($_GET['genre1'])?'"'.$_GET['genre1'].'"':'null'); ?>;
@@ -123,11 +147,13 @@
     		}
 	    });
 	});
+});
 </script>
 <!-- Load Options END-->
 
 <!-- Send Report START-->
 <script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function() {
 	$(function(){
 		$('#sendreport').on("submit",sendingreport);
 	});
@@ -179,6 +205,7 @@
 			that.on('submit', sendingreport); // add handler back after ajax
 		}
 	}
+});
 </script>
 <!-- Send Report END-->
 
@@ -186,12 +213,14 @@
     if (!empty(Core::getInstance()->googleanalytics)){
 		echo '<!-- Google Analytics -->
 		<script>
+		window.addEventListener(\'DOMContentLoaded\', function() {
 			(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');
 			ga(\'create\', \''.Core::getInstance()->googleanalytics.'\', \'auto\');
 			ga(\'send\', \'pageview\');
+		});
 		</script>';
 	}
 ?>
