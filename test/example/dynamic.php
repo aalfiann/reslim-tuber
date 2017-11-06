@@ -1,7 +1,32 @@
 <?php include 'backend/Core.php';
+    //Data Dynamic Link Single
+    $urltags = Core::getInstance()->api.'/video/post/data/public/tags/all/?apikey='.Core::getInstance()->apikey;
+    $datatags = json_decode(Core::execGetRequest($urltags));
+    if (!empty($datatags)){
+        if ($datatags->{'status'} == "success"){
+            $datalinktags = null;
+            $tagnames = $datatags->result->{'Tags_Inline'};	
+            $tagnamed = preg_split( "/[,]/", $tagnames );
+            $titletagslug = explode('-',$_GET['title']);
+            foreach($tagnamed as $name){
+                if ($name != null){
+                    if (strpos(strtolower($datatags->result->{'Tags_Inline'}), strtolower(end($titletagslug))) !== false){
+                        $datalinktags .= '';
+                    } else {
+                        $thref = Core::getInstance()->homepath.'/'.Core::convertToSlug($_GET['title']).'-'.Core::convertToSlug(trim($name));
+                        $ttitle = ucwords(str_replace("-"," ",$_GET['title'])).' '.ucwords(str_replace("-"," ",trim($name)));
+                        $datalinktags .= '<li><a href="'.$thref.'" title="'.$ttitle.'">'.$ttitle.'</a></li>';
+                    }
+                }
+            }
+        }
+    }
+
     //Data Dynamic Link
     if (!empty(Core::getInstance()->seopage)){
-        if (strpos(strtolower(Core::getInstance()->seopage), strtolower(str_replace("-"," ",$_GET['title']))) !== false) {
+        $tagslug = explode('-',$_GET['title']);
+        if (strpos(strtolower(Core::getInstance()->seopage), strtolower(str_replace("-"," ",$_GET['title']))) !== false
+            || strpos(strtolower($datatags->result->{'Tags_Inline'}), strtolower(end($tagslug))) !== false) {
             $datalinks = null;
             $names = Core::getInstance()->seopage;	
             $named = preg_split( "/[,]/", $names );
@@ -134,7 +159,27 @@
                     </div>
                 </div>
                 <!-- /Latest Movies -->
-
+                
+                <?php if (!empty($datatags)){
+                    if ($datatags->{'status'} == "success"){
+                        if (!empty($datalinktags)){
+                            echo '<!-- Footer link menu page -->
+                            <div class="content-block head-div">
+                                <div class="cb-header">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <ul class="list-inline" style="height: 60px; overflow-y: scroll;">
+                                                '.$datalinktags.'
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Footer link menu-->';
+                        }
+                    }
+                }?>
+                
                 <?php if (!empty(Core::getInstance()->seopage)){
                     echo '<!-- Footer link menu-->
                     <div class="content-block head-div">
