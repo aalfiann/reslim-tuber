@@ -167,8 +167,9 @@
                             <div class="content-block head-div">
                                 <div class="cb-header">
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                            <ul class="list-inline" style="height: 60px; overflow-y: scroll;">
+                                        <div class="col-lg-12"> 
+                                            <p>Detected incoming link to this page:</p>
+                                            <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
                                                 '.$datalinktags.'
                                             </ul>
                                         </div>
@@ -186,7 +187,8 @@
                         <div class="cb-header">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <ul class="list-inline" style="height: 60px; overflow-y: scroll;">
+                                    '.(empty($datalinktags)?'<p>Detected incoming link to this page:</p>':'').'
+                                    <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
                                         '.(!empty($datalinks)?$datalinks:'').'
                                     </ul>
                                 </div>

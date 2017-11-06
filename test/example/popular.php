@@ -6,16 +6,6 @@
     $url = Core::getInstance()->api.'/video/post/data/public/show/popular/'.$page.'/'.$itemsperpage.'/?apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
-    //Data Dynamic Link
-    if (!empty(Core::getInstance()->seopage)){
-        $datalinks = null;
-        $names = Core::getInstance()->seopage;	
-        $named = preg_split( "/[,]/", $names );
-        foreach($named as $name){
-            if ($name != null){$datalinks .= '<li><a href="'.Core::getInstance()->homepath.'/'.Core::convertToSlug(trim($name)).'" title="'.ucwords(str_replace("-"," ",trim($name))).'">'.ucwords(str_replace("-"," ",trim($name))).'</a></li>';}
-        }
-    }
-
     $title = Core::lang('popular_list').(!empty($page) && ($page != 1)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
     $description = Core::lang('popular_list').'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'');
     $keyword = Core::lang('popular_key_1');
@@ -115,21 +105,7 @@
                     }
                 ?>
 
-                <?php if (!empty(Core::getInstance()->seopage)){
-                    echo '<!-- Footer link menu-->
-                    <div class="content-block head-div">
-                        <div class="cb-header">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <ul class="list-inline" style="height: 60px; overflow-y: scroll;">
-                                        '.(!empty($datalinks)?$datalinks:'').'
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Footer link menu-->';
-                }?>
+                <?php include 'dynamic-links.php'?>
 
             </div>
         </div>
