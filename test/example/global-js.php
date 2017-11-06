@@ -183,7 +183,7 @@
 		$(".iliked").on("click",function(){
 			$.ajax({
 				type: "POST",
-				url: "<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
+				url: "<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo (!empty($postid)?$postid:'0')?>/?apikey=<?php echo Core::getInstance()->apikey?>",
 				dataType: 'json',
 				success: function( data ) {
 					document.getElementById("voteresult").innerHTML='';
@@ -205,7 +205,7 @@
 		$(".idisliked").on("click",function(){
 			$.ajax({
 				type: "POST",
-				url: "<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo $postid?>/?apikey=<?php echo Core::getInstance()->apikey?>",
+				url: "<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo (!empty($postid)?$postid:'0')?>/?apikey=<?php echo Core::getInstance()->apikey?>",
 				dataType: 'json',
 				success: function( data ) {
 					document.getElementById("voteresult").innerHTML='';
@@ -239,7 +239,7 @@
 				*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 				var disqus_config = function () {
 					this.page.url = '<?php echo ((Core::isHttpsButtflare()) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>';  // Replace PAGE_URL with your page\'s canonical URL variable
-					this.page.identifier = '<?php echo $postid?>'; // Replace PAGE_IDENTIFIER with your page\'s unique identifier variable
+					this.page.identifier = '<?php echo (!empty($postid)?$postid:$_SERVER['REQUEST_URI'])?>'; // Replace PAGE_IDENTIFIER with your page\'s unique identifier variable
 				};
 				var d = document, s = d.createElement("script");
 				s.src = 'https://<?php echo Core::getInstance()->disqus?>.disqus.com/embed.js';
