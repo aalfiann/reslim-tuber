@@ -272,3 +272,29 @@
 	});
 })();
 </script>
+
+<!-- Defer CSS should be load after javascript -->
+<script>
+	var loadMultipleCss = function(){
+		//load fontawesome icon
+		loadCss("<?php echo Core::getInstance()->homepath?>/css/font-awesome.min.css");
+		 
+		//load Extended css
+		loadCss("<?php echo Core::getInstance()->homepath?>/css/font-circle-video.min.css");
+	}
+	 
+	var loadCss = function(cssPath){
+		var cssLink = document.createElement("link");
+		cssLink.rel = "stylesheet";
+		cssLink.href = cssPath;
+		var head = document.getElementsByTagName("head")[0];
+		head.parentNode.insertBefore(cssLink, head);
+	};
+	 
+	//call function on window load
+	window.addEventListener("load", loadMultipleCss);
+</script>
+<noscript>
+	<link href="<?php echo Core::getInstance()->homepath?>/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?php echo Core::getInstance()->homepath?>/css/font-circle-video.min.css" rel="stylesheet">
+</noscript>
