@@ -366,6 +366,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
+                                            <li>'.Core::lang('page-links').'</li>
                                             '.(!empty($datalinks)?$datalinks:'').'
                                         </ul>
                                     </div>
