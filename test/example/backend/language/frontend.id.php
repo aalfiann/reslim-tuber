@@ -85,6 +85,8 @@ $lang = [
     "about_us" => "Tentang Kami",
     "terms" => "Persyaratan Layanan",
     "privacy" => "Kebijakan Privasi",
+    //dynamic page
+    "page-links" => "Perlu diketahui, video-video di web ini didapat dari pencarian web di internet. Kami tidak menyimpan file di server itu sendiri dan kami hanya menempelkan tautan di situs kami.",
     //menu 
     "home" => "Home",
     "genre" => "Genre",

@@ -168,8 +168,8 @@
                                 <div class="cb-header">
                                     <div class="row">
                                         <div class="col-lg-12"> 
-                                            <p>Detected incoming link to this page:</p>
                                             <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
+                                                <li>'.Core::lang('page-links').'</li>
                                                 '.$datalinktags.'
                                             </ul>
                                         </div>
@@ -187,8 +187,8 @@
                         <div class="cb-header">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    '.(empty($datalinktags)?'<p>Detected incoming link to this page:</p>':'').'
                                     <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
+                                        '.(empty($datalinktags)?'<li>'.Core::lang('page-links').'</li>':'').'
                                         '.(!empty($datalinks)?$datalinks:'').'
                                     </ul>
                                 </div>

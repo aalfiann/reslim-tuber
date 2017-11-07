@@ -85,6 +85,8 @@ $lang = [
     "about_us" => "About Us",
     "terms" => "Terms Of Service",
     "privacy" => "Privacy Policy",
+    //dynamic page
+    "page-links" => "Please note, the videos on this web obtained from web search on the internet. We do not store the files on the server itself and we just paste those links on our website.",
     //menu 
     "home" => "Home",
     "genre" => "Genre",
