@@ -358,23 +358,6 @@
                             </div>
                         <!-- END comments -->';
                     }
-
-                    if (!empty($fullkeyword)){
-                        echo '<!-- Footer link menu-->
-                        <div class="content-block">
-                            <div class="cb-header">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
-                                            <li>'.Core::lang('page-links').'</li>
-                                            '.(!empty($datalinks)?$datalinks:'').'
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Footer link menu-->';
-                    }
                     
                 echo '</div>';
                         }
@@ -447,6 +430,24 @@
                     <a href="<?php echo Core::getInstance()->homepath?>/genre.php" title="<?php echo Core::lang('watch_all_genre')?>"><?php echo Core::lang('watch_all_genre')?></a>
                 </div>
             </div>
+            <?php 
+                if (!empty($fullkeyword)){
+                    echo '<!-- Footer link menu-->
+                        <div class="content-block">
+                            <div class="cb-header">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul class="list-inline" style="height: 30px; overflow-y: scroll;">
+                                            <li>'.Core::lang('page-links').'</li>
+                                            '.(!empty($datalinks)?$datalinks:'').'
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- Footer link menu-->';
+                }
+            ?>
         </div>
     </div>
 </div>
