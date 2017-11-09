@@ -2268,6 +2268,80 @@
 			"response": []
 		},
 		{
+			"name": "Show Random Ads Also Update View",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/ads/data/showview/content/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"ads",
+						"data",
+						"showview",
+						"content",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update View Ads",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/ads/data/view/{adsid}/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"ads",
+						"data",
+						"view",
+						"{adsid}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Add Like",
 			"request": {
 				"url": {

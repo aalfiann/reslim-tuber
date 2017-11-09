@@ -156,3 +156,20 @@ use \Psr\Http\Message\ResponseInterface as Response;
         $body->write($ads->showAds($request->getAttribute('layout')));
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to show data ads public / guest also update view
+    $app->get('/ads/data/showview/{layout}/', function (Request $request, Response $response) {
+        $ads = new classes\modules\Ads($this->db);
+        $body = $response->getBody();
+        $body->write($ads->showAdsAndUpdateView($request->getAttribute('layout')));
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to update data view ads
+    $app->get('/ads/data/view/{adsid}/', function (Request $request, Response $response) {
+        $ads = new classes\modules\Ads($this->db);
+        $ads->adsid = $request->getAttribute('adsid');
+        $body = $response->getBody();
+        $body->write($ads->updateViewAds());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));

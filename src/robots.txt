@@ -1,4 +1,5 @@
 User-Agent: *
+Disallow: /ads/data/view/
 Disallow: /video/post/data/view/
 Disallow: /video/post/data/liked/
 Disallow: /video/post/data/disliked/

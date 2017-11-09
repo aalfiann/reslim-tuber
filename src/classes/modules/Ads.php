@@ -685,6 +685,55 @@ use PDO;
 				if ($stmt->execute()) {	
     	    	    if ($stmt->rowCount() > 0){
         	   		   	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+						$data = [
+			   	            'result' => $results, 
+    	    		        'status' => 'success', 
+			           	    'code' => 'RS501',
+        		        	'message' => CustomHandlers::getreSlimMessage('RS501')
+						];
+			        } else {
+        			    $data = [
+            		    	'status' => 'error',
+		        		    'code' => 'RS601',
+        		    	    'message' => CustomHandlers::getreSlimMessage('RS601')
+						];
+	    	        }          	   	
+				} else {
+					$data = [
+    	    			'status' => 'error',
+						'code' => 'RS202',
+	        		    'message' => CustomHandlers::getreSlimMessage('RS202')
+					];
+				}	
+        
+			return json_encode($data, JSON_PRETTY_PRINT);
+	        $this->db= null;
+		}
+		
+		/** 
+		 * Show data ads random single detail for guest without login also update view
+         * @var $layout is the position ads to be appear in page. Example: header, footer, leftsidebar, rightsidebar, etc 
+		 * @return result process in json encoded data
+		 */
+		public function showAdsAndUpdateView($layout){
+            $newlayout = "%$layout%";
+				
+				$sql = "SELECT a.AdsID,a.Created_at,b.CompanyID,b.`Name`,a.Title,a.Embed,a.StartDate,a.EndDate
+					from data_ads a
+					inner join data_company b on a.CompanyID=b.CompanyID
+					inner join core_status c on a.StatusID=c.StatusID
+					where a.EndDate > DATE(now())
+					and b.StatusID ='1'
+					and a.StatusID = '51'
+					and a.Title like :layout
+					order by rand() LIMIT 1;";
+				
+				$stmt = $this->db->prepare($sql);		
+				$stmt->bindParam(':layout', $newlayout, PDO::PARAM_STR);
+
+				if ($stmt->execute()) {	
+    	    	    if ($stmt->rowCount() > 0){
+        	   		   	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 						$adsid = $results[0]['AdsID'];
 						$updateviewer = "UPDATE data_ads a SET a.Viewer=a.Viewer+1 where a.AdsID=:adsid;";
 						$stmt2 = $this->db->prepare($updateviewer);		
@@ -713,6 +762,46 @@ use PDO;
         
 			return json_encode($data, JSON_PRETTY_PRINT);
 	        $this->db= null;
+		}
+		
+		/** 
+		 * Update data view ads
+		 * @return result process in json encoded data
+		 */
+        public function updateViewAds(){
+            $newadsid = Validation::integerOnly($this->adsid);
+                    
+        		try {
+					$this->db->beginTransaction();
+					$sql = "UPDATE data_ads a SET a.Viewer=a.Viewer+1 where a.AdsID=:adsid;";
+					$stmt = $this->db->prepare($sql);		
+					$stmt->bindParam(':adsid', $newadsid, PDO::PARAM_STR);
+	    			if ($stmt->execute()) {
+		    			$data = [
+			    			'status' => 'success',
+							'code' => 'RS103',
+				    		'message' => CustomHandlers::getreSlimMessage('RS103')
+					    ];	
+    				} else {
+	    				$data = [
+		    				'status' => 'error',
+		    				'code' => 'RS203',
+			    			'message' => CustomHandlers::getreSlimMessage('RS203')
+					    ];
+    				}
+	    		    $this->db->commit();
+		        } catch (PDOException $e) {
+		    	    $data = [
+    			    	'status' => 'error',
+	    				'code' => $e->getCode(),
+		    		    'message' => $e->getMessage()
+    		    	];
+	    		    $this->db->rollBack();
+        		} 
+
+			return json_encode($data, JSON_PRETTY_PRINT);
+			$this->db = null;
+
         }
 
 
