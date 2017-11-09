@@ -127,6 +127,26 @@
 		});
 		//Load options end
 
+		<?php if (!empty($postid)){
+			echo '/* Update data view start */
+			$.ajax({
+				type: "GET",
+				url: "'.Core::getInstance()->api.'/video/post/data/view/'.$postid.'/?apikey='.Core::getInstance()->apikey.'",
+				dataType: "json",
+				success: function( data ) {
+					console.log("View: " + data.message);
+				},
+				error: function( xhr, textStatus, error ) {
+					console.log("XHR: " + xhr.statusText);
+					console.log("STATUS: "+textStatus);
+					console.log("ERROR: "+error);
+					//console.log("TRACE: "+xhr.responseText);
+				}
+			}).done(function(res){});
+			/* Update data view end */';
+		}
+		?>
+
 		// Send Report start
 		$('#sendreport').on("submit",sendingreport);
 		function sendingreport(e){
@@ -198,7 +218,7 @@
 					console.log("XHR: " + xhr.statusText);
 					console.log("STATUS: "+textStatus);
 					console.log("ERROR: "+error);
-					console.log("TRACE: "+xhr.responseText);
+					//console.log("TRACE: "+xhr.responseText);
 				}
 			}).done(function(res){});
 		}),
@@ -220,7 +240,7 @@
 					console.log("XHR: " + xhr.statusText);
 					console.log("STATUS: "+textStatus);
 					console.log("ERROR: "+error);
-					console.log("TRACE: "+xhr.responseText);
+					//console.log("TRACE: "+xhr.responseText);
 				}
 			}).done(function(res){});
 		});

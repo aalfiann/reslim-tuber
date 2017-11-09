@@ -1721,6 +1721,82 @@
 			"response": []
 		},
 		{
+			"name": "Update Data View Post",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/view/{postid}/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"video",
+						"post",
+						"data",
+						"view",
+						"{postid}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Show Single Post Also Update View",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/readview/{postid}/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"video",
+						"post",
+						"data",
+						"readview",
+						"{postid}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Is Post Are Exist?",
 			"request": {
 				"url": {

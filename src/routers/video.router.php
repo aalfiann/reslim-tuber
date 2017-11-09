@@ -213,6 +213,24 @@ use \Psr\Http\Message\ResponseInterface as Response;
         return classes\Cors::modify($response,$body,200);
     })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
 
+    // GET api to show single data also update view post
+    $app->get('/video/post/data/readview/{postid}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->postid = $request->getAttribute('postid');
+        $body = $response->getBody();
+        $body->write($video->showSinglePostAndUpdateView());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
+    // GET api to update data view post
+    $app->get('/video/post/data/view/{postid}/', function (Request $request, Response $response) {
+        $video = new classes\tube\Video($this->db);
+        $video->postid = $request->getAttribute('postid');
+        $body = $response->getBody();
+        $body->write($video->updateViewPost());
+        return classes\Cors::modify($response,$body,200);
+    })->add(new \classes\middleware\ApiKey(filter_var((empty($_GET['apikey'])?'':$_GET['apikey']),FILTER_SANITIZE_STRING)));
+
     // Get api to process liked
     $app->get('/video/post/data/liked/{postid}/', function (Request $request, Response $response) {
         $video = new classes\tube\Video($this->db);  
