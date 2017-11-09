@@ -494,7 +494,7 @@ class IMDB {
     }
 
     public function getUrl() {
-        return "http://www.imdb.com/title/" . $this->ImdbId . "/";
+        return "http://www.imdb.com/title/" . (!empty($this->ImdbId)?$this->ImdbId:'') . "/";
     }
 
     public function getPoster() {
