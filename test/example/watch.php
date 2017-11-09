@@ -430,10 +430,11 @@
                     <a href="<?php echo Core::getInstance()->homepath?>/genre.php" title="<?php echo Core::lang('watch_all_genre')?>"><?php echo Core::lang('watch_all_genre')?></a>
                 </div>
             </div>
-            <?php 
+        </div>
+        <?php 
                 if (!empty($fullkeyword)){
                     echo '<!-- Footer link menu-->
-                        <div class="content-block">
+                        <div class="content-block head-div">
                             <div class="cb-header">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -447,8 +448,7 @@
                         </div>
                     <!-- Footer link menu-->';
                 }
-            ?>
-        </div>
+        ?>
     </div>
 </div>
 
