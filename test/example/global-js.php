@@ -199,6 +199,71 @@
 		}
 		// Send Report end
 
+		<?php 
+				if (!empty($datasidebar) && ($datasidebar->{'status'} == "success")){
+					echo '/* adblock clicked start */
+					$(".adblock .img a").on("click",function(){
+						$.ajax({
+							type: "GET",
+							url: "'.Core::getInstance()->api.'/ads/data/view/'.$datasidebar->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey.'",
+							dataType: "json",
+							success: function( data ) {
+								console.log("Adblock View: " + data.message);
+							},
+							error: function( xhr, textStatus, error ) {
+								console.log("XHR: " + xhr.statusText);
+								console.log("STATUS: "+textStatus);
+								console.log("ERROR: "+error);
+								//console.log("TRACE: "+xhr.responseText);
+							}
+						}).done(function(res){});
+					});
+					/* adblock clicked end */';
+				}
+
+				if (!empty($datafooter) && ($datafooter->{'status'} == "success")){
+					echo '/* adblock2 clicked start */
+					$(".adblock2 .img a").on("click",function(){
+						$.ajax({
+							type: "GET",
+							url: "'.Core::getInstance()->api.'/ads/data/view/'.$datafooter->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey.'",
+							dataType: "json",
+							success: function( data ) {
+								console.log("Adblock2 View: " + data.message);
+							},
+							error: function( xhr, textStatus, error ) {
+								console.log("XHR: " + xhr.statusText);
+								console.log("STATUS: "+textStatus);
+								console.log("ERROR: "+error);
+								//console.log("TRACE: "+xhr.responseText);
+							}
+						}).done(function(res){});
+					});
+					/* adblock2 clicked end */';
+				}
+
+				if (!empty($datacontent) && ($datacontent->{'status'} == "success")){
+					echo '/* adblock3 clicked start */
+					$(".adblock3 .img a").on("click",function(){
+						$.ajax({
+							type: "GET",
+							url: "'.Core::getInstance()->api.'/ads/data/view/'.$datacontent->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey.'",
+							dataType: "json",
+							success: function( data ) {
+								console.log("Adblock3 View: " + data.message);
+							},
+							error: function( xhr, textStatus, error ) {
+								console.log("XHR: " + xhr.statusText);
+								console.log("STATUS: "+textStatus);
+								console.log("ERROR: "+error);
+								//console.log("TRACE: "+xhr.responseText);
+							}
+						}).done(function(res){});
+					});
+					/* adblock3 clicked end */';
+				}
+			?>
+
 		// Rating start
 		$(".iliked").on("click",function(){
 			$.ajax({
