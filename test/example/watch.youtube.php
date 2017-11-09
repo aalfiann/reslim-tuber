@@ -289,7 +289,7 @@
                         <div class="row">';
                             if (!empty($data) && ($data->{'status'} == "success")){
                                 //Data random movies by it's released year
-                                $urlrandomyear = Core::getInstance()->api.'/video/post/data/public/search/random/'.$data->result[0]->{'Released'}.'/1/4/?apikey='.Core::getInstance()->apikey.'&query=';
+                                $urlrandomyear = Core::getInstance()->api.'/video/post/data/public/show/randomfixed/'.$data->result[0]->{'Released'}.'/4/?apikey='.Core::getInstance()->apikey;
                                 $datarandomyear = json_decode(Core::execGetRequest($urlrandomyear));
                                 if (!empty($datarandomyear) && ($datarandomyear->{'status'} == "success")){
                                     $i=1;
@@ -370,7 +370,7 @@
                     <?php 
                         if (!empty($data) && ($data->{'status'} == "success")){
                             //Data random movies
-                            $urlrandom = Core::getInstance()->api.'/video/post/data/public/search/random/1/10/?apikey='.Core::getInstance()->apikey.'&query=';
+                            $urlrandom = Core::getInstance()->api.'/video/post/data/public/show/randomfixed/10/?apikey='.Core::getInstance()->apikey;
                             $datarandom = json_decode(Core::execGetRequest($urlrandom));
                             if (!empty($datarandom) && ($datarandom->{'status'} == "success")){
                                 foreach ($datarandom->results as $name => $valuerandom) {

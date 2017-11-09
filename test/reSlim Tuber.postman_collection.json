@@ -1301,7 +1301,7 @@
 			"response": []
 		},
 		{
-			"name": "Search Post Random by country paginated public",
+			"name": "Search Post Random by year paginated public",
 			"request": {
 				"url": {
 					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/public/search/random/{year}/{page}/{itemsperpage}/?apikey={yourapikey}&query={query to search data}",
@@ -1335,6 +1335,168 @@
 						{
 							"key": "query",
 							"value": "{query to search data}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search Post Random Fixed Public",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/public/search/randomfixed/{itemsperpage}/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"video",
+						"post",
+						"data",
+						"public",
+						"search",
+						"randomfixed",
+						"{itemsperpage}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search Post Random Year Fixed Public",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/public/search/randomfixed/{year}/{itemsperpage}/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"video",
+						"post",
+						"data",
+						"public",
+						"search",
+						"randomfixed",
+						"{year}",
+						"{itemsperpage}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search Post Random Fixed Public For Big Table",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/public/search/randomfixedbig/{itemsperpage}/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"video",
+						"post",
+						"data",
+						"public",
+						"search",
+						"randomfixedbig",
+						"{itemsperpage}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search Post Random Year Fixed Public For Big Table",
+			"request": {
+				"url": {
+					"raw": "http://localhost:1337/reSlim-tuber/src/api/video/post/data/public/search/randomfixedbig/{year}/{itemsperpage}/?apikey={yourapikey}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"reSlim-tuber",
+						"src",
+						"api",
+						"video",
+						"post",
+						"data",
+						"public",
+						"search",
+						"randomfixedbig",
+						"{year}",
+						"{itemsperpage}",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{yourapikey}",
 							"equals": true,
 							"description": ""
 						}

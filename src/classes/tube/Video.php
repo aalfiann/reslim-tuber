@@ -1170,6 +1170,516 @@ use PDO;
 		}
 
 		/** 
+		 * Show all data post random fixed public
+		 * @return result process in json encoded data
+		 */
+		public function showPostRandomFixed() {
+			$newitemsperpage = Validation::integerOnly($this->itemsPerPage);
+			// Query Data
+			$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
+					a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
+					a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
+				from data_post a
+				inner join core_status b on a.StatusID=b.StatusID
+				where a.StatusID='51'
+				order by rand() LIMIT :itemperpage;";
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindValue(':itemperpage', (INT) $newitemsperpage, PDO::PARAM_INT);		
+			
+			if ($stmt->execute()){
+				if ($stmt->rowCount() > 0){
+					$datares = "[";
+					while($redata = $stmt->fetch()) 
+					{
+						//Start Tags
+						$return_arr = null;
+						$names = $redata['Tags'];	
+						$named = preg_split( "/[,]/", $names );
+						foreach($named as $name){
+							if ($name != null){$return_arr[] = trim($name);}
+						}
+						//End Tags
+
+						//Start Stars
+						$stars_arr = null;
+						$starnames = $redata['Stars'];	
+						$starnamed = preg_split( "/[,]/", $starnames );
+						foreach($starnamed as $name){
+							if ($name != null){$stars_arr[] = trim($name);}
+						}
+						//End Stars
+
+						//Start Cast
+						$cast_arr = null;
+						$castnames = $redata['Cast'];	
+						$castnamed = preg_split( "/[,]/", $castnames );
+						foreach($castnamed as $name){
+							if ($name != null){$cast_arr[] = trim($name);}
+						}
+						//End Cast
+
+						//Start Director
+						$director_arr = null;
+						$directornames = $redata['Director'];	
+						$directornamed = preg_split( "/[,]/", $directornames );
+						foreach($directornamed as $name){
+							if ($name != null){$director_arr[] = trim($name);}
+						}
+						//End Director
+
+						//Start Country
+						$country_arr = null;
+						$countrynames = $redata['Country'];	
+						$countrynamed = preg_split( "/[,]/", $countrynames );
+						foreach($countrynamed as $name){
+							if ($name != null){$country_arr[] = trim($name);}
+						}
+						//End Country
+
+						//Start Embed
+						$embed_arr = null;
+						$embednames = $redata['Embed_video'];	
+						$embednamed = preg_split( "/[,]/", $embednames );
+						foreach($embednamed as $name){
+							if ($name != null){$embed_arr[] = trim($name);}
+						}
+						//End Embed
+
+						$datares .= '{"PostID":'.json_encode($redata['PostID']).',
+										"Title":'.json_encode($redata['Title']).',
+										"Description":'.json_encode($redata['Description']).',
+										"Image":'.json_encode($redata['Image']).',
+										"Embed":'.json_encode($embed_arr).',
+										"Duration":'.json_encode($redata['Duration']).',
+										"Stars":'.json_encode($stars_arr).',
+										"Cast":'.json_encode($cast_arr).',
+										"Director":'.json_encode($director_arr).',
+										"Tags":'.json_encode($return_arr).',
+										"Country":'.json_encode($country_arr).',
+										"Released":'.json_encode($redata['Released']).',
+										"Rating":'.json_encode($redata['Rating']).',
+										"Viewer":'.json_encode($redata['Viewer']).',
+										"Liked":'.json_encode($redata['Liked']).',
+										"Disliked":'.json_encode($redata['Disliked']).',
+										"Created_at":'.json_encode($redata['Created_at']).',
+										"User":'.json_encode($redata['User']).',
+										"Updated_at":'.json_encode($redata['Updated_at']).',
+										"Updated_by":'.json_encode($redata['Updated_by']).',
+										"StatusID":'.json_encode($redata['StatusID']).',
+										"Status":'.json_encode($redata['Status']).'},';
+					}
+					$datares = substr($datares, 0, -1);
+					$datares .= "]";
+					$data = [
+						'results' => json_decode($datares), 
+						'status' => 'success', 
+						'code' => 'RS501',
+						'message' => CustomHandlers::getreSlimMessage('RS501')
+				 	];
+				} else {
+					$data = [
+		   	    		'status' => 'error',
+	    		    	'code' => 'RS601',
+	        			'message' => CustomHandlers::getreSlimMessage('RS601')
+					];
+				}
+			} else {
+				$data = [
+        	    	'status' => 'error',
+		        	'code' => 'RS202',
+	    			'message' => CustomHandlers::getreSlimMessage('RS202')
+				];	
+			}				
+        
+			return json_encode($data, JSON_PRETTY_PRINT);
+	        $this->db= null;
+		}
+
+		/** 
+		 * Show all data post random fixed by released year public
+		 * @return result process in json encoded data
+		 */
+		public function showPostRandomByYearFixed() {
+			$newitemsperpage = Validation::integerOnly($this->itemsPerPage);
+			$newreleased = Validation::integerOnly($this->released);
+			// Query Data
+			$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
+					a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
+					a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
+				from data_post a
+				inner join core_status b on a.StatusID=b.StatusID
+				where a.StatusID='51'and a.Released=:released
+				order by rand() LIMIT :itemperpage;";
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindValue(':released', $newreleased, PDO::PARAM_STR);
+			$stmt->bindValue(':itemperpage', (INT) $newitemsperpage, PDO::PARAM_INT);		
+			
+			if ($stmt->execute()){
+				if ($stmt->rowCount() > 0){
+					$datares = "[";
+					while($redata = $stmt->fetch()) 
+					{
+						//Start Tags
+						$return_arr = null;
+						$names = $redata['Tags'];	
+						$named = preg_split( "/[,]/", $names );
+						foreach($named as $name){
+							if ($name != null){$return_arr[] = trim($name);}
+						}
+						//End Tags
+
+						//Start Stars
+						$stars_arr = null;
+						$starnames = $redata['Stars'];	
+						$starnamed = preg_split( "/[,]/", $starnames );
+						foreach($starnamed as $name){
+							if ($name != null){$stars_arr[] = trim($name);}
+						}
+						//End Stars
+
+						//Start Cast
+						$cast_arr = null;
+						$castnames = $redata['Cast'];	
+						$castnamed = preg_split( "/[,]/", $castnames );
+						foreach($castnamed as $name){
+							if ($name != null){$cast_arr[] = trim($name);}
+						}
+						//End Cast
+
+						//Start Director
+						$director_arr = null;
+						$directornames = $redata['Director'];	
+						$directornamed = preg_split( "/[,]/", $directornames );
+						foreach($directornamed as $name){
+							if ($name != null){$director_arr[] = trim($name);}
+						}
+						//End Director
+
+						//Start Country
+						$country_arr = null;
+						$countrynames = $redata['Country'];	
+						$countrynamed = preg_split( "/[,]/", $countrynames );
+						foreach($countrynamed as $name){
+							if ($name != null){$country_arr[] = trim($name);}
+						}
+						//End Country
+
+						//Start Embed
+						$embed_arr = null;
+						$embednames = $redata['Embed_video'];	
+						$embednamed = preg_split( "/[,]/", $embednames );
+						foreach($embednamed as $name){
+							if ($name != null){$embed_arr[] = trim($name);}
+						}
+						//End Embed
+
+						$datares .= '{"PostID":'.json_encode($redata['PostID']).',
+										"Title":'.json_encode($redata['Title']).',
+										"Description":'.json_encode($redata['Description']).',
+										"Image":'.json_encode($redata['Image']).',
+										"Embed":'.json_encode($embed_arr).',
+										"Duration":'.json_encode($redata['Duration']).',
+										"Stars":'.json_encode($stars_arr).',
+										"Cast":'.json_encode($cast_arr).',
+										"Director":'.json_encode($director_arr).',
+										"Tags":'.json_encode($return_arr).',
+										"Country":'.json_encode($country_arr).',
+										"Released":'.json_encode($redata['Released']).',
+										"Rating":'.json_encode($redata['Rating']).',
+										"Viewer":'.json_encode($redata['Viewer']).',
+										"Liked":'.json_encode($redata['Liked']).',
+										"Disliked":'.json_encode($redata['Disliked']).',
+										"Created_at":'.json_encode($redata['Created_at']).',
+										"User":'.json_encode($redata['User']).',
+										"Updated_at":'.json_encode($redata['Updated_at']).',
+										"Updated_by":'.json_encode($redata['Updated_by']).',
+										"StatusID":'.json_encode($redata['StatusID']).',
+										"Status":'.json_encode($redata['Status']).'},';
+					}
+					$datares = substr($datares, 0, -1);
+					$datares .= "]";
+					$data = [
+						'results' => json_decode($datares), 
+						'status' => 'success', 
+						'code' => 'RS501',
+						'message' => CustomHandlers::getreSlimMessage('RS501')
+				 	];
+				} else {
+					$data = [
+		   	    		'status' => 'error',
+	    		    	'code' => 'RS601',
+	        			'message' => CustomHandlers::getreSlimMessage('RS601')
+					];
+				}
+			} else {
+				$data = [
+        	    	'status' => 'error',
+		        	'code' => 'RS202',
+	    			'message' => CustomHandlers::getreSlimMessage('RS202')
+				];	
+			}				
+        
+			return json_encode($data, JSON_PRETTY_PRINT);
+	        $this->db= null;
+		}
+
+		/** 
+		 * Show all data post random fixed public for big table
+		 * @return result process in json encoded data
+		 */
+		public function showPostRandomFixedBigTable() {
+			$newitemsperpage = Validation::integerOnly($this->itemsPerPage);
+			// Query Data
+			$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
+					a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
+					a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
+				from data_post a
+				inner join core_status b on a.StatusID=b.StatusID
+				join (select (RAND() * (select MAX(PostID) from data_post)) AS PostID) AS c
+				where a.PostID >= c.PostID and a.StatusID='51'
+				order by a.PostID asc LIMIT :itemperpage;";
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindValue(':itemperpage', (INT) $newitemsperpage, PDO::PARAM_INT);		
+			
+			if ($stmt->execute()){
+				if ($stmt->rowCount() > 0){
+					$datares = "[";
+					while($redata = $stmt->fetch()) 
+					{
+						//Start Tags
+						$return_arr = null;
+						$names = $redata['Tags'];	
+						$named = preg_split( "/[,]/", $names );
+						foreach($named as $name){
+							if ($name != null){$return_arr[] = trim($name);}
+						}
+						//End Tags
+
+						//Start Stars
+						$stars_arr = null;
+						$starnames = $redata['Stars'];	
+						$starnamed = preg_split( "/[,]/", $starnames );
+						foreach($starnamed as $name){
+							if ($name != null){$stars_arr[] = trim($name);}
+						}
+						//End Stars
+
+						//Start Cast
+						$cast_arr = null;
+						$castnames = $redata['Cast'];	
+						$castnamed = preg_split( "/[,]/", $castnames );
+						foreach($castnamed as $name){
+							if ($name != null){$cast_arr[] = trim($name);}
+						}
+						//End Cast
+
+						//Start Director
+						$director_arr = null;
+						$directornames = $redata['Director'];	
+						$directornamed = preg_split( "/[,]/", $directornames );
+						foreach($directornamed as $name){
+							if ($name != null){$director_arr[] = trim($name);}
+						}
+						//End Director
+
+						//Start Country
+						$country_arr = null;
+						$countrynames = $redata['Country'];	
+						$countrynamed = preg_split( "/[,]/", $countrynames );
+						foreach($countrynamed as $name){
+							if ($name != null){$country_arr[] = trim($name);}
+						}
+						//End Country
+
+						//Start Embed
+						$embed_arr = null;
+						$embednames = $redata['Embed_video'];	
+						$embednamed = preg_split( "/[,]/", $embednames );
+						foreach($embednamed as $name){
+							if ($name != null){$embed_arr[] = trim($name);}
+						}
+						//End Embed
+
+						$datares .= '{"PostID":'.json_encode($redata['PostID']).',
+										"Title":'.json_encode($redata['Title']).',
+										"Description":'.json_encode($redata['Description']).',
+										"Image":'.json_encode($redata['Image']).',
+										"Embed":'.json_encode($embed_arr).',
+										"Duration":'.json_encode($redata['Duration']).',
+										"Stars":'.json_encode($stars_arr).',
+										"Cast":'.json_encode($cast_arr).',
+										"Director":'.json_encode($director_arr).',
+										"Tags":'.json_encode($return_arr).',
+										"Country":'.json_encode($country_arr).',
+										"Released":'.json_encode($redata['Released']).',
+										"Rating":'.json_encode($redata['Rating']).',
+										"Viewer":'.json_encode($redata['Viewer']).',
+										"Liked":'.json_encode($redata['Liked']).',
+										"Disliked":'.json_encode($redata['Disliked']).',
+										"Created_at":'.json_encode($redata['Created_at']).',
+										"User":'.json_encode($redata['User']).',
+										"Updated_at":'.json_encode($redata['Updated_at']).',
+										"Updated_by":'.json_encode($redata['Updated_by']).',
+										"StatusID":'.json_encode($redata['StatusID']).',
+										"Status":'.json_encode($redata['Status']).'},';
+					}
+					$datares = substr($datares, 0, -1);
+					$datares .= "]";
+					$data = [
+						'results' => json_decode($datares), 
+						'status' => 'success', 
+						'code' => 'RS501',
+						'message' => CustomHandlers::getreSlimMessage('RS501')
+				 	];
+				} else {
+					$data = [
+		   	    		'status' => 'error',
+	    		    	'code' => 'RS601',
+	        			'message' => CustomHandlers::getreSlimMessage('RS601')
+					];
+				}
+			} else {
+				$data = [
+        	    	'status' => 'error',
+		        	'code' => 'RS202',
+	    			'message' => CustomHandlers::getreSlimMessage('RS202')
+				];	
+			}				
+        
+			return json_encode($data, JSON_PRETTY_PRINT);
+	        $this->db= null;
+		}
+
+		/** 
+		 * Show all data post random fixed by released year public for big table
+		 * @return result process in json encoded data
+		 */
+		public function showPostRandomByYearFixedBigTable() {
+			$newitemsperpage = Validation::integerOnly($this->itemsPerPage);
+			$newreleased = Validation::integerOnly($this->released);
+			// Query Data
+			$sql = "SELECT a.PostID,a.Created_at,a.Image,a.Title,a.Description,a.Embed_video,a.Duration,a.Stars,a.Cast,
+					a.Director,a.Tags,a.Country,a.Released,a.Rating,a.Viewer,a.Liked,a.Disliked,a.Username as 'User',
+					a.Updated_at,a.Updated_by,a.StatusID,b.`Status`
+				from data_post a
+				inner join core_status b on a.StatusID=b.StatusID
+				join (select (RAND() * (select MAX(PostID) from data_post)) AS PostID) AS c
+				where a.PostID >= c.PostID and a.StatusID='51'and a.Released=:released
+				order by a.PostID asc LIMIT :itemperpage;";
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindValue(':released', $newreleased, PDO::PARAM_STR);
+			$stmt->bindValue(':itemperpage', (INT) $newitemsperpage, PDO::PARAM_INT);		
+			
+			if ($stmt->execute()){
+				if ($stmt->rowCount() > 0){
+					$datares = "[";
+					while($redata = $stmt->fetch()) 
+					{
+						//Start Tags
+						$return_arr = null;
+						$names = $redata['Tags'];	
+						$named = preg_split( "/[,]/", $names );
+						foreach($named as $name){
+							if ($name != null){$return_arr[] = trim($name);}
+						}
+						//End Tags
+
+						//Start Stars
+						$stars_arr = null;
+						$starnames = $redata['Stars'];	
+						$starnamed = preg_split( "/[,]/", $starnames );
+						foreach($starnamed as $name){
+							if ($name != null){$stars_arr[] = trim($name);}
+						}
+						//End Stars
+
+						//Start Cast
+						$cast_arr = null;
+						$castnames = $redata['Cast'];	
+						$castnamed = preg_split( "/[,]/", $castnames );
+						foreach($castnamed as $name){
+							if ($name != null){$cast_arr[] = trim($name);}
+						}
+						//End Cast
+
+						//Start Director
+						$director_arr = null;
+						$directornames = $redata['Director'];	
+						$directornamed = preg_split( "/[,]/", $directornames );
+						foreach($directornamed as $name){
+							if ($name != null){$director_arr[] = trim($name);}
+						}
+						//End Director
+
+						//Start Country
+						$country_arr = null;
+						$countrynames = $redata['Country'];	
+						$countrynamed = preg_split( "/[,]/", $countrynames );
+						foreach($countrynamed as $name){
+							if ($name != null){$country_arr[] = trim($name);}
+						}
+						//End Country
+
+						//Start Embed
+						$embed_arr = null;
+						$embednames = $redata['Embed_video'];	
+						$embednamed = preg_split( "/[,]/", $embednames );
+						foreach($embednamed as $name){
+							if ($name != null){$embed_arr[] = trim($name);}
+						}
+						//End Embed
+
+						$datares .= '{"PostID":'.json_encode($redata['PostID']).',
+										"Title":'.json_encode($redata['Title']).',
+										"Description":'.json_encode($redata['Description']).',
+										"Image":'.json_encode($redata['Image']).',
+										"Embed":'.json_encode($embed_arr).',
+										"Duration":'.json_encode($redata['Duration']).',
+										"Stars":'.json_encode($stars_arr).',
+										"Cast":'.json_encode($cast_arr).',
+										"Director":'.json_encode($director_arr).',
+										"Tags":'.json_encode($return_arr).',
+										"Country":'.json_encode($country_arr).',
+										"Released":'.json_encode($redata['Released']).',
+										"Rating":'.json_encode($redata['Rating']).',
+										"Viewer":'.json_encode($redata['Viewer']).',
+										"Liked":'.json_encode($redata['Liked']).',
+										"Disliked":'.json_encode($redata['Disliked']).',
+										"Created_at":'.json_encode($redata['Created_at']).',
+										"User":'.json_encode($redata['User']).',
+										"Updated_at":'.json_encode($redata['Updated_at']).',
+										"Updated_by":'.json_encode($redata['Updated_by']).',
+										"StatusID":'.json_encode($redata['StatusID']).',
+										"Status":'.json_encode($redata['Status']).'},';
+					}
+					$datares = substr($datares, 0, -1);
+					$datares .= "]";
+					$data = [
+						'results' => json_decode($datares), 
+						'status' => 'success', 
+						'code' => 'RS501',
+						'message' => CustomHandlers::getreSlimMessage('RS501')
+				 	];
+				} else {
+					$data = [
+		   	    		'status' => 'error',
+	    		    	'code' => 'RS601',
+	        			'message' => CustomHandlers::getreSlimMessage('RS601')
+					];
+				}
+			} else {
+				$data = [
+        	    	'status' => 'error',
+		        	'code' => 'RS202',
+	    			'message' => CustomHandlers::getreSlimMessage('RS202')
+				];	
+			}				
+        
+			return json_encode($data, JSON_PRETTY_PRINT);
+	        $this->db= null;
+		}
+
+		/** 
 		 * Search all data post best rating paginated public
 		 * @return result process in json encoded data
 		 */
