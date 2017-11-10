@@ -26,6 +26,8 @@
 			$('iframe').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
 			$('img').attr('data-src', function() { return $(this).attr('src'); }).removeAttr('src').addClass("lazyload");
 		});
+		//Cryptography
+		var Crypto={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(a){var b="",d,e,f,g,h,j,k,l=0;for(a=Crypto._utf8_encode(a);l<a.length;)d=a.charCodeAt(l++),e=a.charCodeAt(l++),f=a.charCodeAt(l++),g=d>>2,h=(3&d)<<4|e>>4,j=(15&e)<<2|f>>6,k=63&f,isNaN(e)?j=k=64:isNaN(f)&&(k=64),b=b+this._keyStr.charAt(g)+this._keyStr.charAt(h)+this._keyStr.charAt(j)+this._keyStr.charAt(k);return b},decode:function(a){var d,e,f,g,h,j,k,b="",l=0;for(a=a.replace(/[^A-Za-z0-9\+\/\=]/g,"");l<a.length;)g=this._keyStr.indexOf(a.charAt(l++)),h=this._keyStr.indexOf(a.charAt(l++)),j=this._keyStr.indexOf(a.charAt(l++)),k=this._keyStr.indexOf(a.charAt(l++)),d=g<<2|h>>4,e=(15&h)<<4|j>>2,f=(3&j)<<6|k,b+=String.fromCharCode(d),64!=j&&(b+=String.fromCharCode(e)),64!=k&&(b+=String.fromCharCode(f));return b=Crypto._utf8_decode(b),b},_utf8_encode:function(a){a=a.replace(/\r\n/g,"\n");for(var e,b="",d=0;d<a.length;d++)e=a.charCodeAt(d),128>e?b+=String.fromCharCode(e):127<e&&2048>e?(b+=String.fromCharCode(192|e>>6),b+=String.fromCharCode(128|63&e)):(b+=String.fromCharCode(224|e>>12),b+=String.fromCharCode(128|63&e>>6),b+=String.fromCharCode(128|63&e));return b},_utf8_decode:function(a){for(var b="",d=0,e=c1=c2=0;d<a.length;)e=a.charCodeAt(d),128>e?(b+=String.fromCharCode(e),d++):191<e&&224>e?(c2=a.charCodeAt(d+1),b+=String.fromCharCode((31&e)<<6|63&c2),d+=2):(c2=a.charCodeAt(d+1),c3=a.charCodeAt(d+2),b+=String.fromCharCode((15&e)<<12|(63&c2)<<6|63&c3),d+=3);return b}};
 		//Load Bootstrap
 		getScript('<?php echo Core::getInstance()->homepath?>/bootstrap/js/bootstrap.min.js',function(){
 			//Load Custom Script
@@ -44,7 +46,7 @@
 		//Get total database video start
 		$.ajax({
 			type: "GET",
-			url: "<?php echo Core::getInstance()->api.'/video/post/data/public/search/asc/1/1/?apikey='.Core::getInstance()->apikey.'&query='?>",
+			url: Crypto.decode("<?php echo base64_encode(Core::getInstance()->api.'/video/post/data/public/search/asc/1/1/?apikey='.Core::getInstance()->apikey.'&query=')?>"),
 			dataType: 'json',
 			success: function( data ) {
 				document.getElementById("totalvideo").innerHTML='';
@@ -86,7 +88,7 @@
 		$('#optionCountry').empty().append('<option value="">--<?php echo Core::lang('select')?>--</option>');        
 		$('#optionYear').empty().append('<option value="">--<?php echo Core::lang('select')?>--</option>');
 		$.ajax({
-			url: "<?php echo Core::getInstance()->api.'/video/post/data/public/tags/all/?apikey='.Core::getInstance()->apikey?>",
+			url: Crypto.decode("<?php echo base64_encode(Core::getInstance()->api.'/video/post/data/public/tags/all/?apikey='.Core::getInstance()->apikey)?>"),
 			dataType: 'json',
 			type: 'GET',
 			success: function(data) {
@@ -100,7 +102,7 @@
 			error: function(x, e) {}
 		}),
 		$.ajax({
-			url: "<?php echo Core::getInstance()->api.'/video/post/data/public/countries/all/?apikey='.Core::getInstance()->apikey?>",
+			url: Crypto.decode("<?php echo base64_encode(Core::getInstance()->api.'/video/post/data/public/countries/all/?apikey='.Core::getInstance()->apikey)?>"),
 			dataType: 'json',
 			type: 'GET',
 			success: function(data) {
@@ -113,7 +115,7 @@
 			error: function(x, e) {}
 		}),
 		$.ajax({
-			url: "<?php echo Core::getInstance()->api.'/video/post/data/public/release/all/?apikey='.Core::getInstance()->apikey?>",
+			url: Crypto.decode("<?php echo base64_encode(Core::getInstance()->api.'/video/post/data/public/release/all/?apikey='.Core::getInstance()->apikey)?>"),
 			dataType: 'json',
 			type: 'GET',
 			success: function(data) {
@@ -131,7 +133,7 @@
 			echo '/* Update data view start */
 			$.ajax({
 				type: "GET",
-				url: "'.Core::getInstance()->api.'/video/post/data/view/'.$postid.'/?apikey='.Core::getInstance()->apikey.'",
+				url: Crypto.decode("'.base64_encode(Core::getInstance()->api.'/video/post/data/view/'.$postid.'/?apikey='.Core::getInstance()->apikey).'"),
 				dataType: "json",
 				success: function( data ) {
 					console.log("View: " + data.message);
@@ -160,7 +162,7 @@
 			var key = parseInt($('#post-key').val());
 			if ((bbb + aaa) == key){
 				$.ajax({
-					   url: "<?php echo Core::getInstance()->api.'/issues/new/?apikey='.Core::getInstance()->apikey?>",
+					   url: Crypto.decode("<?php echo base64_encode(Core::getInstance()->api.'/issues/new/?apikey='.Core::getInstance()->apikey)?>"),
 					   data : {
 						Fullname: $('#post-fullname').val(),
 						Email: $('#post-email').val(),
@@ -205,7 +207,7 @@
 					$(".adblock .img a").on("click",function(){
 						$.ajax({
 							type: "GET",
-							url: "'.Core::getInstance()->api.'/ads/data/view/'.$datasidebar->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey.'",
+							url: Crypto.decode("'.base64_encode(Core::getInstance()->api.'/ads/data/view/'.$datasidebar->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey).'"),
 							dataType: "json",
 							success: function( data ) {
 								console.log("Adblock View: " + data.message);
@@ -226,7 +228,7 @@
 					$(".adblock2 .img a").on("click",function(){
 						$.ajax({
 							type: "GET",
-							url: "'.Core::getInstance()->api.'/ads/data/view/'.$datafooter->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey.'",
+							url: Crypto.decode("'.base64_encode(Core::getInstance()->api.'/ads/data/view/'.$datafooter->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey).'"),
 							dataType: "json",
 							success: function( data ) {
 								console.log("Adblock2 View: " + data.message);
@@ -247,7 +249,7 @@
 					$(".adblock3 .img a").on("click",function(){
 						$.ajax({
 							type: "GET",
-							url: "'.Core::getInstance()->api.'/ads/data/view/'.$datacontent->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey.'",
+							url: Crypto.decode("'.base64_encode(Core::getInstance()->api.'/ads/data/view/'.$datacontent->result[0]->{'AdsID'}.'/?apikey='.Core::getInstance()->apikey).'"),
 							dataType: "json",
 							success: function( data ) {
 								console.log("Adblock3 View: " + data.message);
@@ -268,7 +270,7 @@
 		$(".iliked").on("click",function(){
 			$.ajax({
 				type: "POST",
-				url: "<?php echo Core::getInstance()->api?>/video/post/data/liked/<?php echo (!empty($postid)?$postid:'0')?>/?apikey=<?php echo Core::getInstance()->apikey?>",
+				url: Crypto.decode("<?php echo base64_encode(Core::getInstance()->api.'/video/post/data/liked/'.(!empty($postid)?$postid:'0').'/?apikey='.Core::getInstance()->apikey)?>"),
 				dataType: 'json',
 				success: function( data ) {
 					document.getElementById("voteresult").innerHTML='';
@@ -290,7 +292,7 @@
 		$(".idisliked").on("click",function(){
 			$.ajax({
 				type: "POST",
-				url: "<?php echo Core::getInstance()->api?>/video/post/data/disliked/<?php echo (!empty($postid)?$postid:'0')?>/?apikey=<?php echo Core::getInstance()->apikey?>",
+				url: Crypto.decode("<?php echo base64_encode(Core::getInstance()->api.'/video/post/data/disliked/'.(!empty($postid)?$postid:'0').'/?apikey='.Core::getInstance()->apikey)?>"),
 				dataType: 'json',
 				success: function( data ) {
 					document.getElementById("voteresult").innerHTML='';
