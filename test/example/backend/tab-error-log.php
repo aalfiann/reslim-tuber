@@ -31,8 +31,10 @@
                     <form method="post" action="<?php $_SERVER['PHP_SELF']?>">
                         <div class="form-group">
                             <?php 
-                                $api = Core::getInstance()->api;
-                                $url = parse_url($api, PHP_URL_SCHEME).'://'.parse_url($api, PHP_URL_HOST).'/logs/app.log';
+                                $urlarray = explode("/",Core::getInstance()->api);
+                                array_pop($urlarray);
+                                $urlhost = implode('/', $urlarray);
+                                $url = $urlhost.'/logs/app.log';
                                 echo '<textarea id="textarea_1" name="content" class="form-control" rows="20" >'.Core::execGetRequest($url).'</textarea>';
                             ?>
                         </div>
