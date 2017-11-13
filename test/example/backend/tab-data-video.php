@@ -74,13 +74,11 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                             <div id="title-info"></div>
                                         </div>
                                     </div>
-                                    <?php if (!empty(Core::getInstance()->imdbapi)) {
-                                        echo '<div class="col-lg-12">
-                                            <div class="form-group">
-                                                <button id="getimdb" type="button" class="btn btn-info btn-block">Get IMDB</button>
-                                            </div>
-                                        </div>';
-                                    }?>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <button id="getimdb" type="button" class="btn btn-info btn-block">Get IMDB</button>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Description</label>
