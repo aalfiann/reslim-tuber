@@ -14,8 +14,15 @@
     $url = Core::getInstance()->api.'/video/post/data/public/show/filter/'.$page.'/'.$itemsperpage.'/?filter='.rawurlencode($filter).'&sort='.rawurlencode($sort).'&genre1='.rawurlencode($genre1).'&genre2='.rawurlencode($genre2).'&country='.rawurlencode($country).'&year='.rawurlencode($year).'&apikey='.Core::getInstance()->apikey;
     $data = json_decode(Core::execGetRequest($url));
 
-    $title = Core::lang('filter_list').' '.$filter.(!empty($page) && ($page != 1)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
-    $description = Core::lang('filter_list').'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'');
+    //build info
+    $infosort = (!empty($sort)?' '.ucwords($sort):'');
+    $infogenre1 = (!empty($genre1)?' '.$genre1:'');
+    $infogenre2 = (!empty($genre2)?' '.$genre2:'');
+    $infocountry = (!empty($country)?' '.$country:'');
+    $infoyear = (!empty($year)?' '.$year:'');
+
+    $title = Core::lang('filter_list').' '.ucwords($filter).$infogenre1.$infogenre2.$infocountry.$infoyear.$infosort.(!empty($page) && ($page != 1)?' | '.Core::lang('page').' '.$page:'').' | '.Core::getInstance()->title;
+    $description = Core::lang('filter_list').' '.ucwords($filter).$infogenre1.$infogenre2.$infocountry.$infoyear.$infosort.'. '.Core::lang('genre_desc_1').(!empty($page)?' '.Core::lang('page').' '.$page:'');
     $keyword = Core::lang('filter_key_1');
     $author = Core::getInstance()->title.' Team';
     $image = Core::getInstance()->homepath.'/images/contact.jpg';
@@ -52,7 +59,7 @@
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-xs-8">
                                 <ul class="list-inline">
-                                    <li class="color-active"><h1 style="font-size: 20px !important;"><strong><?php echo Core::lang('filter_list').' '.$filter?></strong></h1></li>
+                                    <li class="color-active"><h1 style="font-size: 20px !important;"><strong><?php echo Core::lang('filter_list').' '.ucwords($filter).$infogenre1.$infogenre2.$infocountry.$infoyear.$infosort?></strong></h1></li>
                                 </ul>
                             </div>
                             
