@@ -67,7 +67,7 @@
 		}),
 		$('#post-input').on('change', function() {
 			$.ajax({
-				url: "<?php echo Core::getInstance()->api?>/video/post/data/public/search/title/?apikey=<?php echo Core::getInstance()->apikey?>&query="+encodeURIComponent($('#post-input').val()),
+				url: "<?php echo (!empty(Core::getInstance()->api)?Core::getInstance()->api:'')?>/video/post/data/public/search/title/?apikey=<?php echo Core::getInstance()->apikey?>&query="+encodeURIComponent($('#post-input').val()),
 				data: {'title' : encodeURIComponent($('#post-input').val())},
 				dataType: 'json',
 				success: function(data) {
@@ -105,7 +105,7 @@
 		$("#getimdb").on("click",function(){
             $.ajax({
                 type: "GET",
-				url: "<?php echo Core::getInstance()->imdbapi?>/api.php?title="+encodeURIComponent($('#post-input').val()),
+				url: "<?php echo (!empty(Core::getInstance()->imdbapi)?Core::getInstance()->imdbapi:'')?>/api.php?title="+encodeURIComponent($('#post-input').val()),
 				dataType: 'json',
 				success: function( data ) {
                     document.getElementById("image-imdb").value='';
