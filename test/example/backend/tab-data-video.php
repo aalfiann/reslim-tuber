@@ -90,8 +90,9 @@ $itemsperpage = filter_var((empty($_GET['itemsperpage'])?'10':$_GET['itemsperpag
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Embed</label>
-                                            <textarea name="embed" rows="5" type="text" placeholder="Input the embed / iframe video separated with comma here..." class="form-control border-input" required></textarea>
+                                            <textarea <?php echo (!empty(Core::getInstance()->apidrive)?'id="embed-drive"':'')?> name="embed" rows="5" type="text" placeholder="Input the embed / iframe video separated with comma here..." class="form-control border-input" required></textarea>
                                         </div>
+                                        <?php echo (!empty(Core::getInstance()->apidrive)?'<div id="test-drive"></div>':'')?>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">

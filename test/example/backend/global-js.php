@@ -1,3 +1,11 @@
+<?php
+	if (!empty(Core::getInstance()->api)){
+		$urlarray = explode("/",Core::getInstance()->api);
+		array_pop($urlarray);
+		$urlhost = implode('/', $urlarray);
+		$imdbapi = $urlhost.'/plugins/imdb';
+	} 
+?>
 <!-- Defer Javascript -->
 <script>
 (function() {
@@ -122,7 +130,7 @@
 			$("#getimdb").on("click",function(){
 				$.ajax({
 					type: "GET",
-					url: "<?php echo (!empty(Core::getInstance()->imdbapi)?Core::getInstance()->imdbapi:'')?>/api.php?title="+encodeURIComponent($('#post-input').val()),
+					url: "<?php echo (!empty($imdbapi)?$imdbapi:'')?>/api.php?title="+encodeURIComponent($('#post-input').val()),
 					dataType: 'json',
 					success: function( data ) {
 						document.getElementById("image-imdb").value='';
@@ -169,7 +177,41 @@
 				}).done(function(res){ 
 					
 				});
-			});
+			}),
+			$("#embed-drive").on("change",function(){
+		        $.ajax({
+        	        type: "GET",
+					url: "<?php echo (!empty(Core::getInstance()->apidrive)?Core::getInstance()->apidrive:'')?>/api.php?url="+encodeURIComponent($('#embed-drive').val()),
+					dataType: 'json',
+					success: function( data ) {
+						var div = document.getElementById('test-drive');
+                		if(data.status=='success'){
+							document.getElementById("embed-drive").value='';
+							document.getElementById("duration-imdb").value='';
+							document.getElementById("embed-drive").value=data.result.embed;
+							document.getElementById("duration-imdb").value=data.source.duration;						
+							div.innerHTML = '<p class="text-success text-center"><a href="'+data.result.link+'" target="_blank">Play video '+data.source.title+'?</a></p>';
+						} else if (data.status=='warning'){
+							document.getElementById("embed-drive").value='';
+							document.getElementById("duration-imdb").value='';
+							document.getElementById("embed-drive").value=data.source.embed;
+							document.getElementById("duration-imdb").value=data.source.duration;
+							div.innerHTML = '<p class="text-warning text-center"><a href="'+data.source.url+'" target="_blank">Play from Google Drive?</a></p>';
+						} else {
+							//nothing to do
+							div.innerHTML = '';
+						}
+					},
+					error: function( xhr, textStatus, error ) {
+        	            console.log("XHR: " + xhr.statusText);
+                		console.log("STATUS: "+textStatus);
+		                console.log("ERROR: "+error);
+        		        console.log("TRACE: "+xhr.responseText);
+					}
+				}).done(function(res){ 
+                
+				});
+    		});
 		});
 	});	
 })();

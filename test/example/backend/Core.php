@@ -64,8 +64,8 @@
         // Set yandex webmaster tools
         var $yandexwebmaster;
 
-        // Set IMDB API
-        var $imdbapi;
+        // Set Google Drive API
+        var $apidrive;
 
         // Set Keyword Dynamic Page
         var $seopage;
@@ -107,7 +107,7 @@
             $this->googlewebmaster = $config['googlewebmaster'];
             $this->bingwebmaster = $config['bingwebmaster'];
             $this->yandexwebmaster = $config['yandexwebmaster'];
-            $this->imdbapi = $config['imdbapi'];
+            $this->apidrive = $config['apidrive'];
             $this->seopage = $config['seopage'];
             $this->seosite = $config['seosite'];
 		}
@@ -841,7 +841,7 @@
             $config[\'googlewebmaster\'] = \''.$post_array['Googlewebmaster'].'\'; //Your google webmaster, you can leave this blank and fill this later
             $config[\'bingwebmaster\'] = \''.$post_array['Bingwebmaster'].'\'; //Your bing webmaster, you can leave this blank and fill this later
             $config[\'yandexwebmaster\'] = \''.$post_array['Yandexwebmaster'].'\'; //Your yandex webmaster, you can leave this blank and fill this later
-            $config[\'imdbapi\'] = \''.$post_array['Imdbapi'].'\'; //IMDB API, you can leave this blank and fill this later
+            $config[\'apidrive\'] = \''.$post_array['Apidrive'].'\'; //Google Drive API, you can leave this blank and fill this later
             $config[\'seopage\'] = \''.$post_array['Seopage'].'\'; //Keyword for dynamic page, you can leave this blank and fill this later
             $config[\'seosite\'] = \''.$post_array['Seosite'].'\'; //Keyword for competitor site, you can leave this blank and fill this later';
             $handle = fopen('config.php','w+'); 
