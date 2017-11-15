@@ -80,7 +80,7 @@ $lang = [
     "issue_send_success_1" => "Laporan Anda berhasil terkirim!",
     "issue_send_success_2" => "Terima kasih atas support Anda.",
     "issue_send_failed_1" => "Laporan Anda gagal terkirim!",
-    "issue_send_failed_1" => "Silahkan coba kembali nanti.",
+    "issue_send_failed_2" => "Silahkan coba kembali nanti.",
     //menu static page
     "about_us" => "Tentang Kami",
     "terms" => "Persyaratan Layanan",

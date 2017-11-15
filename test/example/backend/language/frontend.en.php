@@ -80,7 +80,7 @@ $lang = [
     "issue_send_success_1" => "Your issue has been sent!",
     "issue_send_success_2" => "Thanks for Your support to us.",
     "issue_send_failed_1" => "Your issue is failed to sent!",
-    "issue_send_failed_1" => "Please try again later.",
+    "issue_send_failed_2" => "Please try again later.",
     //menu static page
     "about_us" => "About Us",
     "terms" => "Terms Of Service",
