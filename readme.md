@@ -11,7 +11,7 @@ reSlim-tuber is based on [reSlim](https://github.com/aalfiann/reSlim) which is b
 This script is already tested, stable and free and I will not update in the future, so you have to fork this by yourself.
 There is no frontend UI, You have to create it by yourself.
 
-omovv.ga use this script >> [visit](https://omovv.ga)
+omovv.com use this script >> [visit](https://omovv.com)
 ---------------
 
 Feature:
