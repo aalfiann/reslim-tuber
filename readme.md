@@ -4,30 +4,15 @@ reSlim-tuber [Free Version]
 [![Version](https://img.shields.io/badge/stable-1.0.0-green.svg)](https://github.com/aalfiann/reSlim-tuber)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aalfiann/reSlim-tuber/blob/master/license.md)
 
-A simple web app for boost to make money on your videos on youtube, vimeo, etc.<br>
+A Rest API to build a simple web app for boost to make money on your videos on youtube, vimeo, etc.<br>
 Not like a video tube as usual, this script is perfectly if you make website for posting a video movie.<br>
 reSlim-tuber is based on [reSlim](https://github.com/aalfiann/reSlim) which is based on [Slim Framework version 3](http://www.slimframework.com/).<br>
 
 This script is already tested, stable and free and I will not update in the future, so you have to fork this by yourself.
+There is no frontend UI, You have to create it by yourself.
 
 omovv.ga use this script >> [visit](https://omovv.ga)
 ---------------
-
-reSlim-tuber Feature:
----------------
-1. Post or Embed your video from Youtube, Vimeo, etc.
-2. Ads management system
-3. Like and Dislike rating system
-4. Share video using sharethis
-5. Comment system using disqus
-6. Very simple and small as there is no member system
-7. Automatic build Sitemap and RSS
-8. Dynamic robots.txt
-9. Modern and SEO Optimized design
-10. Auto Grab data Movie using your own IMDB API
-11. Auto Grab video from Google Drive, Google Photos and Openload using your own API, not use any proxy. [Pro Version]
-12. Automatic SEO Link Builder
-13. Etc
 
 Feature:
 ---------------
